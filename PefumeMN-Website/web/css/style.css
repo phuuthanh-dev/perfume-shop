@@ -2985,6 +2985,9 @@ figure {
     letter-spacing: 0;
   }
 }
+.copyright_area {
+    text-align: center;
+}
 
 .copyright_area p {
   text-transform: capitalize;
