@@ -37,7 +37,7 @@
                         <div class="fxt-form">
                             <h2>Register</h2>
                             <p>Create an account free and enjoy it</p>
-                            <form method="POST">
+                            <form action="home" method="POST">
                                 <div class="form-group">
                                     <div class="fxt-transformY-50 fxt-transition-delay-1">
                                         <input type="name" class="form-control" name="name" placeholder="Name" required="required">

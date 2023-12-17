@@ -35,7 +35,7 @@
                         <div class="fxt-form">
                             <h2>Log In</h2>
                             <p>Log in to continue in our website</p>
-                            <form method="post">
+                            <form action="home" method="post">
                                 <div class="form-group">
                                     <div class="fxt-transformY-50 fxt-transition-delay-1">
                                         <input type="text" class="form-control" name="email" placeholder="UserName" required="required">
