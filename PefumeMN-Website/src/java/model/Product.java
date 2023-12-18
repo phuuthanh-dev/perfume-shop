@@ -19,17 +19,21 @@ public class Product {
     private Date date;
     private Category category;
 
-    public Product(int id, String name, String image1, String image2, String describe, Date date, int quantity, double price, Category category) {
-        this.id = id;
+    public Product(String name, String image1, String image2, String describe, int id, int quantity, double price, Date date, Category category) {
         this.name = name;
         this.image1 = image1;
         this.image2 = image2;
         this.describe = describe;
-        this.date = date;
+        this.id = id;
         this.quantity = quantity;
         this.price = price;
+        this.date = date;
         this.category = category;
     }
+
+    public Product() {
+    }
+    
 
     public int getId() {
         return id;

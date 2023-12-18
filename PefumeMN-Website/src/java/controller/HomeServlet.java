@@ -5,15 +5,17 @@
  */
 package controller;
 
-import dal.CategoyDAO;
+import dal.CategoryDAO;
+import dal.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import model.Category;
+import model.Product;
 
 /**
  *
@@ -59,8 +61,10 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        CategoyDAO d = new CategoyDAO();
+        CategoryDAO d = new CategoryDAO();
+        ProductDAO p = new ProductDAO();
         List<Category> list = d.getAll();
+        List<Product> products = p.getProductsByCategoryid(0);
 //        String[] pp = {"Dưới 1 triệu", "Từ 1-3 triệu", "Từ 3-5 triệu", "Từ 5-10 triệu",
 //             "Trên 10 triệu"};
 //        Boolean[] pb = new Boolean[pp.length + 1];
@@ -76,6 +80,7 @@ public class HomeServlet extends HttpServlet {
 //        request.setAttribute("pb", pb);
         request.setAttribute("cid", 0);
         request.setAttribute("category", list);
+        request.setAttribute("products", products);
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 

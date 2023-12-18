@@ -16,7 +16,7 @@ import model.Category;
  *
  * @author Admin
  */
-public class CategoyDAO extends DBContext {
+public class CategoryDAO extends DBContext {
      public List<Category> getAll() {
         List<Category> list = new ArrayList<>();
         String sql = "SELECT [CategoryID]\n"

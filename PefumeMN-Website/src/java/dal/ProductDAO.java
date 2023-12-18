@@ -20,7 +20,7 @@ import model.Product;
  */
 public class ProductDAO extends DBContext {
 
-    private CategoyDAO cd = new CategoyDAO();
+    private CategoryDAO cd = new CategoryDAO();
 
     public List<Product> getProductsByCategoryid(int cid) {
         List<Product> list = new ArrayList<>();
@@ -36,8 +36,9 @@ public class ProductDAO extends DBContext {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
-                Product p = new Product(rs.getInt("ProductID"), rs.getString("ProductName"), rs.getString("image1"), rs.getString("image2"),
-                        rs.getString("describe"), rs.getDate("releaseDate"), rs.getInt("QuantityPerUnit"), rs.getDouble("UnitPrice"), c);
+                Product p = new Product(rs.getString("ProductName"), rs.getString("image1"), rs.getString("image2"),
+                        rs.getString("describe"), rs.getInt("ProductID"), rs.getInt("UnitsInStock"),
+                        rs.getDouble("UnitPrice"), rs.getDate("releaseDate"), c);
                 list.add(p);
             }
         } catch (SQLException e) {
@@ -46,18 +47,21 @@ public class ProductDAO extends DBContext {
         return list;
     }
 
-    public List<Product> getProductsByInYear(int year) {
+    public List<Product> getProductsBrandByInYear(int year, Category category) {
         List<Product> list = new ArrayList<>();
-        String sql = "SELECT * FROM Products WHERE releaseDate like ?";
+        String sql = "SELECT * FROM Products WHERE YEAR(releaseDate) = ? ";
+        if (category != null) {
+            sql += " AND CategoryID =" + category.getId();
+        }
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(1, "%" + year + "%");
+            st.setInt(1, year);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
-                System.out.println(c.toString());
-                Product p = new Product(rs.getInt("ProductID"), rs.getString("ProductName"), rs.getString("image1"), rs.getString("image2"),
-                        rs.getString("describe"), rs.getDate("releaseDate"), rs.getInt("QuantityPerUnit"), rs.getDouble("UnitPrice"), c);
+                Product p = new Product(rs.getString("ProductName"), rs.getString("image1"), rs.getString("image2"),
+                        rs.getString("describe"), rs.getInt("ProductID"), rs.getInt("UnitsInStock"),
+                        rs.getDouble("UnitPrice"), rs.getDate("releaseDate"), c);
                 list.add(p);
             }
         } catch (SQLException e) {
@@ -68,7 +72,9 @@ public class ProductDAO extends DBContext {
 
     public static void main(String[] args) {
         ProductDAO p = new ProductDAO();
-        List<Product> list = p.getProductsByInYear(2013);
-        System.out.println(list.get(0).getName());
+        List<Product> list = p.getProductsBrandByInYear(2023, null);
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i).getImage1());
+        }
     }
 }
