@@ -5,6 +5,7 @@
  */
 package controller;
 
+import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +13,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.User;
 
 /**
  *
@@ -37,7 +40,7 @@ public class LoginServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");            
+            out.println("<title>Servlet LoginServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
@@ -72,7 +75,19 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.setCharacterEncoding("UTF-8");
+        String uName = request.getParameter("username");
+        String uPass = request.getParameter("password");
+        UserDAO ud = new UserDAO();
+        User user = ud.check(uName, uPass);
+        HttpSession session = request.getSession();
+        if (user == null) {
+            request.setAttribute("error", "Username or password invalid!");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        } else {
+            session.setAttribute("account", user);
+            response.sendRedirect("home");
+        }
     }
 
     /**

@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,7 +56,6 @@
                                 <li><a href="#">Wishlist</a></li>
                             </ul>
                         </li>
-
                     </ul>
                 </div>
 
@@ -421,6 +423,14 @@
                                                     <li><a href="#">USD - US Dollar</a></li>
                                                 </ul>
                                             </li>
+                                            <c:if test="${sessionScope.account!=null}">
+                                                <li>
+                                                    <a href="#" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.account.userName}!</a>
+                                                </li>
+                                                <li>
+                                                    <a href="logout" onclick="checkLogout()" style="color: white; text-decoration: underline">${sessionScope.account==null ? "": "LOGOUT"}</a>
+                                                </li>
+                                            </c:if>
                                         </ul>
                                     </div>
                                 </div>
@@ -4720,7 +4730,11 @@
         <script src="js/countdown.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
         <script src="js/main.js"></script>
-
+        <script>
+                                                        function checkLogout() {
+                                                            confirm('You want to logout?');
+                                                        }
+        </script>
     </body>
 
 </html>

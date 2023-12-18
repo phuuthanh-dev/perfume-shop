@@ -5,6 +5,7 @@
  */
 package controller;
 
+import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +13,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.User;
 
 /**
  *
@@ -37,7 +40,7 @@ public class RegisterServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RegisterServlet</title>");            
+            out.println("<title>Servlet RegisterServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet RegisterServlet at " + request.getContextPath() + "</h1>");
@@ -72,7 +75,23 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.setCharacterEncoding("UTF-8");
+        String fName = request.getParameter("name");
+        String uName = request.getParameter("username");
+        String uPass = request.getParameter("password");
+        String uPho = request.getParameter("phone");
+        UserDAO ud = new UserDAO();
+        User user;
+        boolean isDup = ud.checkUserNameDuplicate(uName);
+        if (isDup == true) {
+            request.setAttribute("error", "Username already exist!");
+            request.getRequestDispatcher("register.jsp").forward(request, response);
+        } else {
+            user = new User(fName, uName, uPass, "", uPho, 2);
+            ud.insert(user);
+            request.setAttribute("successfully", "Register successfully. Please Login!");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
     }
 
     /**
