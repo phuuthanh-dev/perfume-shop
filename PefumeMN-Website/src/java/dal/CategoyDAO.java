@@ -39,4 +39,28 @@ public class CategoyDAO extends DBContext {
 
         return list;
     }
+     
+     public Category getCategoryById(int id) {
+        String sql = "SELECT [CategoryID]\n"
+                + "      ,[CategoryName]\n"
+                + "      ,[Description]\n"
+                + "  FROM [dbo].[Categories] where CategoryID=?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            //set ?
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            //1
+            if (rs.next()) {
+                Category c = new Category();
+                c.setId(rs.getInt("CategoryID"));
+                c.setName(rs.getString("CategoryName"));
+                c.setDescribe(rs.getString("Description"));
+                return c;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
 }
