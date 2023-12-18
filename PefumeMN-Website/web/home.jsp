@@ -30,23 +30,6 @@
                 </div>
                 <div class="header_account">
                     <ul>
-                        <li class="language">
-                            <a href="#"><img src="images/icon/language.png" alt="English"> EN <i
-                                    class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown_language">
-                                <li><a href="#">English</a></li>
-                                <li><a href="#">Germany</a></li>
-                                <li><a href="#">Hindi</a></li>
-                            </ul>
-                        </li>
-                        <li class="currency">
-                            <a href="#">INR <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown_currency">
-                                <li><a href="#">EUR - EURO</a></li>
-                                <li><a href="#">GBP - British Pound</a></li>
-                                <li><a href="#">USD - US Dollar</a></li>
-                            </ul>
-                        </li>
                         <li class="top_links">
                             <a href="#">My Account <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown_links">
@@ -140,10 +123,10 @@
                         <li class="menu-item-has-children active">
                             <a href="#">Home</a>
                             <ul class="sub-menu">
-                                <li><a href="#">Men</a></li>
-                                <li><a href="#">Women</a></li>
-                                <li><a href="#">Unisex</a></li>
-                                <li><a href="#">Kids</a></li>
+                                <c:forEach items="${requestScope.category}" var="c">
+
+                                    <li><a href="#">${c.name}</a></li>
+                                    </c:forEach>
                             </ul>
                         </li>
                         <li class="menu-item-has-children">
@@ -179,13 +162,6 @@
                                         <li><a href="#">Lattafa</a></li>
                                     </ul>
                                 </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="#">Blog</a>
-                            <ul class="sub-menu">
-                                <li><a href="#">Newsletter</a></li>
-                                <li><a href="#">Social Media</a></li>
                             </ul>
                         </li>
                         <li class="menu-item-has-children">
@@ -239,10 +215,9 @@
                                                 <a href="index.html" class="active">Home <i
                                                         class="fa fa-angle-down"></i></a>
                                                 <ul class="sub_menu">
-                                                    <li><a href="#">Men</a></li>
-                                                    <li><a href="#">Women</a></li>
-                                                    <li><a href="#">Unisex</a></li>
-                                                    <li><a href="#">Kids</a></li>
+                                                    <c:forEach items="${requestScope.category}" var="c">
+                                                        <li><a href="#">${c.name}</a></li>
+                                                        </c:forEach>
                                                 </ul>
 
                                             </li>
@@ -286,13 +261,6 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                            </li>
-                                            <li>
-                                                <a href="#">Blog <i class="fa fa-angle-down"></i></a>
-                                                <ul class="sub_menu pages"> 
-                                                    <li><a href="#">Newsletter</a></li>
-                                                    <li><a href="#">Social Media</a></li>
-                                                </ul>
                                             </li>
                                             <li><a href="#">About Us</a></li>
                                             <li><a href="#">Contact Us</a></li>
@@ -406,26 +374,9 @@
                                                     <li><a href="#">Wishlist</a></li>
                                                 </ul>
                                             </li>
-                                            <li class="language">
-                                                <a href="#"><img src="images/icon/language.png" alt="English"> EN <i
-                                                        class="fa fa-angle-down"></i></a>
-                                                <ul class="dropdown_language">
-                                                    <li><a href="#">English</a></li>
-                                                    <li><a href="#">Germany</a></li>
-                                                    <li><a href="#">Hindi</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="currency">
-                                                <a href="#">INR <i class="fa fa-angle-down"></i></a>
-                                                <ul class="dropdown_currency">
-                                                    <li><a href="#">EUR - EURO</a></li>
-                                                    <li><a href="#">GBP - British Pound</a></li>
-                                                    <li><a href="#">USD - US Dollar</a></li>
-                                                </ul>
-                                            </li>
                                             <c:if test="${sessionScope.account!=null}">
                                                 <li>
-                                                    <a href="#" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.account.userName}!</a>
+                                                    <a href="#" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.account.fullName}!</a>
                                                 </li>
                                                 <li>
                                                     <a href="logout" onclick="checkLogout()" style="color: white; text-decoration: underline">${sessionScope.account==null ? "": "LOGOUT"}</a>
@@ -490,27 +441,22 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="section_title">
-                            <h2>New Products</h2>
+                            <h2 style="font-size: 20px;">New Products 2023</h2>
                             <div class="product_tab_btn">
                                 <ul class="nav" role="tablist">
-                                    <li>
-                                        <a href="#Men" class="active" data-toggle="tab" role="tab" aria-controls="Men"
-                                           aria-selected="true">
-                                            Men
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#Women" data-toggle="tab" role="tab" aria-controls="Women"
-                                           aria-selected="false">
-                                            Women
-                                        </a>
-                                    </li>
-                                    <li>
+                                    <c:forEach items="${requestScope.category}" var="c">
+                                        <li>
+                                            <a href="home?brand=${0}" role="tab">
+                                                ${c.name}
+                                            </a>
+                                        </li>
+                                    </c:forEach>
+<!--                                    <li>
                                         <a href="#Unisex" data-toggle="tab" role="tab" aria-controls="Unisex"
                                            aria-selected="false">
                                             Unisex
                                         </a>
-                                    </li>
+                                    </li>-->
                                 </ul>
                             </div>
                         </div>
@@ -4093,133 +4039,6 @@
 
 
         <!-- home section area ends -->
-
-
-        <!-- blog section starts  -->
-
-        <section class="blog_section blog_two color_two mb-65">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="section_title">
-                            <h2>From Our Blog</h2>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="blog_carousel blog_column3 owl-carousel">
-                        <div class="col-lg-3">
-                            <div class="single_blog">
-                                <figure>
-                                    <div class="blog_thumb">
-                                        <a href="#">
-                                            <img src="images/blog/blog1.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <figcaption class="blog_content">
-                                        <h4 class="post_title">
-                                            <a href="#">
-                                                Flavours of Perfume
-                                            </a>
-                                        </h4>
-                                        <p class="post_desc">
-                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse excepturi cumque
-                                            nulla saepe. Error, rem odio perferendis ullam facere veniam commodi minima
-                                            delectus velit at obcaecati. Nam dolorem eligendi voluptates.
-                                        </p>
-                                        <footer class="btn_more">
-                                            <a href="#">Read More...</a>
-                                        </footer>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3">
-                            <div class="single_blog">
-                                <figure>
-                                    <div class="blog_thumb">
-                                        <a href="#">
-                                            <img src="images/blog/blog2.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <figcaption class="blog_content">
-                                        <h4 class="post_title">
-                                            <a href="#">
-                                                Divine Of India
-                                            </a>
-                                        </h4>
-                                        <p class="post_desc">
-                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse excepturi cumque
-                                            nulla saepe. Error, rem odio perferendis ullam facere veniam commodi minima
-                                            delectus velit at obcaecati. Nam dolorem eligendi voluptates.
-                                        </p>
-                                        <footer class="btn_more">
-                                            <a href="#">Read More...</a>
-                                        </footer>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3">
-                            <div class="single_blog">
-                                <figure>
-                                    <div class="blog_thumb">
-                                        <a href="#">
-                                            <img src="images/blog/blog3.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <figcaption class="blog_content">
-                                        <h4 class="post_title">
-                                            <a href="#">
-                                                Wardrobe Collection
-                                            </a>
-                                        </h4>
-                                        <p class="post_desc">
-                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse excepturi cumque
-                                            nulla saepe. Error, rem odio perferendis ullam facere veniam commodi minima
-                                            delectus velit at obcaecati. Nam dolorem eligendi voluptates.
-                                        </p>
-                                        <footer class="btn_more">
-                                            <a href="#">Read More...</a>
-                                        </footer>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3">
-                            <div class="single_blog">
-                                <figure>
-                                    <div class="blog_thumb">
-                                        <a href="#">
-                                            <img src="images/blog/blog4.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <figcaption class="blog_content">
-                                        <h4 class="post_title">
-                                            <a href="#">
-                                                Best Perfume for Party
-                                            </a>
-                                        </h4>
-                                        <p class="post_desc">
-                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse excepturi cumque
-                                            nulla saepe. Error, rem odio perferendis ullam facere veniam commodi minima
-                                            delectus velit at obcaecati. Nam dolorem eligendi voluptates.
-                                        </p>
-                                        <footer class="btn_more">
-                                            <a href="#">Read More...</a>
-                                        </footer>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- blog section ends -->
 
