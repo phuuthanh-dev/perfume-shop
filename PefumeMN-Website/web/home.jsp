@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css">
         <link rel="stylesheet" href="css/style.css">
@@ -490,14 +490,10 @@
                                                                     <i class="fa fa-heart-o"></i>
                                                                 </a>
                                                             </li>
-                                                            <li class="compare">
-                                                                <a href="#" title="Add to Compare">
-                                                                    <i class="fa fa-random"></i>
-                                                                </a>
-                                                            </li>
                                                             <li class="quick_button">
-                                                                <a href="#" data-toggle="modal" data-target="#modal_box"
+                                                                <a href="home?pid=${p.id}" data-toggle="modal" data-target="#modal_box"
                                                                    title="Quick View">
+                                                                    
                                                                     <i class="fa fa-eye"></i>
                                                                 </a>
                                                             </li>
@@ -510,15 +506,9 @@
                                                     </h4>
 
                                                     <div class="price_box">
-                                                        <span class="old_price">Rs. 
-                                                            <script>
-                                                                document.write((${p.price} * 1.2).toFixed(2));
-                                                            </script>
+                                                        <span class="old_price" id="oldprice">Rs. ${(p.price * 150) / 100}
                                                         </span>
-                                                        <span class="current_price">Rs. 
-                                                            <script>
-                                                                document.write(${p.price}.toFixed(2));
-                                                            </script>
+                                                        <span class="current_price">Rs. ${p.price}
                                                         </span>
                                                     </div>
                                                     <div class="product_rating">
@@ -575,13 +565,8 @@
                                                                 <i class="fa fa-heart-o"></i>
                                                             </a>
                                                         </li>
-                                                        <li class="compare">
-                                                            <a href="#" title="Add to Compare">
-                                                                <i class="fa fa-random"></i>
-                                                            </a>
-                                                        </li>
                                                         <li class="quick_button">
-                                                            <a href="#" data-toggle="modal" data-target="#modal_box"
+                                                            <a href="home?pid=1" data-toggle="modal" data-target="#modal_box"
                                                                title="Quick View">
                                                                 <i class="fa fa-eye"></i>
                                                             </a>
@@ -652,11 +637,6 @@
                                                         <li class="wishlist">
                                                             <a href="#" title="Add to Wishlist">
                                                                 <i class="fa fa-heart-o"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li class="compare">
-                                                            <a href="#" title="Add to Compare">
-                                                                <i class="fa fa-random"></i>
                                                             </a>
                                                         </li>
                                                         <li class="quick_button">
@@ -731,11 +711,6 @@
                                                         <li class="wishlist">
                                                             <a href="#" title="Add to Wishlist">
                                                                 <i class="fa fa-heart-o"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li class="compare">
-                                                            <a href="#" title="Add to Compare">
-                                                                <i class="fa fa-random"></i>
                                                             </a>
                                                         </li>
                                                         <li class="quick_button">
@@ -4023,7 +3998,7 @@
         <!-- modal section starts  -->
 
 
-        <div class="modal fade" id="modal_box" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal fade" id="modal_box" role="dialog">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <button type="button" data-dismiss="modal" aria-label="close" class="close">
@@ -4103,14 +4078,7 @@
                                         </div>
                                         <div class="variants_selects">
                                             <div class="variants_size">
-                                                <h2>Size</h2>
-                                                <select class="select_option">
-                                                    <option value="1" selected>10ml</option>
-                                                    <option value="1">25ml</option>
-                                                    <option value="1">50ml</option>
-                                                    <option value="1">100ml</option>
-                                                    <option value="1">250ml</option>
-                                                </select>
+                                                <h2>Size: 20ml</h2><br/>
                                             </div>
                                             <div class="variants_fragrance">
                                                 <h2>Fragrance</h2>
@@ -4129,17 +4097,6 @@
                                                 </form>
                                             </div>
                                         </div>
-                                        <div class="modal_social">
-                                            <h2>Follow us on</h2>
-                                            <ul>
-                                                <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                <li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                                <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a>
-                                                </li>
-                                                <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                            </ul>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -4147,21 +4104,19 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>   
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
         <script src="js/countdown.js"></script>
-        <script src="js/main.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+        <script src="js/main.js"></script>
         <script>
-                                                                function checkLogout() {
-                                                                    confirm('You want to logout?');
-                                                                }
+                                                        function checkLogout() {
+                                                            confirm('You want to logout?');
+                                                        }
         </script>
     </body>
 

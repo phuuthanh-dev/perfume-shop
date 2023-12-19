@@ -74,7 +74,7 @@ public class ProductDAO extends DBContext {
         ProductDAO p = new ProductDAO();
         List<Product> list = p.getProductsBrandByInYear(2023, null);
         for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).getStarRating());
+            System.out.println(list.get(i).getPrice());
         }
     }
 }
