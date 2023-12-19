@@ -38,7 +38,7 @@ public class Home1Servlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -64,7 +64,7 @@ public class Home1Servlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         CategoryDAO d = new CategoryDAO();
         ProductDAO p = new ProductDAO();
         List<Category> categories = d.getAll();
@@ -73,6 +73,7 @@ public class Home1Servlet extends HttpServlet {
         List<Product> productsOnSales1 = p.getProductsOnSale();
         List<Product> productsOnSales2 = p.getProductsOnSale();
         List<Product> productsOnSales3 = p.getProductsOnSale();
+        List<Product> giftSets = p.getGiflSets();
         Product spHot = p.getHotDeal();
         String cid_raw = request.getParameter("cid");
         int cid = 0;
@@ -82,6 +83,7 @@ public class Home1Servlet extends HttpServlet {
             Category category = d.getCategoryById(cid);
             products = p.getProductsBrandByInYear(2023, category);
         }
+        request.setAttribute("giftSets", giftSets);
         request.setAttribute("hotDeal", spHot);
         request.setAttribute("productsTopSellers", productsTop5Sellers);
         request.setAttribute("productsOnSales1", productsOnSales1);
