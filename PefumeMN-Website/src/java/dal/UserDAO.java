@@ -17,7 +17,7 @@ import model.User;
 public class UserDAO extends DBContext {
 
     public User check(String username, String password) {
-        String sql = "SELECT * FROM Users WHERE userName = ? and password = ?";
+        String sql = "SELECT * FROM tblUsers WHERE userName = ? and password = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, username);
@@ -35,7 +35,7 @@ public class UserDAO extends DBContext {
     }
 
     public boolean checkUserNameDuplicate(String username) {
-        String sql = "SELECT * FROM Users WHERE userName = ?";
+        String sql = "SELECT * FROM tblUsers WHERE userName = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, username);
