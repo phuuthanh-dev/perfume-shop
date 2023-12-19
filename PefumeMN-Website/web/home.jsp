@@ -1586,15 +1586,16 @@
                                 </div>
                                 <div class="row">
                                     <div class="deals_carousel product_column1 owl-carousel">
+                                        <c:set var="hotDeal" value="${requestScope.hotDeal}"/>
                                         <div class="col-lg-3">
                                             <article class="single_product">
                                                 <figure>
                                                     <div class="product_thumb">
                                                         <a href="#" class="primary_img">
-                                                            <img src="images/Deals/D1-1.png" alt="">
+                                                            <img src="${hotDeal.image1}" alt="">
                                                         </a>
                                                         <a href="#" class="secondary_img">
-                                                            <img src="images/Deals/D1-2.png" alt="">
+                                                            <img src="${hotDeal.image2}" alt="">
                                                         </a>
                                                         <div class="action_links">
                                                             <ul>
@@ -1628,12 +1629,16 @@
                                                             <div data-countdown="2021/1/15"></div>
                                                         </div>
                                                         <h4 class="product_name">
-                                                            <a href="#">Boss Men Bottled Infinte EAU</a>
+                                                            <a href="#">${hotDeal.name}</a>
                                                         </h4>
 
                                                         <div class="price_box">
-                                                            <span class="old_price">Rs. 9100</span>
-                                                            <span class="current_price">Rs. 8650</span>
+                                                            <span class="old_price">Rs.
+                                                                <script>
+                                                                document.write((${hotDeal.price} * 1.2).toFixed(2));
+                                                                </script>
+                                                            </span>
+                                                            <span class="current_price">Rs.${hotDeal.price}</span>
                                                         </div>
 
                                                     </figcaption>
@@ -2242,8 +2247,12 @@
                                                                 </ul>
                                                             </div>
                                                             <div class="price_box">
-                                                                <span class="old_price">Rs. 7499</span>
-                                                                <span class="current_price">${t.price}</span>
+                                                                <span class="old_price">Rs.
+                                                                    <script>
+                                                                        document.write((${t.price} * 1.2).toFixed(2));
+                                                                    </script>
+                                                                </span>
+                                                                <span class="current_price">Rs.${t.price}</span>
                                                             </div>
                                                         </figcaption>
                                                     </figure>

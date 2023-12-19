@@ -21,6 +21,7 @@ import model.Product;
 public class ProductDAO extends DBContext {
 
     private CategoryDAO cd = new CategoryDAO();
+
     // 1> List products get by Category
     public List<Product> getProductsByCategoryid(int cid) {
         List<Product> list = new ArrayList<>();
@@ -38,7 +39,7 @@ public class ProductDAO extends DBContext {
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
                 Product p = new Product(rs.getString("ProductName"), rs.getString("image1"), rs.getString("image2"),
                         rs.getString("describe"), rs.getInt("ProductID"), rs.getInt("UnitsInStock"), rs.getInt("StarRating"),
-                        rs.getDouble("UnitPrice"), rs.getDate("releaseDate"), c);
+                        rs.getDouble("UnitPrice"), rs.getDouble("Discount"), rs.getDate("releaseDate"), c);
                 list.add(p);
             }
         } catch (SQLException e) {
@@ -46,7 +47,8 @@ public class ProductDAO extends DBContext {
         }
         return list;
     }
-        // 2> List products get by brand in year
+    // 2> List products get by brand in year
+
     public List<Product> getProductsBrandByInYear(int year, Category category) {
         List<Product> list = new ArrayList<>();
         String sql = "SELECT * FROM Products WHERE YEAR(releaseDate) = ? ";
@@ -61,7 +63,7 @@ public class ProductDAO extends DBContext {
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
                 Product p = new Product(rs.getString("ProductName"), rs.getString("image1"), rs.getString("image2"),
                         rs.getString("describe"), rs.getInt("ProductID"), rs.getInt("UnitsInStock"), rs.getInt("StarRating"),
-                        rs.getDouble("UnitPrice"), rs.getDate("releaseDate"), c);
+                        rs.getDouble("UnitPrice"), rs.getDouble("Discount"), rs.getDate("releaseDate"), c);
                 list.add(p);
             }
         } catch (SQLException e) {
@@ -69,6 +71,7 @@ public class ProductDAO extends DBContext {
         }
         return list;
     }
+
     // 3> List products in TOP <int> BEST SELLERS
     public List<Product> getTopBestSellers(int number) {
         List<Product> list = new ArrayList<>();
@@ -80,7 +83,7 @@ public class ProductDAO extends DBContext {
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
                 Product p = new Product(rs.getString("ProductName"), rs.getString("image1"), rs.getString("image2"),
                         rs.getString("describe"), rs.getInt("ProductID"), rs.getInt("UnitsInStock"), rs.getInt("StarRating"),
-                        rs.getDouble("UnitPrice"), rs.getDate("releaseDate"), c);
+                        rs.getDouble("UnitPrice"), rs.getDouble("Discount"), rs.getDate("releaseDate"), c);
                 list.add(p);
             }
         } catch (SQLException e) {
@@ -88,7 +91,27 @@ public class ProductDAO extends DBContext {
         }
         return list;
     }
-    
+
+    // 4> Get product HOT DEAL => select smallest finalPrice
+    public Product getHotDeal() {
+        String sql = "SELECT TOP 1 * FROM Products WHERE (UnitPrice - (UnitPrice * Discount)) \n"
+                + "<= ALL(select (UnitPrice - (UnitPrice * Discount)) AS finalPrice FROM Products)";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Category c = cd.getCategoryById(rs.getInt("CategoryID"));
+                Product p = new Product(rs.getString("ProductName"), rs.getString("image1"), rs.getString("image2"),
+                        rs.getString("describe"), rs.getInt("ProductID"), rs.getInt("UnitsInStock"), rs.getInt("StarRating"),
+                        rs.getDouble("UnitPrice"), rs.getDouble("Discount"), rs.getDate("releaseDate"), c);
+                return p;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
     // Testcase demo
     public static void main(String[] args) {
         ProductDAO p = new ProductDAO();
