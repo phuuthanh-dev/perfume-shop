@@ -73,13 +73,13 @@ public class ProductDAO extends DBContext {
     }
 
     // 3> List products in TOP <int> BEST SELLERS
-    public List<Product> getTopBestSellers(int number) {
+    public List<Product> getTopBestSellers(String number) {
         List<Product> list = new ArrayList<>();
-        String sql = "SELECT * FROM Products ORDER BY UnitsInstock desc";
+        String sql = "SELECT TOP " + number + " * FROM Products ORDER BY QuantitySold desc";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
-            while (rs.next() && number > 0) {
+            while (rs.next()) {
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
                 Product p = new Product(rs.getString("ProductName"), rs.getString("image1"), rs.getString("image2"),
                         rs.getString("describe"), rs.getInt("ProductID"), rs.getInt("UnitsInStock"), rs.getInt("StarRating"),
@@ -115,7 +115,7 @@ public class ProductDAO extends DBContext {
     // Testcase demo
     public static void main(String[] args) {
         ProductDAO p = new ProductDAO();
-        List<Product> list = p.getProductsBrandByInYear(2023, null);
+        List<Product> list = p.getTopBestSellers("5");
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).getPrice());
         }

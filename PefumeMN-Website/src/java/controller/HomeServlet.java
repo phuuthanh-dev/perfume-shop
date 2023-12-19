@@ -65,7 +65,7 @@ public class HomeServlet extends HttpServlet {
         ProductDAO p = new ProductDAO();
         List<Category> list = d.getAll();
         List<Product> products = p.getProductsByCategoryid(0);
-        List<Product> productsTopSellers = p.getTopBestSellers(5);
+        List<Product> productsTop5Sellers = p.getTopBestSellers("5");
         Product spHot = p.getHotDeal();
 //        String[] pp = {"Dưới 1 triệu", "Từ 1-3 triệu", "Từ 3-5 triệu", "Từ 5-10 triệu",
 //             "Trên 10 triệu"};
@@ -84,7 +84,7 @@ public class HomeServlet extends HttpServlet {
         request.setAttribute("category", list);
         request.setAttribute("products", products);
         request.setAttribute("hotDeal", spHot);
-        request.setAttribute("productsTopSellers", productsTopSellers);
+        request.setAttribute("productsTopSellers", productsTop5Sellers);
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
