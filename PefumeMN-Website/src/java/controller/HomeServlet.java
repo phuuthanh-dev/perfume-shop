@@ -64,29 +64,44 @@ public class HomeServlet extends HttpServlet {
         CategoryDAO d = new CategoryDAO();
         ProductDAO p = new ProductDAO();
         List<Category> list = d.getAll();
+        List<Product> listAll = p.getAll();
         List<Product> products = p.getProductsByCategoryid(0);
         List<Product> productsTop5Sellers = p.getTopBestSellers("5");
         List<Product> productsOnSales1 = p.getProductsOnSale();
         List<Product> productsOnSales2 = p.getProductsOnSale();
         List<Product> productsOnSales3 = p.getProductsOnSale();
+        
+        
+        //phan trang
+        int page = 1, numPerPage = 9;
+        int size = listAll.size();
+        int numberpage = ((size % numPerPage == 0) ? (size / 9) : (size / 9) + 1);
+        String xpage = request.getParameter("page");
+        if (xpage == null) {
+            page = 1;
+        } else {
+            page = Integer.parseInt(xpage);
+        }
+        int start, end;
+        start = (page - 1) * 9;
+        end = Math.min(page * numPerPage, size);
+        
+        //Hot product
         Product spHot = p.getHotDeal();
-//        String[] pp = {"Dưới 1 triệu", "Từ 1-3 triệu", "Từ 3-5 triệu", "Từ 5-10 triệu",
-//             "Trên 10 triệu"};
-//        Boolean[] pb = new Boolean[pp.length + 1];
-//        pb[0] = true;
-//        List<Product> news = d.getNewProducts();
-//        List<Product> olds = d.getOldProducts();
         Boolean[] chid = new Boolean[list.size() + 1];
         chid[0] = true;
-//        request.setAttribute("data", list);
-//        request.setAttribute("news", news);
-//        request.setAttribute("olds", olds);
-//        request.setAttribute("pp", pp);
-//        request.setAttribute("pb", pb);
+        
+        List<Product> listByPage = p.getListByPage(listAll, start, end);
+        
         request.setAttribute("cid", 0);
         request.setAttribute("category", list);
         request.setAttribute("products", products);
         request.setAttribute("hotDeal", spHot);
+        
+        request.setAttribute("productPage", listByPage);
+        request.setAttribute("page", page);
+        request.setAttribute("numberpage", numberpage);
+        
         request.setAttribute("productsTopSellers", productsTop5Sellers);
         request.setAttribute("productsOnSales1", productsOnSales1);
         request.setAttribute("productsOnSales2", productsOnSales2);

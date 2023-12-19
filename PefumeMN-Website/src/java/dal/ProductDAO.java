@@ -19,9 +19,28 @@ import model.Product;
  * @author Admin
  */
 public class ProductDAO extends DBContext {
-
     private CategoryDAO cd = new CategoryDAO();
 
+    public List<Product> getAll() {
+        List<Product> list = new ArrayList<>();
+        String sql = "SELECT * FROM [dbo].[Products]";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Category c = cd.getCategoryById(rs.getInt("CategoryID"));
+                Product p = new Product(rs.getString("ProductName"), rs.getString("image1"), rs.getString("image2"),
+                        rs.getString("describe"), rs.getInt("ProductID"), rs.getInt("UnitsInStock"), rs.getInt("StarRating"),
+                        rs.getDouble("UnitPrice"), rs.getDouble("Discount"), rs.getDate("releaseDate"), c);
+                list.add(p);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return list;
+    }
+    
     // 1> List products get by Category
     public List<Product> getProductsByCategoryid(int cid) {
         List<Product> list = new ArrayList<>();
@@ -131,10 +150,18 @@ public class ProductDAO extends DBContext {
         return list;
     }
 
+    public List<Product> getListByPage(List<Product> list, int start, int end) {
+        ArrayList<Product> arr = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            arr.add(list.get(i));
+        }
+        return arr;
+    }
+    
     // Testcase demo
     public static void main(String[] args) {
         ProductDAO p = new ProductDAO();
-        List<Product> list = p.getTopBestSellers("5");
+        List<Product> list = p.getAll();
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).getPrice());
         }

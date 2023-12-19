@@ -253,8 +253,11 @@
 
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="inputOrgName">Role</label>
-                                        <c:if test="${user.roleID == 1}">
+                                        <c:if test="${user.roleID == 2}">
                                             <input class="form-control" id="inputOrgName" readonly type="text" placeholder="Enter your organization name" value="Customer">
+                                        </c:if>
+                                        <c:if test="${user.roleID == 1}">
+                                            <input class="form-control" id="inputOrgName" readonly type="text" placeholder="Enter your organization name" value="Admin">
                                         </c:if>
                                     </div>
 
@@ -282,7 +285,7 @@
                                     </div>
                                 </div>
 
-                                    <button style="margin-top: 15px;" class="btn btn-primary" type="button">Edit Profile</button>
+                                <button style="margin-top: 15px;" class="btn btn-primary" type="button">Edit Profile</button>
                             </form>
                         </div>
                     </div>

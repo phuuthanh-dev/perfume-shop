@@ -156,20 +156,12 @@
 
   // activation of one column of deal product
   $(".product_column1")
-    .on("changed.owl.carousel initialized.owl.carousel", function (event) {
-      $(event.target)
-        .find(".owl-item")
-        .removeClass("last")
-        .eq(event.item.index + event.page.size - 1)
-        .addClass("last");
-    })
+    
     .owlCarousel({
-      autoplay: true,
-      loop: true,
       nav: true,
       autoplay: false,
       autoplayTimeout: 5000,
-      items: 4,
+      items: 1,
       dots: false,
       navText: [
         '<i class="fa fa-arrow-left"></i>',
@@ -264,7 +256,6 @@
     })
     .owlCarousel({
       autoplay: true,
-      loop: true,
       nav: true,
       autoplay: false,
       autoplayTimeout: 5000,

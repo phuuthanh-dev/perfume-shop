@@ -2147,29 +2147,101 @@
                             <!-- Long Banner area ends -->
 
                             <!-- product section starts  -->
-                            <div class="product_area">
+                            <div class="product_area" >
                                 <div class="section_title section_title_style2">
                                     <h2>On Sale</h2>
                                 </div>
+
+                                <c:set var="page" value="${requestScope.page}"/>
+                                <div class="pagination">
+                                    <c:forEach begin="${1}" end="${requestScope.numberpage}" var="i">
+                                        <a href="home?page=${i}">${i}</a>
+                                    </c:forEach>
+                                </div>
+
                                 <div class="row">
-                                    <div class="product_carousel product_column3 owl-carousel">
+                                    <c:set var="proA" value=""/>
+                                    <c:forEach items="${requestScope.productPage}" var="i">
+                                        <div class="product_items col-lg-4" style="margin: 30px 0">
+                                            <article class="single_product">
+                                                <figure>
+                                                    <div class="product_thumb">
+                                                        <a href="#" class="primary_img">
+                                                            <img src="${i.image1}" alt="">
+                                                        </a>
+                                                        <a href="#" class="secondary_img">
+                                                            <img src="${i.image2}" alt="">
+                                                        </a>
 
-
-
-
-
-                                    </div>
+                                                        <div class="action_links">
+                                                            <ul>
+                                                                <li class="add_to_cart">
+                                                                    <a href="#" title="Add to Cart">
+                                                                        <i class="fa fa-shopping-cart"></i>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="wishlist">
+                                                                    <a href="#" title="Add to Wishlist">
+                                                                        <i class="fa fa-heart-o"></i>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="compare">
+                                                                    <a href="#" title="Add to Compare">
+                                                                        <i class="fa fa-random"></i>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="quick_button">
+                                                                    <a href="#" data-toggle="modal"
+                                                                       data-target="#modal_box" title="Quick View">
+                                                                        <i class="fa fa-eye"></i>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <figcaption class="product_content">
+                                                        <h4 class="product_name">
+                                                            <a href="#">${i.name}</a>
+                                                        </h4>
+                                                        <div class="product_rating">
+                                                            <ul>
+                                                                <c:set var="numstar" value="${i.starRating}"/>
+                                                                <c:forEach begin="1" end="${numstar}" step="1">
+                                                                    <li>
+                                                                        <a href="#" style="color: orange">
+                                                                            <i class="fa fa-star"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                </c:forEach>
+                                                                <c:if test="${numstar != 5}">
+                                                                    <c:forEach begin="${numstar + 1}" end="5" step="1">
+                                                                        <li>
+                                                                            <a href="#" style="color: black">
+                                                                                <i class="fa fa-star"></i>
+                                                                            </a>
+                                                                        </li>
+                                                                    </c:forEach>
+                                                                </c:if>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="price_box">
+                                                            <span class="old_price">Rs. ${i.price}</span>
+                                                            <span class="current_price">Rs. ${i.price * i.discount}</span>
+                                                        </div>
+                                                    </figcaption>
+                                                </figure>
+                                            </article>
+                                        </div>
+                                    </c:forEach>
                                 </div>
                             </div>
-
-                            <!-- product section ends -->
                         </div>
                     </div>
                 </div>
+
+                <!-- product section ends -->
             </div>
         </div>
-
-
 
 
         <!-- home section area ends -->

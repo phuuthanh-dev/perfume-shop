@@ -1647,6 +1647,9 @@ h6 {
     visibility: visible;
     left: 20px;
 }
+
+
+
 .slider_area:hover .owl-nav div.owl-next {
     right: 20px;
 }
@@ -3363,4 +3366,25 @@ figure {
     border: 0;
     height: 30px;
     line-height: 29px;
+}
+
+
+.one .owl-nav {
+    display: none!important;
+}
+
+
+/*phan trang*/
+.pagination{
+    display: inline-block;
+}
+.pagination a {
+    color: black;
+    font-size: 22px;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+.pagination a:hover:not(.active) {
+    color: chocolate;
 }
