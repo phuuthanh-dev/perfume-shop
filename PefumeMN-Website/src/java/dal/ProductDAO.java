@@ -111,6 +111,25 @@ public class ProductDAO extends DBContext {
         }
         return null;
     }
+    // 5> List product on sale => random sp
+    public List<Product> getProductsOnSale() {
+        List<Product> list = new ArrayList<>();
+        String sql = "SELECT TOP 2 * FROM Products ORDER BY NEWID()";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Category c = cd.getCategoryById(rs.getInt("CategoryID"));
+                Product p = new Product(rs.getString("ProductName"), rs.getString("image1"), rs.getString("image2"),
+                        rs.getString("describe"), rs.getInt("ProductID"), rs.getInt("UnitsInStock"), rs.getInt("StarRating"),
+                        rs.getDouble("UnitPrice"), rs.getDouble("Discount"), rs.getDate("releaseDate"), c);
+                list.add(p);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
 
     // Testcase demo
     public static void main(String[] args) {
