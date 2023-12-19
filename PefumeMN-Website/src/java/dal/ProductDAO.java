@@ -37,7 +37,7 @@ public class ProductDAO extends DBContext {
             while (rs.next()) {
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
                 Product p = new Product(rs.getString("ProductName"), rs.getString("image1"), rs.getString("image2"),
-                        rs.getString("describe"), rs.getInt("ProductID"), rs.getInt("UnitsInStock"),
+                        rs.getString("describe"), rs.getInt("ProductID"), rs.getInt("UnitsInStock"), rs.getInt("StarRating"),
                         rs.getDouble("UnitPrice"), rs.getDate("releaseDate"), c);
                 list.add(p);
             }
@@ -60,7 +60,7 @@ public class ProductDAO extends DBContext {
             while (rs.next()) {
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
                 Product p = new Product(rs.getString("ProductName"), rs.getString("image1"), rs.getString("image2"),
-                        rs.getString("describe"), rs.getInt("ProductID"), rs.getInt("UnitsInStock"),
+                        rs.getString("describe"), rs.getInt("ProductID"), rs.getInt("UnitsInStock"), rs.getInt("StarRating"),
                         rs.getDouble("UnitPrice"), rs.getDate("releaseDate"), c);
                 list.add(p);
             }
@@ -74,7 +74,7 @@ public class ProductDAO extends DBContext {
         ProductDAO p = new ProductDAO();
         List<Product> list = p.getProductsBrandByInYear(2023, null);
         for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).getImage1());
+            System.out.println(list.get(i).getStarRating());
         }
     }
 }

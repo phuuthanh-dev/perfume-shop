@@ -14,12 +14,12 @@ import java.sql.Date;
 public class Product {
 
     private String name, image1, image2, describe;
-    private int id ,quantity;
+    private int id, quantity, starRating;
     private double price;
     private Date date;
     private Category category;
 
-    public Product(String name, String image1, String image2, String describe, int id, int quantity, double price, Date date, Category category) {
+    public Product(String name, String image1, String image2, String describe, int id, int quantity, int starRating, double price, Date date, Category category) {
         this.name = name;
         this.image1 = image1;
         this.image2 = image2;
@@ -29,11 +29,11 @@ public class Product {
         this.price = price;
         this.date = date;
         this.category = category;
+        this.starRating = starRating;
     }
 
     public Product() {
     }
-    
 
     public int getId() {
         return id;
@@ -95,6 +95,14 @@ public class Product {
         return price;
     }
 
+    public int getStarRating() {
+        return starRating;
+    }
+
+    public void setStarRating(int starRating) {
+        this.starRating = starRating;
+    }
+
     public void setPrice(double price) {
         this.price = price;
     }
@@ -111,6 +119,5 @@ public class Product {
     public String toString() {
         return "Product{" + "name=" + name + ", image1=" + image1 + ", image2=" + image2 + ", describe=" + describe + ", id=" + id + ", quantity=" + quantity + ", price=" + price + ", date=" + date + ", category=" + category + '}';
     }
-    
-    
+
 }

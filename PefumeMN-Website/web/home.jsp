@@ -523,31 +523,23 @@
                                                     </div>
                                                     <div class="product_rating">
                                                         <ul>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
+                                                            <c:set var="numstar" value="${p.starRating}"/>
+                                                            <c:forEach begin="1" end="${numstar}" step="1">
+                                                                <li>
+                                                                    <a href="#" style="color: orange">
+                                                                        <i class="fa fa-star"></i>
+                                                                    </a>
+                                                                </li>
+                                                            </c:forEach>
+                                                            <c:if test="${numstar != 5}">
+                                                                <c:forEach begin="${numstar + 1}" end="5" step="1">
+                                                                    <li>
+                                                                        <a href="#" style="color: black">
+                                                                            <i class="fa fa-star"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                </c:forEach>
+                                                            </c:if>
                                                         </ul>
                                                     </div>
                                                 </figcaption>
