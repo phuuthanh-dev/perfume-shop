@@ -1635,322 +1635,331 @@
 
                             <div class="small_product_area mb-68">
                                 <div class="section_title section_title_style2">
-                                    <h2>Bodycare</h2>
+                                    <h2>Gift Set</h2>
                                 </div>
                                 <div class="small_product_container sidebar_product_column1 owl-carousel">
-                                    <div class="small_product_list">
-                                        <article class="single_product">
+                                    <c:forEach items="${requestScope.giftSets}" var="giftSet" >
+                                        <c:forEach var= "j" begin="1" end="2" step="1" >
+                                            <div class="small_product_list">
+                                                <c:forEach var="k" begin="1" end="3" step="1" >
+                                                    <article class="single_product">
 
 
-                                            <figure>
-                                                <div class="product_thumb">
-                                                    <a href="#" class="primary_img">
-                                                        <img src="images/best-product/B1-1.png" alt="">
-                                                    </a>
-                                                    <a href="#" class="secondary_img"><img
-                                                            src="images/best-product/B1-2.png" alt=""></a>
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name">
-                                                        <a href="#">Dolce & Gabbana Women</a>
-                                                    </h4>
-                                                    <div class="product_rating">
-                                                        <ul>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <figure>
+                                                            <div class="product_thumb">
+                                                                <a href="#" class="primary_img">
+                                                                    <img src="${giftSet.image1}" alt="">
                                                                 </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="price_box">
-                                                        <span class="old_price">Rs. 9999</span>
-                                                        <span class="current_price">Rs. 9000</span>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-                                        <article class="single_product">
+                                                                <a href="#" class="secondary_img"><img
+                                                                        src="${giftSet.image2}" alt=""></a>
+                                                            </div>
+                                                            <figcaption class="product_content">
+                                                                <h4 class="product_name">
+                                                                    <a href="#">${giftSet.name}</a>
+                                                                </h4>
+                                                                <div class="product_rating">
+                                                                    <ul>
+                                                                        <li>
+                                                                            <a href="#">
+                                                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#">
+                                                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#">
+                                                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#">
+                                                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#">
+                                                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="price_box">
+                                                                    <span class="old_price">Rs. ${giftSet.price}</span>
+                                                                    <span class="current_price">Rs. ${giftSet.salePrice}</span>
+                                                                </div>
+                                                            </figcaption>
+                                                        </figure>
+                                                    </article>
+                                                </c:forEach>
+
+                                                <!--                                                <article class="single_product">
+                                                
+                                                
+                                                                                                    <figure>
+                                                                                                        <div class="product_thumb">
+                                                                                                            <a href="#" class="primary_img">
+                                                                                                                <img src="images/best-product/B2-1.png" alt="">
+                                                                                                            </a>
+                                                                                                            <a href="#" class="secondary_img"><img
+                                                                                                                    src="images/best-product/B2-2.png" alt=""></a>
+                                                                                                        </div>
+                                                                                                        <figcaption class="product_content">
+                                                                                                            <h4 class="product_name">
+                                                                                                                <a href="#">Jean Paul Gaultier</a>
+                                                                                                            </h4>
+                                                                                                            <div class="product_rating">
+                                                                                                                <ul>
+                                                                                                                    <li>
+                                                                                                                        <a href="#">
+                                                                                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                                        </a>
+                                                                                                                    </li>
+                                                                                                                    <li>
+                                                                                                                        <a href="#">
+                                                                                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                                        </a>
+                                                                                                                    </li>
+                                                                                                                    <li>
+                                                                                                                        <a href="#">
+                                                                                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                                        </a>
+                                                                                                                    </li>
+                                                                                                                    <li>
+                                                                                                                        <a href="#">
+                                                                                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                                        </a>
+                                                                                                                    </li>
+                                                                                                                    <li>
+                                                                                                                        <a href="#">
+                                                                                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                                        </a>
+                                                                                                                    </li>
+                                                                                                                </ul>
+                                                                                                            </div>
+                                                                                                            <div class="price_box">
+                                                                                                                <span class="old_price">Rs. 7999</span>
+                                                                                                                <span class="current_price">Rs. 7400</span>
+                                                                                                            </div>
+                                                                                                        </figcaption>
+                                                                                                    </figure>
+                                                                                                </article>
+                                                                                                <article class="single_product">
+                                                
+                                                
+                                                                                                    <figure>
+                                                                                                        <div class="product_thumb">
+                                                                                                            <a href="#" class="primary_img">
+                                                                                                                <img src="images/best-product/B3-1.png" alt="">
+                                                                                                            </a>
+                                                                                                            <a href="#" class="secondary_img"><img
+                                                                                                                    src="images/best-product/B3-2.png" alt=""></a>
+                                                                                                        </div>
+                                                                                                        <figcaption class="product_content">
+                                                                                                            <h4 class="product_name">
+                                                                                                                <a href="#">Carolina Harrera Women 212 VIP</a>
+                                                                                                            </h4>
+                                                                                                            <div class="product_rating">
+                                                                                                                <ul>
+                                                                                                                    <li>
+                                                                                                                        <a href="#">
+                                                                                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                                        </a>
+                                                                                                                    </li>
+                                                                                                                    <li>
+                                                                                                                        <a href="#">
+                                                                                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                                        </a>
+                                                                                                                    </li>
+                                                                                                                    <li>
+                                                                                                                        <a href="#">
+                                                                                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                                        </a>
+                                                                                                                    </li>
+                                                                                                                    <li>
+                                                                                                                        <a href="#">
+                                                                                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                                        </a>
+                                                                                                                    </li>
+                                                                                                                    <li>
+                                                                                                                        <a href="#">
+                                                                                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                                        </a>
+                                                                                                                    </li>
+                                                                                                                </ul>
+                                                                                                            </div>
+                                                                                                            <div class="price_box">
+                                                                                                                <span class="old_price">Rs. 7499</span>
+                                                                                                                <span class="current_price">Rs. 6700</span>
+                                                                                                            </div>
+                                                                                                        </figcaption>
+                                                                                                    </figure>
+                                                                                                </article>-->
+
+                                            </div>
+                                        </c:forEach>
+
+                                    </c:forEach>
 
 
-                                            <figure>
-                                                <div class="product_thumb">
-                                                    <a href="#" class="primary_img">
-                                                        <img src="images/best-product/B2-1.png" alt="">
-                                                    </a>
-                                                    <a href="#" class="secondary_img"><img
-                                                            src="images/best-product/B2-2.png" alt=""></a>
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name">
-                                                        <a href="#">Jean Paul Gaultier</a>
-                                                    </h4>
-                                                    <div class="product_rating">
-                                                        <ul>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="price_box">
-                                                        <span class="old_price">Rs. 7999</span>
-                                                        <span class="current_price">Rs. 7400</span>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-                                        <article class="single_product">
-
-
-                                            <figure>
-                                                <div class="product_thumb">
-                                                    <a href="#" class="primary_img">
-                                                        <img src="images/best-product/B3-1.png" alt="">
-                                                    </a>
-                                                    <a href="#" class="secondary_img"><img
-                                                            src="images/best-product/B3-2.png" alt=""></a>
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name">
-                                                        <a href="#">Carolina Harrera Women 212 VIP</a>
-                                                    </h4>
-                                                    <div class="product_rating">
-                                                        <ul>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="price_box">
-                                                        <span class="old_price">Rs. 7499</span>
-                                                        <span class="current_price">Rs. 6700</span>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-
-                                    </div>
-
-                                    <div class="small_product_list">
-                                        <article class="single_product">
-
-
-                                            <figure>
-                                                <div class="product_thumb">
-                                                    <a href="#" class="primary_img">
-                                                        <img src="images/best-product/B4-1.png" alt="">
-                                                    </a>
-                                                    <a href="#" class="secondary_img"><img
-                                                            src="images/best-product/B4-2.png" alt=""></a>
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name">
-                                                        <a href="#">Mugler Aura Women</a>
-                                                    </h4>
-                                                    <div class="product_rating">
-                                                        <ul>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="price_box">
-                                                        <span class="old_price">Rs. 7999</span>
-                                                        <span class="current_price">Rs. 7550</span>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-                                        <article class="single_product">
-
-
-                                            <figure>
-                                                <div class="product_thumb">
-                                                    <a href="#" class="primary_img">
-                                                        <img src="images/best-product/B5-1.png" alt="">
-                                                    </a>
-                                                    <a href="#" class="secondary_img"><img
-                                                            src="images/best-product/B5-2.png" alt=""></a>
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name">
-                                                        <a href="#">Jimmy Choo Women Fever</a>
-                                                    </h4>
-                                                    <div class="product_rating">
-                                                        <ul>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="price_box">
-                                                        <span class="old_price">Rs. 7499</span>
-                                                        <span class="current_price">Rs. 7200</span>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-                                        <article class="single_product">
-
-
-                                            <figure>
-                                                <div class="product_thumb">
-                                                    <a href="#" class="primary_img">
-                                                        <img src="images/best-product/B6-1.png" alt="">
-                                                    </a>
-                                                    <a href="#" class="secondary_img"><img
-                                                            src="images/best-product/B6-2.png" alt=""></a>
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name">
-                                                        <a href="#">Dloce & Gabbana Women </a>
-                                                    </h4>
-                                                    <div class="product_rating">
-                                                        <ul>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="price_box">
-                                                        <span class="old_price">Rs. 7499</span>
-                                                        <span class="current_price">Rs. 7200</span>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-
-                                    </div>
+                                    <!--                                    <div class="small_product_list">
+                                                                            <article class="single_product">
+                                    
+                                    
+                                                                                <figure>
+                                                                                    <div class="product_thumb">
+                                                                                        <a href="#" class="primary_img">
+                                                                                            <img src="images/best-product/B4-1.png" alt="">
+                                                                                        </a>
+                                                                                        <a href="#" class="secondary_img"><img
+                                                                                                src="images/best-product/B4-2.png" alt=""></a>
+                                                                                    </div>
+                                                                                    <figcaption class="product_content">
+                                                                                        <h4 class="product_name">
+                                                                                            <a href="#">Mugler Aura Women</a>
+                                                                                        </h4>
+                                                                                        <div class="product_rating">
+                                                                                            <ul>
+                                                                                                <li>
+                                                                                                    <a href="#">
+                                                                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    <a href="#">
+                                                                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    <a href="#">
+                                                                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    <a href="#">
+                                                                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    <a href="#">
+                                                                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                        <div class="price_box">
+                                                                                            <span class="old_price">Rs. 7999</span>
+                                                                                            <span class="current_price">Rs. 7550</span>
+                                                                                        </div>
+                                                                                    </figcaption>
+                                                                                </figure>
+                                                                            </article>
+                                                                            <article class="single_product">
+                                    
+                                    
+                                                                                <figure>
+                                                                                    <div class="product_thumb">
+                                                                                        <a href="#" class="primary_img">
+                                                                                            <img src="images/best-product/B5-1.png" alt="">
+                                                                                        </a>
+                                                                                        <a href="#" class="secondary_img"><img
+                                                                                                src="images/best-product/B5-2.png" alt=""></a>
+                                                                                    </div>
+                                                                                    <figcaption class="product_content">
+                                                                                        <h4 class="product_name">
+                                                                                            <a href="#">Jimmy Choo Women Fever</a>
+                                                                                        </h4>
+                                                                                        <div class="product_rating">
+                                                                                            <ul>
+                                                                                                <li>
+                                                                                                    <a href="#">
+                                                                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    <a href="#">
+                                                                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    <a href="#">
+                                                                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    <a href="#">
+                                                                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    <a href="#">
+                                                                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                        <div class="price_box">
+                                                                                            <span class="old_price">Rs. 7499</span>
+                                                                                            <span class="current_price">Rs. 7200</span>
+                                                                                        </div>
+                                                                                    </figcaption>
+                                                                                </figure>
+                                                                            </article>
+                                                                            <article class="single_product">
+                                    
+                                    
+                                                                                <figure>
+                                                                                    <div class="product_thumb">
+                                                                                        <a href="#" class="primary_img">
+                                                                                            <img src="images/best-product/B6-1.png" alt="">
+                                                                                        </a>
+                                                                                        <a href="#" class="secondary_img"><img
+                                                                                                src="images/best-product/B6-2.png" alt=""></a>
+                                                                                    </div>
+                                                                                    <figcaption class="product_content">
+                                                                                        <h4 class="product_name">
+                                                                                            <a href="#">Dloce & Gabbana Women </a>
+                                                                                        </h4>
+                                                                                        <div class="product_rating">
+                                                                                            <ul>
+                                                                                                <li>
+                                                                                                    <a href="#">
+                                                                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    <a href="#">
+                                                                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    <a href="#">
+                                                                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    <a href="#">
+                                                                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    <a href="#">
+                                                                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                        <div class="price_box">
+                                                                                            <span class="old_price">Rs. 7499</span>
+                                                                                            <span class="current_price">Rs. 7200</span>
+                                                                                        </div>
+                                                                                    </figcaption>
+                                                                                </figure>
+                                                                            </article>
+                                    
+                                                                        </div>-->
                                 </div>
                             </div>
 
@@ -2114,8 +2123,8 @@
                                                                 </ul>
                                                             </div>
                                                             <div class="price_box">
-                                                                <span class="old_price">Rs. </span>
-                                                                <span class="current_price">Rs.</span>
+                                                                <span class="old_price">Rs. ${t.price}</span>
+                                                                <span class="current_price">Rs.${t.salePrice}</span>
                                                             </div>
                                                         </figcaption>
                                                     </figure>
@@ -2153,11 +2162,11 @@
                                 </div>
 
                                 <c:set var="page" value="${requestScope.page}"/>
-                                <div class="pagination">
-                                    <c:forEach begin="${1}" end="${requestScope.numberpage}" var="i">
-                                        <a href="home?page=${i}">${i}</a>
-                                    </c:forEach>
-                                </div>
+                                <!--                                <div class="pagination">
+                                <c:forEach begin="${1}" end="${requestScope.numberpage}" var="i">
+                                    <a href="home?page=${i}">${i}</a>
+                                </c:forEach>
+                            </div>-->
 
                                 <div class="row">
                                     <c:set var="proA" value=""/>
@@ -2226,7 +2235,7 @@
                                                         </div>
                                                         <div class="price_box">
                                                             <span class="old_price">Rs. ${i.price}</span>
-                                                            <span class="current_price">Rs. ${i.price * i.discount}</span>
+                                                            <span class="current_price">Rs. ${i.salePrice}</span>
                                                         </div>
                                                     </figcaption>
                                                 </figure>

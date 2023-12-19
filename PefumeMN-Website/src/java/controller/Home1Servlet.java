@@ -70,11 +70,9 @@ public class Home1Servlet extends HttpServlet {
         List<Category> categories = d.getAll();
         List<Product> products = new ArrayList<>();
         List<Product> productsTop5Sellers = p.getTopBestSellers("5");
-        List<Product> productsOnSales1 = p.getProductsOnSale();
-        List<Product> productsOnSales2 = p.getProductsOnSale();
-        List<Product> productsOnSales3 = p.getProductsOnSale();
         List<Product> giftSets = p.getGiflSets();
-        Product spHot = p.getHotDeal();
+        List<Product> listAll = p.getAll();
+        //
         String cid_raw = request.getParameter("cid");
         int cid = 0;
         System.out.println(cid_raw);
@@ -83,15 +81,36 @@ public class Home1Servlet extends HttpServlet {
             Category category = d.getCategoryById(cid);
             products = p.getProductsBrandByInYear(2023, category);
         }
-        request.setAttribute("giftSets", giftSets);
-        request.setAttribute("hotDeal", spHot);
-        request.setAttribute("productsTopSellers", productsTop5Sellers);
-        request.setAttribute("productsOnSales1", productsOnSales1);
-        request.setAttribute("productsOnSales2", productsOnSales2);
-        request.setAttribute("productsOnSales3", productsOnSales3);
+        //
+        //phan trang
+        int page = 1, numPerPage = 9;
+        int size = listAll.size();
+        int numberpage = ((size % numPerPage == 0) ? (size / 9) : (size / 9) + 1);
+        String xpage = request.getParameter("page");
+        if (xpage == null) {
+            page = 1;
+        } else {
+            page = Integer.parseInt(xpage);
+        }
+        int start, end;
+        start = (page - 1) * 9;
+        end = Math.min(page * numPerPage, size);
+
+        //Hot product
+        Product spHot = p.getHotDeal();
+        Boolean[] chid = new Boolean[categories.size() + 1];
+        chid[0] = true;
+
+        List<Product> listByPage = p.getListByPage(listAll, start, end);
+        request.setAttribute("cid", cid);
         request.setAttribute("category", categories);
         request.setAttribute("products", products);
-        request.setAttribute("cid", cid);
+        request.setAttribute("hotDeal", spHot);
+        request.setAttribute("productPage", listByPage);
+        request.setAttribute("page", page);
+        request.setAttribute("numberpage", numberpage);
+        request.setAttribute("productsTopSellers", productsTop5Sellers);
+        request.setAttribute("giftSets", giftSets);
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
