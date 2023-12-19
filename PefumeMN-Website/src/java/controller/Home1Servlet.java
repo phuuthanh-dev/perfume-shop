@@ -69,6 +69,11 @@ public class Home1Servlet extends HttpServlet {
         ProductDAO p = new ProductDAO();
         List<Category> categories = d.getAll();
         List<Product> products = new ArrayList<>();
+        List<Product> productsTop5Sellers = p.getTopBestSellers("5");
+        List<Product> productsOnSales1 = p.getProductsOnSale();
+        List<Product> productsOnSales2 = p.getProductsOnSale();
+        List<Product> productsOnSales3 = p.getProductsOnSale();
+        Product spHot = p.getHotDeal();
         String cid_raw = request.getParameter("cid");
         int cid = 0;
         System.out.println(cid_raw);
@@ -77,7 +82,11 @@ public class Home1Servlet extends HttpServlet {
             Category category = d.getCategoryById(cid);
             products = p.getProductsBrandByInYear(2023, category);
         }
-
+        request.setAttribute("hotDeal", spHot);
+        request.setAttribute("productsTopSellers", productsTop5Sellers);
+        request.setAttribute("productsOnSales1", productsOnSales1);
+        request.setAttribute("productsOnSales2", productsOnSales2);
+        request.setAttribute("productsOnSales3", productsOnSales3);
         request.setAttribute("category", categories);
         request.setAttribute("products", products);
         request.setAttribute("cid", cid);
