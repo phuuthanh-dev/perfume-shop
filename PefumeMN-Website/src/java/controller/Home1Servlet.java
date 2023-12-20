@@ -68,20 +68,33 @@ public class Home1Servlet extends HttpServlet {
         CategoryDAO d = new CategoryDAO();
         ProductDAO p = new ProductDAO();
         List<Category> categories = d.getAll();
-        List<Product> products = new ArrayList<>();
+        List<Product> productsYear = p.getAll();
         List<Product> productsTop5Sellers = p.getTopBestSellers("5");
         List<Product> giftSets = p.getGiflSets();
-        List<Product> listAll = p.getAll();
-        //
-        String cid_raw = request.getParameter("cid");
-        int cid = 0;
-        System.out.println(cid_raw);
-        if (cid_raw != null) {
-            cid = Integer.parseInt(cid_raw);
-            Category category = d.getCategoryById(cid);
-            products = p.getProductsBrandByInYear(2023, category);
+        List<Product> listAll = null;
+        String cidYear_raw = request.getParameter("cidYear");
+        String[] cid_refine_raw = request.getParameterValues("cid_refine");
+        int[] cid_refine = null;
+
+        //filter nếu chưa chọn option thì lấy product all, chọn r thì lấy dựa trên ô đã chọn
+        if (cid_refine_raw == null) {
+            listAll = p.getAll();
+        } else if (cid_refine_raw != null) {
+            cid_refine = new int[cid_refine_raw.length];
+            for (int i = 0; i < cid_refine.length; i++) {
+                cid_refine[i] = Integer.parseInt(cid_refine_raw[i]);
+            }
+            listAll = p.searchByCheckBox(cid_refine);
         }
-        //
+
+        //phần product 2023
+        int cidYear;
+        if (cidYear_raw != null) {
+            cidYear = Integer.parseInt(cidYear_raw);
+            Category category = d.getCategoryById(cidYear);
+            productsYear = p.getProductsBrandByInYear(2023, category);
+        }
+        
         //phan trang
         int page = 1, numPerPage = 9;
         int size = listAll.size();
@@ -101,17 +114,44 @@ public class Home1Servlet extends HttpServlet {
         Boolean[] chid = new Boolean[categories.size() + 1];
         chid[0] = true;
 
+        
+        if ((cid_refine_raw != null) && (cid_refine[0] != 0)) {
+            chid[0] = false;
+            for (int i = 1; i < chid.length; i++) {
+                if (isCheck(categories.get(i - 1).getId(), cid_refine)) {
+                    chid[i] = true;
+                } else {
+                    chid[i] = false;
+                }
+            }
+        }
+
         List<Product> listByPage = p.getListByPage(listAll, start, end);
-        request.setAttribute("cid", cid);
+        
         request.setAttribute("category", categories);
-        request.setAttribute("products", products);
+        request.setAttribute("productsYear", productsYear);
         request.setAttribute("hotDeal", spHot);
         request.setAttribute("productPage", listByPage);
         request.setAttribute("page", page);
+        request.setAttribute("chid", chid);
         request.setAttribute("numberpage", numberpage);
         request.setAttribute("productsTopSellers", productsTop5Sellers);
         request.setAttribute("giftSets", giftSets);
         request.getRequestDispatcher("home.jsp").forward(request, response);
+    }
+    
+    
+    private boolean isCheck(int d, int[] id) {
+        if (id == null) {
+            return false;
+        } else {
+            for (int i = 0; i < id.length; i++) {
+                if (id[i] == d) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**

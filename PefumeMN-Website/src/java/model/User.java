@@ -5,26 +5,49 @@
  */
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author Admin
  */
 public class User {
-    private String userName, fullName, password, address, phone;
+    private String userName, fullName, password, address, phone, image, email;
     private int roleID;
-
+    private Date birthdate;
     public User() {
     }
 
-    public User(String userName, String fullName, String password, String address, String phone, int roleID) {
+    public User(String userName, String fullName, String password, String address, String phone, String email, String image, Date birthdate, int roleID) {
         this.userName = userName;
         this.fullName = fullName;
         this.password = password;
         this.address = address;
         this.phone = phone;
+        this.birthdate = birthdate;
+        this.email = email;
         this.roleID = roleID;
+        this.image = image;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Date getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    
+    
     public String getUserName() {
         return userName;
     }
@@ -73,4 +96,13 @@ public class User {
         this.roleID = roleID;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    
 }

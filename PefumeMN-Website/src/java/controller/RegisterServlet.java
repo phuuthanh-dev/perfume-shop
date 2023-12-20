@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.sql.Date;
 import model.User;
 
 /**
@@ -87,7 +88,8 @@ public class RegisterServlet extends HttpServlet {
             request.setAttribute("error", "Username already exist!");
             request.getRequestDispatcher("register.jsp").forward(request, response);
         } else {
-            user = new User(fName, uName, uPass, "", uPho, 2);
+            Date birthdate = null;
+            user = new User(fName, uName, uPass, "", uPho, "", "", birthdate, 2);
             ud.insert(user);
             request.setAttribute("successfully", "Register successfully. Please Login!");
             request.getRequestDispatcher("login.jsp").forward(request, response);

@@ -10,12 +10,11 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-
-
         <title>bs5 edit profile account details - Bootdey.com</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
         <link rel="stylesheet"
@@ -77,11 +76,24 @@
                 margin-left: 1rem;
                 margin-right: 1rem;
             }
+
+            body {
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                width: 100%;
+                font-family: "Nunito", sans-serif;
+                background-image: url(images/magic.gif);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+            }
         </style>
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
         <c:set var="user" value="${sessionScope.account}"/>
+        <c:set var="imageSession" value="${sessionScope.imageUser}"/>
         <header style="background-color: rgba(0, 0, 0, 0.7); color: white; padding: 10px 0; font-family: Lato, sans-serif">
             <div class="row align-items-center" style="margin: 0">
                 <div class="col-lg-2" style="padding: 0px">
@@ -89,7 +101,6 @@
                         <a href="home"><img src="images/logo.png" alt=""></a>
                     </div>
                 </div>
-
                 <div class="col-lg-3" style="padding: 0px">
                     <div class="main_menu menu_two menu_position">
                         <nav>
@@ -102,14 +113,12 @@
                                 </li>
                                 <li><a href="#">About Us</a></li>
                                 <li><a href="#">Contact Us</a></li>
-
                                 <li>
                                     <a href="https://www.bootdey.com/snippets/view/bs5-profile-security-page" target="__blank">Security</a>
                                 </li>
                             </ul>
                         </nav>
                     </div>
-
                 </div>
                 <div class="col-lg-6" style="padding: 0px; display: flex; justify-content: flex-end; align-items: center">
                     <div class="header_right_info" style="margin-right: 50px">
@@ -127,7 +136,6 @@
                                     <i class="fa fa-shopping-cart" style="color: white"></i>
                                     <span class="item_count">2</span>
                                 </a>
-
                                 <div class="mini_cart mini_cart2">
                                     <div class="cart_gallery">
                                         <div class="cart_item">
@@ -199,16 +207,6 @@
                 </div>
             </div>
         </header>
-
-
-
-
-
-
-
-
-
-
         <div class="container-xl px-4 mt-4">
 
             <nav class="nav nav-borders">
@@ -219,16 +217,29 @@
             <hr class="mt-0 mb-4">
             <div class="row">
                 <div class="col-xl-4">
-
                     <div class="card mb-4 mb-xl-0">
                         <div class="card-header">Profile Picture</div>
-                        <div class="card-body text-center">
-
-                            <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt>
-
-                            <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
-
-                            <button class="btn btn-primary" type="button">Upload new image</button>
+                        <div class="card-body text-center box_info">
+                            <c:if test="${imageSession!=null}">
+                                <div class="avatar">
+                                    <img class="user_image" src="${imageSession}" alt="" id="iUser" style="border: 1px solid #0D6EFD"/>
+                                    <input type="file" name="" id="form_file" value=""/>
+                                </div>
+                            </c:if>
+                            <c:if test="${imageSession==null}">
+                                <div class="avatar">
+                                    <img class="user_image" src="images/users/user.PNG" alt="" id="iUser"/>
+                                    <input type="file" name="" id="form_file" value=""/>
+                                </div>
+                            </c:if>
+                            <form id="fima">
+                                <label for="form_file" class="edit" value="aa">
+                                    <div style="color: #0D6EFD;font-size: 16px">JPG or PNG no larger than 5 MB
+                                        <i class="fa-solid fa-pen-to-square" style="font-size: 20px; padding: 0 0 0 10px"></i></div>
+                                </label>
+                                <input type="hidden" id="sub" name="imagelink" value=""/>
+                                <input type="hidden" id="userid" name="uid" value="${user.userName}"/>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -239,11 +250,10 @@
                         <div class="card-body">
                             <form>
 
-                                <div class="mb-3">
+                                <div class="mb-3">  
                                     <label class="small mb-1" for="inputUsername">Username</label>
                                     <input class="form-control" id="inputUsername" readonly type="text" placeholder="Enter your username" value="${user.userName}">
                                 </div>
-
                                 <div class="gx-3 mb-3">
                                     <label class="small mb-1" for="inputFirstName">First name</label>
                                     <input class="form-control" id="inputFirstName" readonly type="text" placeholder="Full Name" value="${user.fullName}">
@@ -269,7 +279,7 @@
 
                                 <div class="mb-3">
                                     <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                                    <input class="form-control" id="inputEmailAddress" readonly type="email" placeholder="Enter your email address" value="name@example.com">
+                                    <input class="form-control" id="inputEmailAddress" readonly type="email" placeholder="Enter your email address" value="${user.email}">
                                 </div>
 
                                 <div class="row gx-3 mb-3">
@@ -281,7 +291,7 @@
 
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                        <input class="form-control" id="inputBirthday" readonly type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
+                                        <input class="form-control" id="inputBirthday" readonly type="text" name="birthday" placeholder="Enter your birthday" value="${user.birthdate}">
                                     </div>
                                 </div>
 
@@ -294,6 +304,8 @@
         </div>
         <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/profile.js" type="text/javascript"></script>
         <script src="js/main.js" type="text/javascript"></script>
+
     </body>
 </html>

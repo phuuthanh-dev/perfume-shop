@@ -64,7 +64,7 @@ public class HomeServlet extends HttpServlet {
         CategoryDAO d = new CategoryDAO();
         ProductDAO p = new ProductDAO();
         List<Category> categories = d.getAll();
-        List<Product> products = p.getProductsByCategoryid(0);
+        List<Product> productsYear = p.getAll();
         List<Product> productsTop5Sellers = p.getTopBestSellers("5");
         List<Product> giftSets = p.getGiflSets();
         List<Product> listAll = p.getAll();
@@ -90,9 +90,9 @@ public class HomeServlet extends HttpServlet {
 
         List<Product> listByPage = p.getListByPage(listAll, start, end);
 
-        request.setAttribute("cid", 0);
+        request.setAttribute("chid", chid);
         request.setAttribute("category", categories);
-        request.setAttribute("products", products);
+        request.setAttribute("productsYear", productsYear);
         request.setAttribute("hotDeal", spHot);
         request.setAttribute("productPage", listByPage);
         request.setAttribute("page", page);
@@ -113,8 +113,54 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+//        
+//        CategoryDAO cbd = new CategoryDAO();
+//        ProductDAO pbd = new ProductDAO();
+//        List<Category> categories = cbd.getAll();
+//        List<Product> products = new ArrayList<>();
+//        Boolean[] chid = new Boolean[categories.size() + 1];
+//        
+//        String cid_raw = request.getParameter("cid");
+//        String[] cidd_raw = request.getParameterValues("cidd");
+//        
+//        int cid = 0;
+//        int[] cidd = null;
+//        if (cid_raw != null) {
+//            cid = Integer.parseInt(cid_raw);
+//            products = pbd.getProductsByCategoryid(cid);
+//            if (cid == 0) {
+//                chid[0] = true;
+//            }
+//        }
+//        
+//        if (cidd_raw != null) {
+//            cidd = new int[cidd_raw.length];
+//            for (int i = 0; i < cidd.length; i++) {
+//                cidd[i] = Integer.parseInt(cidd_raw[i]);
+//            }
+//            products = pbd.searchByCheckBox(cidd);
+//        }
+//        
+//        if (cid_raw == null) {
+//            chid[0] = true;
+//        }
+//        if ((cidd_raw != null) && (cidd[0] != 0)) {
+//            chid[0] = false;
+//            for (int i = 1; i < chid.length; i++) {
+//                if (isCheck(categories.get(i - 1).getId(), cidd)) {
+//                    chid[i] = true;
+//                } else {
+//                    chid[i] = false;
+//                }
+//            }
+//        }
+//        request.setAttribute("category", categories);
+//        request.setAttribute("products", products);
+//        request.setAttribute("cid", cid);
+//        request.setAttribute("chid", chid);
+//        request.getRequestDispatcher("home.jsp").forward(request, response);
     }
+
 
     /**
      * Returns a short description of the servlet.
