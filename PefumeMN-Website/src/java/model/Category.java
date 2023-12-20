@@ -4,12 +4,15 @@
  */
 package model;
 
+import dal.ProductDAO;
+import java.util.List;
+
 /**
  *
  * @author ADMIN
  */
 public class Category {
-    
+
     private int id;
     private String name, describe;
 
@@ -46,10 +49,19 @@ public class Category {
         this.describe = describe;
     }
 
+    public int getTotalProduct() {
+        int total = 0;
+        ProductDAO p = new ProductDAO();
+        List<Product> list = p.getProductsByCategoryid(this.id);
+        for (int i = 0; i < list.size(); i++) {
+            total += 1;
+        }
+        return total;
+    }
+
     @Override
     public String toString() {
         return "Category{" + "id=" + id + ", name=" + name + ", describe=" + describe + '}';
     }
-    
-    
+
 }

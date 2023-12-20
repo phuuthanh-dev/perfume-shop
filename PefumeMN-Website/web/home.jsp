@@ -779,7 +779,7 @@
                                     </div>
 
                                     <div class="section_title section_title_style2">
-                                        <h2 style="font-size: 16px">Brand</h2>
+                                        <h2 style="font-size: 16px;">Brand</h2>
                                         <fieldset class="responsiveFacets_sectionContent " aria-hidden="false">
                                             <c:forEach items="${requestScope.category}" var="c">
                                                 <div>
@@ -787,7 +787,7 @@
                                                         <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Abercrombie+%26+Fitch" aria-label="Abercrombie &amp; Fitch (6 available products)" tabindex="0">
                                                         <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Abercrombie+%26+Fitch">
                                                             <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                                ${c.name} (6)
+                                                                ${c.name} (${c.getTotalProduct()})
                                                             </span>
                                                         </span>
                                                     </label>
@@ -803,7 +803,7 @@
                                                     <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Abercrombie+%26+Fitch" aria-label="Abercrombie &amp; Fitch (6 available products)" tabindex="0">
                                                     <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Abercrombie+%26+Fitch">
                                                         <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                            Abercrombie &amp; Fitch (6)
+                                                            2-3 (6)
                                                         </span>
                                                     </span>
                                                 </label>
@@ -813,7 +813,7 @@
                                                     <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
                                                     <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
                                                         <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                            Allsaints (2)
+                                                            3-4 (2)
                                                         </span>
                                                     </span>
                                                 </label> 
@@ -823,7 +823,7 @@
                                                     <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
                                                     <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
                                                         <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                            Allsaints (2)
+                                                            4+ (2)
                                                         </span>
                                                     </span>
                                                 </label>
@@ -838,7 +838,7 @@
                                                     <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Abercrombie+%26+Fitch" aria-label="Abercrombie &amp; Fitch (6 available products)" tabindex="0">
                                                     <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Abercrombie+%26+Fitch">
                                                         <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                            Abercrombie &amp; Fitch (6)
+                                                            $10 - $30 (6)
                                                         </span>
                                                     </span>
                                                 </label>
@@ -848,7 +848,7 @@
                                                     <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
                                                     <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
                                                         <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                            Allsaints (2)
+                                                            $30 - $50 (6)
                                                         </span>
                                                     </span>
                                                 </label> 
@@ -858,7 +858,7 @@
                                                     <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
                                                     <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
                                                         <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                            Allsaints (2)
+                                                            $50 - $100(2)
                                                         </span>
                                                     </span>
                                                 </label>
@@ -866,14 +866,14 @@
                                         </fieldset>
                                     </div>
                                     <div class="section_title section_title_style2">
-                                        <h2 style="font-size: 16px">Savings</h2>
+                                        <h2 style="font-size: 16px">Discount    </h2>
                                         <fieldset class="responsiveFacets_sectionContent " aria-hidden="false">
                                             <div>
                                                 <label class="responsiveFacets_sectionItemLabel">
                                                     <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Abercrombie+%26+Fitch" aria-label="Abercrombie &amp; Fitch (6 available products)" tabindex="0">
                                                     <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Abercrombie+%26+Fitch">
                                                         <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                            Abercrombie &amp; Fitch (6)
+                                                            Up to 25% ()
                                                         </span>
                                                     </span>
                                                 </label>
@@ -883,7 +883,7 @@
                                                     <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
                                                     <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
                                                         <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                            Allsaints (2)
+                                                            Up to 50% ()
                                                         </span>
                                                     </span>
                                                 </label> 
@@ -893,7 +893,7 @@
                                                     <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
                                                     <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
                                                         <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                            Allsaints (2)
+                                                            Up to 75% ()
                                                         </span>
                                                     </span>
                                                 </label>
