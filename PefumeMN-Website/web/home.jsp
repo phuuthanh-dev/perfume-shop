@@ -710,58 +710,64 @@
                                     <h2>Giftset</h2>
                                 </div>
                                 <div class="small_product_container sidebar_product_column1 owl-carousel">
-                                    <c:forEach items="${requestScope.giftSets}" var="giftSet" >
+                                    <c:set var="breakLoop" value="false" />
+                                    <c:forEach var= "j" begin="1" end="2" step="1" >
+                                        <c:set var="count" value="0" />
                                         <div class="small_product_list">
-                                            <c:forEach var="k" begin="1" end="2" step="1" >
-                                                <article class="single_product">
-                                                    <figure>
-                                                        <div class="product_thumb">
-                                                            <a href="#" class="primary_img">
-                                                                <img src="${giftSet.image1}" alt="">
-                                                            </a>
-                                                            <a href="#" class="secondary_img"><img
-                                                                    src="${giftSet.image2}" alt=""></a>
-                                                        </div>
-                                                        <figcaption class="product_content">
-                                                            <h4 class="product_name">
-                                                                <a href="#">${giftSet.name}</a>
-                                                            </h4>
-                                                            <div class="product_rating">
-                                                                <ul>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="price_box">
-                                                                <span class="old_price">Rs. ${giftSet.price}</span>
-                                                                <span class="current_price">Rs. ${giftSet.salePrice}</span>
-                                                            </div>
-                                                        </figcaption>
-                                                    </figure>
-                                                </article>
+                                            <c:if test="${breakLoop == true}">
+                                                <c:set var="count" value="4" />
+                                            </c:if>
+                                            <c:forEach items="${requestScope.giftSets}" var="giftSet" varStatus="status" >
+                                                <c:if test="${(not breakLoop && count  < 3) || (breakLoop && 3 < count && count < 7 )}">
+                                                    <c:if test="${count == status.index}">
+                                                        <article class="single_product">
+                                                            <figure>
+                                                                <div class="product_thumb">
+                                                                    <a href="#" class="primary_img">
+                                                                        <img src="${giftSet.image1}" alt="">
+                                                                    </a>
+                                                                    <a href="#" class="secondary_img"><img
+                                                                            src="${giftSet.image2}" alt=""></a>
+                                                                </div>
+                                                                <figcaption class="product_content">
+                                                                    <h4 class="product_name">
+                                                                        <a href="#">${giftSet.name}</a>
+                                                                    </h4>
+                                                                    <div class="product_rating">
+                                                                        <ul>
+                                                                            <c:set var="numstar" value="${giftSet.starRating}"/>
+                                                                            <c:forEach begin="1" end="${numstar}" step="1">
+                                                                                <li>
+                                                                                    <a href="#" style="color: orange">
+                                                                                        <i class="fa fa-star"></i>
+                                                                                    </a>
+                                                                                </li>
+                                                                            </c:forEach>
+                                                                            <c:if test="${numstar != 5}">
+                                                                                <c:forEach begin="${numstar + 1}" end="5" step="1">
+                                                                                    <li>
+                                                                                        <a href="#" style="color: black">
+                                                                                            <i class="fa fa-star"></i>
+                                                                                        </a>
+                                                                                    </li>
+                                                                                </c:forEach>
+                                                                            </c:if>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="price_box">
+                                                                        <span class="old_price">Rs. ${giftSet.price}</span>
+                                                                        <span class="current_price">Rs. ${giftSet.salePrice}</span>
+                                                                    </div>
+                                                                </figcaption>
+                                                            </figure>
+                                                        </article>
+                                                        <c:set var="count" value="${count + 1}" />
+                                                    </c:if>
+                                                    <c:if test="${count == 3}">
+                                                        <c:set var="breakLoop" value="true" />
+                                                    </c:if>
+                                                </c:if>
+
                                             </c:forEach>
                                         </div>
                                     </c:forEach>
