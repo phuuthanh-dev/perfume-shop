@@ -707,68 +707,63 @@
 
                             <div class="small_product_area mb-68">
                                 <div class="section_title section_title_style2">
-                                    <h2>Gift Set</h2>
+                                    <h2>Giftset</h2>
                                 </div>
                                 <div class="small_product_container sidebar_product_column1 owl-carousel">
                                     <c:forEach items="${requestScope.giftSets}" var="giftSet" >
-                                        <c:forEach var= "j" begin="1" end="2" step="1" >
-                                            <div class="small_product_list">
-                                                <c:forEach var="k" begin="1" end="3" step="1" >
-                                                    <article class="single_product">
-
-
-                                                        <figure>
-                                                            <div class="product_thumb">
-                                                                <a href="#" class="primary_img">
-                                                                    <img src="${giftSet.image1}" alt="">
-                                                                </a>
-                                                                <a href="#" class="secondary_img"><img
-                                                                        src="${giftSet.image2}" alt=""></a>
+                                        <div class="small_product_list">
+                                            <c:forEach var="k" begin="1" end="2" step="1" >
+                                                <article class="single_product">
+                                                    <figure>
+                                                        <div class="product_thumb">
+                                                            <a href="#" class="primary_img">
+                                                                <img src="${giftSet.image1}" alt="">
+                                                            </a>
+                                                            <a href="#" class="secondary_img"><img
+                                                                    src="${giftSet.image2}" alt=""></a>
+                                                        </div>
+                                                        <figcaption class="product_content">
+                                                            <h4 class="product_name">
+                                                                <a href="#">${giftSet.name}</a>
+                                                            </h4>
+                                                            <div class="product_rating">
+                                                                <ul>
+                                                                    <li>
+                                                                        <a href="#">
+                                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#">
+                                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#">
+                                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#">
+                                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#">
+                                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
                                                             </div>
-                                                            <figcaption class="product_content">
-                                                                <h4 class="product_name">
-                                                                    <a href="#">${giftSet.name}</a>
-                                                                </h4>
-                                                                <div class="product_rating">
-                                                                    <ul>
-                                                                        <li>
-                                                                            <a href="#">
-                                                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">
-                                                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">
-                                                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">
-                                                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#">
-                                                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="price_box">
-                                                                    <span class="old_price">Rs. ${giftSet.price}</span>
-                                                                    <span class="current_price">Rs. ${giftSet.salePrice}</span>
-                                                                </div>
-                                                            </figcaption>
-                                                        </figure>
-                                                    </article>
-                                                </c:forEach>
-
-                                            </div>
-                                        </c:forEach>
+                                                            <div class="price_box">
+                                                                <span class="old_price">Rs. ${giftSet.price}</span>
+                                                                <span class="current_price">Rs. ${giftSet.salePrice}</span>
+                                                            </div>
+                                                        </figcaption>
+                                                    </figure>
+                                                </article>
+                                            </c:forEach>
+                                        </div>
                                     </c:forEach>
                                 </div>
                             </div>
@@ -780,47 +775,130 @@
                             <div class="testimonial_style_two mb-60 rightleft">
                                 <div class="testimonial_container">
                                     <div class="section_title section_title_style2">
-                                        <h2>Testimonial</h2>
+                                        <h2 style="font-size: 20px">Refine</h2>
                                     </div>
-                                    <div class="testimonial_sidebar_carousel owl-carousel">
-                                        <div class="single_testimonial">
-                                            <div class="testimonial_img">
-                                                <a href="#"><img src="images/testimonial/testimonial1.jpg" alt=""></a>
-                                            </div>
-                                            <div class="testimonial_content">
-                                                <h4><a href="#">Navnit Kumar</a></h4>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius omnis nam
-                                                    eum iusto aspernatur cupiditate, ipsam deleniti labore dolorem saepe
-                                                    nostrum exercitationem amet quod harum blanditiis sint atque soluta
-                                                    quaerat.</p>
-                                            </div>
-                                        </div>
-                                        <div class="single_testimonial">
-                                            <div class="testimonial_img">
-                                                <a href="#"><img src="images/testimonial/testimonial2.jpg" alt=""></a>
-                                            </div>
-                                            <div class="testimonial_content">
-                                                <h4><a href="#">Ravi Kumawat</a></h4>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla,
-                                                    aspernatur fugit obcaecati officia eligendi minus possimus, quae eius ex
-                                                    quasi delectus dolorem. Commodi consectetur saepe magnam atque
-                                                    reprehenderit suscipit pariatur.
 
-                                                </p>
+                                    <div class="section_title section_title_style2">
+                                        <h2 style="font-size: 16px">Brand</h2>
+                                        <fieldset class="responsiveFacets_sectionContent " aria-hidden="false">
+                                            <c:forEach items="${requestScope.category}" var="c">
+                                                <div>
+                                                    <label class="responsiveFacets_sectionItemLabel">
+                                                        <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Abercrombie+%26+Fitch" aria-label="Abercrombie &amp; Fitch (6 available products)" tabindex="0">
+                                                        <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Abercrombie+%26+Fitch">
+                                                            <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
+                                                                ${c.name} (6)
+                                                            </span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </c:forEach>
+                                        </fieldset>
+                                    </div>
+                                    <div class="section_title section_title_style2">
+                                        <h2 style="font-size: 16px">Average Reviews</h2>
+                                        <fieldset class="responsiveFacets_sectionContent " aria-hidden="false">
+                                            <div>
+                                                <label class="responsiveFacets_sectionItemLabel">
+                                                    <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Abercrombie+%26+Fitch" aria-label="Abercrombie &amp; Fitch (6 available products)" tabindex="0">
+                                                    <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Abercrombie+%26+Fitch">
+                                                        <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
+                                                            Abercrombie &amp; Fitch (6)
+                                                        </span>
+                                                    </span>
+                                                </label>
                                             </div>
-                                        </div>
-                                        <div class="single_testimonial">
-                                            <div class="testimonial_img">
-                                                <a href="#"><img src="images/testimonial/testimonial3.jpg" alt=""></a>
+                                            <div>
+                                                <label class="responsiveFacets_sectionItemLabel">
+                                                    <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
+                                                    <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
+                                                        <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
+                                                            Allsaints (2)
+                                                        </span>
+                                                    </span>
+                                                </label> 
                                             </div>
-                                            <div class="testimonial_content">
-                                                <h4><a href="#">Nilay Hirpara</a></h4>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-                                                    accusantium quas excepturi, quam explicabo repudiandae vitae quisquam
-                                                    ratione voluptatum molestiae exercitationem architecto temporibus eaque
-                                                    fugit dolores, rerum laborum, optio itaque.</p>
+                                            <div>
+                                                <label class="responsiveFacets_sectionItemLabel">
+                                                    <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
+                                                    <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
+                                                        <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
+                                                            Allsaints (2)
+                                                        </span>
+                                                    </span>
+                                                </label>
                                             </div>
-                                        </div>
+                                        </fieldset>
+                                    </div>
+                                    <div class="section_title section_title_style2">
+                                        <h2 style="font-size: 16px">Price</h2>
+                                        <fieldset class="responsiveFacets_sectionContent " aria-hidden="false">
+                                            <div>
+                                                <label class="responsiveFacets_sectionItemLabel">
+                                                    <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Abercrombie+%26+Fitch" aria-label="Abercrombie &amp; Fitch (6 available products)" tabindex="0">
+                                                    <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Abercrombie+%26+Fitch">
+                                                        <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
+                                                            Abercrombie &amp; Fitch (6)
+                                                        </span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div>
+                                                <label class="responsiveFacets_sectionItemLabel">
+                                                    <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
+                                                    <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
+                                                        <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
+                                                            Allsaints (2)
+                                                        </span>
+                                                    </span>
+                                                </label> 
+                                            </div>
+                                            <div>
+                                                <label class="responsiveFacets_sectionItemLabel">
+                                                    <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
+                                                    <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
+                                                        <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
+                                                            Allsaints (2)
+                                                        </span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div class="section_title section_title_style2">
+                                        <h2 style="font-size: 16px">Savings</h2>
+                                        <fieldset class="responsiveFacets_sectionContent " aria-hidden="false">
+                                            <div>
+                                                <label class="responsiveFacets_sectionItemLabel">
+                                                    <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Abercrombie+%26+Fitch" aria-label="Abercrombie &amp; Fitch (6 available products)" tabindex="0">
+                                                    <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Abercrombie+%26+Fitch">
+                                                        <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
+                                                            Abercrombie &amp; Fitch (6)
+                                                        </span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div>
+                                                <label class="responsiveFacets_sectionItemLabel">
+                                                    <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
+                                                    <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
+                                                        <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
+                                                            Allsaints (2)
+                                                        </span>
+                                                    </span>
+                                                </label> 
+                                            </div>
+                                            <div>
+                                                <label class="responsiveFacets_sectionItemLabel">
+                                                    <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
+                                                    <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
+                                                        <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
+                                                            Allsaints (2)
+                                                        </span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </fieldset>
                                     </div>
                                 </div>
                             </div>

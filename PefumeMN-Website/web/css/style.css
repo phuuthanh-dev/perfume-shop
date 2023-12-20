@@ -3388,3 +3388,14 @@ figure {
 .pagination a:hover:not(.active) {
     color: chocolate;
 }
+
+/*filter*/
+
+.responsiveFacets_sectionItemValue {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #020203;
+    font-weight: 300;
+    letter-spacing: 0;
+    text-transform: none;
+}
