@@ -514,9 +514,9 @@
                                                     </h4>
 
                                                     <div class="price_box">
-                                                        <span class="old_price" id="oldprice">Rs. ${(p.price * 150) / 100}
+                                                        <span class="old_price" id="oldprice">Rs. ${p.price}
                                                         </span>
-                                                        <span class="current_price">Rs. ${p.price}
+                                                        <span class="current_price">Rs. ${p.salePrice}
                                                         </span>
                                                     </div>
                                                     <div class="product_rating">
@@ -548,7 +548,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="Women" role="tabpanel">
+<!--                    <div class="tab-pane fade" id="Women" role="tabpanel">
                         <div class="row">
                             <div class="product_carousel product_column4 owl-carousel">
                                 <div class="col-lg-3">
@@ -1492,7 +1492,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
 
 
                 </div>
@@ -2095,31 +2095,23 @@
                                                             </h4>
                                                             <div class="${t.starRating}">
                                                                 <ul style="display: flex">
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">
-                                                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </li>
+                                                                    <c:set var="numstar" value="${t.starRating}"/>
+                                                                    <c:forEach begin="1" end="${numstar}" step="1">
+                                                                        <li>
+                                                                            <a href="#" style="color: orange">
+                                                                                <i class="fa fa-star"></i>
+                                                                            </a>
+                                                                        </li>
+                                                                    </c:forEach>
+                                                                    <c:if test="${numstar != 5}">
+                                                                        <c:forEach begin="${numstar + 1}" end="5" step="1">
+                                                                            <li>
+                                                                                <a href="#" style="color: black">
+                                                                                    <i class="fa fa-star"></i>
+                                                                                </a>
+                                                                            </li>
+                                                                        </c:forEach>
+                                                                    </c:if>
                                                                 </ul>
                                                             </div>
                                                             <div class="price_box">
