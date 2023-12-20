@@ -3391,7 +3391,8 @@ figure {
 
 /*filter*/
 
-.responsiveFacets_sectionItemValue {
+.responsiveFacets_sectionItem {
+    margin-left: 10px;
     font-size: 16px;
     line-height: 1.5;
     color: #020203;

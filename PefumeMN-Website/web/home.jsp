@@ -454,14 +454,14 @@
                             <div class="product_tab_btn">
                                 <ul class="nav" role="tablist">
                                     <li>
-                                        <a href="home1?cid=${0}" class="${cid==0?"active":""}">
+                                        <a href="home1?cid=${0}" class="${chid[0]==true?"active":""}">
                                             ALL
                                         </a>
                                     </li>
                                     <c:forEach items="${requestScope.category}" var="c">
                                         <li>
-                                            <a class="${c.id==cid?"active":""}"
-                                               href="home1?cid=${c.id}">
+                                            <a class="${c.id==cidYear?"active":""}"
+                                               href="home1?cidYear=${c.id}">
                                                 ${c.name}
                                             </a>
                                         </li>
@@ -475,7 +475,7 @@
                     <div class="tab-pane fade show active" id="Men" role="tabpanel">
                         <div class="row">
                             <div class="product_carousel product_column4 owl-carousel">
-                                <c:forEach items="${requestScope.products}" var="p">
+                                <c:forEach items="${requestScope.productsYear}" var="p">
                                     <div class="col-lg-3">
                                         <article class="single_product">
                                             <figure>
@@ -514,8 +514,9 @@
                                                     </h4>
 
                                                     <div class="price_box">
-                                                        <span class="old_price" id="oldprice">Rs. ${p.price}
-                                                        </span>
+                                                        <c:if test="${p.price != p.salePrice}">
+                                                            <span class="old_price" id="oldprice">Rs. ${p.price}</span>
+                                                        </c:if>
                                                         <span class="current_price">Rs. ${p.salePrice}
                                                         </span>
                                                     </div>
@@ -715,10 +716,10 @@
                                         <c:set var="count" value="0" />
                                         <div class="small_product_list">
                                             <c:if test="${breakLoop == true}">
-                                                <c:set var="count" value="4" />
+                                                <c:set var="count" value="4"/>
                                             </c:if>
                                             <c:forEach items="${requestScope.giftSets}" var="giftSet" varStatus="status" >
-                                                <c:if test="${(not breakLoop && count  < 3) || (breakLoop && 3 < count && count < 7 )}">
+                                                <c:if test="${(not breakLoop && count < 3) || (breakLoop && 3 < count && count < 7)}">
                                                     <c:if test="${count == status.index}">
                                                         <article class="single_product">
                                                             <figure>
@@ -755,7 +756,9 @@
                                                                         </ul>
                                                                     </div>
                                                                     <div class="price_box">
-                                                                        <span class="old_price">Rs. ${giftSet.price}</span>
+                                                                        <c:if test="${i.price != i.salePrice}">
+                                                                            <span class="old_price">Rs. ${i.price}</span>
+                                                                        </c:if>
                                                                         <span class="current_price">Rs. ${giftSet.salePrice}</span>
                                                                     </div>
                                                                 </figcaption>
@@ -777,135 +780,148 @@
                             <!-- small product area ends -->
 
                             <!-- testimonial section starts  -->
-
+                            <c:set var="cat" value="${requestScope.category}"/>
                             <div class="testimonial_style_two mb-60 rightleft">
                                 <div class="testimonial_container">
                                     <div class="section_title section_title_style2">
                                         <h2 style="font-size: 20px">Refine</h2>
                                     </div>
-
-                                    <div class="section_title section_title_style2">
-                                        <h2 style="font-size: 16px;">Brand</h2>
-                                        <fieldset class="responsiveFacets_sectionContent " aria-hidden="false">
-                                            <c:forEach items="${requestScope.category}" var="c">
+                                    <form id="f1" action="home1" method="get">
+                                        <div class="section_title section_title_style2">
+                                            <h2 style="font-size: 16px;">Brand</h2>
+                                            <fieldset class="responsiveFacets_sectionContent " aria-hidden="false">
+                                                <div class="responsiveFacets_sectionItemLabel">
+                                                    <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" 
+                                                           ${chid[0]?"checked":""} 
+                                                           id="c0" 
+                                                           name="cid_refine"
+                                                           value="${0}">
+                                                    <label class="responsiveFacets_sectionItem" for="brand">
+                                                        ALL (${productsYear.size()})
+                                                    </label>
+                                                </div>
+                                                <c:forEach begin="0" end="${cat.size()-1}" var="i">
+                                                    <div class="responsiveFacets_sectionItemLabel">
+                                                        <input type="checkbox" ${cat.get(i).getId()==cid?"checked":""}
+                                                               class="responsiveFacets_sectionItemCheckbox"
+                                                               id="brand" 
+                                                               name="cid_refine"
+                                                               value="${cat.get(i).getId()}"
+                                                               ${chid[i+1]?"checked":""}
+                                                               onclick="setCheck(this)"/>
+                                                        <label class="responsiveFacets_sectionItem" for="brand" >
+                                                            ${cat.get(i).name} (${cat.get(i).getTotalProduct()})
+                                                        </label>
+                                                    </div>
+                                                </c:forEach>
+                                            </fieldset>
+                                        </div>
+                                        <div class="section_title section_title_style2">
+                                            <h2 style="font-size: 16px">Average Reviews</h2>
+                                            <fieldset class="responsiveFacets_sectionContent " aria-hidden="false">
                                                 <div>
                                                     <label class="responsiveFacets_sectionItemLabel">
                                                         <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Abercrombie+%26+Fitch" aria-label="Abercrombie &amp; Fitch (6 available products)" tabindex="0">
                                                         <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Abercrombie+%26+Fitch">
                                                             <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                                ${c.name} (${c.getTotalProduct()})
+                                                                2-3 (6)
                                                             </span>
                                                         </span>
                                                     </label>
                                                 </div>
-                                            </c:forEach>
-                                        </fieldset>
-                                    </div>
-                                    <div class="section_title section_title_style2">
-                                        <h2 style="font-size: 16px">Average Reviews</h2>
-                                        <fieldset class="responsiveFacets_sectionContent " aria-hidden="false">
-                                            <div>
-                                                <label class="responsiveFacets_sectionItemLabel">
-                                                    <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Abercrombie+%26+Fitch" aria-label="Abercrombie &amp; Fitch (6 available products)" tabindex="0">
-                                                    <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Abercrombie+%26+Fitch">
-                                                        <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                            2-3 (6)
+                                                <div>
+                                                    <label class="responsiveFacets_sectionItemLabel">
+                                                        <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
+                                                        <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
+                                                            <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
+                                                                3-4 (2)
+                                                            </span>
                                                         </span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                            <div>
-                                                <label class="responsiveFacets_sectionItemLabel">
-                                                    <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
-                                                    <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
-                                                        <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                            3-4 (2)
+                                                    </label> 
+                                                </div>
+                                                <div>
+                                                    <label class="responsiveFacets_sectionItemLabel">
+                                                        <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
+                                                        <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
+                                                            <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
+                                                                4+ (2)
+                                                            </span>
                                                         </span>
-                                                    </span>
-                                                </label> 
-                                            </div>
-                                            <div>
-                                                <label class="responsiveFacets_sectionItemLabel">
-                                                    <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
-                                                    <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
-                                                        <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                            4+ (2)
+                                                    </label>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="section_title section_title_style2">
+                                            <h2 style="font-size: 16px">Price</h2>
+                                            <fieldset class="responsiveFacets_sectionContent " aria-hidden="false">
+                                                <div>
+                                                    <label class="responsiveFacets_sectionItemLabel">
+                                                        <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Abercrombie+%26+Fitch" aria-label="Abercrombie &amp; Fitch (6 available products)" tabindex="0">
+                                                        <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Abercrombie+%26+Fitch">
+                                                            <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
+                                                                $10 - $30 (6)
+                                                            </span>
                                                         </span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                        </fieldset>
-                                    </div>
-                                    <div class="section_title section_title_style2">
-                                        <h2 style="font-size: 16px">Price</h2>
-                                        <fieldset class="responsiveFacets_sectionContent " aria-hidden="false">
-                                            <div>
-                                                <label class="responsiveFacets_sectionItemLabel">
-                                                    <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Abercrombie+%26+Fitch" aria-label="Abercrombie &amp; Fitch (6 available products)" tabindex="0">
-                                                    <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Abercrombie+%26+Fitch">
-                                                        <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                            $10 - $30 (6)
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <label class="responsiveFacets_sectionItemLabel">
+                                                        <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
+                                                        <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
+                                                            <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
+                                                                $30 - $50 (6)
+                                                            </span>
                                                         </span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                            <div>
-                                                <label class="responsiveFacets_sectionItemLabel">
-                                                    <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
-                                                    <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
-                                                        <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                            $30 - $50 (6)
+                                                    </label> 
+                                                </div>
+                                                <div>
+                                                    <label class="responsiveFacets_sectionItemLabel">
+                                                        <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
+                                                        <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
+                                                            <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
+                                                                $50 - $100(2)
+                                                            </span>
                                                         </span>
-                                                    </span>
-                                                </label> 
-                                            </div>
-                                            <div>
-                                                <label class="responsiveFacets_sectionItemLabel">
-                                                    <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
-                                                    <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
-                                                        <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                            $50 - $100(2)
+                                                    </label>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="section_title section_title_style2">
+                                            <h2 style="font-size: 16px">Discount    </h2>
+                                            <fieldset class="responsiveFacets_sectionContent " aria-hidden="false">
+                                                <div>
+                                                    <label class="responsiveFacets_sectionItemLabel">
+                                                        <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Abercrombie+%26+Fitch" aria-label="Abercrombie &amp; Fitch (6 available products)" tabindex="0">
+                                                        <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Abercrombie+%26+Fitch">
+                                                            <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
+                                                                Up to 25% ()
+                                                            </span>
                                                         </span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                        </fieldset>
-                                    </div>
-                                    <div class="section_title section_title_style2">
-                                        <h2 style="font-size: 16px">Discount    </h2>
-                                        <fieldset class="responsiveFacets_sectionContent " aria-hidden="false">
-                                            <div>
-                                                <label class="responsiveFacets_sectionItemLabel">
-                                                    <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Abercrombie+%26+Fitch" aria-label="Abercrombie &amp; Fitch (6 available products)" tabindex="0">
-                                                    <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Abercrombie+%26+Fitch">
-                                                        <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                            Up to 25% ()
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <label class="responsiveFacets_sectionItemLabel">
+                                                        <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
+                                                        <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
+                                                            <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
+                                                                Up to 50% ()
+                                                            </span>
                                                         </span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                            <div>
-                                                <label class="responsiveFacets_sectionItemLabel">
-                                                    <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
-                                                    <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
-                                                        <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                            Up to 50% ()
+                                                    </label> 
+                                                </div>
+                                                <div>
+                                                    <label class="responsiveFacets_sectionItemLabel">
+                                                        <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
+                                                        <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
+                                                            <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
+                                                                Up to 75% ()
+                                                            </span>
                                                         </span>
-                                                    </span>
-                                                </label> 
-                                            </div>
-                                            <div>
-                                                <label class="responsiveFacets_sectionItemLabel">
-                                                    <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
-                                                    <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
-                                                        <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                            Up to 75% ()
-                                                        </span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                        </fieldset>
-                                    </div>
+                                                    </label>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                             <!-- testimonial section ends -->
@@ -1120,7 +1136,9 @@
                                                             </ul>
                                                         </div>
                                                         <div class="price_box">
-                                                            <span class="old_price">Rs. ${i.price}</span>
+                                                            <c:if test="${i.price != i.salePrice}">
+                                                                <span class="old_price">Rs. ${i.price}</span>
+                                                            </c:if>
                                                             <span class="current_price">Rs. ${i.salePrice}</span>
                                                         </div>
                                                     </figcaption>
