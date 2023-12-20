@@ -2346,7 +2346,7 @@ figure {
     text-align: center;
     border: 1px solid coral;
     border-radius: 50%;
-    margin-right: 5px;
+    margin-right: 2px;
 }
 
 .single_countdown:last-child {
@@ -2362,7 +2362,7 @@ figure {
 }
 
 .countdown_title {
-    font-size: 11px;
+    font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0;
     line-height: 16px;

@@ -163,7 +163,7 @@ public class ProductDAO extends DBContext {
     // 6> List gift set 
     public List<Product> getGiflSets() {
         List<Product> list = new ArrayList<>();
-        String sql = "SELECT * FROM Products WHERE  CategoryID = 5";
+        String sql = "SELECT * FROM Products WHERE CategoryID = 5";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
@@ -204,7 +204,7 @@ public class ProductDAO extends DBContext {
     // Testcase demo
     public static void main(String[] args) {
         ProductDAO p = new ProductDAO();
-        List<Product> list = p.getAll();
+        List<Product> list = p.getGiflSets();
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).getPrice());
         }

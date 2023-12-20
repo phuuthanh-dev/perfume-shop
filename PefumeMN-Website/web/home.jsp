@@ -388,7 +388,7 @@
                                                     <a href="profile" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.account.fullName}!</a>
                                                 </li>
                                                 <li>
-                                                    <a href="logout" onclick="checkLogout()" style="color: white; text-decoration: underline">${sessionScope.account==null ? "": "LOGOUT"}</a>
+                                                    <a id="logout" href="#" onclick="checkLogout()" style="color: white; text-decoration: underline">${sessionScope.account==null ? "": "LOGOUT"}</a>
                                                 </li>
                                             </c:if>
                                         </ul>
@@ -662,16 +662,35 @@
                                                     <figcaption class="product_content">
                                                         <!-- for deals timing -->
                                                         <div class="product_timing">
-                                                            <div data-countdown="2021/1/15"></div>
+                                                            <div id="" data-countdown="2021/1/15">
+                                                                <div class="countdown_area">
+                                                                    <div class="single_countdown">
+                                                                        <div id="day" class="countdown_number"></div>
+                                                                        <div class="countdown_title">days</div>
+                                                                    </div>
+                                                                    <div class="single_countdown">
+                                                                        <div id="hour" class="countdown_number"></div>
+                                                                        <div class="countdown_title">Hours</div>
+                                                                    </div>
+                                                                    <div class="single_countdown">
+                                                                        <div id="minutes" class="countdown_number"></div>
+                                                                        <div class="countdown_title">mins</div>
+                                                                    </div>
+                                                                    <div class="single_countdown">
+                                                                        <div id="sec" class="countdown_number"></div>
+                                                                        <div class="countdown_title">secs</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <h4 class="product_name">
                                                             <a href="#">${hotDeal.name}</a>
                                                         </h4>
 
                                                         <div class="price_box">
-                                                            <span class="old_price">Rs.
+                                                            <span class="old_price">Rs.${hotDeal.price}
                                                             </span>
-                                                            <span class="current_price">Rs.${hotDeal.price}</span>
+                                                            <span class="current_price">Rs.${hotDeal.salePrice}</span>
                                                         </div>
 
                                                     </figcaption>
@@ -1529,9 +1548,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
         <script src="js/main.js"></script>
         <script>
-                                                        function checkLogout() {
-                                                            confirm('You want to logout?');
-                                                        }
+
         </script>
     </body>
 

@@ -190,7 +190,7 @@
                                     <h4 href="profile" style="color: white">Hello, ${user==null ? "": user.fullName}!</h4>
                                 </li>
                                 <li >
-                                    <a href="logout" onclick="checkLogout()" style="color: white; font-size: 13px; font-weight: 800; text-decoration: underline">
+                                    <a id="logout" href="#" onclick="checkLogout()" style="color: white; font-size: 13px; font-weight: 800; text-decoration: underline">
                                         ${user==null ? "": "LOGOUT"}</a>
                                 </li>
                             </c:if>
@@ -294,8 +294,6 @@
         </div>
         <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
-        <script type="text/javascript">
-
-        </script>
+        <script src="js/main.js" type="text/javascript"></script>
     </body>
 </html>
