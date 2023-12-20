@@ -1,3 +1,4 @@
+
 (function ($) {
     ("use strict");
 
@@ -388,33 +389,37 @@ function checkLogout() {
     }
 }
 
-var countDownDate = new Date("Jan 5, 2024 11:37:25").getTime();
+function setCountDown() {
+    var countDownDate = new Date("Jan 5, 2024 11:37:25").getTime();
 
-var x = setInterval(function () {
+    var x = setInterval(function () {
 
-    // Get today's date and time
-    var now = new Date().getTime();
-    var distance = countDownDate - now;
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        // Get today's date and time
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Output the result in elements with corresponding ids
-    document.getElementById("day").innerHTML = days;
-    document.getElementById("hour").innerHTML = hours;
-    document.getElementById("minutes").innerHTML = minutes; // Corrected typo
-    document.getElementById("sec").innerHTML = seconds;
+        // Output the result in elements with corresponding ids
+        document.getElementById("day").innerHTML = days;
+        document.getElementById("hour").innerHTML = hours;
+        document.getElementById("minutes").innerHTML = minutes; // Corrected typo
+        document.getElementById("sec").innerHTML = seconds;
 
-    // If the count down is over, write some text 
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("day").innerHTML = "EXPIRED";
-        document.getElementById("hour").innerHTML = "EXPIRED";
-        document.getElementById("minutes").innerHTML = "EXPIRED";
-        document.getElementById("sec").innerHTML = "EXPIRED";
-    }
-}, 1000);
+        // If the count down is over, write some text 
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("day").innerHTML = "EXPIRED";
+            document.getElementById("hour").innerHTML = "EXPIRED";
+            document.getElementById("minutes").innerHTML = "EXPIRED";
+            document.getElementById("sec").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+}
+
+setCountDown();
 
 function setCheck(obj) {
     var fries = document.getElementsByName('cid_refine');
@@ -432,3 +437,4 @@ function setCheck(obj) {
     }
     document.getElementById('f1').submit();
 }
+

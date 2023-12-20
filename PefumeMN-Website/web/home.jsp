@@ -19,8 +19,6 @@
     </head>
 
     <body>
-        <div class="off_canvars_overlay"></div>
-
         <div class="offcanvas_menu offcanvas_two">
             <div class="canvas_open">
                 <a href="javascript:void(0)"><i class="fa fa-bars"></i></a>
@@ -35,7 +33,7 @@
                             <a href="#">My Account <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown_links">
                                 <li><a href="#">Checkout</a></li>
-                                <li><a href="#">My Account</a></li>
+                                <li><a href="profile">My Account</a></li>
                                 <li><a href="#">Shopping Cart</a></li>
                                 <li><a href="#">Wishlist</a></li>
                             </ul>
@@ -166,7 +164,7 @@
                             </ul>
                         </li>
                         <li class="menu-item-has-children">
-                            <a href="#">My Account</a>
+                            <a href="profile">My Account</a>
                         </li>
                         <li class="menu-item-has-children">
                             <a href="#">About Us</a>
@@ -213,17 +211,8 @@
                                     <nav>
                                         <ul>
                                             <li>
-                                                <a href="index.html" class="active">Home <i
-                                                        class="fa fa-angle-down"></i></a>
-                                                <ul class="sub_menu">
-                                                    <c:forEach items="${requestScope.category}" var="c">
-                                                        <li><a href="#">${c.name}</a></li>
-                                                        </c:forEach>
-                                                </ul>
-
+                                                <a href="index.html" class="active">Home</a>
                                             </li>
-
-
                                             <li class="mega_items">
                                                 <a href="#">Brands <i class="fa fa-angle-down"></i></a>
                                                 <div class="mega_menu">
@@ -283,7 +272,6 @@
                                         </ul>
                                     </nav>
                                 </div>
-
                                 <!-- main menu ends -->
                             </div>
                             <div class="col-lg-4">
@@ -378,7 +366,7 @@
                                                 </a>
                                                 <ul class="dropdown_links">
                                                     <li><a href="#">Checkout</a></li>
-                                                    <li><a href="#">My Account</a></li>
+                                                    <li><a href="profile">My Account</a></li>
                                                     <li><a href="#">Shopping cart</a></li>
                                                     <li><a href="#">Wishlist</a></li>
                                                 </ul>
@@ -396,6 +384,20 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row" style="justify-content: center; padding: 10px 0"">
+                            <ul style="display: flex">
+                                <li style="color: white; margin-left:50px; font-size: 16px">
+
+                                    <a href="refine?cid_refine=${0}">ALL</a>
+                                </li>
+                                <c:forEach items="${requestScope.category}" var="c">
+                                    <li style="color: white; margin-left: 50px; font-size: 16px">
+                                        <a href="refine?cid_refine=${c.id}">${c.name}</a>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -403,40 +405,15 @@
 
 
         <!-- slider section starts  -->
-        <section class="slider_section slider_section2 mb-66">
+        <section class="slider_section slider_section mb-66" style="margin-bottom: 0px">
             <div class="slider_area owl-carousel">
-                <div class="single_slider d-flex align-items-center" data-bgimg="images/slider/slider1.jpg">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-6 offset-lg-6 col-md-6 offset-md-6">
-                                <div class="slider_content slider_content2 content_right">
-                                    <h1>Men's Collection</h1>
-                                    <h2>Wild Stone</h2>
-                                    <p>The rich aromatic notes of rosemary and nerolu combined with the sophistication of
-                                        tonka beans and white beans and white woods to create the perfect accompaniment for
-                                        the suited look.</p>
-                                    <a href="#" class="button">Shop Now <i class="fa fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="single_slider d-flex align-items-center" style="background: url('images/slider/slider1.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
 
                 </div>
-                <div class="single_slider d-flex align-items-center" data-bgimg="images/slider/slider2.jpg">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-7">
-                                <div class="slider_content slider_content2 content_left">
-                                    <h1>Watch</h1>
-                                    <h2>Maison Micallef</h2>
-                                    <p>This perfume is a wonderful elixir that heightens both the scents of gourmet Bourbon
-                                        vanilla and those refined of tuberose and jasmine. The delightful alliance reminds
-                                        of tropical paradise.</p>
-                                    <a href="#" class="button">Shop Now <i class="fa fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="single_slider d-flex align-items-center" style="background: url('images/slider/slider2.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+
+                </div>
+                <div class="single_slider d-flex align-items-center" style="background: url('images/slider/slider3.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
 
                 </div>
             </div>
@@ -784,141 +761,36 @@
                             <div class="testimonial_style_two mb-60 rightleft">
                                 <div class="testimonial_container">
                                     <div class="section_title section_title_style2">
-                                        <h2 style="font-size: 20px">Refine</h2>
+                                        <h2 style="font-size: 20px">Brand</h2>
                                     </div>
                                     <form id="f1" action="home1" method="get">
-                                        <div class="section_title section_title_style2">
-                                            <h2 style="font-size: 16px;">Brand</h2>
+                                        <div class="" style="margin: 0">
+                                            <h2 style="font-size: 16px;"></h2>
                                             <fieldset class="responsiveFacets_sectionContent " aria-hidden="false">
-                                                <div class="responsiveFacets_sectionItemLabel">
-                                                    <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" 
-                                                           ${chid[0]?"checked":""} 
-                                                           id="c0" 
-                                                           name="cid_refine"
-                                                           value="${0}">
+                                                <div href="#" class="responsiveFacets_sectionItemLabel" onclick="checkLogout()">
+                                                    <!--                                                        <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" 
+                                                    ${chid[0]?"checked":""} 
+                                                    id="c0" 
+                                                    name="cid_refine"
+                                                    value="${0}">-->
                                                     <label class="responsiveFacets_sectionItem" for="brand">
                                                         ALL (${productsYear.size()})
                                                     </label>
                                                 </div>
                                                 <c:forEach begin="0" end="${cat.size()-1}" var="i">
-                                                    <div class="responsiveFacets_sectionItemLabel">
-                                                        <input type="checkbox" ${cat.get(i).getId()==cid?"checked":""}
-                                                               class="responsiveFacets_sectionItemCheckbox"
-                                                               id="brand" 
-                                                               name="cid_refine"
-                                                               value="${cat.get(i).getId()}"
-                                                               ${chid[i+1]?"checked":""}
-                                                               onclick="setCheck(this)"/>
-                                                        <label class="responsiveFacets_sectionItem" for="brand" >
+                                                    <div class="responsiveFacets_sectionItemLabel" onclick="checkLogout()">
+                                                        <!--                                                            <input type="checkbox" ${cat.get(i).getId()==cid?"checked":""}
+                                                                                                                           class="responsiveFacets_sectionItemCheckbox"
+                                                                                                                           id="brand" 
+                                                                                                                           name="cid_refine"
+                                                                                                                           value="${cat.get(i).getId()}"
+                                                        ${chid[i+1]?"checked":""}
+                                                        onclick="setCheck(this)"/>-->
+                                                        <label href="#" class="responsiveFacets_sectionItem" for="brand" >
                                                             ${cat.get(i).name} (${cat.get(i).getTotalProduct()})
                                                         </label>
                                                     </div>
                                                 </c:forEach>
-                                            </fieldset>
-                                        </div>
-                                        <div class="section_title section_title_style2">
-                                            <h2 style="font-size: 16px">Average Reviews</h2>
-                                            <fieldset class="responsiveFacets_sectionContent " aria-hidden="false">
-                                                <div>
-                                                    <label class="responsiveFacets_sectionItemLabel">
-                                                        <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Abercrombie+%26+Fitch" aria-label="Abercrombie &amp; Fitch (6 available products)" tabindex="0">
-                                                        <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Abercrombie+%26+Fitch">
-                                                            <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                                2-3 (6)
-                                                            </span>
-                                                        </span>
-                                                    </label>
-                                                </div>
-                                                <div>
-                                                    <label class="responsiveFacets_sectionItemLabel">
-                                                        <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
-                                                        <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
-                                                            <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                                3-4 (2)
-                                                            </span>
-                                                        </span>
-                                                    </label> 
-                                                </div>
-                                                <div>
-                                                    <label class="responsiveFacets_sectionItemLabel">
-                                                        <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
-                                                        <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
-                                                            <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                                4+ (2)
-                                                            </span>
-                                                        </span>
-                                                    </label>
-                                                </div>
-                                            </fieldset>
-                                        </div>
-                                        <div class="section_title section_title_style2">
-                                            <h2 style="font-size: 16px">Price</h2>
-                                            <fieldset class="responsiveFacets_sectionContent " aria-hidden="false">
-                                                <div>
-                                                    <label class="responsiveFacets_sectionItemLabel">
-                                                        <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Abercrombie+%26+Fitch" aria-label="Abercrombie &amp; Fitch (6 available products)" tabindex="0">
-                                                        <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Abercrombie+%26+Fitch">
-                                                            <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                                $10 - $30 (6)
-                                                            </span>
-                                                        </span>
-                                                    </label>
-                                                </div>
-                                                <div>
-                                                    <label class="responsiveFacets_sectionItemLabel">
-                                                        <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
-                                                        <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
-                                                            <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                                $30 - $50 (6)
-                                                            </span>
-                                                        </span>
-                                                    </label> 
-                                                </div>
-                                                <div>
-                                                    <label class="responsiveFacets_sectionItemLabel">
-                                                        <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
-                                                        <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
-                                                            <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                                $50 - $100(2)
-                                                            </span>
-                                                        </span>
-                                                    </label>
-                                                </div>
-                                            </fieldset>
-                                        </div>
-                                        <div class="section_title section_title_style2">
-                                            <h2 style="font-size: 16px">Discount    </h2>
-                                            <fieldset class="responsiveFacets_sectionContent " aria-hidden="false">
-                                                <div>
-                                                    <label class="responsiveFacets_sectionItemLabel">
-                                                        <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Abercrombie+%26+Fitch" aria-label="Abercrombie &amp; Fitch (6 available products)" tabindex="0">
-                                                        <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Abercrombie+%26+Fitch">
-                                                            <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                                Up to 25% ()
-                                                            </span>
-                                                        </span>
-                                                    </label>
-                                                </div>
-                                                <div>
-                                                    <label class="responsiveFacets_sectionItemLabel">
-                                                        <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
-                                                        <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
-                                                            <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                                Up to 50% ()
-                                                            </span>
-                                                        </span>
-                                                    </label> 
-                                                </div>
-                                                <div>
-                                                    <label class="responsiveFacets_sectionItemLabel">
-                                                        <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
-                                                        <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
-                                                            <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                                Up to 75% ()
-                                                            </span>
-                                                        </span>
-                                                    </label>
-                                                </div>
                                             </fieldset>
                                         </div>
                                     </form>

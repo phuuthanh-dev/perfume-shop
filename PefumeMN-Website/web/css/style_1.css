@@ -1,60 +1,4 @@
-/*For Prealoder*/
-/**************************************
 
-Template Name: Xmee | Login and Register Form Html Templates
-Template URL: http://html.affixtheme.com/html/xmee
-Description: Creative & Exclusive Login Registration Template
-Author: AffixTheme
-Author URL: https://themeforest.net/user/affixtheme
-Version: 2.1 
-
-======================================  
-        Table Of Contents
-======================================
-1. Typography
-2. Template Default Style
-3. Template Animation
-4. Demo Layout One
-5. Demo Layout Two
-6. Demo Layout Three
-7. Demo Layout Four
-8. Demo Layout Five
-9. Demo Layout Six
-10. Demo Layout Seven
-11. Demo Layout Eight
-12. Demo Layout Nine
-13. Demo Layout Ten
-14. Demo Layout Eleven
-15. Demo Layout Twelve
-16. Demo Layout Thirteen
-17. Demo Layout Fourteen
-18. Demo Layout Fifteen
-19. Demo Layout Sixteen
-20. Demo Layout Seventeen
-21. Demo Layout Eighteen
-22. Demo Layout Nineteen
-23. Demo Layout Twenty
-24. Demo Layout Twenty One
-25. Demo Layout Twenty Two
-26. Demo Layout Twenty Three
-27. Demo Layout Twenty Four
-28. Demo Layout Twenty Five
-29. Demo Layout Twenty Six
-30. Demo Layout Twenty Seven
-31. Demo Layout Twenty Eight
-32. Demo Layout Twenty Nine
-33. Demo Layout Thirty
-34. Demo Layout Thirty One
-35. Demo Layout Thirty Two
-36. Demo Layout Thirty Three
-37. Demo Layout Thirty Four
-38. Demo Layout Thirty Five
-39. Demo Layout Thirty Six
-
-**************************************/
-/*=======================================================================
-1. Typography
-=========================================================================*/
 html {
   height: 100%;
 }
@@ -17465,4 +17409,20 @@ ul {
 }
 .fxt-template-layout36 .fxt-btn-ghost:focus {
   outline: none;
+}
+
+
+select {
+    width: 32.6%;
+    margin: 0;
+    font-size: 100%;
+    padding: 5px 10px 5px 10px;
+    font-family: Segoe UI, Helvetica, sans-serif;
+    border: 0;
+    border: 1px solid #D0D0D0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 20px;
+    outline: none;
 }

@@ -24,9 +24,9 @@ public class UserDAO extends DBContext {
             st.setString(2, password);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
-                User a = new User(rs.getString("userName"), rs.getString("fullName"), rs.getString("password"),
-                        rs.getString("address"), rs.getString("phone"), rs.getInt("roleID"));
-                return a;
+                User u = new User(rs.getString("userName"), rs.getString("fullName"), rs.getString("password"),
+                        rs.getString("address"), rs.getString("phone"), rs.getString("email"), rs.getString("Image"),rs.getDate("BirthDay"), rs.getInt("roleID"));
+                return u;
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -41,14 +41,49 @@ public class UserDAO extends DBContext {
             st.setString(1, username);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
-                User a = new User(rs.getString("userName"), rs.getString("fullName"), rs.getString("password"),
-                        rs.getString("address"), rs.getString("phone"), rs.getInt("roleID"));
+                User u = new User(rs.getString("userName"), rs.getString("fullName"), rs.getString("password"),
+                        rs.getString("address"), rs.getString("phone"), rs.getString("email"), rs.getString("Image"),rs.getDate("BirthDay"), rs.getInt("roleID"));
                 return true;
             }
         } catch (SQLException e) {
             System.out.println(e);
         }
         return false;
+    }
+
+    public void update(String image, String userName) {
+        String sql = "UPDATE [dbo].[Users]\n"
+                + "   SET \n"
+                + "      [Image] = ?\n"
+                + " WHERE userName = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, image);
+            st.setString(2, userName);
+
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public User getUserByUserName(String userName) {
+        String sql = "SELECT * FROM [dbo].[Users] where UserName=?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            //set ?
+            st.setString(1, userName);
+            ResultSet rs = st.executeQuery();
+            //1
+            if (rs.next()) {
+                User u = new User(rs.getString("userName"), rs.getString("fullName"), rs.getString("password"),
+                        rs.getString("address"), rs.getString("phone"), rs.getString("email"), rs.getString("Image"),rs.getDate("BirthDay"), rs.getInt("roleID"));
+                return u;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
     }
 
     public void insert(User c) {
@@ -71,5 +106,11 @@ public class UserDAO extends DBContext {
         } catch (SQLException e) {
             System.out.println(e);
         }
+    }
+
+    public static void main(String[] args) {
+        UserDAO p = new UserDAO();
+        User list = p.check("phuuthanh2003", "123");
+        System.out.println(list.getImage());
     }
 }

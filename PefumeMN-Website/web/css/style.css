@@ -1298,7 +1298,7 @@ h6 {
 
 /* ********************************************* */
 .slider_section2 .single_slider {
-    height: 990px;
+    height: 800px;
 }
 @media only screen and (max-width: 767px) {
     .slider_section2 {
@@ -1307,7 +1307,7 @@ h6 {
 }
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
     .slider_section2 .single_slider {
-        height: 696px;
+        height: 550px;
     }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -1618,8 +1618,9 @@ h6 {
     background-attachment: scroll;
     background-position: center center;
     background-size: cover;
-    height: 910px;
+    height: 800px;
 }
+
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
     .single_slider {
         height: 639px;
@@ -1647,8 +1648,6 @@ h6 {
     visibility: visible;
     left: 20px;
 }
-
-
 
 .slider_area:hover .owl-nav div.owl-next {
     right: 20px;
@@ -3399,4 +3398,38 @@ figure {
     font-weight: 300;
     letter-spacing: 0;
     text-transform: none;
+}
+
+.responsiveFacets_sectionItemLabel {
+    padding: 8px 0 6px 0;
+    margin-bottom: 5px;
+}
+
+.responsiveFacets_sectionItemLabel:hover {
+    cursor: pointer;
+    background-color: rgba(28, 29, 24, 0.2);
+}
+
+.responsiveFacets_sectionItem:hover {
+    cursor: pointer;
+}
+
+/*uploadfile*/
+.box_info .avatar input[type="file"] {
+    display: none;
+}
+
+.edit {
+    font-size: 25px;
+    color: rgb(45, 38, 38);
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.user_image {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
 }
