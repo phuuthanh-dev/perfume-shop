@@ -15,11 +15,11 @@ public class Product {
 
     private String name, image1, image2, describe;
     private int id, quantity, starRating;
-    private double price, discount;
+    private double price, discount, salePrice;
     private Date date;
     private Category category;
 
-    public Product(String name, String image1, String image2, String describe, int id, int quantity, int starRating, double price, double discount, Date date, Category category) {
+    public Product(String name, String image1, String image2, String describe, int id, int quantity, int starRating, double price, double discount, double salePrice, Date date, Category category) {
         this.name = name;
         this.image1 = image1;
         this.image2 = image2;
@@ -29,6 +29,7 @@ public class Product {
         this.starRating = starRating;
         this.price = price;
         this.discount = discount;
+        this.salePrice = salePrice;
         this.date = date;
         this.category = category;
     }
@@ -108,6 +109,14 @@ public class Product {
         this.discount = discount;
     }
 
+    public double getSalePrice() {
+        return salePrice;
+    }
+
+    public void setSalePrice(double salePrice) {
+        this.salePrice = salePrice;
+    }
+
     public Date getDate() {
         return date;
     }
@@ -126,9 +135,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" + "name=" + name + ", image1=" + image1 + ", image2=" + image2 + ", describe=" + describe + ", id=" + id + ", quantity=" + quantity + ", starRating=" + starRating + ", price=" + price + ", discount=" + discount + ", date=" + date + ", category=" + category + '}';
+        return "Product{" + "name=" + name + ", image1=" + image1 + ", image2=" + image2 + ", describe=" + describe + ", id=" + id + ", quantity=" + quantity + ", starRating=" + starRating + ", price=" + price + ", discount=" + discount + ", salePrice=" + salePrice + ", date=" + date + ", category=" + category + '}';
     }
-
-    
 
 }
