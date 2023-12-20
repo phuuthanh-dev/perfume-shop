@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/dal/UserDAO.java</file>
             <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/home.jsp</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/LoginServlet.java</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/profile.jsp</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/model/User.java</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/RegisterServlet.java</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/HomeServlet.java</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/ProfileServlet.java</file>
+            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/js/main.js</file>
+            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/dal/ProductDAO.java</file>
+            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/model/Product.java</file>
         </group>
     </open-files>
 </project-private>
