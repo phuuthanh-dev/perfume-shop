@@ -25,7 +25,7 @@ public class UserDAO extends DBContext {
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
                 User u = new User(rs.getString("userName"), rs.getString("fullName"), rs.getString("password"),
-                        rs.getString("address"), rs.getString("phone"), rs.getString("email"), rs.getString("Image"),rs.getDate("BirthDay"), rs.getInt("roleID"));
+                        rs.getString("address"), rs.getString("phone"), rs.getString("email"), rs.getString("Image"), rs.getString("BirthDay"), rs.getInt("roleID"));
                 return u;
             }
         } catch (SQLException e) {
@@ -42,7 +42,7 @@ public class UserDAO extends DBContext {
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
                 User u = new User(rs.getString("userName"), rs.getString("fullName"), rs.getString("password"),
-                        rs.getString("address"), rs.getString("phone"), rs.getString("email"), rs.getString("Image"),rs.getDate("BirthDay"), rs.getInt("roleID"));
+                        rs.getString("address"), rs.getString("phone"), rs.getString("email"), rs.getString("Image"), rs.getString("BirthDay"), rs.getInt("roleID"));
                 return true;
             }
         } catch (SQLException e) {
@@ -77,7 +77,7 @@ public class UserDAO extends DBContext {
             //1
             if (rs.next()) {
                 User u = new User(rs.getString("userName"), rs.getString("fullName"), rs.getString("password"),
-                        rs.getString("address"), rs.getString("phone"), rs.getString("email"), rs.getString("Image"),rs.getDate("BirthDay"), rs.getInt("roleID"));
+                        rs.getString("address"), rs.getString("phone"), rs.getString("email"), rs.getString("Image"), rs.getString("BirthDay"), rs.getInt("roleID"));
                 return u;
             }
         } catch (SQLException e) {
@@ -87,13 +87,15 @@ public class UserDAO extends DBContext {
     }
 
     public void insert(User c) {
-        String sql = "INSERT INTO Users\n"
-                + "           ([userName]\n"
-                + "           ,[fullName]\n"
-                + "           ,[password]\n"
-                + "           ,[roleID]\n"
-                + "           ,[phone])\n"
-                + "     VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO [dbo].[Users]\n"
+                + "           ([UserName]\n"
+                + "           ,[FullName]\n"
+                + "           ,[Password]\n"
+                + "           ,[RoleID]\n"
+                + "           ,[BirthDay]\n"
+                + "           ,[Phone])\n"
+                + "     VALUES\n"
+                + "           (?,?,?,?,?,?)\n";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
 
@@ -101,7 +103,8 @@ public class UserDAO extends DBContext {
             st.setString(2, c.getFullName());
             st.setString(3, c.getPassword());
             st.setInt(4, c.getRoleID());
-            st.setString(5, c.getPhone());
+            st.setString(5, c.getBirthdate());
+            st.setString(6, c.getPhone());
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -110,7 +113,7 @@ public class UserDAO extends DBContext {
 
     public static void main(String[] args) {
         UserDAO p = new UserDAO();
-        User list = p.check("phuuthanh2003", "123");
-        System.out.println(list.getImage());
+        User user = new User("aa", "aaa", "123", "", "9123213", "", "", "1998-01-02", 2);
+        p.insert(user);
     }
 }

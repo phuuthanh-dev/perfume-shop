@@ -15,8 +15,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6 col-12 fxt-bg-color">
-                    <div class="fxt-content">
-                        <div class="fxt-header">
+                    <div class="fxt-content" >
+                        <div class="fxt-header" style="margin-bottom: 15px">
                             <a href="home" class="fxt-logo"><img src="images/logo.png" alt="Logo"></a>
                             <div class="fxt-page-switcher">
                                 <a href="login" class="switcher-text1 active">Log In</a>

@@ -15,6 +15,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import model.User;
 
 /**
@@ -36,7 +38,7 @@ public class RegisterServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -81,6 +83,7 @@ public class RegisterServlet extends HttpServlet {
         String uName = request.getParameter("username");
         String uPass = request.getParameter("password");
         String uPho = request.getParameter("phone");
+        String birthDate = request.getParameter("dob");
         UserDAO ud = new UserDAO();
         User user;
         boolean isDup = ud.checkUserNameDuplicate(uName);
@@ -88,8 +91,8 @@ public class RegisterServlet extends HttpServlet {
             request.setAttribute("error", "Username already exist!");
             request.getRequestDispatcher("register.jsp").forward(request, response);
         } else {
-            Date birthdate = null;
-            user = new User(fName, uName, uPass, "", uPho, "", "", birthdate, 2);
+            System.out.println(birthDate.toString());
+            user = new User(fName, uName, uPass, "", uPho, "", "", birthDate, 2);
             ud.insert(user);
             request.setAttribute("successfully", "Register successfully. Please Login!");
             request.getRequestDispatcher("login.jsp").forward(request, response);

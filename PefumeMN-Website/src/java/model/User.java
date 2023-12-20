@@ -14,11 +14,11 @@ import java.sql.Date;
 public class User {
     private String userName, fullName, password, address, phone, image, email;
     private int roleID;
-    private Date birthdate;
+    private String birthdate;
     public User() {
     }
 
-    public User(String userName, String fullName, String password, String address, String phone, String email, String image, Date birthdate, int roleID) {
+    public User(String userName, String fullName, String password, String address, String phone, String email, String image, String birthdate, int roleID) {
         this.userName = userName;
         this.fullName = fullName;
         this.password = password;
@@ -38,11 +38,11 @@ public class User {
         this.email = email;
     }
 
-    public Date getBirthdate() {
+    public String getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(Date birthdate) {
+    public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
 

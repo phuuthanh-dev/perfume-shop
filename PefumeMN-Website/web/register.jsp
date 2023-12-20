@@ -14,12 +14,12 @@
 </head>
 
 <body>
-    <section class="fxt-template-animation fxt-template-layout1">
+    <section class="fxt-template-animation fxt-template-layout1" >
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6 col-12 fxt-bg-color">
-                    <div class="fxt-content">
-                        <div class="fxt-header">
+                <div class="col-md-6 col-12 fxt-bg-color" >
+                    <div class="fxt-content" >
+                        <div class="fxt-header" style="margin-bottom: 15px">
                             <a href="home" class="fxt-logo"><img src="images/logo.png" alt="Logo"></a>
                             <div class="fxt-page-switcher">
                                 <a href="login" class="switcher-text1">Log In</a>
@@ -30,7 +30,7 @@
                             <h2 style="color: red">Register</h2>
                             <p>Create an account free and enjoy it</p>
                             <h5 style="color: red">${requestScope.error}</h5>
-                            <form id="form" method="get">
+                            <form id="form" method="post">
                                 <div class="form-group">
                                     <div class="fxt-transformY-50 fxt-transition-delay-1">
                                         <input type="name" class="form-control" name="name" placeholder="Full Name" required="required">
@@ -57,10 +57,10 @@
                                 </div>
                                 <div class="form-group">
                                     <div style="margin-bottom: 10px">Date of birth</div>
-                                    <select class="bear-dates" id="dobDay"></select>
+                                    <input type="hidden" name="dob" value="" id="here"/>
+                                    <select class="bear-dates" id="dobDay" ></select>
                                     <select class="bear-months" id="dobMonth"></select>
                                     <select class="bear-years" id="dobYear"></select>
-                                    <input type="hidden" name="dob" value="" id="here"/>
                                 </div>
                                 <div class="form-group">
                                     <div class="fxt-transformY-50 fxt-transition-delay-4">
@@ -85,19 +85,37 @@
                                             dates('option');
                                             months('option', 11, 12);
                                             years('option', 1980, 2023);
+                                            function monthNameToNumber(monthName) {
+                                                var months = [
+                                                    'January', 'February', 'March', 'April', 'May', 'June',
+                                                    'July', 'August', 'September', 'October', 'November', 'December'
+                                                ];
+                                                var lowerMonthName = monthName.toLowerCase();
+                                                var monthIndex = months.findIndex(function (month) {
+                                                    return month.toLowerCase() === lowerMonthName;
+                                                });
+                                                return monthIndex !== -1 ? monthIndex + 1 : -1;
+                                            }
 
                                             function submitForm() {
                                                 var here = document.querySelector('#here');
                                                 var form = document.getElementById('form');
                                                 var dobDay = document.getElementById('dobDay').value;
-                                                var dobMonth = parseInt(document.getElementById('dobMonth').value, 10);
+                                                var dobMonthText = document.getElementById('dobMonth').value;
+                                                var dobMonth = monthNameToNumber(dobMonthText);
                                                 var dobYear = document.getElementById('dobYear').value;
-                                                var dobFull = dobYear + '-' + dobMonth + '-' + dobDay;
+                                                if (dobMonth < 10 && dobDay < 10) {
+                                                    dobFull = dobYear + '-0' + dobMonth + '-0' + dobDay;
+                                                } else if (dobMonth < 10 && !(dobDay < 10)) {
+                                                    dobFull = dobYear + '-0' + dobMonth + '-' + dobDay;
+                                                } else if (dobDay < 10 && !(dobMonth < 10)) {
+                                                    dobFull = dobYear + '-' + dobMonth + '-0' + dobDay;
+                                                } else {
+                                                    dobFull = dobYear + '-' + dobMonth + '-' + dobDay;
+                                                }
 
-                                                console.log(dobDay);
-                                                console.log(dobMonth); // Now this will be an integer
-                                                console.log(dobYear);
-                                                console.log(dobFull);
+                                                here.value = dobFull;
+                                                form.submit();
                                             }
     </script>
 </body>
