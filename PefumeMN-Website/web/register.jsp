@@ -57,14 +57,14 @@
                                 </div>
                                 <div class="form-group">
                                     <div style="margin-bottom: 10px">Date of birth</div>
-                                    <select onclick="checkDate()" class="bear-dates" id="dobDay"></select>
+                                    <select class="bear-dates" id="dobDay"></select>
                                     <select class="bear-months" id="dobMonth"></select>
                                     <select class="bear-years" id="dobYear"></select>
-                                    <input type="hidden" value="" id="here"/>
+                                    <input type="hidden" name="dob" value="" id="here"/>
                                 </div>
                                 <div class="form-group">
                                     <div class="fxt-transformY-50 fxt-transition-delay-4">
-                                        <button type="submit" class="fxt-btn-fill">Register</button>
+                                        <button onclick="submitForm()" class="fxt-btn-fill">Register</button>
                                     </div>
                                 </div>
                             </form>
@@ -82,22 +82,23 @@
     <script src="js/main_1.js"></script>
     <script src="js/calender.js"></script>
     <script type="text/javascript">
-                                        dates('option');
-                                        months('option');
-                                        years('option', 1980, 2023);
+                                            dates('option');
+                                            months('option', 11, 12);
+                                            years('option', 1980, 2023);
 
-                                        function checkDate() {
-                                            var dobDay = document.getElementById('dobDay').value;
-                                            console.log(dobDay);
-                                        }
-                                        function submitForm() {
-                                            var here = document.querySelector('#here');
-                                            var form = document.getElementById('form');
-                                            var dobMonth = document.getElementById('dobMonth').value;
-                                            var dobYear = document.getElementById('dobYear').value;
-                                            here.value('dob', dobYear + '-' + dobMonth + '-' + dobDay);
+                                            function submitForm() {
+                                                var here = document.querySelector('#here');
+                                                var form = document.getElementById('form');
+                                                var dobDay = document.getElementById('dobDay').value;
+                                                var dobMonth = parseInt(document.getElementById('dobMonth').value, 10);
+                                                var dobYear = document.getElementById('dobYear').value;
+                                                var dobFull = dobYear + '-' + dobMonth + '-' + dobDay;
 
-                                        }
+                                                console.log(dobDay);
+                                                console.log(dobMonth); // Now this will be an integer
+                                                console.log(dobYear);
+                                                console.log(dobFull);
+                                            }
     </script>
 </body>
 
