@@ -13,17 +13,19 @@ import java.sql.Date;
  */
 public class Product {
 
-    private String name, image1, image2, describe;
+    private String name, image1, image2, describe,classifyStr;
     private int id, quantity, starRating;
     private double price, discount, salePrice;
     private Date date;
     private Category category;
+    private Supplier supplier;
 
-    public Product(String name, String image1, String image2, String describe, int id, int quantity, int starRating, double price, double discount, double salePrice, Date date, Category category) {
+    public Product(String name, String image1, String image2, String describe, String classifyStr, int id, int quantity, int starRating, double price, double discount, double salePrice, Date date, Category category, Supplier supplier) {
         this.name = name;
         this.image1 = image1;
         this.image2 = image2;
         this.describe = describe;
+        this.classifyStr = classifyStr;
         this.id = id;
         this.quantity = quantity;
         this.starRating = starRating;
@@ -32,7 +34,10 @@ public class Product {
         this.salePrice = salePrice;
         this.date = date;
         this.category = category;
+        this.supplier = supplier;
     }
+
+    
 
     public Product() {
     }
@@ -67,6 +72,14 @@ public class Product {
 
     public void setDescribe(String describe) {
         this.describe = describe;
+    }
+
+    public String getClassifyStr() {
+        return classifyStr;
+    }
+
+    public void setClassifyStr(String classifyStr) {
+        this.classifyStr = classifyStr;
     }
 
     public int getId() {
@@ -133,9 +146,19 @@ public class Product {
         this.category = category;
     }
 
+    public Supplier getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
+    }
+
     @Override
     public String toString() {
-        return "Product{" + "name=" + name + ", image1=" + image1 + ", image2=" + image2 + ", describe=" + describe + ", id=" + id + ", quantity=" + quantity + ", starRating=" + starRating + ", price=" + price + ", discount=" + discount + ", salePrice=" + salePrice + ", date=" + date + ", category=" + category + '}';
+        return "Product{" + "name=" + name + ", image1=" + image1 + ", image2=" + image2 + ", describe=" + describe + ", classifyStr=" + classifyStr + ", id=" + id + ", quantity=" + quantity + ", starRating=" + starRating + ", price=" + price + ", discount=" + discount + ", salePrice=" + salePrice + ", date=" + date + ", category=" + category + ", supplier=" + supplier + '}';
     }
+
+    
 
 }
