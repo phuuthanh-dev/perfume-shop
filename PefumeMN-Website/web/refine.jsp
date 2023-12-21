@@ -385,8 +385,11 @@
                                                         </a>
                                                         <div class="action_links">
                                                             <ul>
-                                                                <li class="add_to_cart">
-                                                                    <a href="#" title="Add to Cart">
+                                                                <li class="add_to_cart" 
+                                                                    onclick="openModal('modal_box', '${i.image1}', '${i.image2}',
+                                                                                    '${i.name}',${i.salePrice},${i.price}, '${i.describe}', '${i.classifyStr}',
+                                                                                    '${i.supplier.getCompanyName()}')" >
+                                                                    <a href="#" data-toggle="modal" data-target="#modal_box" title="Add to Cart">
                                                                         <i class="fa fa-shopping-cart"></i>
                                                                     </a>
                                                                 </li>
@@ -395,7 +398,11 @@
                                                                         <i class="fa fa-heart-o"></i>
                                                                     </a>
                                                                 </li>
-                                                                <li style="border-color: orange" class="quick_button">
+                                                                <li style="border-color: orange" class="quick_button"
+                                                                    onclick="openModal('modal_box', '${i.image1}', '${i.image2}',
+                                                                                    '${i.name}',${i.salePrice},${i.price}, '${i.describe}', '${i.classifyStr}',
+                                                                                    '${i.supplier.getCompanyName()}')" 
+                                                                    >
                                                                     <a  href="#" data-toggle="modal"
                                                                         data-target="#modal_box" title="Quick View">
                                                                         <i style="" class="fa fa-eye"></i>
@@ -476,59 +483,59 @@
                 </div>
             </div>
         </footer>
-
+        <div class="modal fade" id="modal_box" role="dialog"></div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>   
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
         <script src="js/countdown.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/modal.js"></script>
+        <script src="js/clickevents.js"></script>
+        <!--<script src="js/main.js"></script>-->
         <script type="text/javascript">
-                                                            function setCheck(obj) {
-                                                                var fries = document.getElementsByName('cid_refinee');
-                                                                if ((obj.id == 'c0') && (fries[0].checked) == true) {
-                                                                    for (var i = 1; i < fries.length; i++) {
-                                                                        fries[i].checked = false;
-                                                                    }
-                                                                } else {
-                                                                    for (var i = 1; i < fries.length; i++) {
-                                                                        if (fries[i].checked == true) {
-                                                                            fries[0].checked = false;
-                                                                            break;
+                                                                        function setCheck(obj) {
+                                                                            var fries = document.getElementsByName('cid_refinee');
+                                                                            if ((obj.id == 'c0') && (fries[0].checked) == true) {
+                                                                                for (var i = 1; i < fries.length; i++) {
+                                                                                    fries[i].checked = false;
+                                                                                }
+                                                                            } else {
+                                                                                for (var i = 1; i < fries.length; i++) {
+                                                                                    if (fries[i].checked == true) {
+                                                                                        fries[0].checked = false;
+                                                                                        break;
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                            document.getElementById('f1').submit();
                                                                         }
-                                                                    }
-                                                                }
-                                                                document.getElementById('f1').submit();
-                                                            }
 
-                                                            function getNumberStar(obj) {
-                                                                var inputStar = document.querySelector('#chosseStar');
-                                                                var a = obj.id;
-                                                                var star;
-                                                                switch (a) {
-                                                                    case 'option1':
-                                                                        star = 5;
-                                                                        break;
-                                                                    case 'option2':
-                                                                        star = 4;
-                                                                        break;
-                                                                    case 'option3':
-                                                                        star = 3;
-                                                                        break;
-                                                                    case 'option4':
-                                                                        star = 2;
-                                                                        break;
-                                                                    case 'option5':
-                                                                        star = 1;
-                                                                        break;
-                                                                    default:
-                                                                        break;
-                                                                }
-                                                                inputStar.value = star;
-                                                                document.getElementById('f1').submit();
-                                                            }
+                                                                        function getNumberStar(obj) {
+                                                                            var inputStar = document.querySelector('#chosseStar');
+                                                                            var a = obj.id;
+                                                                            var star;
+                                                                            switch (a) {
+                                                                                case 'option1':
+                                                                                    star = 5;
+                                                                                    break;
+                                                                                case 'option2':
+                                                                                    star = 4;
+                                                                                    break;
+                                                                                case 'option3':
+                                                                                    star = 3;
+                                                                                    break;
+                                                                                case 'option4':
+                                                                                    star = 2;
+                                                                                    break;
+                                                                                case 'option5':
+                                                                                    star = 1;
+                                                                                    break;
+                                                                                default:
+                                                                                    break;
+                                                                            }
+                                                                            inputStar.value = star;
+                                                                            document.getElementById('f1').submit();
+                                                                        }
 
 
         </script>

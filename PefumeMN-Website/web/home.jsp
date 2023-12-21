@@ -471,8 +471,11 @@
                                                     </a>
                                                     <div class="action_links">
                                                         <ul>
-                                                            <li class="add_to_cart">
-                                                                <a href="#" title="Add to Cart">
+                                                            <li class="add_to_cart" 
+                                                                onclick="openModal('modal_box', '${p.image1}', '${p.image2}',
+                                                                                '${p.name}',${p.salePrice},${p.price}, '${p.describe}', '${p.classifyStr}',
+                                                                                '${p.supplier.getCompanyName()}')"">
+                                                                <a href="#" data-toggle="modal" data-target="#modal_box" title="Add to Cart">
                                                                     <i class="fa fa-shopping-cart"></i>
                                                                 </a>
                                                             </li>
@@ -622,8 +625,12 @@
                                                         </a>
                                                         <div class="action_links">
                                                             <ul>
-                                                                <li class="add_to_cart">
-                                                                    <a href="#" title="Add to Cart">
+                                                                <li class="add_to_cart"
+                                                                    onclick="openModal('modal_box', '${hotDeal.image1}', '${hotDeal.image2}',
+                                                                                    '${hotDeal.name}',${hotDeal.salePrice},${hotDeal.price}, '${hotDeal.describe}', '${hotDeal.classifyStr}',
+                                                                                    '${hotDeal.supplier.getCompanyName()}')"
+                                                                    >
+                                                                    <a href="#" data-toggle="modal" data-target="#modal_box" title="Add to Cart">
                                                                         <i class="fa fa-shopping-cart"></i>
                                                                     </a>
                                                                 </li>
@@ -706,8 +713,11 @@
                                             <c:forEach items="${requestScope.giftSets}" var="giftSet" varStatus="status" >
                                                 <c:if test="${(not breakLoop && count < 3) || (breakLoop && 3 < count && count < 7)}">
                                                     <c:if test="${count == status.index}">
-                                                        <article class="single_product">
-                                                            <figure>
+                                                        <article class="single_product" data-toggle="modal" data-target="#modal_box">
+                                                            <figure 
+                                                                onclick="openModal('modal_box', '${giftSet.image1}', '${giftSet.image2}',
+                                                                                    '${giftSet.name}',${giftSet.salePrice},${giftSet.price}, '${giftSet.describe}', '${giftSet.classifyStr}',
+                                                                                    '${giftSet.supplier.getCompanyName()}')">
                                                                 <div class="product_thumb">
                                                                     <a href="#" class="primary_img">
                                                                         <img src="${giftSet.image1}" alt="">
@@ -844,8 +854,11 @@
 
                                                             <div class="action_links">
                                                                 <ul>
-                                                                    <li class="add_to_cart">
-                                                                        <a href="#" title="Add to Cart">
+                                                                    <li class="add_to_cart"
+                                                                        onclick="openModal('modal_box', '${t.image1}', '${t.image2}',
+                                                                                        '${t.name}',${t.salePrice},${t.price}, '${t.describe}', '${t.classifyStr}',
+                                                                                        '${t.supplier.getCompanyName()}')">
+                                                                        <a href="#" data-toggle="modal" data-target="#modal_box" title="Add to Cart">
                                                                             <i class="fa fa-shopping-cart"></i>
                                                                         </a>
                                                                     </li>
@@ -953,13 +966,16 @@
 
                                                         <div class="action_links">
                                                             <ul>
-                                                                <li class="add_to_cart">
-                                                                    <a href="#" title="Add to Cart">
+                                                                <li class="add_to_cart"
+                                                                    onclick="openModal('modal_box', '${i.image1}', '${i.image2}',
+                                                                                    '${i.name}',${i.salePrice},${i.price}, '${i.describe}', '${i.classifyStr}',
+                                                                                    '${i.supplier.getCompanyName()}')">
+                                                                    <a href="#" data-toggle="modal" data-target="#modal_box" title="Add to Cart">
                                                                         <i class="fa fa-shopping-cart"></i>
                                                                     </a>
                                                                 </li>
                                                                 <li class="wishlist">
-                                                                    <a href="#" title="Add to Wishlist">
+                                                                    <a href="#" data-toggle="modal" data-target="#modal_box" title="Add to Wishlist">
                                                                         <i class="fa fa-heart-o"></i>
                                                                     </a>
                                                                 </li>
@@ -1262,125 +1278,16 @@
         <!-- modal section starts  -->
 
 
-        <div class="modal fade" id="modal_box" role="dialog">
-            <!--            <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <button type="button" data-dismiss="modal" aria-label="close" class="close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                <div class="modal_body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-lg-5 col-md-5 col-sm-12">
-                                                <div class="modal_tab">
-                                                    <div class="tab-content product-details-large">
-                                                        <div class="tab-pane fade show active" id="tab1" role="tabpanel">
-                                                            <div class="modal_tab_img">
-                                                                <a href="#"><img src="images/new-product/N1-1.png" alt=""></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tab-pane fade" id="tab2" role="tabpanel">
-                                                            <div class="modal_tab_img">
-                                                                <a href="#"><img src="images/new-product/N2-1.png" alt=""></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tab-pane fade" id="tab3" role="tabpanel">
-                                                            <div class="modal_tab_img">
-                                                                <a href="#"><img src="images/new-product/N3.png" alt=""></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tab-pane fade" id="tab4" role="tabpanel">
-                                                            <div class="modal_tab_img">
-                                                                <a href="#"><img src="images/new-product/N4-1.png" alt=""></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal_tab_button">
-                                                        <ul class="nav product_navactive owl-carousel" role="tablist">
-                                                            <li>
-                                                                <a href="#tab1" class="nav-link active" data-toggle="tab" role="tab"
-                                                                   aria-controls="tab1" aria-selected="false">
-                                                                    <img src="images/new-product/N1-1.png" alt="">
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#tab2" class="nav-link" data-toggle="tab" role="tab"
-                                                                   aria-controls="tab2" aria-selected="false">
-                                                                    <img src="images/new-product/N2-1.png" alt="">
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#tab3" class="nav-link" data-toggle="tab" role="tab"
-                                                                   aria-controls="tab3" aria-selected="false">
-                                                                    <img src="images/new-product/N3.png" alt="">
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#tab4" class="nav-link" data-toggle="tab" role="tab"
-                                                                   aria-controls="tab4" aria-selected="false">
-                                                                    <img src="images/new-product/N4-1.png" alt="">
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-            
-                                            <div class="col-lg-7 col-md-7 col-sm-12">
-                                                <div class="modal_right">
-                                                    <div class="modal_title mb-10">
-                                                        <h2>Paco Rabbane Men Invictus</h2>
-                                                    </div>
-                                                    <div class="modal_price mb-10">
-                                                        <span class="new_price">Rs. 7600</span>
-                                                        <span class="old_price">Rs. 8100</span>
-                                                    </div>
-                                                    <div class="modal_description mb-15">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis earum
-                                                            nesciunt consequatur deleniti nam dicta eligendi iusto quaerat dolores
-                                                            debitis, est natus omnis consequuntur sequi. Ipsam sint rerum minus eos?</p>
-                                                    </div>
-                                                    <div class="variants_selects">
-                                                        <div class="variants_size">
-                                                            <h2>Size: 20ml</h2><br/>
-                                                        </div>
-                                                        <div class="variants_fragrance">
-                                                            <h2>Fragrance</h2>
-                                                            <select class="select_option">
-                                                                <option value="1" selected>Rose</option>
-                                                                <option value="1">Chocolate</option>
-                                                                <option value="1">Sweet</option>
-                                                                <option value="1">Fruit</option>
-                                                                <option value="1">Intense</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="modal_add_to_cart">
-                                                            <form action="#">
-                                                                <input type="number" min="1" max="100" step="1" value="1">
-                                                                <button type="submit">Add to cart</button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>-->
-        </div>
+        <div class="modal fade" id="modal_box" role="dialog"></div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>   
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
         <script src="js/countdown.js"></script>
-        <script src="js/modal.js"></script>
+        <script src="js/clickevents.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
         <script src="js/main.js"></script>
-        <script>
-
-        </script>
     </body>
 
 </html>

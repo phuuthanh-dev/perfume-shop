@@ -1,17 +1,17 @@
 function openModal(
-  modalID,
-  image1,
-  image2,
-  name,
-  salePrice,
-  price,
-  describe,
-  classifyStr,
-  companyName
-) {
-  let modalElement = document.getElementById(modalID);
-  let arr = classifyStr.split(/\s+/);
-  let modal = `<div class="modal-dialog modal-dialog-centered" role="document">
+        modalID,
+        image1,
+        image2,
+        name,
+        salePrice,
+        price,
+        describe,
+        classifyStr,
+        companyName
+        ) {
+    let modalElement = document.getElementById(modalID);
+    let arr = classifyStr.split(/\s+/);
+    let modal = `<div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
         <button type="button" data-dismiss="modal" aria-label="close" class="close">
             <span aria-hidden="true">&times;</span>
@@ -112,6 +112,40 @@ function openModal(
         </div>
     </div>
 </div>`;
-  let result = (modalElement.innerHTML = modal);
-  return result;
+    let result = modalElement.innerHTML = modal;
+    return result;
+}
+//
+function acceptRead() {
+    var elements = document.querySelectorAll(".acceptEdit");
+    var buttonVip = document.getElementById("buttonVip");
+    var buttonVip2 = document.getElementById("buttonVip2");
+    elements.forEach(function (element) {
+        element.readOnly = false;
+    });
+
+    buttonVip.style.display = 'none';
+    buttonVip2.style.display = 'block';
+}
+
+//
+function notAccept() {
+    var elements = document.querySelectorAll(".acceptEdit");
+    var buttonVip = document.getElementById("buttonVip");
+    var buttonVip2 = document.getElementById("buttonVip2");
+    elements.forEach(function (element) {
+        element.readOnly = true;
+    });
+
+    buttonVip.style.display = 'block';
+    buttonVip2.style.display = 'none';
+}
+
+//
+function checkLogout() {
+    let ok = confirm('Are you sure you want to logout?');
+    console.log(ok)
+    if (ok) {
+        document.getElementById('logout').href = 'logout';
+    }
 }

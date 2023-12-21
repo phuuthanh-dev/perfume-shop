@@ -319,30 +319,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
         <script src="js/profile.js" type="text/javascript"></script>
         <script src="js/main.js" type="text/javascript"></script>
-        <script>
-                                    function acceptRead() {
-                                        var elements = document.querySelectorAll(".acceptEdit");
-                                        var buttonVip = document.getElementById("buttonVip");
-                                        var buttonVip2 = document.getElementById("buttonVip2");
-                                        elements.forEach(function (element) {
-                                            element.readOnly = false;
-                                        });
-
-                                        buttonVip.style.display = 'none';
-                                        buttonVip2.style.display = 'block';
-                                    }
-                                    function notAccept() {
-                                        var elements = document.querySelectorAll(".acceptEdit");
-                                        var buttonVip = document.getElementById("buttonVip");
-                                        var buttonVip2 = document.getElementById("buttonVip2");
-                                        elements.forEach(function (element) {
-                                            element.readOnly = true;
-                                        });
-
-                                        buttonVip.style.display = 'block';
-                                        buttonVip2.style.display = 'none';
-                                    }
-
-        </script>
+        <script src="js/clickevents.js" type="text/javascript"></script>
     </body>
 </html>
