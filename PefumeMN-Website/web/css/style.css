@@ -3405,15 +3405,6 @@ figure {
     margin-bottom: 5px;
 }
 
-.responsiveFacets_sectionItemLabel:hover {
-    cursor: pointer;
-    background-color: rgba(28, 29, 24, 0.2);
-}
-
-.responsiveFacets_sectionItem:hover {
-    cursor: pointer;
-}
-
 /*uploadfile*/
 .box_info .avatar input[type="file"] {
     display: none;

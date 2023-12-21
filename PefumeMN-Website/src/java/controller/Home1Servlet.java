@@ -14,7 +14,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import model.Category;
 import model.Product;
@@ -73,19 +72,6 @@ public class Home1Servlet extends HttpServlet {
         List<Product> giftSets = p.getGiflSets();
         List<Product> listAll = null;
         String cidYear_raw = request.getParameter("cidYear");
-        String[] cid_refine_raw = request.getParameterValues("cid_refine");
-        int[] cid_refine = null;
-
-        //filter nếu chưa chọn option thì lấy product all, chọn r thì lấy dựa trên ô đã chọn
-        if (cid_refine_raw == null) {
-            listAll = p.getAll();
-        } else if (cid_refine_raw != null) {
-            cid_refine = new int[cid_refine_raw.length];
-            for (int i = 0; i < cid_refine.length; i++) {
-                cid_refine[i] = Integer.parseInt(cid_refine_raw[i]);
-            }
-            listAll = p.searchByCheckBox(cid_refine);
-        }
 
         //phần product 2023
         int cidYear;
@@ -114,18 +100,6 @@ public class Home1Servlet extends HttpServlet {
         Boolean[] chid = new Boolean[categories.size() + 1];
         chid[0] = true;
 
-        
-        if ((cid_refine_raw != null) && (cid_refine[0] != 0)) {
-            chid[0] = false;
-            for (int i = 1; i < chid.length; i++) {
-                if (isCheck(categories.get(i - 1).getId(), cid_refine)) {
-                    chid[i] = true;
-                } else {
-                    chid[i] = false;
-                }
-            }
-        }
-
         List<Product> listByPage = p.getListByPage(listAll, start, end);
         
         request.setAttribute("category", categories);
@@ -140,19 +114,6 @@ public class Home1Servlet extends HttpServlet {
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
     
-    
-    private boolean isCheck(int d, int[] id) {
-        if (id == null) {
-            return false;
-        } else {
-            for (int i = 0; i < id.length; i++) {
-                if (id[i] == d) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
 
     /**
      * Handles the HTTP <code>POST</code> method.
