@@ -1,6 +1,17 @@
-function openModal(modalID, image1,image2,name,salePrice, price, describe){
-    let modalElement = document.getElementById(modalID);
-    let modal = `<div class="modal-dialog modal-dialog-centered" role="document">
+function openModal(
+  modalID,
+  image1,
+  image2,
+  name,
+  salePrice,
+  price,
+  describe,
+  classifyStr,
+  companyName
+) {
+  let modalElement = document.getElementById(modalID);
+  let arr = classifyStr.split(/\s+/);
+  let modal = `<div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
         <button type="button" data-dismiss="modal" aria-label="close" class="close">
             <span aria-hidden="true">&times;</span>
@@ -70,24 +81,22 @@ function openModal(modalID, image1,image2,name,salePrice, price, describe){
                             </div>
                             <div class="modal_price mb-10">
                                 <span class="new_price">Rs. ${salePrice}</span>
-                                <span class="old_price">Rs. ${price}</span>
+                                <c:if test="${price != salePrice}">
+                                    <span class="old_price">Rs. ${price}</span>
+                                </c:if>
                             </div>
                             <div class="modal_description mb-15">
                                 <p>${describe}</p>
                             </div>
                             <div class="variants_selects">
                                 <div class="variants_size">
-                                    <h2>Size: 20ml</h2><br/>
+                                    <h2>Sub: ${companyName}</h2><br/>
                                 </div>
                                 <div class="variants_fragrance">
-                                    <h2>Fragrance</h2>
+                                    <h2>Size</h2>
                                     <select class="select_option">
-                                        <option value="1" selected>Rose</option>
-                                        <option value="1">Chocolate</option>
-                                        <option value="1">Sweet</option>
-                                        <option value="1">Fruit</option>
-                                        <option value="1">Intense</option>
-                                    </select>
+                                    ${arr.map((si, index) => `<option value="${index + 1}" selected>${si}</option>`).join('')}
+                                </select>
                                 </div>
                                 <div class="modal_add_to_cart">
                                     <form action="#">
@@ -102,7 +111,7 @@ function openModal(modalID, image1,image2,name,salePrice, price, describe){
             </div>
         </div>
     </div>
-</div>`
-    let result = modalElement.innerHTML =modal
-    return result;
+</div>`;
+  let result = (modalElement.innerHTML = modal);
+  return result;
 }
