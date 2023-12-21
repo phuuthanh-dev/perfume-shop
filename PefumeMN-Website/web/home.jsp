@@ -784,7 +784,7 @@
                                                     </label>
                                                 </div>
                                                 <c:forEach begin="0" end="${cat.size()-1}" var="i">
-                                                    <div class="responsiveFacets_sectionItemLabel" onclick="pageRefine(i)">
+                                                    <div class="responsiveFacets_sectionItemLabel" onclick="pageRefine(${i + 1})">
                                                         <label href="#" class="responsiveFacets_sectionItem" for="brand" >
                                                             ${cat.get(i).name} (${cat.get(i).getTotalProduct()})
                                                         </label>
@@ -792,7 +792,7 @@
                                                 </c:forEach>
                                             </fieldset>
                                         </div>
-                                        <input type="hidden" value="" name="cid_refine" id="submit"/>
+                                        <input type="hidden" value="" name="cid_refine" id="submitt">
                                     </form>
                                 </div>
                             </div>

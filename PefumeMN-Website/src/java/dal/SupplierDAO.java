@@ -15,8 +15,9 @@ import model.Supplier;
  *
  * @author lvhho
  */
-public class SupplierDAO extends DBContext{
-     public List<Supplier> getAll() {
+public class SupplierDAO extends DBContext {
+
+    public List<Supplier> getAll() {
         List<Supplier> list = new ArrayList<>();
         String sql = "SELECT * FROM Suppliers";
         try {
@@ -39,9 +40,9 @@ public class SupplierDAO extends DBContext{
 
         return list;
     }
-     
-     public Supplier getSupplierById(int id) {
-        String sql = "SELECT * FROM Suppliers WHERE SuppilerID =?";
+
+    public Supplier getSupplierById(int id) {
+        String sql = "SELECT * FROM Suppliers WHERE SupplierID = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             //set ?
@@ -64,5 +65,13 @@ public class SupplierDAO extends DBContext{
         }
         return null;
     }
-     
+
+    public static void main(String[] args) {
+        SupplierDAO p = new SupplierDAO();
+        int[] a = {0};
+        Supplier list = p.getSupplierById(3);
+
+        System.out.println(list.getContactName());
+    }
+
 }

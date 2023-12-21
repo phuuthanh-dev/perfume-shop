@@ -422,9 +422,8 @@ function setCountDown() {
 setCountDown();
 
 function pageRefine(x) {
-    var a = document.getElementById("submit");
-    a.value = x;
-    var form = document.getElementById("f3");
-    form.submit();
+    var submit = document.getElementById("submitt");
+    submit.value = x;
+    document.getElementById("f3").submit();
     console.log(form);
 }

@@ -382,9 +382,9 @@ public class ProductDAO extends DBContext {
     public static void main(String[] args) {
         ProductDAO p = new ProductDAO();
         int[] a = {0};
-        List<Product> list = p.searchByPrice(12.0, 144.0, a);
+        List<Product> list = p.getTopBestSellers("5");
         for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).getPrice());
+            System.out.println(list.get(i).getName());
         }
     }
 }
