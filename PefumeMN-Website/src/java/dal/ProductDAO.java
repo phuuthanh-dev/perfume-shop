@@ -37,18 +37,18 @@ public class ProductDAO extends DBContext {
                 Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
-                        rs.getString("ProductName"), 
-                        rs.getString("image1"), 
+                        rs.getString("ProductName"),
+                        rs.getString("image1"),
                         rs.getString("image2"),
-                        rs.getString("describe"), 
-                        rs.getString("QuantityPerUnit"), 
-                        rs.getInt("ProductID"), 
-                        rs.getInt("UnitsInStock"), 
+                        rs.getString("describe"),
+                        rs.getString("QuantityPerUnit"),
+                        rs.getInt("ProductID"),
+                        rs.getInt("UnitsInStock"),
                         rs.getInt("StarRating"),
-                        rs.getDouble("UnitPrice"), 
-                        rs.getDouble("Discount"), 
-                        salePrice, 
-                        rs.getDate("releaseDate"), 
+                        rs.getDouble("UnitPrice"),
+                        rs.getDouble("Discount"),
+                        salePrice,
+                        rs.getDate("releaseDate"),
                         c, s);
                 list.add(p);
             }
@@ -77,18 +77,18 @@ public class ProductDAO extends DBContext {
                 Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
-                        rs.getString("ProductName"), 
-                        rs.getString("image1"), 
+                        rs.getString("ProductName"),
+                        rs.getString("image1"),
                         rs.getString("image2"),
-                        rs.getString("describe"), 
-                        rs.getString("QuantityPerUnit"), 
-                        rs.getInt("ProductID"), 
-                        rs.getInt("UnitsInStock"), 
+                        rs.getString("describe"),
+                        rs.getString("QuantityPerUnit"),
+                        rs.getInt("ProductID"),
+                        rs.getInt("UnitsInStock"),
                         rs.getInt("StarRating"),
-                        rs.getDouble("UnitPrice"), 
-                        rs.getDouble("Discount"), 
-                        salePrice, 
-                        rs.getDate("releaseDate"), 
+                        rs.getDouble("UnitPrice"),
+                        rs.getDouble("Discount"),
+                        salePrice,
+                        rs.getDate("releaseDate"),
                         c, s);
                 list.add(p);
             }
@@ -111,21 +111,21 @@ public class ProductDAO extends DBContext {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
-               Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
+                Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
-                        rs.getString("ProductName"), 
-                        rs.getString("image1"), 
+                        rs.getString("ProductName"),
+                        rs.getString("image1"),
                         rs.getString("image2"),
-                        rs.getString("describe"), 
-                        rs.getString("QuantityPerUnit"), 
-                        rs.getInt("ProductID"), 
-                        rs.getInt("UnitsInStock"), 
+                        rs.getString("describe"),
+                        rs.getString("QuantityPerUnit"),
+                        rs.getInt("ProductID"),
+                        rs.getInt("UnitsInStock"),
                         rs.getInt("StarRating"),
-                        rs.getDouble("UnitPrice"), 
-                        rs.getDouble("Discount"), 
-                        salePrice, 
-                        rs.getDate("releaseDate"), 
+                        rs.getDouble("UnitPrice"),
+                        rs.getDouble("Discount"),
+                        salePrice,
+                        rs.getDate("releaseDate"),
                         c, s);
                 list.add(p);
             }
@@ -144,21 +144,21 @@ public class ProductDAO extends DBContext {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
-               Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
+                Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
-                        rs.getString("ProductName"), 
-                        rs.getString("image1"), 
+                        rs.getString("ProductName"),
+                        rs.getString("image1"),
                         rs.getString("image2"),
-                        rs.getString("describe"), 
-                        rs.getString("QuantityPerUnit"), 
-                        rs.getInt("ProductID"), 
-                        rs.getInt("UnitsInStock"), 
+                        rs.getString("describe"),
+                        rs.getString("QuantityPerUnit"),
+                        rs.getInt("ProductID"),
+                        rs.getInt("UnitsInStock"),
                         rs.getInt("StarRating"),
-                        rs.getDouble("UnitPrice"), 
-                        rs.getDouble("Discount"), 
-                        salePrice, 
-                        rs.getDate("releaseDate"), 
+                        rs.getDouble("UnitPrice"),
+                        rs.getDouble("Discount"),
+                        salePrice,
+                        rs.getDate("releaseDate"),
                         c, s);
                 list.add(p);
             }
@@ -180,18 +180,18 @@ public class ProductDAO extends DBContext {
                 Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
-                        rs.getString("ProductName"), 
-                        rs.getString("image1"), 
+                        rs.getString("ProductName"),
+                        rs.getString("image1"),
                         rs.getString("image2"),
-                        rs.getString("describe"), 
-                        rs.getString("QuantityPerUnit"), 
-                        rs.getInt("ProductID"), 
-                        rs.getInt("UnitsInStock"), 
+                        rs.getString("describe"),
+                        rs.getString("QuantityPerUnit"),
+                        rs.getInt("ProductID"),
+                        rs.getInt("UnitsInStock"),
                         rs.getInt("StarRating"),
-                        rs.getDouble("UnitPrice"), 
-                        rs.getDouble("Discount"), 
-                        salePrice, 
-                        rs.getDate("releaseDate"), 
+                        rs.getDouble("UnitPrice"),
+                        rs.getDouble("Discount"),
+                        salePrice,
+                        rs.getDate("releaseDate"),
                         c, s);
                 return p;
             }
@@ -213,18 +213,18 @@ public class ProductDAO extends DBContext {
                 Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
-                        rs.getString("ProductName"), 
-                        rs.getString("image1"), 
+                        rs.getString("ProductName"),
+                        rs.getString("image1"),
                         rs.getString("image2"),
-                        rs.getString("describe"), 
-                        rs.getString("QuantityPerUnit"), 
-                        rs.getInt("ProductID"), 
-                        rs.getInt("UnitsInStock"), 
+                        rs.getString("describe"),
+                        rs.getString("QuantityPerUnit"),
+                        rs.getInt("ProductID"),
+                        rs.getInt("UnitsInStock"),
                         rs.getInt("StarRating"),
-                        rs.getDouble("UnitPrice"), 
-                        rs.getDouble("Discount"), 
-                        salePrice, 
-                        rs.getDate("releaseDate"), 
+                        rs.getDouble("UnitPrice"),
+                        rs.getDouble("Discount"),
+                        salePrice,
+                        rs.getDate("releaseDate"),
                         c, s);
                 list.add(p);
             }
@@ -246,18 +246,18 @@ public class ProductDAO extends DBContext {
                 Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
-                        rs.getString("ProductName"), 
-                        rs.getString("image1"), 
+                        rs.getString("ProductName"),
+                        rs.getString("image1"),
                         rs.getString("image2"),
-                        rs.getString("describe"), 
-                        rs.getString("QuantityPerUnit"), 
-                        rs.getInt("ProductID"), 
-                        rs.getInt("UnitsInStock"), 
+                        rs.getString("describe"),
+                        rs.getString("QuantityPerUnit"),
+                        rs.getInt("ProductID"),
+                        rs.getInt("UnitsInStock"),
                         rs.getInt("StarRating"),
-                        rs.getDouble("UnitPrice"), 
-                        rs.getDouble("Discount"), 
-                        salePrice, 
-                        rs.getDate("releaseDate"), 
+                        rs.getDouble("UnitPrice"),
+                        rs.getDouble("Discount"),
+                        salePrice,
+                        rs.getDate("releaseDate"),
                         c, s);
                 list.add(p);
             }
@@ -306,10 +306,22 @@ public class ProductDAO extends DBContext {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
+                Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
-                Product p = new Product(rs.getString("ProductName"), rs.getString("image1"), rs.getString("image2"),
-                        rs.getString("describe"), rs.getInt("ProductID"), rs.getInt("UnitsInStock"), rs.getInt("StarRating"),
-                        rs.getDouble("UnitPrice"), rs.getDouble("Discount"), salePrice, rs.getDate("releaseDate"), c);
+                Product p = new Product(
+                        rs.getString("ProductName"),
+                        rs.getString("image1"),
+                        rs.getString("image2"),
+                        rs.getString("describe"),
+                        rs.getString("QuantityPerUnit"),
+                        rs.getInt("ProductID"),
+                        rs.getInt("UnitsInStock"),
+                        rs.getInt("StarRating"),
+                        rs.getDouble("UnitPrice"),
+                        rs.getDouble("Discount"),
+                        salePrice,
+                        rs.getDate("releaseDate"),
+                        c, s);
                 list.add(p);
             }
         } catch (SQLException e) {
@@ -319,13 +331,13 @@ public class ProductDAO extends DBContext {
     }
 
     //
-    public List<Product> search(Double price1, Double price2, int[] cid) {
+    public List<Product> search(double price1, double price2, int[] cid) {
         List<Product> list = new ArrayList<>();
         String sql = "SELECT * FROM Products WHERE 1=1";
-        if (price1 != null) {
+        if (price1 != 0) {
             sql += " and UnitPrice >= " + price1;
         }
-        if (price2 != null) {
+        if (price2 != 0) {
             sql += " and UnitPrice <= " + price2;
         }
         if ((cid != null) && (cid[0] != 0)) {
@@ -346,18 +358,18 @@ public class ProductDAO extends DBContext {
                 Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
-                        rs.getString("ProductName"), 
-                        rs.getString("image1"), 
+                        rs.getString("ProductName"),
+                        rs.getString("image1"),
                         rs.getString("image2"),
-                        rs.getString("describe"), 
-                        rs.getString("QuantityPerUnit"), 
-                        rs.getInt("ProductID"), 
-                        rs.getInt("UnitsInStock"), 
+                        rs.getString("describe"),
+                        rs.getString("QuantityPerUnit"),
+                        rs.getInt("ProductID"),
+                        rs.getInt("UnitsInStock"),
                         rs.getInt("StarRating"),
-                        rs.getDouble("UnitPrice"), 
-                        rs.getDouble("Discount"), 
-                        salePrice, 
-                        rs.getDate("releaseDate"), 
+                        rs.getDouble("UnitPrice"),
+                        rs.getDouble("Discount"),
+                        salePrice,
+                        rs.getDate("releaseDate"),
                         c, s);
                 list.add(p);
             }

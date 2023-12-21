@@ -402,7 +402,7 @@
                                                         <h4 class="product_name">
                                                             <a href="#">${i.name}</a>
                                                         </h4>
-                                                        <div class="product_rating" style="float: left">
+                                                        <div class="product_rating" style="width: 100%;">
                                                             <ul>
                                                                 <c:set var="numstar" value="${i.starRating}"/>
                                                                 <c:forEach begin="1" end="${numstar}" step="1">
@@ -426,8 +426,8 @@
                                                         <div class="price_box">
                                                             <c:if test="${i.price != i.salePrice}">
                                                                 <span class="old_price">Rs. ${i.price}</span>
+                                                                <span class="current_price">Rs. ${i.salePrice}</span>
                                                             </c:if>
-                                                            <span class="current_price">Rs. ${i.salePrice}</span>
                                                         </div>
                                                     </figcaption>
                                                 </figure>

@@ -88,8 +88,8 @@ public class RefineServlet extends HttpServlet {
         }
 
         //RefinePrice
-        double price1 = ((priceFrom_raw == null || priceFrom_raw == "")? 0 : Double.parseDouble(priceFrom_raw));
-        double price2 = ((priceFrom_raw == null || priceFrom_raw == "") ? 0 : Double.parseDouble(priceTo_raw));
+        double price1 = ((priceFrom_raw == null || "".equals(priceFrom_raw))? 0 : Double.parseDouble(priceFrom_raw));
+        double price2 = ((priceTo_raw == null || "".equals(priceTo_raw)) ? 0 : Double.parseDouble(priceTo_raw));
 
         //RefineHeaderBrand
         if (cid_refine_raw == null) {
@@ -106,7 +106,7 @@ public class RefineServlet extends HttpServlet {
             }
             productsCid = p.searchByCheckBox(cid_refinee);
         }
-        if (price1 != 0 && price2 != 0) {
+        if (price1 != 0 || price2 != 0) {
             productsCid = p.search(price1, price2, cid_refinee);
         }
 

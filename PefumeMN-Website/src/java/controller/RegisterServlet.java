@@ -13,10 +13,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import model.User;
 
 /**
@@ -92,7 +88,7 @@ public class RegisterServlet extends HttpServlet {
             request.getRequestDispatcher("register.jsp").forward(request, response);
         } else {
             System.out.println(birthDate.toString());
-            user = new User(fName, uName, uPass, "", uPho, "", "", birthDate, 2);
+            user = new User(uName, fName, uPass, "", uPho, "", "", birthDate, 2);
             ud.insert(user);
             request.setAttribute("successfully", "Register successfully. Please Login!");
             request.getRequestDispatcher("login.jsp").forward(request, response);
