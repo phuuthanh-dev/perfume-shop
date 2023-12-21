@@ -468,7 +468,8 @@
                                                                     <i class="fa fa-heart-o"></i>
                                                                 </a>
                                                             </li>
-                                                            <li class="quick_button" onclick="openModal('modal_box', ${p})">
+                                                            <li class="quick_button" 
+                                                                onclick="openModal('modal_box', '${p.image1}', '${p.image2}', '${p.name}',${p.salePrice},${p.price}, 'dcmm')">
                                                                 <a href="#" data-toggle="modal" data-target="#modal_box" 
                                                                    title="Quick View">
 
@@ -623,7 +624,8 @@
                                                                 </li>
                                                                 <li class="quick_button" >
 
-                                                                    <a onclick="openModal('modal_box', '${hotDeal.image1}', '${hotDeal.image2}', '${hotDeal.name}',${hotDeal.salePrice},${hotDeal.price}, 'lala')" 
+                                                                    <a href="#" data-toggle="modal" data-target="#modal_box"
+                                                                       onclick="openModal('modal_box', '${hotDeal.image1}', '${hotDeal.image2}', '${hotDeal.name}',${hotDeal.salePrice},${hotDeal.price}, 'lala')" 
                                                                        title="Quick view">
                                                                         <i class="fa fa-eye" ></i>
                                                                     </a>
@@ -856,7 +858,7 @@
                                                                             <i class="fa fa-random"></i>
                                                                         </a>
                                                                     </li>
-                                                                    <li class="quick_button">
+                                                                    <li class="quick_button" onclick="openModal('modal_box', '${t.image1}', '${t.image2}', '${t.name}',${t.salePrice},${t.price}, 'dcmm')">>
                                                                         <a href="#" data-toggle="modal" data-target="#modal_box"
                                                                            title="Quick View">
                                                                             <i class="fa fa-eye"></i>
@@ -967,7 +969,7 @@
                                                                         <i class="fa fa-random"></i>
                                                                     </a>
                                                                 </li>
-                                                                <li class="quick_button">
+                                                                <li class="quick_button" onclick="openModal('modal_box', '${i.image1}', '${i.image2}', '${i.name}',${i.salePrice},${i.price}, 'dcmm')">
                                                                     <a href="#" data-toggle="modal"
                                                                        data-target="#modal_box" title="Quick View">
                                                                         <i class="fa fa-eye"></i>
