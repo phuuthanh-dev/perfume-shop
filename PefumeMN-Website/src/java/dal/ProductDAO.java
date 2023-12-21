@@ -139,10 +139,10 @@ public class ProductDAO extends DBContext {
         return null;
     }
 
-    // 5> List product on sale => random sp
-    public List<Product> getProductsOnSale() {
+    // 5> List product show in footer => random sp
+    public List<Product> getFeaturedProducts() {
         List<Product> list = new ArrayList<>();
-        String sql = "SELECT TOP 2 * FROM Products ORDER BY NEWID()";
+        String sql = "SELECT TOP 3 * FROM Products ORDER BY NEWID()";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();

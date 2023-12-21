@@ -298,49 +298,42 @@
                                             <li class="mini_cart_wrapper">
                                                 <a href="javascript:void(0)">
                                                     <i class="fa fa-shopping-cart"></i>
-                                                    <span class="item_count">2</span>
+                                                    <span class="item_count">${requestScope.productFooter1.size()}</span>
                                                 </a>
 
                                                 <!-- mini cart  -->
                                                 <div class="mini_cart mini_cart2">
+                                                    <c:set var="subTotal" value="0"/>
+                                                    <c:set var="subPrice" value="0"/>
                                                     <div class="cart_gallery">
-                                                        <div class="cart_item">
-                                                            <div class="cart_img">
-                                                                <a href="#"><img src="images/small-product/mini1.png"
-                                                                                 alt="Perfume"></a>
+                                                        <c:forEach items="${requestScope.productFooter1}" var="p">
+                                                            <div class="cart_item">
+                                                                <div class="cart_img">
+                                                                    <a href="#"><img src="${p.image1}"
+                                                                                     alt="Perfume"></a>
+                                                                </div>
+                                                                <div class="cart_info">
+                                                                    <a href="#">${p.name}</a>
+                                                                    <p><span>Rs.${p.salePrice}</span> X 1</p>
+                                                                </div>
+                                                                <div class="cart_remove">
+                                                                    <a href="#"><i class="fa fa-times"></i></a>
+                                                                </div>
                                                             </div>
-                                                            <div class="cart_info">
-                                                                <a href="#">Hugo Boss</a>
-                                                                <p><span>Rs. 3640</span> X 1</p>
-                                                            </div>
-                                                            <div class="cart_remove">
-                                                                <a href="#"><i class="fa fa-times"></i></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cart_item">
-                                                            <div class="cart_img">
-                                                                <a href="#"><img src="images/small-product/mini2.png"
-                                                                                 alt="Perfume"></a>
-                                                            </div>
-                                                            <div class="cart_info">
-                                                                <a href="#">Bvlgari</a>
-                                                                <p><span>Rs. 8350</span> X 1</p>
-                                                            </div>
-                                                            <div class="cart_remove">
-                                                                <a href="#"><i class="fa fa-times"></i></a>
-                                                            </div>
-                                                        </div>
+                                                                <c:set var="subTotal" value="${subTotal + p.price}"/>
+                                                                <c:set var="subPrice" value="${subPrice + p.salePrice}"/>
+                                                        </c:forEach>
                                                     </div>
                                                     <div class="mini_cart_table">
                                                         <div class="cart_table_border">
                                                             <div class="cart_total">
                                                                 <span>Sub Total :</span>
-                                                                <span class="price">Rs. 11990</span>
+                                                                <span class="price">Rs. ${subTotal}</span>
                                                             </div>
 
                                                             <div class="cart_total mt-10">
                                                                 <span>Total :</span>
-                                                                <span class="price">Rs. 11990</span>
+                                                                <span class="price">Rs. ${subPrice}</span>
                                                             </div>
 
                                                         </div>
@@ -1078,153 +1071,62 @@
                                 <h3>Featured Products</h3>
                                 <div class="small_product_container small_product_column1 owl-carousel">
                                     <div class="small_product_list">
-                                        <article class="single_product">
-                                            <figure>
-                                                <div class="product_thumb">
-                                                    <a href="#" class="primary_img">
-                                                        <img src="images/onsale/D12-1.png" alt="">
-                                                    </a>
-                                                    <a href="#" class="secondary_img">
-                                                        <img src="images/onsale/D12-2.png" alt="">
-                                                    </a>
-
-
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name">
-                                                        <a href="#" style="color: white;">Bvlgari Women Goldea</a>
-                                                    </h4>
-
-                                                    <div class="price_box">
-                                                        <span class="old_price">Rs. 3999</span>
-                                                        <span class="current_price" style="color: white;">Rs. 3700</span>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-                                        <article class="single_product">
-                                            <figure>
-                                                <div class="product_thumb">
-                                                    <a href="#" class="primary_img">
-                                                        <img src="images/onsale/D11-1.png" alt="">
-                                                    </a>
-                                                    <a href="#" class="secondary_img">
-                                                        <img src="images/onsale/D11-2.png" alt="">
-                                                    </a>
-
-
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name">
-                                                        <a href="#" style="color: white;">Jimmy Choo Illicit Flower
+                                        <c:forEach items="${requestScope.productFooter1}" var="p">
+                                            <article class="single_product">
+                                                <figure>
+                                                    <div class="product_thumb">
+                                                        <a href="#" class="primary_img">
+                                                            <img src="${p.image1}" alt="">
                                                         </a>
-                                                    </h4>
-                                                    <div class="price_box">
-                                                        <span class="old_price">Rs. 4999</span>
-                                                        <span class="current_price" style="color: white;">Rs.
-                                                            4200</span>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-                                        <article class="single_product">
-                                            <figure>
-                                                <div class="product_thumb">
-                                                    <a href="#" class="primary_img">
-                                                        <img src="images/best-product/B5-1.png" alt="">
-                                                    </a>
-                                                    <a href="#" class="secondary_img">
-                                                        <img src="images/best-product/B5-2.png" alt="">
-                                                    </a>
+                                                        <a href="#" class="secondary_img">
+                                                            <img src="${p.image2}" alt="">
+                                                        </a>
 
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name">
-                                                        <a href="#" style="color: white;">Jimmy Choo Women Fever</a>
-                                                    </h4>
 
-                                                    <div class="price_box">
-                                                        <span class="old_price">Rs. 7499</span>
-                                                        <span class="current_price" style="color: white;">Rs. 7200</span>
                                                     </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
+                                                    <figcaption class="product_content">
+                                                        <h4 class="product_name">
+                                                            <a href="#" style="color: white;">${p.name}</a>
+                                                        </h4>
+
+                                                        <div class="price_box">
+                                                            <c:if test="${i.price != i.salePrice}">
+                                                                <span class="old_price" style="color: white;">Rs. ${p.price}</span>
+                                                            </c:if>
+                                                            <span class="current_price" style="color: white;">Rs. ${p.salePrice}</span>
+                                                        </div>
+                                                    </figcaption>
+                                                </figure>
+                                            </article>
+                                        </c:forEach>
                                     </div>
                                     <div class="small_product_list">
-                                        <article class="single_product">
-                                            <figure>
-                                                <div class="product_thumb">
-                                                    <a href="#" class="primary_img">
-                                                        <img src="images/best-product/B4-1.png" alt="">
-                                                    </a>
-                                                    <a href="#" class="secondary_img">
-                                                        <img src="images/best-product/B4-2.png" alt="">
-                                                    </a>
-
-
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name">
-                                                        <a href="#" style="color: white;">Mugler Aura Women</a>
-                                                    </h4>
-
-                                                    <div class="price_box">
-                                                        <span class="old_price">Rs. 7999</span>
-                                                        <span class="current_price" style="color: white;">Rs. 7550</span>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-                                        <article class="single_product">
-                                            <figure>
-                                                <div class="product_thumb">
-                                                    <a href="#" class="primary_img">
-                                                        <img src="images/onsale/D1-1.png" alt="">
-                                                    </a>
-                                                    <a href="#" class="secondary_img">
-                                                        <img src="images/onsale/D1-2.png" alt="">
-                                                    </a>
-
-
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name">
-                                                        <a href="#" style="color: white;">Paco Rabbane Pure XS for her
+                                        <c:forEach items="${requestScope.productFooter2}" var="p">
+                                            <article class="single_product">
+                                                <figure>
+                                                    <div class="product_thumb">
+                                                        <a href="#" class="primary_img">
+                                                            <img src="${p.image1}" alt="">
                                                         </a>
-                                                    </h4>
-                                                    <div class="price_box">
-                                                        <span class="old_price">Rs. 6550</span>
-                                                        <span class="current_price" style="color: white;">Rs.
-                                                            4250</span>
+                                                        <a href="#" class="secondary_img">
+                                                            <img src="${p.image2}" alt="">
+                                                        </a>
                                                     </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-                                        <article class="single_product">
-                                            <figure>
-                                                <div class="product_thumb">
-                                                    <a href="#" class="primary_img">
-                                                        <img src="images/new-product/N5-1.png" alt="">
-                                                    </a>
-                                                    <a href="#" class="secondary_img">
-                                                        <img src="images/new-product/N5-2.png" alt="">
-                                                    </a>
+                                                    <figcaption class="product_content">
+                                                        <h4 class="product_name">
+                                                            <a href="#" style="color: white;">${p.name}</a>
+                                                        </h4>
 
-
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name">
-                                                        <a href="#" style="color: white;">Kenzo Women World</a>
-                                                    </h4>
-
-                                                    <div class="price_box">
-                                                        <span class="old_price">Rs. 5999</span>
-                                                        <span class="current_price" style="color: white;">Rs. 5900</span>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
+                                                        <div class="price_box">
+                                                            <c:if test="${i.price != i.salePrice}">
+                                                                <span class="old_price" style="color: white;">Rs. ${p.price}</span>
+                                                            </c:if>
+                                                            <span class="current_price" style="color: white;">Rs. ${p.salePrice}</span>
+                                                        </div>
+                                                    </figcaption>
+                                                </figure>
+                                            </article>
+                                        </c:forEach>
                                     </div>
                                 </div>
                             </div>
@@ -1234,78 +1136,32 @@
                                 <h3>Most Viewed Products</h3>
                                 <div class="small_product_container small_product_column1 owl-carousel">
                                     <div class="small_product_list">
-                                        <article class="single_product">
-                                            <figure>
-                                                <div class="product_thumb">
-                                                    <a href="#" class="primary_img">
-                                                        <img src="images/onsale/D12-1.png" alt="">
-                                                    </a>
-                                                    <a href="#" class="secondary_img">
-                                                        <img src="images/onsale/D12-2.png" alt="">
-                                                    </a>
-
-
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name">
-                                                        <a href="#" style="color: white;">Bvlgari Women Goldea</a>
-                                                    </h4>
-
-                                                    <div class="price_box">
-                                                        <span class="old_price">Rs. 3999</span>
-                                                        <span class="current_price" style="color: white;">Rs. 3700</span>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-                                        <article class="single_product">
-                                            <figure>
-                                                <div class="product_thumb">
-                                                    <a href="#" class="primary_img">
-                                                        <img src="images/onsale/D11-1.png" alt="">
-                                                    </a>
-                                                    <a href="#" class="secondary_img">
-                                                        <img src="images/onsale/D11-2.png" alt="">
-                                                    </a>
-
-
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name">
-                                                        <a href="#" style="color: white;">Jimmy Choo Illicit Flower
+                                        <c:forEach items="${requestScope.productFooter2}" var="p">
+                                            <article class="single_product">
+                                                <figure>
+                                                    <div class="product_thumb">
+                                                        <a href="#" class="primary_img">
+                                                            <img src="${p.image1}" alt="">
                                                         </a>
-                                                    </h4>
-                                                    <div class="price_box">
-                                                        <span class="old_price">Rs. 4999</span>
-                                                        <span class="current_price" style="color: white;">Rs.
-                                                            4200</span>
+                                                        <a href="#" class="secondary_img">
+                                                            <img src="${p.image2}" alt="">
+                                                        </a>
                                                     </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-                                        <article class="single_product">
-                                            <figure>
-                                                <div class="product_thumb">
-                                                    <a href="#" class="primary_img">
-                                                        <img src="images/best-product/B5-1.png" alt="">
-                                                    </a>
-                                                    <a href="#" class="secondary_img">
-                                                        <img src="images/best-product/B5-2.png" alt="">
-                                                    </a>
+                                                    <figcaption class="product_content">
+                                                        <h4 class="product_name">
+                                                            <a href="#" style="color: white;">${p.name}</a>
+                                                        </h4>
 
-                                                </div>
-                                                <figcaption class="product_content">
-                                                    <h4 class="product_name">
-                                                        <a href="#" style="color: white;">Jimmy Choo Women Fever</a>
-                                                    </h4>
-
-                                                    <div class="price_box">
-                                                        <span class="old_price">Rs. 7499</span>
-                                                        <span class="current_price" style="color: white;">Rs. 7200</span>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
+                                                        <div class="price_box">
+                                                            <c:if test="${i.price != i.salePrice}">
+                                                                <span class="old_price" style="color: white;">Rs. ${p.price}</span>
+                                                            </c:if>
+                                                            <span class="current_price" style="color: white;">Rs. ${p.salePrice}</span>
+                                                        </div>
+                                                    </figcaption>
+                                                </figure>
+                                            </article>
+                                        </c:forEach>
                                     </div>
                                     <div class="small_product_list">
                                         <article class="single_product">
