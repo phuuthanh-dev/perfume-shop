@@ -480,9 +480,9 @@
                                                                 </a>
                                                             </li>
                                                             <li class="quick_button" 
-                                                                onclick="openModal('modal_box', '${p.image1}', '${p.image2}', 
-                                                                       '${p.name}',${p.salePrice},${p.price}, '${p.describe}','${p.classifyStr}',
-                                                                       '${p.supplier.getCompanyName()}')" >
+                                                                onclick="openModal('modal_box', '${p.image1}', '${p.image2}',
+                                                                                '${p.name}',${p.salePrice},${p.price}, '${p.describe}', '${p.classifyStr}',
+                                                                                '${p.supplier.getCompanyName()}')" >
                                                                 <a href="#" data-toggle="modal" data-target="#modal_box" 
                                                                    title="Quick View">
 
@@ -638,9 +638,9 @@
                                                                 <li class="quick_button" >
 
                                                                     <a href="#" data-toggle="modal" data-target="#modal_box"
-                                                                       onclick="openModal('modal_box', '${hotDeal.image1}', '${hotDeal.image2}', 
-                                                                       '${hotDeal.name}',${hotDeal.salePrice},${hotDeal.price}, '${hotDeal.describe}','${hotDeal.classifyStr}',
-                                                                       '${hotDeal.supplier.getCompanyName()}')" 
+                                                                       onclick="openModal('modal_box', '${hotDeal.image1}', '${hotDeal.image2}',
+                                                                                       '${hotDeal.name}',${hotDeal.salePrice},${hotDeal.price}, '${hotDeal.describe}', '${hotDeal.classifyStr}',
+                                                                                       '${hotDeal.supplier.getCompanyName()}')" 
                                                                        title="Quick view">
                                                                         <i class="fa fa-eye" ></i>
                                                                     </a>
@@ -774,29 +774,17 @@
                                     <div class="section_title section_title_style2">
                                         <h2 style="font-size: 20px">Brand</h2>
                                     </div>
-                                    <form id="f1" action="home1" method="get">
+                                    <form id="f3" action="refine" method="get">
                                         <div class="" style="margin: 0">
                                             <h2 style="font-size: 16px;"></h2>
                                             <fieldset class="responsiveFacets_sectionContent " aria-hidden="false">
-                                                <div href="#" class="responsiveFacets_sectionItemLabel" onclick="checkLogout()">
-                                                    <!--                                                        <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" 
-                                                    ${chid[0]?"checked":""} 
-                                                    id="c0" 
-                                                    name="cid_refine"
-                                                    value="${0}">-->
+                                                <div href="#" class="responsiveFacets_sectionItemLabel" onclick="pageRefine(0)">
                                                     <label class="responsiveFacets_sectionItem" for="brand">
                                                         ALL (${productsYear.size()})
                                                     </label>
                                                 </div>
                                                 <c:forEach begin="0" end="${cat.size()-1}" var="i">
-                                                    <div class="responsiveFacets_sectionItemLabel" onclick="checkLogout()">
-                                                        <!--                                                            <input type="checkbox" ${cat.get(i).getId()==cid?"checked":""}
-                                                                                                                           class="responsiveFacets_sectionItemCheckbox"
-                                                                                                                           id="brand" 
-                                                                                                                           name="cid_refine"
-                                                                                                                           value="${cat.get(i).getId()}"
-                                                        ${chid[i+1]?"checked":""}
-                                                        onclick="setCheck(this)"/>-->
+                                                    <div class="responsiveFacets_sectionItemLabel" onclick="pageRefine(i)">
                                                         <label href="#" class="responsiveFacets_sectionItem" for="brand" >
                                                             ${cat.get(i).name} (${cat.get(i).getTotalProduct()})
                                                         </label>
@@ -804,6 +792,7 @@
                                                 </c:forEach>
                                             </fieldset>
                                         </div>
+                                        <input type="hidden" value="" name="cid_refine" id="submit"/>
                                     </form>
                                 </div>
                             </div>
@@ -874,9 +863,9 @@
                                                                         </a>
                                                                     </li>
                                                                     <li class="quick_button" 
-                                                                        onclick="openModal('modal_box', '${t.image1}', '${t.image2}', 
-                                                                       '${t.name}',${t.salePrice},${t.price}, '${t.describe}','${t.classifyStr}',
-                                                                       '${t.supplier.getCompanyName()}')" >
+                                                                        onclick="openModal('modal_box', '${t.image1}', '${t.image2}',
+                                                                                                '${t.name}',${t.salePrice},${t.price}, '${t.describe}', '${t.classifyStr}',
+                                                                                                '${t.supplier.getCompanyName()}')" >
                                                                         <a href="#" data-toggle="modal" data-target="#modal_box"
                                                                            title="Quick View">
                                                                             <i class="fa fa-eye"></i>
@@ -988,9 +977,9 @@
                                                                     </a>
                                                                 </li>
                                                                 <li class="quick_button" 
-                                                                    onclick="openModal('modal_box', '${i.image1}', '${i.image2}', 
-                                                                       '${i.name}',${i.salePrice},${i.price}, '${i.describe}','${i.classifyStr}',
-                                                                       '${i.supplier.getCompanyName()}')" >
+                                                                    onclick="openModal('modal_box', '${i.image1}', '${i.image2}',
+                                                                                            '${i.name}',${i.salePrice},${i.price}, '${i.describe}', '${i.classifyStr}',
+                                                                                            '${i.supplier.getCompanyName()}')" >
                                                                     <a href="#" data-toggle="modal"
                                                                        data-target="#modal_box" title="Quick View">
                                                                         <i class="fa fa-eye"></i>

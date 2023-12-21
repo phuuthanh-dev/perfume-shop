@@ -94,7 +94,7 @@ function openModal(
                                 </div>
                                 <div class="variants_fragrance">
                                     <h2>Size</h2>
-                                    <select class="select_option">
+                                    <select class="select_option" style="padding: 10px 0">
                                     ${arr.map((si, index) => `<option value="${index + 1}" selected>${si}</option>`).join('')}
                                 </select>
                                 </div>

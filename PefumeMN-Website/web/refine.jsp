@@ -63,8 +63,8 @@
                             </div>
                             <div class="col-lg-6">
                                 <form action="" style="display: flex; justify-content: center">
-                                    <input type="text" placeholder="Search your perfume" style="width: 60%; padding: 2px 5px; border-radius: 15px">
-                                    <button type="submit" style="border-radius: 17px; font-size: 18px;"><i class="fa fa-search"></i></button>
+                                    <input type="text" placeholder="Search your perfume" style="width: 60%; padding: 4px 10px; border-radius: 15px">
+                                    <button type="submit" style="border-radius: 50%; width: 40px; font-size: 18px;"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
                             <div class="col-lg-3">
@@ -72,9 +72,16 @@
                                     <div class="header_right_info">
                                         <ul>
                                             <li class="user">
-                                                <a href="login" title="Add to Cart">
-                                                    <i class="fa fa-user-circle"></i>
-                                                </a>
+                                                <c:if test="${sessionScope.account == null}">
+                                                    <a href="login" title="Icon User">
+                                                        <i class="fa fa-user-circle"></i>
+                                                    </a>
+                                                </c:if>
+                                                <c:if test="${sessionScope.account != null}">
+                                                    <a href="profile" title="Icon User">
+                                                        <i class="fa fa-user-circle"></i>
+                                                    </a>
+                                                </c:if>
                                             </li>
                                             <li class="header_wishlist">
                                                 <a href="#">
@@ -239,7 +246,7 @@
                                             <fieldset class="responsiveFacets_sectionContent " aria-hidden="false">
                                                 <div class="responsiveFacets_sectionItemLabel">
                                                     <div>
-                                                        <input type="hidden" value="" name="numberStar" id="chosseStar"/>
+                                                        <input type="hidden" value="${numberStar}" name="numberStar" id="chosseStar"/>
                                                         <div id="option1" style="margin-bottom: 10px; cursor: pointer" onclick="getNumberStar(this)">
                                                             <i style="color: orange" class="fa fa-star"></i>
                                                             <i style="color: orange" class="fa fa-star"></i>
@@ -292,14 +299,14 @@
                                                          justify-content: space-between;
                                                          align-items: center;
                                                          padding-right: 30px">
-                                                        <input type="number" style="width: 90px" name="pricefrom" class="shopee-price-range-filter__input" placeholder="$ FROM" value="">
+                                                        <input type="number" style="width: 90px" name="pricefrom" class="shopee-price-range-filter__input" placeholder="$ FROM" value="${price1 == 0 ? "$ FROM" : price1}" step="0.5" min=1>
                                                         <div class="shopee-price-range-filter__range-line" style="
                                                              flex: 1;
                                                              height: 1px;
                                                              background: #bdbdbd;
                                                              margin: 0 10px;">
                                                         </div>
-                                                        <input type="number" style="width: 90px" name="priceto" class="shopee-price-range-filter__input" placeholder="$ TO" value="">
+                                                        <input type="number" style="width: 90px" name="priceto" class="shopee-price-range-filter__input" placeholder="$ TO" value="${price2 == 0 ? "" : price2}" step="0.5" min=1">
                                                     </div>
                                                     <button class="submit-price" style="">Apply</button>
                                                 </div>
@@ -390,8 +397,8 @@
                                                                     </a>
                                                                 </li>
                                                                 <li class="quick_button">
-                                                                    <a href="#" data-toggle="modal"
-                                                                       data-target="#modal_box" title="Quick View">
+                                                                    <a  href="#" data-toggle="modal"
+                                                                        data-target="#modal_box" title="Quick View">
                                                                         <i class="fa fa-eye"></i>
                                                                     </a>
                                                                 </li>
@@ -426,8 +433,8 @@
                                                         <div class="price_box">
                                                             <c:if test="${i.price != i.salePrice}">
                                                                 <span class="old_price">Rs. ${i.price}</span>
-                                                                <span class="current_price">Rs. ${i.salePrice}</span>
                                                             </c:if>
+                                                            <span class="current_price">Rs. ${i.salePrice}</span>
                                                         </div>
                                                     </figcaption>
                                                 </figure>
@@ -437,9 +444,16 @@
                                 </div>
 
                                 <div class="pagination col-md-12" style="margin-top: 20px; display: flex; justify-content: center">
-                                    <c:forEach begin="${1}" end="${requestScope.numberpage}" var="i">
-                                        <a href="refine?page=${i}">${i}</a>
-                                    </c:forEach>
+                                    <c:if test="${requestScope.cid_refinee == null}">
+                                        <c:forEach begin="${1}" end="${requestScope.numberpage}" var="i">
+                                            <a href="refine?page=${i}">${i}</a>
+                                        </c:forEach>
+                                    </c:if>
+                                    <c:if test="${requestScope.cid_refinee != null}">
+                                        <c:forEach begin="${1}" end="${requestScope.numberpage}" var="i"> 
+                                            <a href="refine?${stringForLink}&numberStar=${numberStar}&pricefrom=${price1}&priceto=${price2}&page=${i}">${i}</a>
+                                        </c:forEach>
+                                    </c:if>
                                 </div>
                             </div>
                         </div>
@@ -471,6 +485,7 @@
         <script src="js/countdown.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/modal.js"></script>
         <script type="text/javascript">
                                                             function setCheck(obj) {
                                                                 var fries = document.getElementsByName('cid_refinee');
@@ -515,6 +530,8 @@
                                                                 inputStar.value = star;
                                                                 document.getElementById('f1').submit();
                                                             }
+
+
         </script>
     </body>
 </html>

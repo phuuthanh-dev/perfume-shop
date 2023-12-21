@@ -9,7 +9,9 @@ html,
 body {
     height: 100%;
 }
-
+select.select_option {
+    padding: 10px 0;
+}
 body {
     line-height: 24px;
     font-size: 14px;
@@ -196,6 +198,7 @@ body {
     display: block;
     margin-bottom: 25px;
 }
+
 .offcanvas_menu_wrapper .header_right_info > ul > li > a {
     color: #000000;
 }
@@ -2232,7 +2235,6 @@ figure {
         top: -63px;
     }
 }
-
 
 .home_section_two .owl-nav div {
     font-size: 15px;

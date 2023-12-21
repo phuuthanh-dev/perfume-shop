@@ -331,7 +331,7 @@ public class ProductDAO extends DBContext {
     }
 
     //
-    public List<Product> search(double price1, double price2, int[] cid) {
+    public List<Product> searchByPrice(double price1, double price2, int[] cid) {
         List<Product> list = new ArrayList<>();
         String sql = "SELECT * FROM Products WHERE 1=1";
         if (price1 != 0) {
@@ -382,7 +382,7 @@ public class ProductDAO extends DBContext {
     public static void main(String[] args) {
         ProductDAO p = new ProductDAO();
         int[] a = {0};
-        List<Product> list = p.search(12.0, 144.0, a);
+        List<Product> list = p.searchByPrice(12.0, 144.0, a);
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).getPrice());
         }

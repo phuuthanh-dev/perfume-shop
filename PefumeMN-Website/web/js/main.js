@@ -421,4 +421,10 @@ function setCountDown() {
 
 setCountDown();
 
-
+function pageRefine(x) {
+    var a = document.getElementById("submit");
+    a.value = x;
+    var form = document.getElementById("f3");
+    form.submit();
+    console.log(form);
+}
