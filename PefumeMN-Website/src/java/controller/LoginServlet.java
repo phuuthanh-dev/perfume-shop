@@ -88,6 +88,12 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("account", user);
             String image = user.getImage();
             session.setAttribute("imageUser", image);
+            
+            session.setAttribute("address", user.getAddress());
+            session.setAttribute("name", user.getFullName());
+            session.setAttribute("phone", user.getPhone());
+            session.setAttribute("email", user.getEmail());
+            session.setAttribute("birthdate", user.getBirthdate());
             response.sendRedirect("home");
         }
     }

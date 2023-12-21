@@ -77,7 +77,7 @@ public class ProfileServlet extends HttpServlet {
             link = link.substring(0, link.length() - 1);
         }
 
-        ud.update(link, userId);
+        ud.updateImage(link, userId);
         User account = null;
 
         if (userId != null) {
@@ -87,6 +87,8 @@ public class ProfileServlet extends HttpServlet {
         if (account != null) {
             session.setAttribute("imageUser", account.getImage());
         }
+
+        request.setAttribute("acceptUpdate", 0);
         request.setAttribute("link", link);
         request.getRequestDispatcher("profile.jsp").forward(request, response);
     }
@@ -102,7 +104,26 @@ public class ProfileServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        UserDAO u = new UserDAO();
+        String name = request.getParameter("name");
+        String username = request.getParameter("username");
+        String address = request.getParameter("address");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+        String birthdate = request.getParameter("birthday");
+        HttpSession session = request.getSession();
+
+        u.update(name, address, phone, email, birthdate, username);
+
+        User account = u.getUserByUserName(username);
+
+        request.setAttribute("acceptUpdate", 1);
+        session.setAttribute("name", account.getFullName());
+        session.setAttribute("address", account.getAddress());
+        session.setAttribute("phone", account.getPhone());
+        session.setAttribute("email", account.getEmail());
+        session.setAttribute("birthdate", account.getBirthdate());
+        request.getRequestDispatcher("profile.jsp").forward(request, response);
     }
 
     /**

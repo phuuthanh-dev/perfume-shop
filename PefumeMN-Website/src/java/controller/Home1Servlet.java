@@ -68,6 +68,7 @@ public class Home1Servlet extends HttpServlet {
         ProductDAO p = new ProductDAO();
         List<Category> categories = d.getAll();
         List<Product> productsYear = p.getAll();
+        Boolean[] chid = new Boolean[categories.size() + 1];
         List<Product> productsTop5Sellers = p.getTopBestSellers("5");
         List<Product> giftSets = p.getGiflSets();
         List<Product> listAll = null;
@@ -83,7 +84,7 @@ public class Home1Servlet extends HttpServlet {
         
         //phan trang
         int page = 1, numPerPage = 9;
-        int size = listAll.size();
+        int size = productsYear.size();
         int numberpage = ((size % numPerPage == 0) ? (size / 9) : (size / 9) + 1);
         String xpage = request.getParameter("page");
         if (xpage == null) {
@@ -97,11 +98,16 @@ public class Home1Servlet extends HttpServlet {
 
         //Hot product
         Product spHot = p.getHotDeal();
-        Boolean[] chid = new Boolean[categories.size() + 1];
-        chid[0] = true;
-
-        List<Product> listByPage = p.getListByPage(listAll, start, end);
         
+         if (cidYear_raw == null) {
+            chid[0] = true;
+        } else {
+            chid[0] = false;
+        }
+
+        List<Product> listByPage = p.getListByPage(productsYear, start, end);
+        
+        request.setAttribute("cidYear", cidYear_raw);
         request.setAttribute("category", categories);
         request.setAttribute("productsYear", productsYear);
         request.setAttribute("hotDeal", spHot);

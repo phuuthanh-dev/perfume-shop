@@ -42,6 +42,11 @@
                 background-color: rgba(33, 40, 50, 0.03);
                 border-bottom: 1px solid rgba(33, 40, 50, 0.125);
             }
+
+            #buttonVip2{
+                display: none;
+            }
+
             .form-control, .dataTable-input {
                 display: block;
                 width: 100%;
@@ -123,7 +128,6 @@
                 <div class="col-lg-6" style="padding: 0px; display: flex; justify-content: flex-end; align-items: center">
                     <div class="header_right_info" style="margin-right: 50px">
                         <ul style="text-align: center; height: 100%; width: 100%">
-
                             <li class="header_wishlist" style="margin-right: 20px">
                                 <a href="#">
                                     <i class="fa fa-heart-o" style="color: white"></i>
@@ -195,7 +199,7 @@
                         <ul>
                             <c:if test="${user!=null}">
                                 <li>
-                                    <h4 href="profile" style="color: white">Hello, ${user==null ? "": user.fullName}!</h4>
+                                    <h4 href="profile" style="color: white">Hello, ${user==null ? "": sessionScope.name}!</h4>
                                 </li>
                                 <li >
                                     <a id="logout" href="#" onclick="checkLogout()" style="color: white; font-size: 13px; font-weight: 800; text-decoration: underline">
@@ -248,21 +252,22 @@
                     <div class="card mb-4">
                         <div class="card-header" style="font-weight: 700">YOUR PROFILE</div>
                         <div class="card-body">
-                            <form>
-
+                            <form method="post" action="profile">
                                 <div class="mb-3">  
-                                    <label class="small mb-1" for="inputUsername">Username</label>
-                                    <input class="form-control" id="inputUsername" readonly type="text" placeholder="Enter your username" value="${user.userName}">
+                                    <label class="mb-1" for="inputUsername">Username</label>
+                                    <input class="form-control" id="inputUsername" name="username" readonly type="text" placeholder="Enter your username" value="${user.userName}">
                                 </div>
                                 <div class="gx-3 mb-3">
-                                    <label class="small mb-1" for="inputFirstName">First name</label>
-                                    <input class="form-control" id="inputFirstName" readonly type="text" placeholder="Full Name" value="${user.fullName}">
+                                    <label class="mb-1" for="inputFirstName">Full name</label>
+                                    <c:if test="${sessionScope.name!=null}">
+                                        <input class="form-control acceptEdit" readonly  name="name" id="inputFirstName" type="text" placeholder="Full Name" value="${sessionScope.name}">
+                                    </c:if>
                                 </div>
 
                                 <div class="row gx-3 mb-3">
 
                                     <div class="col-md-6">
-                                        <label class="small mb-1" for="inputOrgName">Role</label>
+                                        <label class="mb-1" for="inputOrgName">Role</label>
                                         <c:if test="${user.roleID == 2}">
                                             <input class="form-control" id="inputOrgName" readonly type="text" placeholder="Enter your organization name" value="Customer">
                                         </c:if>
@@ -272,30 +277,38 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label class="small mb-1" for="inputLocation">Address</label>
-                                        <input class="form-control" id="inputLocation" readonly type="text" placeholder="Enter your location" value="${user.address}">
+                                        <label class="mb-1" for="inputLocation">Address</label>
+                                        <c:if test="${sessionScope.address!=null}">
+                                            <input class="form-control acceptEdit" readonly name="address" id="inputFirstName"  type="text" placeholder="Address" value="${sessionScope.address}">
+                                        </c:if>
                                     </div>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                                    <input class="form-control" id="inputEmailAddress" readonly type="email" placeholder="Enter your email address" value="${user.email}">
+                                    <label class="mb-1" for="inputEmailAddress">Email address</label>
+                                    <c:if test="${sessionScope.email!=null}">
+                                        <input class="form-control acceptEdit" readonly  name="email" id="inputFirstName"  type="text" placeholder="Email" value="${sessionScope.email}">
+                                    </c:if>
                                 </div>
 
                                 <div class="row gx-3 mb-3">
 
                                     <div class="col-md-6">
-                                        <label class="small mb-1" for="inputPhone">Phone number</label>
-                                        <input class="form-control" id="inputPhone" readonly type="tel" placeholder="Enter your phone number" value="${user.phone}">
+                                        <label class="mb-1" for="inputPhone">Phone number</label>
+                                        <c:if test="${sessionScope.phone!=null}">
+                                            <input class="form-control acceptEdit" readonly name="phone" id="inputFirstName"  type="text" placeholder="Phone" value="${sessionScope.phone}">
+                                        </c:if>
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                        <input class="form-control" id="inputBirthday" readonly type="text" name="birthday" placeholder="Enter your birthday" value="${user.birthdate}">
+                                        <label class="mb-1" for="inputBirthday">Birthdate</label>
+                                        <c:if test="${sessionScope.birthdate!=null}">
+                                            <input class="form-control acceptEdit" readonly name="birthday" id="inputFirstName"  type="text" placeholder="Birthdate" value="${sessionScope.birthdate}">
+                                        </c:if>
                                     </div>
                                 </div>
-
-                                <button style="margin-top: 15px;" class="btn btn-primary" type="button">Edit Profile</button>
+                                <button style="" class="btn btn-primary" onclick="acceptRead()" id="buttonVip" type="button">Edit Profile</button>
+                                <button style="margin-top: 15px;padding-right: 20px ;padding-left: 20px" class="btn btn-primary"  onclick="notAccept()" id="buttonVip2" type="submit">Save</button>
                             </form>
                         </div>
                     </div>
@@ -306,6 +319,30 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
         <script src="js/profile.js" type="text/javascript"></script>
         <script src="js/main.js" type="text/javascript"></script>
+        <script>
+                                    function acceptRead() {
+                                        var elements = document.querySelectorAll(".acceptEdit");
+                                        var buttonVip = document.getElementById("buttonVip");
+                                        var buttonVip2 = document.getElementById("buttonVip2");
+                                        elements.forEach(function (element) {
+                                            element.readOnly = false;
+                                        });
 
+                                        buttonVip.style.display = 'none';
+                                        buttonVip2.style.display = 'block';
+                                    }
+                                    function notAccept() {
+                                        var elements = document.querySelectorAll(".acceptEdit");
+                                        var buttonVip = document.getElementById("buttonVip");
+                                        var buttonVip2 = document.getElementById("buttonVip2");
+                                        elements.forEach(function (element) {
+                                            element.readOnly = true;
+                                        });
+
+                                        buttonVip.style.display = 'block';
+                                        buttonVip2.style.display = 'none';
+                                    }
+
+        </script>
     </body>
 </html>

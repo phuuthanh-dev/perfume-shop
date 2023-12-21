@@ -168,7 +168,7 @@
                                             </li>
                                             <c:if test="${sessionScope.account!=null}">
                                                 <li>
-                                                    <a href="profile" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.account.fullName}!</a>
+                                                    <a href="profile" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.name}!</a>
                                                 </li>
                                                 <li>
                                                     <a id="logout" href="#" onclick="checkLogout()" style="color: white; text-decoration: underline">${sessionScope.account==null ? "": "LOGOUT"}</a>

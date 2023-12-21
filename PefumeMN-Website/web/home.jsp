@@ -377,10 +377,12 @@
                                             </li>
                                             <c:if test="${sessionScope.account!=null}">
                                                 <li>
-                                                    <a href="profile" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.account.fullName}!</a>
+                                                    <a href="profile" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.name}!</a>
+                                                    <image src='${sessionScope.imageUser}' style="margin-left: 10px ;width: 43px; border-radius: 50%; border: 2px solid black"/>
                                                 </li>
                                                 <li>
-                                                    <a id="logout" href="#" onclick="checkLogout()" style="color: white; text-decoration: underline">${sessionScope.account==null ? "": "LOGOUT"}</a>
+                                                    <a id="logout" href="#" onclick="checkLogout()" 
+                                                       style="color: white; text-decoration: underline"> ${sessionScope.account==null ? "": "LOGOUT"}</a>
                                                 </li>
                                             </c:if>
                                         </ul>
@@ -864,8 +866,8 @@
                                                                     </li>
                                                                     <li class="quick_button" 
                                                                         onclick="openModal('modal_box', '${t.image1}', '${t.image2}',
-                                                                                                '${t.name}',${t.salePrice},${t.price}, '${t.describe}', '${t.classifyStr}',
-                                                                                                '${t.supplier.getCompanyName()}')" >
+                                                                                        '${t.name}',${t.salePrice},${t.price}, '${t.describe}', '${t.classifyStr}',
+                                                                                        '${t.supplier.getCompanyName()}')" >
                                                                         <a href="#" data-toggle="modal" data-target="#modal_box"
                                                                            title="Quick View">
                                                                             <i class="fa fa-eye"></i>
@@ -978,8 +980,8 @@
                                                                 </li>
                                                                 <li class="quick_button" 
                                                                     onclick="openModal('modal_box', '${i.image1}', '${i.image2}',
-                                                                                            '${i.name}',${i.salePrice},${i.price}, '${i.describe}', '${i.classifyStr}',
-                                                                                            '${i.supplier.getCompanyName()}')" >
+                                                                                    '${i.name}',${i.salePrice},${i.price}, '${i.describe}', '${i.classifyStr}',
+                                                                                    '${i.supplier.getCompanyName()}')" >
                                                                     <a href="#" data-toggle="modal"
                                                                        data-target="#modal_box" title="Quick View">
                                                                         <i class="fa fa-eye"></i>

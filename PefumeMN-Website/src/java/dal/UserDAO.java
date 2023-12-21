@@ -51,7 +51,7 @@ public class UserDAO extends DBContext {
         return false;
     }
 
-    public void update(String image, String userName) {
+    public void updateImage(String image, String userName) {
         String sql = "UPDATE [dbo].[Users]\n"
                 + "   SET \n"
                 + "      [Image] = ?\n"
@@ -60,6 +60,33 @@ public class UserDAO extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, image);
             st.setString(2, userName);
+
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+    
+    public void update(String name, String address,String phone, String email, String dob, String userName) {
+        String sql = "UPDATE [dbo].[Users] SET \n";
+        if (name != null) {
+            sql += " [fullName] = " + "?";
+        }
+        if( address != null) {
+            sql += ", [address] =" + "?";
+        }
+        sql += ", [phone] =" + "?";
+        sql += ", [email] =" + "?";
+        sql += ", [BirthDay] =" + "?";
+        sql +=  " WHERE userName = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, name);
+            st.setString(2, address);
+            st.setString(3, phone);
+            st.setString(4, email);
+            st.setString(5, dob);
+            st.setString(6, userName);
 
             st.executeUpdate();
         } catch (SQLException e) {
@@ -113,7 +140,9 @@ public class UserDAO extends DBContext {
 
     public static void main(String[] args) {
         UserDAO p = new UserDAO();
-        User user = new User("aa", "aaa", "123", "", "9123213", "", "", "1998-01-02", 2);
-        p.insert(user);
+        p.update("sadfasdfa", "Fasdfsffaf", "fasdfsfaf", "asdfasfafa", "2003-09-09", "john_doe");
+        User user = p.getUserByUserName("john_doe");
+        System.out.println(user.getFullName());
+        System.out.println(user.getAddress());
     }
 }
