@@ -161,6 +161,10 @@ public class RefineServlet extends HttpServlet {
             request.setAttribute("price1", price1);
             request.setAttribute("price2", price2);
         }
+        
+        Category ca = d.getCategoryById(cid_refine);
+        
+        request.setAttribute("cat", ca);
         request.setAttribute("category", categories);
         request.setAttribute("productPage", listByPage);
         request.setAttribute("chid", chid);

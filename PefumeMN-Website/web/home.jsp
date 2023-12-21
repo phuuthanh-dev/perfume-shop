@@ -632,11 +632,6 @@
                                                                         <i class="fa fa-heart-o"></i>
                                                                     </a>
                                                                 </li>
-                                                                <li class="compare">
-                                                                    <a href="#" title="Add to Compare">
-                                                                        <i class="fa fa-random"></i>
-                                                                    </a>
-                                                                </li>
                                                                 <li class="quick_button" >
 
                                                                     <a href="#" data-toggle="modal" data-target="#modal_box"
@@ -859,11 +854,6 @@
                                                                             <i class="fa fa-heart-o"></i>
                                                                         </a>
                                                                     </li>
-                                                                    <li class="compare">
-                                                                        <a href="#" title="Add to Compare">
-                                                                            <i class="fa fa-random"></i>
-                                                                        </a>
-                                                                    </li>
                                                                     <li class="quick_button" 
                                                                         onclick="openModal('modal_box', '${t.image1}', '${t.image2}',
                                                                                         '${t.name}',${t.salePrice},${t.price}, '${t.describe}', '${t.classifyStr}',
@@ -971,11 +961,6 @@
                                                                 <li class="wishlist">
                                                                     <a href="#" title="Add to Wishlist">
                                                                         <i class="fa fa-heart-o"></i>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="compare">
-                                                                    <a href="#" title="Add to Compare">
-                                                                        <i class="fa fa-random"></i>
                                                                     </a>
                                                                 </li>
                                                                 <li class="quick_button" 

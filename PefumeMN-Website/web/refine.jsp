@@ -358,10 +358,14 @@
                         <div class="home_section_right">
                             <div class="product_area" >
                                 <div class="section_title_style2" style="margin-top: 50px">
-                                    <h3 style="font-weight: 600">${requestScope.categoryPage.name}</h3>
-                                    <div style="text-align: center; font-size: 15px">Các quý ông tìm đến nước hoa để làm gì? Có lẽ là để thơm tho, nam tính và làm chỉn chu thêm phong cách của bản thân, phải chứ? 
-                                        Namperfume thấu hiểu các quý ông của chúng ta, đem tới cho đấng mày râu những mùi hương tươm tất, gọn gàng, cuốn hút, đôi khi là 
-                                        quyền lực choáng ngợp, và chắc chắn không thể quên được sự bụi bặm phóng khoáng đặc trưng của phái mạnh.
+                                    <c:if test="${requestScope.cat.name == null}">
+                                        <div style="text-align: start; font-size: 18px">
+                                            Sản phẩm hiện có
+                                        </div>
+                                    </c:if>
+                                    <h3 style="font-weight: 600; text-decoration: underline">${requestScope.cat.name}</h3>
+                                    <div style="text-align: center; font-size: 15px">
+                                        ${requestScope.cat.describe}
                                     </div>
                                 </div>
                                 <c:set var="page" value="${requestScope.page}"/>
@@ -391,15 +395,10 @@
                                                                         <i class="fa fa-heart-o"></i>
                                                                     </a>
                                                                 </li>
-                                                                <li class="compare">
-                                                                    <a href="#" title="Add to Compare">
-                                                                        <i class="fa fa-random"></i>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="quick_button">
+                                                                <li style="border-color: orange" class="quick_button">
                                                                     <a  href="#" data-toggle="modal"
                                                                         data-target="#modal_box" title="Quick View">
-                                                                        <i class="fa fa-eye"></i>
+                                                                        <i style="" class="fa fa-eye"></i>
                                                                     </a>
                                                                 </li>
                                                             </ul>

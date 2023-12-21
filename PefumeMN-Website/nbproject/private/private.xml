@@ -5,9 +5,8 @@
         <group>
             <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/refine.jsp</file>
             <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/home.jsp</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/js/main.js</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/LoginServlet.java</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/RegisterServlet.java</file>
+            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/css/style.css</file>
+            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/model/Category.java</file>
             <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/RefineServlet.java</file>
         </group>
     </open-files>

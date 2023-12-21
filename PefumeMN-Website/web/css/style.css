@@ -1927,6 +1927,17 @@ figure {
 .action_links ul li:last-child {
     margin-bottom: 0;
 }
+.action_links i.fa.fa-shopping-cart {
+    color: #f6692a;
+}
+
+.action_links i.fa.fa-heart-o {
+    color: #f6692a;
+}
+
+i.fa.fa-eye{
+    color: #f6692a;
+}
 
 .action_links ul li a {
     line-height: 38px;
@@ -1934,7 +1945,7 @@ figure {
     height: 40px;
     text-align: center;
     font-size: 20px;
-    border: 1px solid #000000;
+    border: 2px solid #f6692a;
     color: #000000;
     display: block;
     transition: all 0.3s ease;
