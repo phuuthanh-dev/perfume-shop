@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="java.text.DecimalFormat" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +15,18 @@
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css">
         <link rel="stylesheet" href="css/style.css">
+        <style>
+
+            .responsiveFacets_sectionItemLabel:hover {
+                cursor: pointer;
+                background-color: rgba(28, 29, 24, 0.2);
+            }
+
+            .responsiveFacets_sectionItem:hover {
+                cursor: pointer;
+            }
+
+        </style>
     </head>
 
     <body>
@@ -1044,7 +1055,7 @@
                                         company's mail id.</p>
                                 </div>
                                 <p>
-                                    <span>Address :</span> International Business Center, Vesu, Surat, Gujarat
+                                    <span>Address :</span> Address: 100 To Hien Thanh, District 10, HCMC
                                 </p>
                                 <p><span>Email :</span> <a href="#">deo@gmail.com</a></p>
                                 <p><span>Phone :</span> <a href="tel: +91 8888884444">+91 8888884444</a> </p>

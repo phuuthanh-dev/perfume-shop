@@ -215,7 +215,7 @@ public class ProductDAO extends DBContext {
             }
             sql += ")";
         }
-         try {
+        try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
@@ -231,12 +231,48 @@ public class ProductDAO extends DBContext {
         }
         return list;
     }
-    // Testcase demo
+
+    //
+    public List<Product> search(Double price1, Double price2, int[] cid) {
+        List<Product> list = new ArrayList<>();
+        String sql = "SELECT * FROM Products WHERE 1=1";
+        if (price1 != null) {
+            sql += " and UnitPrice >= " + price1;
+        }
+        if (price2 != null) {
+            sql += " and UnitPrice <= " + price2;
+        }
+        if ((cid != null) && (cid[0] != 0)) {
+            sql += " AND CategoryID in(";
+            for (int i = 0; i < cid.length; i++) {
+                sql += cid[i] + ",";
+            }
+            if (sql.endsWith(",")) {
+                sql = sql.substring(0, sql.length() - 1);
+            }
+            sql += ")";
+        }
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Category c = cd.getCategoryById(rs.getInt("CategoryID"));
+                double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
+                Product p = new Product(rs.getString("ProductName"), rs.getString("image1"), rs.getString("image2"),
+                        rs.getString("describe"), rs.getInt("ProductID"), rs.getInt("UnitsInStock"), rs.getInt("StarRating"),
+                        rs.getDouble("UnitPrice"), rs.getDouble("Discount"), salePrice, rs.getDate("releaseDate"), c);
+                list.add(p);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
 
     public static void main(String[] args) {
         ProductDAO p = new ProductDAO();
-        int[] a = {1,2};
-        List<Product> list = p.getProductsByCategoryid(0);
+        int[] a = {0};
+        List<Product> list = p.search(12.0, 144.0, a);
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).getPrice());
         }
