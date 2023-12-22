@@ -413,9 +413,10 @@ public class ProductDAO extends DBContext {
         } catch (Exception e) {
         }
         return list;
-    }//getnext6Product
 
-   
+    }
+
+
     //searchbyname
     public List<Product> searchByName(String text) {
         List<Product> list = new ArrayList<>();
@@ -450,16 +451,15 @@ public class ProductDAO extends DBContext {
         return list;
     }
 
-    public List<Product> getTop10SellerProduct() {
-        List<Product> list = new ArrayList<>();
-        String sql = "select top(10) *\r\n"
-                + "from Products\r\n"
-                + "order by QuantitySold desc";
+
+    // getProduct by name
+    public Product getProductByName(String name) {
+        String sql = "SELECT * FROM Products WHERE ProductName =" + name;
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                Category c = cd.getCategoryById(rs.getInt("CategoryID"));
+            if(rs.next()) {
+                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
                 Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
@@ -476,6 +476,7 @@ public class ProductDAO extends DBContext {
                         salePrice,
                         rs.getDate("releaseDate"),
                         c, s);
+
                 list.add(p);
             }
         } catch (Exception e) {
@@ -531,6 +532,7 @@ public class ProductDAO extends DBContext {
         } catch (Exception e) {
         }
         return 0;
+                
     }
 
     public static void main(String[] args) {

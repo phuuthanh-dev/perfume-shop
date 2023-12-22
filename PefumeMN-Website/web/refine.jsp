@@ -68,7 +68,8 @@
                                 </form>
                             </div>
                             <div class="col-lg-3">
-                                <div class="header_top_right">
+                                <%@ include file="header_right.jsp" %>
+<!--                                <div class="header_top_right">
                                     <div class="header_right_info">
                                         <ul>
                                             <li class="user">
@@ -89,53 +90,59 @@
                                                     <span class="item_count">4</span>
                                                 </a>
                                             </li>
-                                            <li class="mini_cart_wrapper">
+                                             <li class="mini_cart_wrapper">
                                                 <a href="javascript:void(0)">
                                                     <i class="fa fa-shopping-cart"></i>
-                                                    <span class="item_count">2</span>
+                                                    <c:if test="${sessionScope.size != null}" >
+                                                        <span class="item_count">
+                                                            ${sessionScope.size}
+                                                        </span>
+                                                    </c:if>
+                                                    <c:if test="${sessionScope.size == null}" >
+                                                        <span class="item_count">
+                                                           0
+                                                        </span>
+                                                    </c:if>
                                                 </a>
 
-                                                <!-- mini cart  -->
+                                                 mini cart  
                                                 <div class="mini_cart mini_cart2">
+                                                    <c:set var="subTotal" value="0"/>
+                                                    <c:set var="subPrice" value="0"/>
                                                     <div class="cart_gallery">
-                                                        <div class="cart_item">
-                                                            <div class="cart_img">
-                                                                <a href="#">
-                                                                    <img src="images/small-product/mini1.png"
-                                                                         alt="Perfume"></a>
-                                                            </div>
-                                                            <div class="cart_info">
-                                                                <a href="#">Hugo Boss</a>
-                                                                <p><span>Rs. 3640</span> X 1</p>
-                                                            </div>
-                                                            <div class="cart_remove">
-                                                                <a href="#"><i class="fa fa-times"></i></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cart_item">
-                                                            <div class="cart_img">
-                                                                <a href="#"><img src="images/small-product/mini2.png"
-                                                                                 alt="Perfume"></a>
-                                                            </div>
-                                                            <div class="cart_info">
-                                                                <a href="#">Bvlgari</a>
-                                                                <p><span>Rs. 8350</span> X 1</p>
-                                                            </div>
-                                                            <div class="cart_remove">
-                                                                <a href="#"><i class="fa fa-times"></i></a>
-                                                            </div>
-                                                        </div>
+                                                        <c:if test="${sessionScope.cart != null}">
+                                                            <c:forEach items="${sessionScope.listItems}" var="p">
+                                                                <div class="cart_item">
+                                                                    <div class="cart_img">
+                                                                        <a href="#"><img src="${p.product.image1}"
+                                                                                         alt="Perfume"></a>
+                                                                    </div>
+                                                                    <div class="cart_info">
+                                                                        <a href="#">${p.product.name}</a>
+                                                                        <p><span>Rs.${p.price}</span> X ${p.quantity}</p>
+                                                                    </div>
+                                                                    <div class="cart_remove">
+                                                                        <a href="#"><i class="fa fa-times"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                                <c:set var="subTotal" value="${subTotal + p.product.price}"/>
+                                                                <c:set var="subPrice" value="${subPrice + p.price}"/>
+                                                            </c:forEach>
+                                                        </c:if>
+                                                        <c:if test="${sessionScope.cart == null}">
+                                                            <h3>Nothing now!</h3>
+                                                        </c:if>
                                                     </div>
                                                     <div class="mini_cart_table">
                                                         <div class="cart_table_border">
                                                             <div class="cart_total">
                                                                 <span>Sub Total :</span>
-                                                                <span class="price">Rs. 11990</span>
+                                                                <span class="price">Rs. ${subTotal}</span>
                                                             </div>
 
                                                             <div class="cart_total mt-10">
                                                                 <span>Total :</span>
-                                                                <span class="price">Rs. 11990</span>
+                                                                <span class="price">Rs. ${subPrice}</span>
                                                             </div>
 
                                                         </div>
@@ -149,7 +156,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- mini cart ends -->
+                                                 mini cart ends 
                                             </li>
                                         </ul>
                                     </div>
@@ -176,7 +183,7 @@
                                             </c:if>
                                         </ul>
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                         <div class="row" style="justify-content: flex-start; padding: 10px 0"">
@@ -388,7 +395,7 @@
                                                         <div class="action_links">
                                                             <ul>
                                                                 <li class="add_to_cart" 
-                                                                    onclick="openModal('modal_box', '${i.image1}', '${i.image2}',
+                                                                    onclick="openModal('modal_box',${i.id}, '${i.image1}', '${i.image2}',
                                                                                     '${i.name}',${i.salePrice},${i.price}, '${i.describe}', '${i.classifyStr}',
                                                                                     '${i.supplier.getCompanyName()}')" >
                                                                     <a href="#" data-toggle="modal" data-target="#modal_box" title="Add to Cart">
@@ -401,7 +408,7 @@
                                                                     </a>
                                                                 </li>
                                                                 <li style="border-color: orange" class="quick_button"
-                                                                    onclick="openModal('modal_box', '${i.image1}', '${i.image2}',
+                                                                    onclick="openModal('modal_box',${i.id}, '${i.image1}', '${i.image2}',
                                                                                     '${i.name}',${i.salePrice},${i.price}, '${i.describe}', '${i.classifyStr}',
                                                                                     '${i.supplier.getCompanyName()}')" 
                                                                     >
