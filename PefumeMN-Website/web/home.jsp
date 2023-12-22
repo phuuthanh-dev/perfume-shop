@@ -67,7 +67,6 @@
                         </li>
                         <li class="header_wishlist">
                             <a href="#"><i class="fa fa-heart-o"></i>
-                                <span class="item_count">4</span>
                             </a>
                         </li>
                         <li class="mini_cart_wrapper">
@@ -288,130 +287,7 @@
                                 <!-- main menu ends -->
                             </div>
                             <div class="col-lg-4">
-                                <%@ include file="header_right.jsp" %>
-<!--                                <div class="header_top_right">
-                                    <div class="header_right_info">
-                                        <ul>
-                                            <li class="search_box">
-                                                <a href="javascript:void(0)">
-                                                    <i class="fa fa-search"></i>
-                                                </a>
-                                                <div class="search_widget">
-                                                    <form action="refine" method="get">
-                                                        <input id="searchId" name="name" type="text" placeholder="Search your perfume">
-                                                        <button type="submit"><i class="fa fa-search"></i></button>
-                                                    </form>
-                                                </div>
-                                            </li>
-                                            <li class="header_wishlist">
-                                                <a href="#">
-                                                    <i class="fa fa-heart-o"></i>
-                                                    <span class="item_count">4</span>
-                                                </a>
-                                            </li>
-                                            <c:if test="${sessionScope.account.roleID==1}">
-                                                <li class="header_wishlist">
-                                                    <a href="admin">
-                                                        <i class="fa-solid fa-chalkboard-user"></i>
-                                                    </a>
-                                                </li>
-                                            </c:if>
-                                            <li class="mini_cart_wrapper">
-                                                <a href="javascript:void(0)">
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                    <c:if test="${sessionScope.size != null}" >
-                                                        <span class="item_count">
-                                                            ${sessionScope.size}
-                                                        </span>
-                                                    </c:if>
-                                                    <c:if test="${sessionScope.size == null}" >
-                                                        <span class="item_count">
-                                                            0
-                                                        </span>
-                                                    </c:if>
-                                                </a>
-
-                                                mini cart  
-                                                <div class="mini_cart mini_cart2">
-                                                    <c:set var="subTotal" value="0"/>
-                                                    <c:set var="subPrice" value="0"/>
-                                                    <div class="cart_gallery">
-                                                        <c:if test="${sessionScope.cart != null}">
-                                                            <c:forEach items="${sessionScope.listItems}" var="p">
-                                                                <div class="cart_item">
-                                                                    <div class="cart_img">
-                                                                        <a href="#"><img src="${p.product.image1}"
-                                                                                         alt="Perfume"></a>
-                                                                    </div>
-                                                                    <div class="cart_info">
-                                                                        <a href="#">${p.product.name}</a>
-                                                                        <p><span>Rs.${p.price}</span> X ${p.quantity}</p>
-                                                                    </div>
-                                                                    <div class="cart_remove">
-                                                                        <a href="#"><i class="fa fa-times"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                                <c:set var="subTotal" value="${subTotal + p.product.price}"/>
-                                                                <c:set var="subPrice" value="${subPrice + p.price}"/>
-                                                            </c:forEach>
-                                                        </c:if>
-                                                        <c:if test="${sessionScope.cart == null}">
-                                                            <h3>Nothing now!</h3>
-                                                        </c:if>
-                                                    </div>
-                                                    <div class="mini_cart_table">
-                                                        <div class="cart_table_border">
-                                                            <div class="cart_total">
-                                                                <span>Sub Total :</span>
-                                                                <span class="price">Rs. ${subTotal}</span>
-                                                            </div>
-
-                                                            <div class="cart_total mt-10">
-                                                                <span>Total :</span>
-                                                                <span class="price">Rs. ${subPrice}</span>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="mini_cart_footer">
-                                                        <div class="cart_button">
-                                                            <a href="#">View Cart</a>
-                                                        </div>
-                                                        <div class="cart_button">
-                                                            <a href="#">Checkout</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                mini cart ends 
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="header_account">
-                                        <ul>
-                                            <li class="top_links">
-                                                <a href="#">
-                                                    <i class="fa fa-cog"></i>
-                                                </a>
-                                                <ul class="dropdown_links">
-                                                    <li><a href="#">Checkout</a></li>
-                                                    <li><a href="profile">My Account</a></li>
-                                                    <li><a href="#">Shopping cart</a></li>
-                                                    <li><a href="#">Wishlist</a></li>
-                                                </ul>
-                                            </li>
-                                            <c:if test="${sessionScope.account!=null}">
-                                                <li>
-                                                    <a class="hiddenn" href="profile" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.name}!</a>
-                                                    <image src='${sessionScope.imageUser}' style="margin-left: 10px ;width: 43px; border-radius: 50%; border: 2px solid black"/>
-                                                </li>
-                                                <li>
-                                                    <a id="logout" href="#" onclick="checkLogout()" 
-                                                       style="color: white; text-decoration: underline"> ${sessionScope.account==null ? "": "LOGOUT"}</a>
-                                                </li>
-                                            </c:if>
-                                        </ul>
-                                    </div>
-                                </div>-->
+                                <%@ include file="header_right.jsp"%>
                             </div>
                         </div>
 
