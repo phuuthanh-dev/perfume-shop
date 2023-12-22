@@ -716,8 +716,8 @@
                                                         <article class="single_product" data-toggle="modal" data-target="#modal_box">
                                                             <figure 
                                                                 onclick="openModal('modal_box', '${giftSet.image1}', '${giftSet.image2}',
-                                                                                    '${giftSet.name}',${giftSet.salePrice},${giftSet.price}, '${giftSet.describe}', '${giftSet.classifyStr}',
-                                                                                    '${giftSet.supplier.getCompanyName()}')">
+                                                                                '${giftSet.name}',${giftSet.salePrice},${giftSet.price}, '${giftSet.describe}', '${giftSet.classifyStr}',
+                                                                                '${giftSet.supplier.getCompanyName()}')">
                                                                 <div class="product_thumb">
                                                                     <a href="#" class="primary_img">
                                                                         <img src="${giftSet.image1}" alt="">
@@ -946,11 +946,11 @@
                                 <c:set var="page" value="${requestScope.page}"/>
                                 <div class="pagination">
                                     <c:forEach begin="${1}" end="${requestScope.numberpage}" var="i">
-                                        <a href="home?page=${i}">${i}</a>
+                                        <a class="linkLoad ${i==1?"active":""}" id="numberPage" onclick="loadMore(this)" >${i}</a>
                                     </c:forEach>
                                 </div>
 
-                                <div class="row">
+                                <div id="contentt" class="row">
                                     <c:set var="proA" value=""/>
                                     <c:forEach items="${requestScope.productPage}" var="i">
                                         <div class="product_items col-lg-4" style="margin: 30px 0">
@@ -1061,6 +1061,11 @@
                                 </p>
                                 <p><span>Email :</span> <a href="#">deo@gmail.com</a></p>
                                 <p><span>Phone :</span> <a href="tel: +91 8888884444">+91 8888884444</a> </p>
+                                <p style="margin-top: 20px">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.60994153052!2d106.80730807586922!3d10.841132857995166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752731176b07b1%3A0xb752b24b379bae5e!2sFPT%20University%20HCMC!5e0!3m2!1sen!2s!4v1703229023591!5m2!1sen!2s" width="330" height="200" style="border:1px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+
+                                    </iframe>
+                                </p>
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-6 col-sm-5">
@@ -1288,6 +1293,29 @@
         <script src="js/clickevents.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
         <script src="js/main.js"></script>
+        <script type="text/javascript">
+                                                                        function loadMore(obj) {
+                                                                            var amount = document.getElementsByClassName("product_items").length;
+                                                                            var numPage = ((parseInt(obj.textContent) - 1) * 9);
+                                                                            $(".linkLoad").removeClass("active");
+                                                                            $(obj).addClass("active");
+
+                                                                            $.ajax({
+                                                                                url: "/PefumeMN-Website/load",
+                                                                                type: "get", //send it through get method
+                                                                                data: {
+                                                                                    exits: numPage
+                                                                                },
+                                                                                success: function (data) {
+                                                                                    var row = document.getElementById("contentt");
+                                                                                    row.innerHTML = data;
+                                                                                },
+                                                                                error: function (xhr) {
+                                                                                    //Do Something to handle error
+                                                                                }
+                                                                            });
+                                                                        }
+        </script>
     </body>
 
 </html>

@@ -63,7 +63,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <form action="" style="display: flex; justify-content: center">
-                                    <input type="text" placeholder="Search your perfume" style="width: 60%; padding: 4px 10px; border-radius: 15px">
+                                    <input type="text" oninput="searchByName()" placeholder="Search your perfume" style="width: 60%; padding: 4px 10px; border-radius: 15px">
                                     <button type="submit" style="border-radius: 50%; width: 40px; font-size: 18px;"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
@@ -535,6 +535,28 @@
                                                                             }
                                                                             inputStar.value = star;
                                                                             document.getElementById('f1').submit();
+                                                                        }
+                                                                        
+                                                                        function searchByName() {
+                                                                            var amount = document.getElementsByClassName("product_items").length;
+                                                                            var numPage = ((parseInt(obj.textContent) - 1) * 9);
+                                                                            $(".linkLoad").removeClass("active");
+                                                                            $(obj).addClass("active");
+
+                                                                            $.ajax({
+                                                                                url: "/PefumeMN-Website/load",
+                                                                                type: "get", //send it through get method
+                                                                                data: {
+                                                                                    exits: numPage
+                                                                                },
+                                                                                success: function (data) {
+                                                                                    var row = document.getElementById("contentt");
+                                                                                    row.innerHTML = data;
+                                                                                },
+                                                                                error: function (xhr) {
+                                                                                    //Do Something to handle error
+                                                                                }
+                                                                            });
                                                                         }
 
 

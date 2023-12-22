@@ -330,7 +330,7 @@ public class ProductDAO extends DBContext {
         return list;
     }
 
-    //
+    //Search by price
     public List<Product> searchByPrice(double price1, double price2, int[] cid) {
         List<Product> list = new ArrayList<>();
         String sql = "SELECT * FROM Products WHERE 1=1";
@@ -379,10 +379,81 @@ public class ProductDAO extends DBContext {
         return list;
     }
 
+    //getnext9Product
+    public List<Product> getNext9Product(int amount) {
+        List<Product> list = new ArrayList<>();
+        String sql = "SELECT *\n"
+                + "  FROM products\n"
+                + " ORDER BY ProductID\n"
+                + "OFFSET ? ROWS\n"
+                + " FETCH NEXT 9 ROWS ONLY";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, amount);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Category c = cd.getCategoryById(rs.getInt("CategoryID"));
+                Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
+                double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
+                Product p = new Product(
+                        rs.getString("ProductName"),
+                        rs.getString("image1"),
+                        rs.getString("image2"),
+                        rs.getString("describe"),
+                        rs.getString("QuantityPerUnit"),
+                        rs.getInt("ProductID"),
+                        rs.getInt("UnitsInStock"),
+                        rs.getInt("StarRating"),
+                        rs.getDouble("UnitPrice"),
+                        rs.getDouble("Discount"),
+                        salePrice,
+                        rs.getDate("releaseDate"),
+                        c, s);
+                list.add(p);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    
+    //searchbyname
+    public List<Product> searchByName(String text) {
+        List<Product> list = new ArrayList<>();
+        String sql = "select * from products\n"
+                + "where [ProductName] like ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, "%" + text + "%");
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Category c = cd.getCategoryById(rs.getInt("CategoryID"));
+                Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
+                double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
+                Product p = new Product(
+                        rs.getString("ProductName"),
+                        rs.getString("image1"),
+                        rs.getString("image2"),
+                        rs.getString("describe"),
+                        rs.getString("QuantityPerUnit"),
+                        rs.getInt("ProductID"),
+                        rs.getInt("UnitsInStock"),
+                        rs.getInt("StarRating"),
+                        rs.getDouble("UnitPrice"),
+                        rs.getDouble("Discount"),
+                        salePrice,
+                        rs.getDate("releaseDate"),
+                        c, s);
+                list.add(p);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
     public static void main(String[] args) {
         ProductDAO p = new ProductDAO();
         int[] a = {0};
-        List<Product> list = p.getTopBestSellers("5");
+        List<Product> list = p.getNext9Product(9);
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).getName());
         }
