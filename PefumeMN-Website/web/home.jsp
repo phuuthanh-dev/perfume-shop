@@ -1302,7 +1302,7 @@
 
                                                                             $.ajax({
                                                                                 url: "/PefumeMN-Website/load",
-                                                                                type: "get", //send it through get method
+                                                                                type: "get",
                                                                                 data: {
                                                                                     exits: numPage
                                                                                 },
@@ -1311,7 +1311,6 @@
                                                                                     row.innerHTML = data;
                                                                                 },
                                                                                 error: function (xhr) {
-                                                                                    //Do Something to handle error
                                                                                 }
                                                                             });
                                                                         }

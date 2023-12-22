@@ -538,23 +538,19 @@
                                                                         }
                                                                         
                                                                         function searchByName() {
-                                                                            var amount = document.getElementsByClassName("product_items").length;
-                                                                            var numPage = ((parseInt(obj.textContent) - 1) * 9);
-                                                                            $(".linkLoad").removeClass("active");
-                                                                            $(obj).addClass("active");
+                                                                            var text = document.getElementsByClassName("product_items").length;
 
                                                                             $.ajax({
-                                                                                url: "/PefumeMN-Website/load",
-                                                                                type: "get", //send it through get method
+                                                                                url: "/PefumeMN-Website/search",
+                                                                                type: "get", 
                                                                                 data: {
-                                                                                    exits: numPage
+                                                                                    exits: txt
                                                                                 },
                                                                                 success: function (data) {
                                                                                     var row = document.getElementById("contentt");
                                                                                     row.innerHTML = data;
                                                                                 },
                                                                                 error: function (xhr) {
-                                                                                    //Do Something to handle error
                                                                                 }
                                                                             });
                                                                         }
