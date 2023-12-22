@@ -14,7 +14,7 @@
     </head>
     <body>
         <c:forEach items="${requestScope.productPage}" var="i">
-            <div class="product_items ${(requestScope.col == 4) && (requestScope.home == 1)?"col-lg-4":"col-lg-3"}" style="margin: 30px 0">
+            <div class="product_items ${(requestScope.col == 4)?"col-lg-4":"col-lg-3"}" style="margin: 30px 0">
                 <article class="single_product">
                     <figure>
                         <div class="product_thumb">

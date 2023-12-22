@@ -295,7 +295,7 @@
                                                 </a>
                                                 <div class="search_widget">
                                                     <form action="refine" method="get">
-                                                        <input id="searchId" name="nameSearch" type="text" placeholder="Search your perfume">
+                                                        <input id="searchId" name="name" type="text" placeholder="Search your perfume">
                                                         <button type="submit"><i class="fa fa-search"></i></button>
                                                     </form>
                                                 </div>
