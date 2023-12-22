@@ -286,7 +286,8 @@
                                 <!-- main menu ends -->
                             </div>
                             <div class="col-lg-4">
-                                <div class="header_top_right">
+                                <%@ include file="header_right.jsp" %>
+<!--                                <div class="header_top_right">
                                     <div class="header_right_info">
                                         <ul>
                                             <li class="search_box">
@@ -316,12 +317,12 @@
                                                     </c:if>
                                                     <c:if test="${sessionScope.size == null}" >
                                                         <span class="item_count">
-                                                           0
+                                                            0
                                                         </span>
                                                     </c:if>
                                                 </a>
 
-                                                <!-- mini cart  -->
+                                                mini cart  
                                                 <div class="mini_cart mini_cart2">
                                                     <c:set var="subTotal" value="0"/>
                                                     <c:set var="subPrice" value="0"/>
@@ -372,7 +373,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- mini cart ends -->
+                                                mini cart ends 
                                             </li>
                                         </ul>
                                     </div>
@@ -401,7 +402,7 @@
                                             </c:if>
                                         </ul>
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
 
@@ -486,7 +487,7 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart" 
-                                                                onclick="openModal('modal_box' ,${p.id}, '${p.image1}', '${p.image2}',
+                                                                onclick="openModal('modal_box',${p.id}, '${p.image1}', '${p.image2}',
                                                                                 '${p.name}',${p.salePrice},${p.price}, '${p.describe}', '${p.classifyStr}',
                                                                                 '${p.supplier.getCompanyName()}')"">
                                                                 <a href="#" data-toggle="modal" data-target="#modal_box" title="Add to Cart">
@@ -499,7 +500,7 @@
                                                                 </a>
                                                             </li>
                                                             <li class="quick_button" 
-                                                                onclick="openModal('modal_box' ,${p.id}, '${p.image1}', '${p.image2}',
+                                                                onclick="openModal('modal_box',${p.id}, '${p.image1}', '${p.image2}',
                                                                                 '${p.name}',${p.salePrice},${p.price}, '${p.describe}', '${p.classifyStr}',
                                                                                 '${p.supplier.getCompanyName()}')" >
                                                                 <a href="#" data-toggle="modal" data-target="#modal_box" 
@@ -656,7 +657,7 @@
                                                                 <li class="quick_button" >
 
                                                                     <a href="#" data-toggle="modal" data-target="#modal_box"
-                                                                       onclick="openModal('modal_box' , ${hotDeal.id}, '${hotDeal.image1}', '${hotDeal.image2}',
+                                                                       onclick="openModal('modal_box', ${hotDeal.id}, '${hotDeal.image1}', '${hotDeal.image2}',
                                                                                        '${hotDeal.name}',${hotDeal.salePrice},${hotDeal.price}, '${hotDeal.describe}', '${hotDeal.classifyStr}',
                                                                                        '${hotDeal.supplier.getCompanyName()}')" 
                                                                        title="Quick view">
@@ -994,7 +995,7 @@
                                                                     </a>
                                                                 </li>
                                                                 <li class="quick_button" 
-                                                                    onclick="openModal('modal_box' ,${i.id}, '${i.image1}', '${i.image2}',
+                                                                    onclick="openModal('modal_box',${i.id}, '${i.image1}', '${i.image2}',
                                                                                     '${i.name}',${i.salePrice},${i.price}, '${i.describe}', '${i.classifyStr}',
                                                                                     '${i.supplier.getCompanyName()}')" >
                                                                     <a href="#" data-toggle="modal"

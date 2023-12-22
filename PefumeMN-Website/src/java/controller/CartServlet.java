@@ -5,6 +5,7 @@
 
 package controller;
 
+import dal.CategoryDAO;
 import dal.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,6 +18,7 @@ import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import model.Cart;
+import model.Category;
 import model.Item;
 import model.Product;
 
@@ -102,6 +104,51 @@ public class CartServlet extends HttpServlet {
         session.setAttribute("cart", cart);
         session.setAttribute("listItems", list);
         session.setAttribute("size", list.size());
+        
+        //
+        CategoryDAO d = new CategoryDAO();
+        ProductDAO p = new ProductDAO();
+        List<Category> categories = d.getAll();
+        List<Product> productsYear = p.getAll();
+        List<Product> productsTop5Sellers = p.getTopBestSellers("5");
+        List<Product> giftSets = p.getGiflSets();
+        List<Product> listAll = p.getAll();
+        List<Product> productFooter1 = p.getFeaturedProducts();
+        List<Product> productFooter2 = p.getFeaturedProducts();
+        
+
+        //phan trang
+        int page = 1, numPerPage = 9;
+        int size = listAll.size();
+        int numberpage = ((size % numPerPage == 0) ? (size / 9) : (size / 9) + 1);
+        String xpage = request.getParameter("page");
+        if (xpage == null) {
+            page = 1;
+        } else {
+            page = Integer.parseInt(xpage);
+        }
+        int start, end;
+        start = (page - 1) * 9;
+        end = Math.min(page * numPerPage, size);
+
+        //Hot product
+        Product spHot = p.getHotDeal();
+        Boolean[] chid = new Boolean[categories.size() + 1];
+        chid[0] = true;
+
+        List<Product> listByPage = p.getListByPage(listAll, start, end);
+
+        request.setAttribute("chid", chid);
+        request.setAttribute("category", categories);
+        request.setAttribute("productsYear", productsYear);
+        request.setAttribute("hotDeal", spHot);
+        request.setAttribute("productPage", listByPage);
+        request.setAttribute("page", page);
+        request.setAttribute("numberpage", numberpage);
+        request.setAttribute("productsTopSellers", productsTop5Sellers);
+        request.setAttribute("giftSets", giftSets);
+        request.setAttribute("productFooter1", productFooter1);
+        request.setAttribute("productFooter2", productFooter2);
         request.getRequestDispatcher("home.jsp").forward(request, response);
         
     }
