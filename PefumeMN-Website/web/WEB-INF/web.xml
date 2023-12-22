@@ -19,7 +19,7 @@
     </servlet-mapping>
     <filter-mapping>
         <filter-name>HomeFilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern></url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>

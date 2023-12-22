@@ -21,7 +21,7 @@ import model.Product;
  * @author trinh
  */
 @WebServlet(name = "LoadMoreControl", urlPatterns = {"/load"})
-public class LoadMoreServlet extends HttpServlet {
+public class LoadPagingServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -55,6 +55,7 @@ public class LoadMoreServlet extends HttpServlet {
         ProductDAO p = new ProductDAO();
         List<Product> list = p.getNext9Product(iamount);
         request.setAttribute("productPage", list);
+        request.setAttribute("col", 4);
         request.getRequestDispatcher("load.jsp").forward(request, response);
         
     }

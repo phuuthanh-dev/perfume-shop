@@ -14,7 +14,7 @@
     </head>
     <body>
         <c:forEach items="${requestScope.productPage}" var="i">
-            <div class="product_items col-lg-4" style="margin: 30px 0">
+            <div class="product_items ${(requestScope.col == 4) && (requestScope.home == 1)?"col-lg-4":"col-lg-3"}" style="margin: 30px 0">
                 <article class="single_product">
                     <figure>
                         <div class="product_thumb">
@@ -29,8 +29,8 @@
                                 <ul>
                                     <li class="add_to_cart"
                                         onclick="openModal('modal_box', '${i.image1}', '${i.image2}',
-                                                        '${i.name}',${i.salePrice},${i.price}, '${i.describe}', '${i.classifyStr}',
-                                                        '${i.supplier.getCompanyName()}')">
+                                                            '${i.name}',${i.salePrice},${i.price}, '${i.describe}', '${i.classifyStr}',
+                                                            '${i.supplier.getCompanyName()}')">
                                         <a href="#" data-toggle="modal" data-target="#modal_box" title="Add to Cart">
                                             <i class="fa fa-shopping-cart"></i>
                                         </a>
@@ -42,8 +42,8 @@
                                     </li>
                                     <li class="quick_button" 
                                         onclick="openModal('modal_box', '${i.image1}', '${i.image2}',
-                                                        '${i.name}',${i.salePrice},${i.price}, '${i.describe}', '${i.classifyStr}',
-                                                        '${i.supplier.getCompanyName()}')" >
+                                                            '${i.name}',${i.salePrice},${i.price}, '${i.describe}', '${i.classifyStr}',
+                                                            '${i.supplier.getCompanyName()}')" >
                                         <a href="#" data-toggle="modal"
                                            data-target="#modal_box" title="Quick View">
                                             <i class="fa fa-eye"></i>
@@ -56,7 +56,7 @@
                             <h4 class="product_name">
                                 <a href="#">${i.name}</a>
                             </h4>
-                            <div class="product_rating">
+                            <div class="product_rating" style="${requestScope.col == 4?"":"width: 100%;"}">
                                 <ul>
                                     <c:set var="numstar" value="${i.starRating}"/>
                                     <c:forEach begin="1" end="${numstar}" step="1">

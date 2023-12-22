@@ -26,11 +26,6 @@ body {
     overflow: hidden;
 }
 
-a#numberPage:hover {
-    background-color: black;
-    color: white;
-}
-
 a#numberPage.active {
     background-color: black;
     color: white;

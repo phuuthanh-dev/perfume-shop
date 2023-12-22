@@ -453,7 +453,7 @@ public class ProductDAO extends DBContext {
     public static void main(String[] args) {
         ProductDAO p = new ProductDAO();
         int[] a = {0};
-        List<Product> list = p.getNext9Product(9);
+        List<Product> list = p.searchByName("a");
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).getName());
         }

@@ -63,7 +63,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <form action="" style="display: flex; justify-content: center">
-                                    <input type="text" oninput="searchByName()" placeholder="Search your perfume" style="width: 60%; padding: 4px 10px; border-radius: 15px">
+                                    <input value="${requestScope.searchAtHome != null ? requestScope.searchAtHome : ""}" id="searchId" type="text" oninput="searchByName()" placeholder="Search your perfume" style="width: 60%; padding: 4px 10px; border-radius: 15px">
                                     <button type="submit" style="border-radius: 50%; width: 40px; font-size: 18px;"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
@@ -224,21 +224,23 @@
                                                         ALL (${allproduct.size()})
                                                     </label>
                                                 </div>
-                                                <c:forEach begin="0" end="${cat.size()-1}" var="i">
-                                                    <div class="responsiveFacets_sectionItemLabel">
-                                                        <input type="checkbox"
-                                                               ${cat.get(i).getId()==cid_refine?"checked":""}
-                                                               class="responsiveFacets_sectionItemCheckbox"
-                                                               id="cm" 
-                                                               name="cid_refinee"
-                                                               value="${cat.get(i).getId()}"
-                                                               ${chid[i+1]?"checked":""}
-                                                               onclick="setCheck(this)"/>
-                                                        <label class="responsiveFacets_sectionItem" for="brand" >
-                                                            ${cat.get(i).name} (${cat.get(i).getTotalProduct()})
-                                                        </label>
-                                                    </div>
-                                                </c:forEach>
+                                                <c:if test="${cat!=null}">
+                                                    <c:forEach begin="0" end="${cat.size()-1}" var="i">
+                                                        <div class="responsiveFacets_sectionItemLabel">
+                                                            <input type="checkbox"
+                                                                   ${cat.get(i).getId()==cid_refine?"checked":""}
+                                                                   class="responsiveFacets_sectionItemCheckbox"
+                                                                   id="cm" 
+                                                                   name="cid_refinee"
+                                                                   value="${cat.get(i).getId()}"
+                                                                   ${chid[i+1]?"checked":""}
+                                                                   onclick="setCheck(this)"/>
+                                                            <label class="responsiveFacets_sectionItem" for="brand" >
+                                                                ${cat.get(i).name} (${cat.get(i).getTotalProduct()})
+                                                            </label>
+                                                        </div>
+                                                    </c:forEach>
+                                                </c:if>
                                             </fieldset>
                                         </div>
                                         <div class="section_title section_title_style2">
@@ -370,7 +372,7 @@
                                 </div>
                                 <c:set var="page" value="${requestScope.page}"/>
 
-                                <div class="row">
+                                <div id ="contentt" class="row">
                                     <c:set var="proA" value=""/>
                                     <c:forEach items="${requestScope.productPage}" var="i">
                                         <div class="product_items col-lg-3" style="margin: 30px 0">
@@ -536,15 +538,14 @@
                                                                             inputStar.value = star;
                                                                             document.getElementById('f1').submit();
                                                                         }
-                                                                        
-                                                                        function searchByName() {
-                                                                            var text = document.getElementsByClassName("product_items").length;
 
+                                                                        function searchByName() {
+                                                                            var text = document.querySelector("#searchId").value;
                                                                             $.ajax({
                                                                                 url: "/PefumeMN-Website/search",
-                                                                                type: "get", 
+                                                                                type: "get",
                                                                                 data: {
-                                                                                    exits: txt
+                                                                                    txt: text
                                                                                 },
                                                                                 success: function (data) {
                                                                                     var row = document.getElementById("contentt");

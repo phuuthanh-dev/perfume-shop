@@ -73,6 +73,7 @@ public class RefineServlet extends HttpServlet {
         String priceFrom_raw = request.getParameter("pricefrom");
         String priceTo_raw = request.getParameter("priceto");
         String numberStar_raw = request.getParameter("numberStar");
+        String nameSearch = request.getParameter("nameSearch");
         String stringForLink = "";
         int cid_refine = 0;
 
@@ -162,8 +163,13 @@ public class RefineServlet extends HttpServlet {
             request.setAttribute("price2", price2);
         }
         
+        if (nameSearch != null) {
+            listByPage = p.searchByName(nameSearch);
+        }
+        
         Category ca = d.getCategoryById(cid_refine);
         
+        request.setAttribute("searchAtHome", nameSearch);
         request.setAttribute("cat", ca);
         request.setAttribute("category", categories);
         request.setAttribute("productPage", listByPage);

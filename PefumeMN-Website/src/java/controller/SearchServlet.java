@@ -35,13 +35,21 @@ public class SearchServlet extends HttpServlet {
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        String txtSearch = request.getParameter("txt");//giay chay bo
+        String txtSearch = request.getParameter("txt");
+        String home_raw = request.getParameter("home");
         ProductDAO dao = new ProductDAO();
         List<Product> list = dao.searchByName(txtSearch);
-        
+        int home;
+        if(home_raw != null) {
+            home = Integer.parseInt(home_raw);
+        } else {
+            home = 0;
+        }
         request.setAttribute("productPage", list);
         request.setAttribute("txtS", txtSearch);
-        request.getRequestDispatcher("refine.jsp").forward(request, response);
+        request.setAttribute("col", 3);
+        request.setAttribute("home", home);
+        request.getRequestDispatcher("load.jsp").forward(request, response);
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

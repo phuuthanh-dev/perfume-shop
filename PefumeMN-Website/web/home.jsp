@@ -57,8 +57,8 @@
                         <li class="search_box">
                             <a href="javascript:void(0)"><i class="fa fa-search"></i></a>
                             <div class="search_widget">
-                                <form action="#">
-                                    <input type="text" placeholder="Search Your Perfume">
+                                <form action="refine" method="get">
+                                    <input id="searchId" name="nameSearch" type="text" placeholder="Search Your Perfume">
                                     <button type="submit"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
@@ -294,8 +294,8 @@
                                                     <i class="fa fa-search"></i>
                                                 </a>
                                                 <div class="search_widget">
-                                                    <form action="#">
-                                                        <input type="text" placeholder="Search your perfume">
+                                                    <form action="refine" method="get">
+                                                        <input id="searchId" name="nameSearch" type="text" placeholder="Search your perfume">
                                                         <button type="submit"><i class="fa fa-search"></i></button>
                                                     </form>
                                                 </div>
@@ -1314,6 +1314,7 @@
                                                                                 }
                                                                             });
                                                                         }
+
         </script>
     </body>
 
