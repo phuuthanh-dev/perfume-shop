@@ -1,5 +1,6 @@
 function openModal(
         modalID,
+        id,
         image1,
         image2,
         name,
@@ -99,9 +100,9 @@ function openModal(
                                 </select>
                                 </div>
                                 <div class="modal_add_to_cart">
-                                    <form action="#">
-                                        <input type="number" min="1" max="100" step="1" value="1">
-                                        <button type="submit">Add to cart</button>
+                                    <form name="f" action="cart?id=${id}" method="post">
+                                        <input name="quantity" type="number" min="1" max="100" step="1" value="1">
+                                        <button type="submit" >Add to cart</button>
                                     </form>
                                 </div>
                             </div>
@@ -149,3 +150,5 @@ function checkLogout() {
         document.getElementById('logout').href = 'logout';
     }
 }
+//
+

@@ -415,7 +415,7 @@ public class ProductDAO extends DBContext {
         }
         return list;
     }
-    
+
     //searchbyname
     public List<Product> searchByName(String text) {
         List<Product> list = new ArrayList<>();
@@ -448,6 +448,70 @@ public class ProductDAO extends DBContext {
         } catch (Exception e) {
         }
         return list;
+    }
+
+    // getProduct by name
+    public Product getProductByName(String name) {
+        String sql = "SELECT * FROM Products WHERE ProductName =" + name;
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            if(rs.next()) {
+                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
+                Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
+                double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
+                Product p = new Product(
+                        rs.getString("ProductName"),
+                        rs.getString("image1"),
+                        rs.getString("image2"),
+                        rs.getString("describe"),
+                        rs.getString("QuantityPerUnit"),
+                        rs.getInt("ProductID"),
+                        rs.getInt("UnitsInStock"),
+                        rs.getInt("StarRating"),
+                        rs.getDouble("UnitPrice"),
+                        rs.getDouble("Discount"),
+                        salePrice,
+                        rs.getDate("releaseDate"),
+                        c, s);
+                return p;
+            }
+
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    
+     // getProduct by ID
+    public Product getProductByID(int id) {
+        String sql = "SELECT * FROM Products WHERE ProductID =" + id;
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            if(rs.next()) {
+                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
+                Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
+                double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
+                Product p = new Product(
+                        rs.getString("ProductName"),
+                        rs.getString("image1"),
+                        rs.getString("image2"),
+                        rs.getString("describe"),
+                        rs.getString("QuantityPerUnit"),
+                        rs.getInt("ProductID"),
+                        rs.getInt("UnitsInStock"),
+                        rs.getInt("StarRating"),
+                        rs.getDouble("UnitPrice"),
+                        rs.getDouble("Discount"),
+                        salePrice,
+                        rs.getDate("releaseDate"),
+                        c, s);
+                return p;
+            }
+
+        } catch (Exception e) {
+        }
+        return null;
     }
 
     public static void main(String[] args) {
