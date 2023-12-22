@@ -5,7 +5,6 @@
  */
 package dal;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -416,7 +415,75 @@ public class ProductDAO extends DBContext {
         return list;
     }//getnext6Product
 
-    public List<Product> getNext6Product(int amount) {
+   
+    //searchbyname
+    public List<Product> searchByName(String text) {
+        List<Product> list = new ArrayList<>();
+        String sql = "select * from products\n"
+                + "where [ProductName] like ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, "%" + text + "%");
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Category c = cd.getCategoryById(rs.getInt("CategoryID"));
+                Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
+                double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
+                Product p = new Product(
+                        rs.getString("ProductName"),
+                        rs.getString("image1"),
+                        rs.getString("image2"),
+                        rs.getString("describe"),
+                        rs.getString("QuantityPerUnit"),
+                        rs.getInt("ProductID"),
+                        rs.getInt("UnitsInStock"),
+                        rs.getInt("StarRating"),
+                        rs.getDouble("UnitPrice"),
+                        rs.getDouble("Discount"),
+                        salePrice,
+                        rs.getDate("releaseDate"),
+                        c, s);
+                list.add(p);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<Product> getTop10SellerProduct() {
+        List<Product> list = new ArrayList<>();
+        String sql = "select top(10) *\r\n"
+                + "from Products\r\n"
+                + "order by QuantitySold desc";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Category c = cd.getCategoryById(rs.getInt("CategoryID"));
+                Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
+                double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
+                Product p = new Product(
+                        rs.getString("ProductName"),
+                        rs.getString("image1"),
+                        rs.getString("image2"),
+                        rs.getString("describe"),
+                        rs.getString("QuantityPerUnit"),
+                        rs.getInt("ProductID"),
+                        rs.getInt("UnitsInStock"),
+                        rs.getInt("StarRating"),
+                        rs.getDouble("UnitPrice"),
+                        rs.getDouble("Discount"),
+                        salePrice,
+                        rs.getDate("releaseDate"),
+                        c, s);
+                list.add(p);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+     public List<Product> getNext6Product(int amount) {
         List<Product> list = new ArrayList<>();
         String sql = "SELECT *\n"
                 + "  FROM products\n"
@@ -452,40 +519,7 @@ public class ProductDAO extends DBContext {
         return list;
     }
 
-    //searchbyname
-    public List<Product> searchByName(String text) {
-        List<Product> list = new ArrayList<>();
-        String sql = "select * from products\n"
-                + "where [ProductName] like ?";
-        try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(1, "%" + text + "%");
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                Category c = cd.getCategoryById(rs.getInt("CategoryID"));
-                Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
-                double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
-                Product p = new Product(
-                        rs.getString("ProductName"),
-                        rs.getString("image1"),
-                        rs.getString("image2"),
-                        rs.getString("describe"),
-                        rs.getString("QuantityPerUnit"),
-                        rs.getInt("ProductID"),
-                        rs.getInt("UnitsInStock"),
-                        rs.getInt("StarRating"),
-                        rs.getDouble("UnitPrice"),
-                        rs.getDouble("Discount"),
-                        salePrice,
-                        rs.getDate("releaseDate"),
-                        c, s);
-                list.add(p);
-            }
-        } catch (Exception e) {
-        }
-        return list;
-    }
-
+    
     public int countAllProduct() {
         String sql = "select count(*) from Products";
         try {
@@ -497,39 +531,6 @@ public class ProductDAO extends DBContext {
         } catch (Exception e) {
         }
         return 0;
-    }
-
-    public List<Product> getTop10SellerProduct() {
-        List<Product> list = new ArrayList<>();
-        String sql = "select top(10) *\r\n"
-                + "from Products\r\n"
-                + "order by QuantitySold desc";
-        try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                Category c = cd.getCategoryById(rs.getInt("CategoryID"));
-                Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
-                double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
-                Product p = new Product(
-                        rs.getString("ProductName"),
-                        rs.getString("image1"),
-                        rs.getString("image2"),
-                        rs.getString("describe"),
-                        rs.getString("QuantityPerUnit"),
-                        rs.getInt("ProductID"),
-                        rs.getInt("UnitsInStock"),
-                        rs.getInt("StarRating"),
-                        rs.getDouble("UnitPrice"),
-                        rs.getDouble("Discount"),
-                        salePrice,
-                        rs.getDate("releaseDate"),
-                        c, s);
-                list.add(p);
-            }
-        } catch (Exception e) {
-        }
-        return list;
     }
 
     public static void main(String[] args) {
