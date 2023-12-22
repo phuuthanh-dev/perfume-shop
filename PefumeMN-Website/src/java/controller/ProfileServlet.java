@@ -123,7 +123,7 @@ public class ProfileServlet extends HttpServlet {
         session.setAttribute("phone", account.getPhone());
         session.setAttribute("email", account.getEmail());
         session.setAttribute("birthdate", account.getBirthdate());
-        request.getRequestDispatcher("profile.jsp").forward(request, response);
+        response.sendRedirect("profile");
     }
 
     /**

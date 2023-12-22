@@ -7,13 +7,15 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Perfume | E-Commerce</title>
+        <title>Perfume Shop</title>
+        <link rel="icon" href="images/logo1.png"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
         <link rel="stylesheet" href="css/style.css">
         <style>
 
@@ -306,6 +308,13 @@
                                                     <span class="item_count">4</span>
                                                 </a>
                                             </li>
+                                            <c:if test="${sessionScope.account.roleID==1}">
+                                                <li class="header_wishlist">
+                                                    <a href="admin">
+                                                        <i class="fa-solid fa-chalkboard-user"></i>
+                                                    </a>
+                                                </li>
+                                            </c:if>
                                             <li class="mini_cart_wrapper">
                                                 <a href="javascript:void(0)">
                                                     <i class="fa fa-shopping-cart"></i>
@@ -377,7 +386,7 @@
                                             </li>
                                             <c:if test="${sessionScope.account!=null}">
                                                 <li>
-                                                    <a href="profile" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.name}!</a>
+                                                    <a class="hiddenn" href="profile" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.name}!</a>
                                                     <image src='${sessionScope.imageUser}' style="margin-left: 10px ;width: 43px; border-radius: 50%; border: 2px solid black"/>
                                                 </li>
                                                 <li>
@@ -1263,24 +1272,8 @@
                 </div>
             </div>
 
-            <!-- footer section starts  -->
-
-            <div class="footer_bottom">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-12 col-md-12">
-                            <div class="copyright_area">
-                                <p>Copyright &copy; 2021 <a href="#">Perfume Store </a>All right Reserved.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <jsp:include page="footer.jsp"/>
         </footer>
-
-        <!-- footer section ends -->
-
-        <!-- modal section starts  -->
 
 
         <div class="modal fade" id="modal_box" role="dialog"></div>

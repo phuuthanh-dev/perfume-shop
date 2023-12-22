@@ -472,19 +472,7 @@
             </div>
         </div>
 
-        <footer class="footer_widgets color_two" style="padding: 15px 0; margin: 0">
-            <div class="footer_bottom" >
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-12 col-md-12">
-                            <div class="copyright_area">
-                                <p>Copyright &copy; 2021 <a href="#">Perfume Store </a>All right Reserved.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        <jsp:include page="footer.jsp"/>
         <div class="modal fade" id="modal_box" role="dialog"></div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>   

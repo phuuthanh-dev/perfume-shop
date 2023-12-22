@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style_1.css">
+    <style>
+        i[id='iconsee']:hover {
+            color: rgba(0, 0, 0, 0.5);
+        }
+    </style>
 </head>
 
 <body>
@@ -31,21 +36,24 @@
                             <form action="login" method="post">
                                 <div class="form-group">
                                     <div class="fxt-transformY-50 fxt-transition-delay-1">
-                                        <input type="text" class="form-control" name="username" placeholder="UserName" required="required">
+                                        <input type="text" class="form-control" name="username" placeholder="UserName" required value="${uName}">
                                         <i class="fa-solid fa-user"></i>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="fxt-transformY-50 fxt-transition-delay-2">
-                                        <input type="password" class="form-control" name="password" placeholder="Password" required="required">
-                                        <i class="fa-solid fa-lock"></i>
+                                        <input id="pass" type="password" class="form-control" name="password" placeholder="Password" required value="${uPass}">
+                                        <i id="iconsee" style="cursor: pointer" onclick="changeIcon(this)" class="fa-solid fa-eye-slash"></i>
                                     </div>
+                                </div>
+                                <div class="fxt-transformY-50 fxt-transition-delay-2">
+                                    <input ${reMem==null?"":"checked"} id="remember" type="checkbox" name="remember" style=";margin-right: 6px; width: 15px; height: 15px">
+                                    <label style="font-size: 15px" for="remember">Remember me</label>
                                 </div>
                                 <div class="form-group">
                                     <div class="fxt-transformY-50 fxt-transition-delay-3">
                                         <div class="fxt-content-between">
                                             <button type="submit" class="fxt-btn-fill">Log in</button>
-                                            <a href="forgot.html" class="switcher-text2">Forgot Password</a>
                                         </div>
                                     </div>
                                 </div>
@@ -62,7 +70,19 @@
     <script src="js/imagesloaded.pkgd.min.js"></script>
     <script src="js/validator.min.js"></script>
     <script src="js/main_1.js"></script>
-
+    <script>
+                                            function changeIcon(obj) {
+                                                var inputP = document.querySelector("#pass");
+                                                console.log(inputP)
+                                                if (obj.className == 'fa-solid fa-eye-slash') {
+                                                    obj.className = 'fa-solid fa-eye';
+                                                    inputP.type = 'text';
+                                                } else {
+                                                    obj.className = 'fa-solid fa-eye-slash';
+                                                    inputP.type = 'password';
+                                                }
+                                            }
+    </script>
 </body>
 
 

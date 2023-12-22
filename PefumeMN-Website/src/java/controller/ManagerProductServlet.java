@@ -5,7 +5,11 @@
  */
 package controller;
 
+import dal.CategoryDAO;
 import dal.ProductDAO;
+import model.User;
+import model.Category;
+import model.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -14,14 +18,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Product;
+import jakarta.servlet.http.HttpSession;
 
-/**
- *
- * @author trinh
- */
-@WebServlet(name = "LoadMoreControl", urlPatterns = {"/load"})
-public class LoadPagingServlet extends HttpServlet {
+@WebServlet(name = "ManagerControl", urlPatterns = {"/manager"})
+public class ManagerProductServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,6 +34,49 @@ public class LoadPagingServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("account");
+
+        if (user == null) {
+            response.sendRedirect("login");
+            return;
+        }
+        String id = user.getUserName();
+        String index = request.getParameter("index");
+        if (index == null) {
+            index = "1";
+        }
+        int indexPage = Integer.parseInt(index);
+
+        ProductDAO daoP = new ProductDAO();
+        CategoryDAO daoC = new CategoryDAO();
+        List<Product> list = daoP.getAll();
+        List<Category> listC = daoC.getAll();
+
+        int page = 1, numPerPage = 5;
+        int size = list.size();
+        int numberpage = ((size % numPerPage == 0) ? (size / 5) : (size / 5) + 1);
+        String xpage = request.getParameter("page");
+        if (xpage == null) {
+            page = 1;
+        } else {
+            page = Integer.parseInt(xpage);
+        }
+        int start, end;
+        start = (page - 1) * 5;
+        end = Math.min(page * numPerPage, size);
+
+        List<Product> listByPage = daoP.getListByPage(list, start, end);
+        request.setAttribute("page", page);
+        request.setAttribute("start", start);
+        request.setAttribute("end", end);
+        request.setAttribute("numberpage", numberpage);
+        request.setAttribute("listCC", listC);
+        request.setAttribute("listByPage", listByPage);
+
+        request.getRequestDispatcher("mnproduct.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -48,15 +91,7 @@ public class LoadPagingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        //tam thoi load ra 9 san pham truoc 
-        String amount = request.getParameter("exits");
-        int iamount = Integer.parseInt(amount);
-        ProductDAO p = new ProductDAO();
-        List<Product> list = p.getNext9Product(iamount);
-        request.setAttribute("productPage", list);
-        request.setAttribute("col", 4);
-        request.getRequestDispatcher("load.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

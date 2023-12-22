@@ -71,7 +71,6 @@ public class HomeServlet extends HttpServlet {
         List<Product> productFooter1 = p.getFeaturedProducts();
         List<Product> productFooter2 = p.getFeaturedProducts();
         
-
         //phan trang
         int page = 1, numPerPage = 9;
         int size = listAll.size();

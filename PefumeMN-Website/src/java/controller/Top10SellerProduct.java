@@ -6,6 +6,10 @@
 package controller;
 
 import dal.ProductDAO;
+import model.User;
+import model.Category;
+import model.Product;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -14,14 +18,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Product;
+import jakarta.servlet.http.HttpSession;
 
-/**
- *
- * @author trinh
- */
-@WebServlet(name = "LoadMoreControl", urlPatterns = {"/load"})
-public class LoadPagingServlet extends HttpServlet {
+
+@WebServlet(name = "Top10SanPhamControl", urlPatterns = {"/top10"})
+public class Top10SellerProduct extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,6 +35,20 @@ public class LoadPagingServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        
+       
+        ProductDAO dao = new ProductDAO();
+        List<Product> list = dao.getTop10SellerProduct();
+        int listTop10Product = list.size();
+
+
+        
+        
+        request.setAttribute("list", list);
+        request.setAttribute("listTop10Product", listTop10Product);
+
+        request.getRequestDispatcher("top10.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -48,15 +63,7 @@ public class LoadPagingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        //tam thoi load ra 9 san pham truoc 
-        String amount = request.getParameter("exits");
-        int iamount = Integer.parseInt(amount);
-        ProductDAO p = new ProductDAO();
-        List<Product> list = p.getNext9Product(iamount);
-        request.setAttribute("productPage", list);
-        request.setAttribute("col", 4);
-        request.getRequestDispatcher("load.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

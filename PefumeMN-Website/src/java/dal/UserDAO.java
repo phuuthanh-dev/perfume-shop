@@ -8,6 +8,8 @@ package dal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import model.User;
 
 /**
@@ -32,6 +34,36 @@ public class UserDAO extends DBContext {
             System.out.println(e);
         }
         return null;
+    }
+
+    public int checkAccountAdmin(String userName) {
+        String sql = "select  from Users where [userName]=?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, userName);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+
+        }
+        return 0;
+    }
+
+    public List<User> getAllUsers() {
+        List<User> list = new ArrayList<>();
+        String sql = "select * from Users";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                list.add(new User(rs.getString("userName"), rs.getString("fullName"), rs.getString("password"),
+                        rs.getString("address"), rs.getString("phone"), rs.getString("email"), rs.getString("Image"), rs.getString("BirthDay"), rs.getInt("roleID")));
+            }
+        } catch (Exception e) {
+        }
+        return list;
     }
 
     public boolean checkUserNameDuplicate(String username) {
@@ -66,19 +98,19 @@ public class UserDAO extends DBContext {
             System.out.println(e);
         }
     }
-    
-    public void update(String name, String address,String phone, String email, String dob, String userName) {
+
+    public void update(String name, String address, String phone, String email, String dob, String userName) {
         String sql = "UPDATE [dbo].[Users] SET \n";
         if (name != null) {
             sql += " [fullName] = " + "?";
         }
-        if( address != null) {
+        if (address != null) {
             sql += ", [address] =" + "?";
         }
         sql += ", [phone] =" + "?";
         sql += ", [email] =" + "?";
         sql += ", [BirthDay] =" + "?";
-        sql +=  " WHERE userName = ?";
+        sql += " WHERE userName = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, name);
@@ -140,9 +172,10 @@ public class UserDAO extends DBContext {
 
     public static void main(String[] args) {
         UserDAO p = new UserDAO();
-        p.update("sadfasdfa", "Fasdfsffaf", "fasdfsfaf", "asdfasfafa", "2003-09-09", "john_doe");
         User user = p.getUserByUserName("john_doe");
-        System.out.println(user.getFullName());
-        System.out.println(user.getAddress());
+        List<User> list = p.getAllUsers();
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i).getAddress());
+        }
     }
 }

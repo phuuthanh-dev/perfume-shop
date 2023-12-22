@@ -414,8 +414,44 @@ public class ProductDAO extends DBContext {
         } catch (Exception e) {
         }
         return list;
+    }//getnext6Product
+
+    public List<Product> getNext6Product(int amount) {
+        List<Product> list = new ArrayList<>();
+        String sql = "SELECT *\n"
+                + "  FROM products\n"
+                + " ORDER BY ProductID\n"
+                + "OFFSET ? ROWS\n"
+                + " FETCH NEXT 6 ROWS ONLY";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, amount);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Category c = cd.getCategoryById(rs.getInt("CategoryID"));
+                Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
+                double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
+                Product p = new Product(
+                        rs.getString("ProductName"),
+                        rs.getString("image1"),
+                        rs.getString("image2"),
+                        rs.getString("describe"),
+                        rs.getString("QuantityPerUnit"),
+                        rs.getInt("ProductID"),
+                        rs.getInt("UnitsInStock"),
+                        rs.getInt("StarRating"),
+                        rs.getDouble("UnitPrice"),
+                        rs.getDouble("Discount"),
+                        salePrice,
+                        rs.getDate("releaseDate"),
+                        c, s);
+                list.add(p);
+            }
+        } catch (Exception e) {
+        }
+        return list;
     }
-    
+
     //searchbyname
     public List<Product> searchByName(String text) {
         List<Product> list = new ArrayList<>();
@@ -450,10 +486,58 @@ public class ProductDAO extends DBContext {
         return list;
     }
 
+    public int countAllProduct() {
+        String sql = "select count(*) from Products";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
+    public List<Product> getTop10SellerProduct() {
+        List<Product> list = new ArrayList<>();
+        String sql = "select top(10) *\r\n"
+                + "from Products\r\n"
+                + "order by QuantitySold desc";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Category c = cd.getCategoryById(rs.getInt("CategoryID"));
+                Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
+                double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
+                Product p = new Product(
+                        rs.getString("ProductName"),
+                        rs.getString("image1"),
+                        rs.getString("image2"),
+                        rs.getString("describe"),
+                        rs.getString("QuantityPerUnit"),
+                        rs.getInt("ProductID"),
+                        rs.getInt("UnitsInStock"),
+                        rs.getInt("StarRating"),
+                        rs.getDouble("UnitPrice"),
+                        rs.getDouble("Discount"),
+                        salePrice,
+                        rs.getDate("releaseDate"),
+                        c, s);
+                list.add(p);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
     public static void main(String[] args) {
         ProductDAO p = new ProductDAO();
         int[] a = {0};
-        List<Product> list = p.searchByName("a");
+        int aa = p.countAllProduct();
+        List<Product> list = p.getNext6Product(7);
+        System.out.println(aa);
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).getName());
         }
