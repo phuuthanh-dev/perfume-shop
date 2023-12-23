@@ -80,30 +80,28 @@
         <!--Main Navigation-->
         <header>
             <jsp:include page="leftadmin.jsp"></jsp:include>
-        </header>
-        
+            </header>
+
         <jsp:include page="header_right.jsp"></jsp:include>
-        <!--Main Navigation-->
-        <main>
-            <div class="container pt-4">
-                <!--Section: Statistics with subtitles-->
-                <section>
-                    <div class="row" id="total">
-                        <div class="col-xl-6 col-md-12 mb-4">
-                            <div class="card">
-                                <div style="padding: 10px 15px">
-                                    <div class="d-flex justify-content-between p-md-1">
-                                        <div class="d-flex flex-row">
-                                            <div class="align-self-center">
-                                                <i style="color: #1B813A; font-size: 50px" <i class="fa-solid fa-box"></i>
+            <!--Main Navigation-->
+            <main>
+                <div class="container pt-4">
+                    <!--Section: Statistics with subtitles-->
+                    <section>
+                        <div class="row" id="total">
+                            <div class="col-xl-6 col-md-12 mb-4">
+                                <div class="card">
+                                    <div style="padding: 10px 15px">
+                                        <div class="d-flex justify-content-between p-md-1">
+                                            <div class="d-flex flex-row">
+                                                <div class="align-self-center">
+                                                    <i style="color: #1B813A; font-size: 50px" <i class="fa-solid fa-box"></i>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div style="text-align: center">
-                                            <div>
+                                            <div style="text-align: end">
                                                 <h4 style="color: #1B813A">Total Products</h4>
                                                 <p class="mb-0"></p>
-                                            </div>
-                                            <h2 class="h1 mb-0">${requestScope.countProduct}</h2>
+                                                <h2 class="h1 mb-0">${requestScope.countProduct}</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -118,11 +116,9 @@
                                                 <i style="color: #06439F; font-size: 50px" class="fa-solid fa-truck-fast"></i>
                                             </div>
                                         </div>
-                                        <div style="text-align: center"> 
-                                            <div>
-                                                <h4 style="color: #06439F;">Number of products sold</h4>
-                                                <p class="mb-0"></p>
-                                            </div>
+                                        <div style="text-align: end"> 
+                                            <h4 style="color: #06439F;">Number of products sold</h4>
+                                            <p class="mb-0"></p>
                                             <h2 class="h1 mb-0">19</h2> 
                                         </div>
                                     </div>
@@ -133,19 +129,17 @@
                     <div class="row">
                         <div class="col-xl-6 col-md-12 mb-4">
                             <div class="card">
-                                <div class="card-body">
+                                <div style="padding: 10px 15px">
                                     <div class="d-flex justify-content-between p-md-1">
                                         <div class="d-flex flex-row">
                                             <div class="align-self-center">
-                                                <h2 class="h1 mb-0 me-4">$${sumAllInvoice}</h2>
-                                            </div>
-                                            <div>
-                                                <h4>Total Sales</h4>
-                                                <p class="mb-0"></p>
+                                                <i style="color: #E94644; font-size: 50px" <i class="fa-solid fa-money-bill"></i>
                                             </div>
                                         </div>
-                                        <div class="align-self-center">
-                                            <i class="far fa-heart text-danger fa-3x"></i>
+                                        <div style="text-align: end">
+                                            <h4 style="color: #E94644;">Total Sales</h4>
+                                            <p class="mb-0"></p>
+                                            <h2 class="h1 mb-0">3$</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -153,18 +147,16 @@
                         </div>
                         <div class="col-xl-6 col-md-12 mb-4">
                             <div class="card">
-                                <div class="card-body">
+                                <div style="padding: 10px 15px">
                                     <div class="d-flex justify-content-between p-md-1">
                                         <div class="d-flex flex-row">
                                             <div class="align-self-center">
                                                 <i style="color: #06439F; font-size: 50px" class="fa-solid fa-users"></i>
                                             </div>
-                                            <div>
-                                                <h4>Total Users</h4>
-                                                <p class="mb-0"></p>
-                                            </div>
                                         </div>
-                                        <div class="align-self-center">
+                                        <div style="text-align: end">
+                                            <h4 style="color: #06439F;">Total Users</h4>
+                                            <p class="mb-0"></p>
                                             <h2 class="h1 mb-0">${requestScope.countUser}</h2>
                                         </div>
                                     </div>

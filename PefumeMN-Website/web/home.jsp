@@ -57,11 +57,11 @@
                 <div class="header_right_info">
                     <ul>
                         <li class="search_box">
-                            <a href="javascript:void(0)"><i class="fa fa-search"></i></a>
+                            <a href="javascript:void(0)"><i class="fa-solid fa-magnifying-glass"></i></a>
                             <div class="search_widget">
                                 <form action="refine" method="get">
                                     <input id="searchId" name="nameSearch" type="text" placeholder="Search Your Perfume">
-                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                                 </form>
                             </div>
                         </li>
@@ -223,7 +223,7 @@
                                     <nav>
                                         <ul>
                                             <li>
-                                                <a href="index.html" class="active">Home</a>
+                                                <a href="home" class="active">Home</a>
                                             </li>
                                             <li class="mega_items">
                                                 <a href="#">Brands <i class="fa fa-angle-down"></i></a>
