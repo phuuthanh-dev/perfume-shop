@@ -70,7 +70,11 @@
                     <li class="header_wishlist">
                         <a href="#">
                             <i class="fa fa-heart-o"></i>
-                            <span class="item_count">4</span>
+                            <c:if test="${sessionScope.wishList != null && sessionScope.wishListSize != 0}" >
+                                <span class="item_count">
+                                    ${sessionScope.wishListSize}
+                                </span>
+                            </c:if>
                         </a>
                     </li><c:if test="${sessionScope.account.roleID==1}">
                         <li class="header_wishlist">
@@ -82,14 +86,9 @@
                     <li class="mini_cart_wrapper">
                         <a href="javascript:void(0)">
                             <i class="fa fa-shopping-cart"></i>
-                            <c:if test="${sessionScope.size != null}" >
+                            <c:if test="${sessionScope.cart != null && sessionScope.cartSize != 0}" >
                                 <span class="item_count">
-                                    ${sessionScope.size}
-                                </span>
-                            </c:if>
-                            <c:if test="${sessionScope.size == null}" >
-                                <span class="item_count">
-                                    0
+                                    ${sessionScope.cartSize}
                                 </span>
                             </c:if>
                         </a>
@@ -97,9 +96,9 @@
                         <div class="mini_cart mini_cart2">
                             <c:set var="subTotal" value="0"/>
                             <c:set var="subPrice" value="0"/>
-                            <div class="cart_gallery">
-                                <c:if test="${sessionScope.cart != null}">
-                                    <c:forEach items="${sessionScope.listItems}" var="p">
+                            <div class="cart_gallery" style="height: 250px; overflow-y: auto;">
+                                <c:if test="${sessionScope.cart != null && sessionScope.cartSize != 0}">
+                                    <c:forEach items="${sessionScope.listItemsInCart}" var="p">
                                         <div class="cart_item">
                                             <div class="cart_img">
                                                 <a href="#"><img src="${p.product.image1}"
@@ -110,14 +109,14 @@
                                                 <p><span>Rs.${p.price}</span> X ${p.quantity}</p>
                                             </div>
                                             <div class="cart_remove">
-                                                <a href="#"><i class="fa fa-times"></i></a>
+                                                <a href="cart?rid=${p.product.id}"><i class="fa fa-times"></i></a>
                                             </div>
                                         </div>
                                         <c:set var="subTotal" value="${subTotal + p.product.price}"/>
                                         <c:set var="subPrice" value="${subPrice + p.price}"/>
                                     </c:forEach>
                                 </c:if>
-                                <c:if test="${sessionScope.cart == null}">
+                                <c:if test="${sessionScope.cart == null || sessionScope.cartSize == 0}">
                                     <h3>Nothing now!</h3>
                                 </c:if>
                             </div>
