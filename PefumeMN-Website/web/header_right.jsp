@@ -118,7 +118,8 @@
                                     </c:forEach>
                                 </c:if>
                                 <c:if test="${sessionScope.cart == null || sessionScope.cartSize == 0}">
-                                    <h3>Nothing now!</h3>
+                                    <span class="header__cart-list--no-cart-msg">Nothing now!</span>
+                                    <img src="images/emptycart.png" alt="Emptycart" style=" width: 60%;">
                                 </c:if>
                             </div>
                             <div class="mini_cart_table">
@@ -138,9 +139,6 @@
                             <div class="mini_cart_footer">
                                 <div class="cart_button">
                                     <a href="#">View Cart</a>
-                                </div>
-                                <div class="cart_button">
-                                    <a href="#">Checkout</a>
                                 </div>
                             </div>
                         </div>
