@@ -68,8 +68,8 @@
                                 </form>
                             </div>
                             <div class="col-lg-3">
-                                <%@ include file="header_right.jsp" %>
-<!--                                <div class="header_top_right">
+                                <%--         <%@ include file="header_right.jsp" %> --%>
+                                <div class="header_top_right">
                                     <div class="header_right_info">
                                         <ul>
                                             <li class="user">
@@ -90,7 +90,7 @@
                                                     <span class="item_count">4</span>
                                                 </a>
                                             </li>
-                                             <li class="mini_cart_wrapper">
+                                            <li class="mini_cart_wrapper">
                                                 <a href="javascript:void(0)">
                                                     <i class="fa fa-shopping-cart"></i>
                                                     <c:if test="${sessionScope.size != null}" >
@@ -100,12 +100,10 @@
                                                     </c:if>
                                                     <c:if test="${sessionScope.size == null}" >
                                                         <span class="item_count">
-                                                           0
+                                                            0
                                                         </span>
                                                     </c:if>
                                                 </a>
-
-                                                 mini cart  
                                                 <div class="mini_cart mini_cart2">
                                                     <c:set var="subTotal" value="0"/>
                                                     <c:set var="subPrice" value="0"/>
@@ -156,34 +154,24 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                 mini cart ends 
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="header_account">
                                         <ul>
                                             <li class="top_links">
-                                                <a href="#">
-                                                    <i class="fa fa-cog"></i>
+                                                <a href="profile">
+                                                    <img src="${sessionScope.account.image}" width="40px" style="color: white; border-radius: 50%">
                                                 </a>
-                                                <ul class="dropdown_links">
-                                                    <li><a href="#">Checkout</a></li>
-                                                    <li><a href="#">My Account</a></li>
-                                                    <li><a href="#">Shopping cart</a></li>
-                                                    <li><a href="#">Wishlist</a></li>
-                                                </ul>
                                             </li>
                                             <c:if test="${sessionScope.account!=null}">
-                                                <li>
-                                                    <a href="profile" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.name}!</a>
-                                                </li>
                                                 <li>
                                                     <a id="logout" href="#" onclick="checkLogout()" style="color: white; text-decoration: underline">${sessionScope.account==null ? "": "LOGOUT"}</a>
                                                 </li>
                                             </c:if>
                                         </ul>
                                     </div>
-                                </div>-->
+                                </div>
                             </div>
                         </div>
                         <div class="row" style="justify-content: flex-start; padding: 10px 0"">
