@@ -76,7 +76,7 @@ public class ManagerProductServlet extends HttpServlet {
         request.setAttribute("listCC", listC);
         request.setAttribute("listByPage", listByPage);
 
-        request.getRequestDispatcher("mnproduct.jsp").forward(request, response);
+        request.getRequestDispatcher("dashboard/mnproduct.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

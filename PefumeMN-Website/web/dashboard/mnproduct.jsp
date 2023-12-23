@@ -33,7 +33,7 @@
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link href="css/style.css" rel="stylesheet" type="text/css"/> 
         <style>
-            img {
+            td img {
                 width: 200px;
                 height: 120px;
             }
@@ -102,8 +102,7 @@
 
 
             </header>
-            <!--Main Navigation-->
-
+        <jsp:include page="header_right.jsp"></jsp:include>
             <!--Main layout-->
             <main>
                 <div class="container pt-4">
