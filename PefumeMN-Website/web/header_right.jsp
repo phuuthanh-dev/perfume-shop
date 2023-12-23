@@ -61,7 +61,7 @@
                                 <i class="fa fa-user-circle"></i>
                             </a>
                         </c:if>
-                        <c:if test="${sessionScope.account != null}">
+                        <c:if test="${sessionScope.account != null && sessionScope.account.roleID!=1}">
                             <a href="profile" title="Icon User">
                                 <i class="fa fa-user-circle"></i>
                             </a>
@@ -72,7 +72,8 @@
                             <i class="fa fa-heart-o"></i>
                             <span class="item_count">4</span>
                         </a>
-                    </li><c:if test="${sessionScope.account.roleID==1}">
+                    </li>
+                    <c:if test="${sessionScope.account.roleID==1}">
                         <li class="header_wishlist">
                             <a href="admin">
                                 <i class="fa-solid fa-chalkboard-user"></i>
@@ -163,7 +164,8 @@
                     </li>
                     <c:if test="${sessionScope.account!=null}">
                         <li>
-                            <a href="profile" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.name}!</a>
+                            <a href="${sessionScope.account.roleID==1?"admin":"profile"}" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.name}!</a>
+                            <a href="${sessionScope.account.roleID==1?"admin":"profile"}"><img src="${sessionScope.account.image}" width="40px" style="color: white; border-radius: 50%"></a>
                         </li>
                         <li>
                             <a id="logout" href="#" onclick="checkLogout()" style="color: white; text-decoration: underline">${sessionScope.account==null ? "": "LOGOUT"}</a>

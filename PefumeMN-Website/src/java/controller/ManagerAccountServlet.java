@@ -56,7 +56,7 @@ public class ManagerAccountServlet extends HttpServlet {
 
         request.setAttribute("listUser", list);
         
-        request.getRequestDispatcher("mngaccount.jsp").forward(request, response);
+        request.getRequestDispatcher("dashboard/mngaccount.jsp").forward(request, response);
     }
 
     /**

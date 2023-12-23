@@ -529,14 +529,13 @@ public class ProductDAO extends DBContext {
         } catch (Exception e) {
         }
         return 0;
-
     }
 
     public static void main(String[] args) {
         ProductDAO p = new ProductDAO();
         int[] a = {0};
         int aa = p.countAllProduct();
-        List<Product> list = p.getNext6Product(7);
+        List<Product> list = p.getTop10SellerProduct();
         System.out.println(aa);
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).getName());
@@ -571,7 +570,7 @@ public class ProductDAO extends DBContext {
                         c, s);
                 list.add(p);
             }
-
+            return list;
         } catch (Exception e) {
         }
         return null;

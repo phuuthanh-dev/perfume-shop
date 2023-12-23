@@ -169,6 +169,19 @@ public class UserDAO extends DBContext {
             System.out.println(e);
         }
     }
+    
+    public int countAllUser() {
+        String sql = "select count(*) from Users";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
 
     public static void main(String[] args) {
         UserDAO p = new UserDAO();

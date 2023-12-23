@@ -6,19 +6,15 @@
 package controller;
 
 import dal.ProductDAO;
-import model.User;
-import model.Category;
 import model.Product;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 
 @WebServlet(name = "Top10SanPhamControl", urlPatterns = {"/top10"})
@@ -37,18 +33,14 @@ public class Top10SellerProduct extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-       
         ProductDAO dao = new ProductDAO();
         List<Product> list = dao.getTop10SellerProduct();
         int listTop10Product = list.size();
-
-
-        
         
         request.setAttribute("list", list);
         request.setAttribute("listTop10Product", listTop10Product);
 
-        request.getRequestDispatcher("top10.jsp").forward(request, response);
+        request.getRequestDispatcher("dashboard/top10.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
