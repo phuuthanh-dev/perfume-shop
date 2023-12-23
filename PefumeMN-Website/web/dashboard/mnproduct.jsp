@@ -111,7 +111,7 @@
                         <div class="card">
                             <div class="row" style="">
                                 <div class="col-sm-4" style="text-align: center; margin-top: 20px; padding-top: 20px">
-                                    <h3 class="mb-0" id="" style="font-family: Times New Roman">
+                                    <h3 class="mb-0" id="">
                                         <strong>Manage Account</strong>
                                     </h3>
                                 </div>
@@ -137,7 +137,7 @@
                                         <tr>
                                             <th class="text_page_head" scope="col">ID</th>
                                             <th class="text_page_head" scope="col">Name</th>
-                                            <th class="text_page_head" scope="col">Image</th>
+                                            <th class="text_page_head" style="text-align: center" scope="col">Image</th>
                                             <th class="text_page_head" scope="col">Price</th>
                                             <th class="text_page_head" scope="col">Actions</th>
                                         </tr>
@@ -146,8 +146,8 @@
                                         <c:forEach items="${listByPage}" var="o">
                                             <tr class="product_items">
                                                 <td class="text_page">${o.id}</td>
-                                                <td class="text_page">${o.name}</td>
-                                                <td >
+                                                <td style="max-width: 280px;" class="text_page">${o.name}</td>
+                                                <td style="text-align: center">
                                                     <img style="width: 170px; height:180px" src="${o.image1}">
                                                 </td>
                                                 <td class="text_page">${o.price}$</td>

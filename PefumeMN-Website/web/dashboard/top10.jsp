@@ -54,6 +54,15 @@
                     padding-left: 240px;
                 }
             }
+            
+            .text_page_head{
+                font-size: 18px;
+                font-weight: 600;
+            }
+            .text_page {
+                font-size: 14px;
+                font-weight: 600;
+            }
 
             /* Sidebar */
             .sidebar {
@@ -107,7 +116,7 @@
                     <section class="mb-4">
                         <div class="card"> 
                             <div class="card-header py-3">
-                                <h3 class="mb-0 text-center"><strong>Top 10 sản phẩm bán chạy nhất</strong></h3>
+                                <h3 style="padding: 10px" class="mb-0 text-center"><strong>TOP 10 BEST-SELLING PRODUCTS</strong></h3>
                             </div>
 
                         <c:if test="${mess!=null }">
@@ -121,23 +130,23 @@
                                 <table class="table table-hover text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Image</th>
-                                            <th scope="col">Price</th>
-                                            <th scope="col">SoLuongDaBan</th>
+                                            <th class="text_page_head" scope="col">ID</th>
+                                            <th class="text_page_head" scope="col">Name</th>
+                                            <th class="text_page_head"  style="text-align: center" scope="col">Image</th>
+                                            <th class="text_page_head" scope="col">Price</th>
+                                            <th class="text_page_head" scope="col">Quantity sold</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <c:forEach items="${list}" var="t">
                                             <tr>
-                                                <td>${t.id}</td>
-                                                <td>${t.name}</td>
-                                                <td>
+                                                <td class="text_page">${t.id}</td>
+                                                <td class="text_page">${t.name}</td>
+                                                <td class="text_page" style="text-align: center">
                                                     <img style="width: 170px; height:180px" src="${t.image1}">
                                                 </td>
-                                                <td>${t.price} $</td>
-                                                <td>${t.quantity}</td>
+                                                <td class="text_page">${t.price} $</td>
+                                                <td class="text_page">${t.quantity}</td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>

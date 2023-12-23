@@ -152,3 +152,21 @@ function checkLogout() {
 }
 //
 
+//function loadProduct23(obj) {
+//    var cid = obj.value;
+//    var row = document.getElementById("products23");
+//    $.ajax({
+//        url: "/PefumeMN-Website/loadproduct23",
+//        type: "get",
+//        data: {
+//            exist: cid
+//        },
+//        success: function (data) {
+//            var row = document.getElementById("products23");
+//            row.innerHTML = data;
+//        },
+//        error: function (xhr) {
+//        }
+//    });
+//}
+

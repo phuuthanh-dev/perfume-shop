@@ -70,7 +70,7 @@
                             </a>
                         </li>
                         <li class="mini_cart_wrapper">
-                            <a href="javascript:void(0)">
+                            <a href="javascript:void">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span class="item_count">2</span>
                             </a>
@@ -117,7 +117,7 @@
                                 </div>
                                 <div class="mini_cart_footer">
                                     <div class="cart_button">
-                                        <a href="#">View Cart</a>
+                                        <a href="viewcart">View Cart</a>
                                     </div>
                                     <div class="cart_button">
                                         <a href="#">Checkout</a>
@@ -342,9 +342,8 @@
                                         </a>
                                     </li>
                                     <c:forEach items="${requestScope.category}" var="c">
-                                        <li>
-                                            <a class="${c.id==cidYear?"active":""}"
-                                               href="home1?cidYear=${c.id}">
+                                        <li value="${c.id}" >
+                                            <a href="home1?cidYear=${c.id}" class="${c.id==cidYear?"active":""}">
                                                 ${c.name}
                                             </a>
                                         </li>
@@ -354,10 +353,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-content">
+                <div  class="tab-content">
                     <div class="tab-pane fade show active" id="Men" role="tabpanel">
                         <div class="row">
-                            <div class="product_carousel product_column4 owl-carousel">
+                            <div  class="product_carousel product_column4 owl-carousel">
                                 <c:forEach items="${requestScope.productsYear}" var="p">
                                     <div class="col-lg-3">
                                         <article class="single_product">
@@ -1168,7 +1167,6 @@
 
 
         <div class="modal fade" id="modal_box" role="dialog"></div>
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>   
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

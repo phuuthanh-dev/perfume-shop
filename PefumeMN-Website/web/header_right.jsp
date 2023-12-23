@@ -51,7 +51,6 @@
         </style>
     </head>
     <body>
-
         <div class="header_top_right">
             <div class="header_right_info">
                 <ul>
@@ -97,7 +96,7 @@
                         <div class="mini_cart mini_cart2">
                             <c:set var="subTotal" value="0"/>
                             <c:set var="subPrice" value="0"/>
-                            <div class="cart_gallery" style="height: 250px; overflow-y: auto;">
+                            <div class="cart_gallery" style="max-height: 250px; overflow-y: auto;">
                                 <c:if test="${sessionScope.cart != null && sessionScope.cartSize != 0}">
                                     <c:forEach items="${sessionScope.listItemsInCart}" var="p">
                                         <div class="cart_item">
@@ -138,7 +137,7 @@
                             </div>
                             <div class="mini_cart_footer">
                                 <div class="cart_button">
-                                    <a href="#">View Cart</a>
+                                    <a href="viewcart">View Cart</a>
                                 </div>
                             </div>
                         </div>

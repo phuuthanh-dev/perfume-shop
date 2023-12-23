@@ -535,7 +535,7 @@ public class ProductDAO extends DBContext {
         ProductDAO p = new ProductDAO();
         int[] a = {0};
         int aa = p.countAllProduct();
-        List<Product> list = p.getTop10SellerProduct();
+        List<Product> list = p.getProductsByCategoryid(1);
         System.out.println(aa);
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).getName());

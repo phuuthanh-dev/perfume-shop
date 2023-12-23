@@ -169,7 +169,7 @@ public class UserDAO extends DBContext {
             System.out.println(e);
         }
     }
-    
+
     public int countAllUser() {
         String sql = "select count(*) from Users";
         try {
@@ -183,12 +183,48 @@ public class UserDAO extends DBContext {
         return 0;
     }
 
+    public void insertUser(String UserName, String FullName, String Password,
+            int RoleID, String Email, String BirthDay, String Phone) {
+        String sql = "INSERT INTO [dbo].[Users]\n"
+                + "           ([UserName]\n"
+                + "           ,[FullName]\n"
+                + "           ,[Password]\n"
+                + "           ,[RoleID]\n"
+                + "           ,[Email]\n"
+                + "           ,[BirthDay]\n"
+                + "           ,[Phone])\n"
+                + "     VALUES\n"
+                + "           (?,?,?,?,?,?,?)";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, UserName);
+            st.setString(2, FullName);
+            st.setString(3, Password);
+            st.setInt(4, RoleID);
+            st.setString(5, Email);
+            st.setString(6, BirthDay);
+            st.setString(7, Phone);
+            st.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void deleteUser(String username) {
+        String sql = "delete from Users where UserName= ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, username);
+            st.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public static void main(String[] args) {
         UserDAO p = new UserDAO();
-        User user = p.getUserByUserName("john_doe");
+        p.insertUser("adminafa", "Phùng Hữu Thành", "123", 1, "phuuthanh2003@gmai.com", "2003-08-10", "0707064154");
         List<User> list = p.getAllUsers();
         for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).getAddress());
+            System.out.println(list.get(i).getUserName());
         }
     }
 }

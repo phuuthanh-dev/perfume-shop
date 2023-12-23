@@ -97,12 +97,12 @@
                             </div>
 
                         <c:if test="${error!=null }">
-                            <div class="alert alert-danger" role="alert">
+                            <div style="margin-top: 20px" class="alert alert-danger" role="alert">
                                 ${error}
                             </div>
                         </c:if>
                         <c:if test="${mess!=null }">
-                            <div class="alert alert-success" role="alert">
+                            <div style="margin-top: 20px" class="alert alert-success" role="alert">
                                 ${mess}
                             </div>
                         </c:if>
@@ -127,7 +127,10 @@
                                                 <td style="font-weight: 500">${u.fullName}</td>
                                                 <td style="font-weight: 500">${u.birthdate}</td>
                                                 <td>
-                                                    <a href="deleteAccount?id=${o.id}"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i></button></a>
+                                                    <a href="deleteaccount?username=${u.userName}"><button type="button" class="btn btn-danger">
+                                                            <i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i>
+                                                        </button>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         </c:forEach>
@@ -145,12 +148,16 @@
         <div id="addEmployeeModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="addAccount" method="post">
+                    <form action="addaccount" method="get">
                         <div class="modal-header">						
                             <h4 class="modal-title">Thêm tài khoản</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
-                        <div class="modal-body">					
+                        <div class="modal-body">	
+                             <div class="form-group">
+                                <label>Full name</label>
+                                <input name="name" type="text" class="form-control" required>
+                            </div>
                             <div class="form-group">
                                 <label>Username</label>
                                 <input name="user" type="text" class="form-control" required>
@@ -160,18 +167,22 @@
                                 <label>Password</label>
                                 <input name="pass" type="password" class="form-control" required>
                             </div>
-                            <div class="form-group form-check">
-                                <input name="isSell" value="1" type="checkbox" class="form-check-input" id="isSell">
-                                <label class="form-check-label" for="isSell">Là người bán</label>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input name="phone" value="" type="text" class="form-control" id="phone">
                             </div>
 
                             <div class="form-group form-check">
-                                <input name="isAdmin" value="1" type="checkbox" class="form-check-input" id="isAdmin">
+                                <input name="roleId" value="1" type="checkbox" class="form-check-input" id="isAdmin">
                                 <label class="form-check-label" for="isAdmin">Là Admin</label>
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
                                 <input name="email" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Birthdate</label>
+                                <input name="birthdate" type="text" class="form-control" required>
                             </div>
 
                         </div>
@@ -194,7 +205,6 @@
         <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/mdb.ecommerce.min.js"></script>
         <script type="text/javascript" src="js/mdb.min.js"></script>
         <script type="text/javascript" src="js/script.js"></script>
-
         <script type="text/javascript" src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/js/plugins/mdb-plugins-gathered.min.js"></script>
         <script type="text/javascript" src="js/mdb.min.js"></script>
         <script type="text/javascript" src="js/script.js"></script>
