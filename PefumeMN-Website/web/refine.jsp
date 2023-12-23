@@ -403,7 +403,7 @@
                                                                     </a>
                                                                 </li>
                                                                 <li class="wishlist">
-                                                                    <a href="#" title="Add to Wishlist">
+                                                                    <a href="cart?wishId=${i.id}" title="Add to Wishlist">
                                                                         <i class="fa fa-heart-o"></i>
                                                                     </a>
                                                                 </li>

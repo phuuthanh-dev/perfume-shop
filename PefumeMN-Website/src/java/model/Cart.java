@@ -71,4 +71,12 @@ public class Cart {
         }
         return t;
     }
+    // 
+    public List<Product> getlistProducts () {
+        List<Product> list = new ArrayList<>();
+        for (Item item: listItems) {
+            list.add(item.getProduct());
+        }
+        return list;
+    }
 }
