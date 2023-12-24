@@ -116,9 +116,6 @@
                                         <strong>Manage Account</strong>
                                     </h3>
                                 </div>
-                                <div class="col-sm-8 text-right"  style="margin-top: 20px; padding-right: 85px">
-                                    <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="fa-solid fa-plus"></i></a>
-                                </div>
                             </div>
 
                         <c:if test="${error!=null }">
@@ -141,6 +138,7 @@
                                             <th class="text_page_head">Password</th>
                                             <th class="text_page_head">Role</th>
                                             <th class="text_page_head">Phone</th>
+                                            <th><a  style="margin-left: 5px" href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="fa-solid fa-plus"></i></a></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -173,9 +171,9 @@
         <div id="addEmployeeModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form id="form" action="addaccount" method="get">
+                    <form id="form" action="addaccount" method="post">
                         <div class="modal-header">						
-                            <h4 class="modal-title">Thêm tài khoản</h4>
+                            <h4 class="modal-title">Add account</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">	
@@ -197,9 +195,9 @@
                                 <input name="phone" value="" type="text" class="form-control" id="phone">
                             </div>
 
-                            <div class="form-group form-check">
+                            <div class="form-group">
                                 <input name="roleId" value="1" type="checkbox" class="form-check-input" id="isAdmin">
-                                <label class="form-check-label" for="isAdmin">Là Admin</label>
+                                <label class="form-check-label" for="isAdmin">Admin</label>
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
