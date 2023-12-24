@@ -112,8 +112,8 @@
                                                 <a href="cart?rid=${p.product.id}"><i class="fa fa-times"></i></a>
                                             </div>
                                         </div>
-                                        <c:set var="subTotal" value="${subTotal + p.product.price}"/>
-                                        <c:set var="subPrice" value="${subPrice + p.price}"/>
+                                        <c:set var="subTotal" value="${subTotal + (p.product.price*p.quantity)}"/>
+                                        <c:set var="subPrice" value="${subPrice + (p.price * p.quantity)}"/>
                                     </c:forEach>
                                 </c:if>
                                 <c:if test="${sessionScope.cart == null || sessionScope.cartSize == 0}">
@@ -125,7 +125,7 @@
                                 <div class="cart_table_border">
                                     <div class="cart_total">
                                         <span>Sub Total :</span>
-                                        <span class="price">Rs. ${subTotal}</span>
+                                        <span class="price" style="color:grey">Rs. ${subTotal}</span>
                                     </div>
 
                                     <div class="cart_total mt-10">
@@ -137,7 +137,7 @@
                             </div>
                             <div class="mini_cart_footer">
                                 <div class="cart_button">
-                                    <a href="viewcart">View Cart</a>
+                                    <a href="${sessionScope.account == null ? 'login' : 'viewcart'}">View Cart</a>
                                 </div>
                             </div>
                         </div>
@@ -160,11 +160,12 @@
                     </li>
                     <c:if test="${sessionScope.account!=null}">
                         <li>
-                            <a href="${sessionScope.account.roleID==1?"admin":"profile"}" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.name}!</a>
-                            <a href="${sessionScope.account.roleID==1?"admin":"profile"}"><img src="${sessionScope.account.image}" width="40px" style="color: white; border-radius: 50%"></a>
+                            <!--<a href="${sessionScope.account.roleID==1?"admin":"profile"}" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.name}!</a>-->
+                            <a href="${sessionScope.account.roleID==1?"admin":"profile"}"><img src="${sessionScope.account.image}" width="40px" style="color: white; border-radius: 50% ;border: 2px solid white;"></a>
                         </li>
                         <li>
-                            <a id="logout" href="#" onclick="checkLogout()" style="color: white; text-decoration: underline">${sessionScope.account==null ? "": "LOGOUT"}</a>
+                            <a id="logout" href="#" onclick="checkLogout()" style="color: white; text-decoration: underline; font-style: bold;
+                               text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">${sessionScope.account==null ? "": "LOGOUT"}</a>
                         </li>
                     </c:if>
                 </ul>

@@ -5,6 +5,7 @@
 
 package controller;
 
+import dal.OrderDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,6 +13,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.util.List;
+import model.Cart;
+import model.Item;
+import model.User;
 
 /**
  *
@@ -55,6 +61,33 @@ public class ViewCartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        // Phan cart
+        Cart cart = null;
+        Object o = session.getAttribute("cart");
+        // Check
+        if (o != null) {
+            cart = (Cart) o;
+        } else {
+            cart = new Cart();
+        }
+        String tRid = request.getParameter("rid");
+        int rid;
+        try {
+
+            rid = Integer.parseInt(tRid);
+            cart.removeItem(rid);
+        } catch (Exception e) {
+        }
+        List<Item> list = cart.getListItems();
+        session.setAttribute("cart", cart);
+        session.setAttribute("listItemsInCart", list);
+        session.setAttribute("cartSize", list.size());
+        
+        
+       //
+       
+
        request.getRequestDispatcher("viewcart.jsp").forward(request, response);
     } 
 
@@ -68,7 +101,19 @@ public class ViewCartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        Cart cart = (Cart) session.getAttribute("cart");
+        User user = (User) session.getAttribute("account");
+        
+        OrderDAO od = new OrderDAO();
+        
+        od.addOrder(user, cart);
+        
+        // xoa cart
+        session.removeAttribute("cart");
+        request.getRequestDispatcher("viewcart.jsp").forward(request, response);
+        
+        
     }
 
     /** 

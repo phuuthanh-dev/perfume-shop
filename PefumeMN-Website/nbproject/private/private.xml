@@ -3,9 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/web/images/emptycart.png</file>
             <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/web/js/clickevents.js</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/web/profile.jsp</file>
             <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/model/Cart.java</file>
             <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/model/Item.java</file>
             <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/web/header_right.jsp</file>
@@ -13,20 +13,6 @@
             <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/web/css/style.css</file>
             <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/CartServlet.java</file>
             <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/web/home.jsp</file>
-=======
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/DashBoardServlet.java</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/dashboard/dashboard.jsp</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/home.jsp</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/dashboard/header_right.jsp</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/ManagerProductServlet.java</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/dashboard/manager.jsp</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/dashboard/mngaccount.jsp</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/dashboard/mnproduct.jsp</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/dashboard/top10.jsp</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/HomeServlet.java</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/header_right.jsp</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/dashboard/leftadmin.jsp</file>
->>>>>>> cb6ca471cb11c0a2e20583b1004c6c59e0d96d0f
         </group>
     </open-files>
 </project-private>

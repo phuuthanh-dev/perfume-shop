@@ -23,3 +23,5 @@ CREATE TABLE [dbo].[Orders](
 	CONSTRAINT [FK_OrderDetail] FOREIGN KEY ([ProductID])
 	REFERENCES [dbo].[Products]([ProductID])
 )
+
+select * from Orders
