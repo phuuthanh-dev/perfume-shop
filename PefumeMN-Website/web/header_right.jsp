@@ -67,8 +67,8 @@
                         </c:if>
                     </li>
                     <li class="header_wishlist">
-                        <a href="#">
-                            <i class="fa-regular fa-heart"></i>
+                        <a href="viewwishlist">
+                            <i class="fa fa-heart-o"></i>
                             <c:if test="${sessionScope.wishList != null && sessionScope.wishListSize != 0}" >
                                 <span class="item_count">
                                     ${sessionScope.wishListSize}
@@ -111,11 +111,18 @@
                                                 <div class="cart_remove">
                                                     <a href="cart?rid=${p.product.id}"><i class="fa fa-times"></i></a>
                                                 </div>
+                                            <div class="cart_info">
+                                                <a href="#">${p.product.name}</a>
+                                                <p><span>Rs.${p.price}</span> X ${p.quantity}</p>
                                             </div>
-                                            <c:set var="subTotal" value="${subTotal + (p.product.price*p.quantity)}"/>
-                                            <c:set var="subPrice" value="${subPrice + (p.price * p.quantity)}"/>
-                                        </c:forEach>
-                                    </c:if>
+                                            <div class="cart_remove">
+                                                <a href="cart?rid=${p.product.id}&role=remove"><i class="fa fa-times"></i></a>
+                                            </div>
+                                        </div>
+                                        <c:set var="subTotal" value="${subTotal + (p.product.price*p.quantity)}"/>
+                                        <c:set var="subPrice" value="${subPrice + (p.price * p.quantity)}"/>
+                                    </c:forEach>
+                                </c:if>
                                 </div>
                                 <c:if test="${sessionScope.cart == null || sessionScope.cartSize == 0}">
                                     <span class="header__cart-list--no-cart-msg">Nothing now!</span>
@@ -153,10 +160,8 @@
                             <i class="fa fa-cog"></i>
                         </a>
                         <ul class="dropdown_links">
-                            <li><a href="#">Checkout</a></li>
-                            <li><a href="#">My Account</a></li>
+                            <li><a href="profile">My Account</a></li>
                             <li><a href="#">Shopping cart</a></li>
-                            <li><a href="#">Wishlist</a></li>
                         </ul>
                     </li>
                     <c:if test="${sessionScope.account!=null}">

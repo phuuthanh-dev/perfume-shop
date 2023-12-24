@@ -4,7 +4,6 @@
  */
 package controller;
 
-import dal.CategoryDAO;
 import dal.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,16 +15,15 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import model.Cart;
-import model.Category;
 import model.Item;
 import model.Product;
 
 /**
  *
- * @author lvhho
+ * @author Admin
  */
-@WebServlet(name = "CartServlet", urlPatterns = {"/cart"})
-public class CartServlet extends HttpServlet {
+@WebServlet(name = "ViewWishListServlet", urlPatterns = {"/viewwishlist"})
+public class ViewWishListServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,10 +42,10 @@ public class CartServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CartServlet</title>");
+            out.println("<title>Servlet ViewWishListServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CartServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ViewWishListServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -65,32 +63,10 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         HttpSession session = request.getSession();
-        // Phan cart
-        Cart cart = null;
-        Object o = session.getAttribute("cart");
-        // Check
-        if (o != null) {
-            cart = (Cart) o;
-        } else {
-            cart = new Cart();
-        }
-        String tRid = request.getParameter("rid");
-        ProductDAO pd = new ProductDAO();
-        int rid;
-        try {
-            rid = Integer.parseInt(tRid);
-            cart.removeItem(rid);
-        } catch (Exception e) {
-        }
-        List<Item> list = cart.getListItems();
-        session.setAttribute("cart", cart);
-        session.setAttribute("listItemsInCart", list);
-        session.setAttribute("cartSize", list.size());
-
         // Phan wishlist
         Cart wishList = null;
+        ProductDAO pd = new ProductDAO();
         Object w = session.getAttribute("wishList");
         // Check
         if (w != null) {
@@ -98,19 +74,11 @@ public class CartServlet extends HttpServlet {
         } else {
             wishList = new Cart();
         }
-        String rWishId = request.getParameter("wishId");
-        int wishId;
+        String tRid = request.getParameter("rid");
+        int rid;
         try {
-            wishId = Integer.parseInt(rWishId);
-            Product p = pd.getProductByID(wishId);
-            Item e = new Item(p, 1);
-
-            if (wishList.getlistProducts().contains(p)) {
-                wishList.removeItem(wishId);
-            } else {
-                wishList.addItem(e);
-            }
-
+            rid = Integer.parseInt(tRid);
+            wishList.removeItem(rid);
         } catch (Exception e) {
         }
         List<Item> listItemsInWishList = wishList.getListItems();
@@ -118,6 +86,7 @@ public class CartServlet extends HttpServlet {
         session.setAttribute("listItemsInWishList", listItemsInWishList);
         session.setAttribute("wishListSize", listItemsInWishList.size());
 
+        request.getRequestDispatcher("viewwishlist.jsp").forward(request, response);
     }
 
     /**
@@ -131,7 +100,75 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        // Phan cart
+        Cart cart = null;
+        Object o = session.getAttribute("cart");
+        // Check
+        if (o != null) {
+            cart = (Cart) o;
+        } else {
+            cart = new Cart();
+        }
 
+        ProductDAO pd = new ProductDAO();
+        String role = request.getParameter("role");
+        switch (role) {
+            case "add": {
+                String tnum = request.getParameter("quantity");
+                String tid = request.getParameter("id");
+                int num, id;
+                try {
+                    num = Integer.parseInt(tnum);
+                    id = Integer.parseInt(tid);
+                    Product p = pd.getProductByID(id);
+                    Item t = new Item(p, num);
+                    cart.addItem(t);
+                } catch (Exception e) {
+                }
+                List<Item> list = cart.getListItems();
+                session.setAttribute("cart", cart);
+                session.setAttribute("listItemsInCart", list);
+                session.setAttribute("cartSize", list.size());
+                //
+                Cart wishList = null;
+                Object w = session.getAttribute("wishList");
+                // Check
+                if (w != null) {
+                    wishList = (Cart) w;
+                } else {
+                    wishList = new Cart();
+                }
+                String tRid = request.getParameter("id");
+                int rid;
+                try {
+                    rid = Integer.parseInt(tRid);
+                    wishList.removeItem(rid);
+                } catch (Exception e) {
+                }
+                List<Item> listItemsInWishList = wishList.getListItems();
+                session.setAttribute("wishList", wishList);
+                session.setAttribute("listItemsInWishList", listItemsInWishList);
+                session.setAttribute("wishListSize", listItemsInWishList.size());
+
+                request.getRequestDispatcher("viewwishlist.jsp").forward(request, response);
+                break;
+            }
+            case "remove": {
+                String tRid = request.getParameter("rid");
+                int rid;
+                try {
+                    rid = Integer.parseInt(tRid);
+                    cart.removeItem(rid);
+                } catch (Exception e) {
+                }
+                List<Item> list = cart.getListItems();
+                session.setAttribute("cart", cart);
+                session.setAttribute("listItemsInCart", list);
+                session.setAttribute("cartSize", list.size());
+                request.getRequestDispatcher("viewwishlist.jsp").forward(request, response);
+            }
+        }
     }
 
     /**
