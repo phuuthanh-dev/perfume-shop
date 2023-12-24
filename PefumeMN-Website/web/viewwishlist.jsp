@@ -11,10 +11,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="icon" href="images/logo1.png"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+        <link rel="stylesheet" href="css/style.css">
         <style>
             body {
                 color: #000;
@@ -191,32 +196,30 @@
             <c:if test="${requestScope.message != ' ' }">
                 <h2 style="color: green; text-align: center">${requestScope.message}</h2>
             </c:if>
-            <c:if test="${sessionScope.listItemsInCart == null || sessionScope.cartSize == 0}">
-                <<img src="images/emptycart1.png" width="400px"  alt="Emptycart" style="margin: auto"/>
+            <c:if test="${sessionScope.listItemsInWishList == null || sessionScope.wishListSize == 0}">
+                <<img src="images/emptycart2.png" width="400px"  alt="Emptycart" style="margin: auto"/>
             </c:if>
-            <c:if test="${sessionScope.cartSize != 0}">
+            <c:if test="${sessionScope.wishListSize != 0}">
                 <div class="row d-flex justify-content-center">
                     <div class="col-4">
-                        <h4 class="heading">Shopping Bag</h4>
+                        <h4 class="heading">Wish List</h4>
                     </div>
                     <div class="col-8">
                         <div class="row text-right">
-                            <div class="col-3">
+                            <div class="col-4">
                                 <h6 class="mt-2">Supplier</h6>
                             </div>
-                            <div class="col-3">
-                                <h6 class="mt-2">Quantity</h6>
-                            </div>
-                            <div class="col-3">
+                            <div class="col-4">
                                 <h6 class="mt-2">Price</h6>
                             </div>
-                            <div class="col-3" style="padding-right: 30px">
-                                <h6 class="mt-2">Delete</h6>
+                            <div class="col-4" style="padding-right: 30px">
+                                <h6 class="mt-2">Options</h6>
                             </div>
                         </div>
                     </div>
                 </div>
-                <c:forEach items="${sessionScope.listItemsInCart}" var="item">
+                <c:forEach items="${sessionScope.listItemsInWishList}" var="item">
+                    <c:set var="p" value="${item.product}" />
                     <div class="row d-flex justify-content-center border-top">
                         <div class="col-4">
                             <div class="row d-flex">
@@ -230,20 +233,22 @@
                         </div>
                         <div class="my-auto col-8 ">
                             <div class="row text-right">
-                                <div class="col-3">
+                                <div class="col-4">
                                     <p class="mob-text">${item.product.supplier.companyName}</p>
                                 </div>
-                                <div class="col-3">
-                                    <div class="">
-                                        <input style="width: 100px"
-                                               name="quantity" type="number" min="1" max="100" step="1" value="${item.quantity}">
-                                    </div>
-                                </div>
-                                <div class="col-3">
+                                <div class="col-4">
                                     <h6 class="mob-text">${item.price}</h6>
                                 </div>
-                                <div class="col-3" style="margin-top: -15px">
-                                    <a  href="viewcart?rid=${item.product.id}"
+                                <div class="col-4" style="margin-top: -15px">
+                                    <form action="viewwishlist" method="post">
+                                        <input name="quantity" type="number" min="1" max="100" step="1" value="1">
+                                        <input name="id" type="hidden" value="${p.id}">
+                                        <input name="role" type="hidden" value="add">
+                                        <button type="submit"  style="padding: 7px 15px; border: none; border-radius: 5px; background-color: orange; color: white"F >
+                                            Add
+                                        </button>
+                                    </form>
+                                    <a  href="viewwishlist?rid=${item.product.id}"
                                         style="padding: 7px 15px; border: none; border-radius: 5px; background-color: orange; color: white">
                                         Delete
                                     </a>
@@ -253,76 +258,14 @@
                     </div>
                 </c:forEach>
             </c:if>
-
-            <div class="row justify-content-center">
-                <div class="col-lg-12" style="padding: 0">
-                    <div class="card">
-                        <div class="row">
-                            <!--                            <div class="col-lg-4 radio-group">
-                                                            <div class="row d-flex px-3 radio">
-                                                                <img class="pay" src="https://i.imgur.com/WIAP9Ku.jpg">
-                                                                <p class="my-auto">Credit Card</p>
-                                                            </div>
-                                                            <div class="row d-flex px-3 radio gray">
-                                                                <img class="pay" src="https://i.imgur.com/OdxcctP.jpg">
-                                                                <p class="my-auto">Debit Card</p>
-                                                            </div>
-                                                            <div class="row d-flex px-3 radio gray mb-3">
-                                                                <img class="pay" src="https://i.imgur.com/cMk1MtK.jpg">
-                                                                <p class="my-auto">PayPal</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="row px-2">
-                                                                <div class="form-group col-md-6">
-                                                                    <label class="form-control-label">Name on Card</label>
-                                                                    <input type="text" id="cname" name="cname" placeholder="Johnny Doe">
-                                                                </div>
-                                                                <div class="form-group col-md-6">
-                                                                    <label class="form-control-label">Card Number</label>
-                                                                    <input type="text" id="cnum" name="cnum" placeholder="1111 2222 3333 4444">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row px-2">
-                                                                <div class="form-group col-md-6">
-                                                                    <label class="form-control-label">Expiration Date</label>
-                                                                    <input type="text" id="exp" name="exp" placeholder="MM/YYYY">
-                                                                </div>
-                                                                <div class="form-group col-md-6">
-                                                                    <label class="form-control-label">CVV</label>
-                                                                    <input type="text" id="cvv" name="cvv" placeholder="***">
-                                                                </div>
-                                                            </div>
-                                                        </div>-->
-                            <div class="col-lg-12 mt-2">
-                                <div class="row d-flex justify-content-between px-4">
-                                    <p class="mb-1 text-left">Subtotal</p>
-                                    <h6 class="mb-1 text-right">$${sessionScope.cart.getTotalMoney()}</h6>
-                                </div>
-                                <div class="row d-flex justify-content-between px-4">
-
-                                    <p class="mb-1 text-left">Shipping</p>
-                                    <h6 class="mb-1 text-right">$${sessionScope.cart == null || sessionScope.cartSize == 0 ? '0' : '3'}</h6>
-                                </div>
-                                <div class="row d-flex justify-content-between px-4" id="tax">
-                                    <p class="mb-1 text-left">Total (tax included)</p>
-                                    <h6 class="mb-1 text-right" style="font-size: 18px; font-weight: bold;">
-                                        $${sessionScope.cart == null || sessionScope.cartSize == 0 ? '0' : sessionScope.cart.getTotalMoney() + 3}
-                                    </h6>
-                                </div>
-                                <span>
-                                    <form action="viewcart" method="post">
-                                        <input class="btn-block btn-blue" type="submit" value="CHECKOUT" id="checkout"
-                                               style="color: white; font-weight: bold; background-color: orange"/>
-                                    </form>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <%@ include file="footer.jsp"%>
+        <div class="modal fade" id="modal_box" role="dialog"></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>   
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
+        <script src="js/clickevents.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 $('.radio-group .radio').click(function () {
@@ -342,5 +285,6 @@
 
             });
         </script>
+
     </body>
 </html>

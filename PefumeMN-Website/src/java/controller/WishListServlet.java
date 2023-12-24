@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
+
 package controller;
 
-import dal.CategoryDAO;
 import dal.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,10 +14,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 import model.Cart;
-import model.Category;
 import model.Item;
 import model.Product;
 
@@ -25,39 +23,36 @@ import model.Product;
  *
  * @author lvhho
  */
-@WebServlet(name = "CartServlet", urlPatterns = {"/cart"})
-public class CartServlet extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
+@WebServlet(name="WishListServlet", urlPatterns={"/wishlist"})
+public class WishListServlet extends HttpServlet {
+   
+    /** 
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CartServlet</title>");
+            out.println("<title>Servlet WishListServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CartServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet WishListServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
-    }
+    } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
+    /** 
      * Handles the HTTP <code>GET</code> method.
-     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -65,65 +60,43 @@ public class CartServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
+    throws ServletException, IOException {
         HttpSession session = request.getSession();
-        // Phan cart
-        Cart cart = null;
-        Object o = session.getAttribute("cart");
-        // Check
-        if (o != null) {
-            cart = (Cart) o;
-        } else {
-            cart = new Cart();
-        }
-
+         // Phan wishlist
+        Cart wishList = null;
         ProductDAO pd = new ProductDAO();
-
-        String role = request.getParameter("role");
-        switch (role) {
-            case "add": {
-                String tnum = request.getParameter("quantity");
-                String tid = request.getParameter("id");
-                int num, id;
-                try {
-                    num = Integer.parseInt(tnum);
-                    id = Integer.parseInt(tid);
-                    Product p = pd.getProductByID(id);
-                    Item t = new Item(p, num);
-                    cart.addItem(t);
-                } catch (Exception e) {
-                }
-                List<Item> list = cart.getListItems();
-                session.setAttribute("cart", cart);
-                session.setAttribute("listItemsInCart", list);
-                session.setAttribute("cartSize", list.size());
-                request.getRequestDispatcher("home").forward(request, response);
-                break;
-            }
-            case "remove": {
-                String tRid = request.getParameter("rid");
-                int rid;
-                try {
-                    rid = Integer.parseInt(tRid);
-                    cart.removeItem(rid);
-                } catch (Exception e) {
-                }
-                List<Item> list = cart.getListItems();
-                session.setAttribute("cart", cart);
-                session.setAttribute("listItemsInCart", list);
-                session.setAttribute("cartSize", list.size());
-                request.getRequestDispatcher("home").forward(request, response);
-                break;
-            }
+        Object w = session.getAttribute("wishList");
+        // Check
+        if (w != null) {
+            wishList = (Cart) w;
+        } else {
+            wishList = new Cart();
         }
+        String rWishId = request.getParameter("wishId");
+        int wishId;
+        try {
+            wishId = Integer.parseInt(rWishId);
+            Product p = pd.getProductByID(wishId);
+            Item e = new Item(p, 1);
 
-       
-    }
+            if (wishList.getListItems().contains(e)) {
+                wishList.removeItem(wishId);
+            } else {
+                wishList.addItem(e);
+            }
 
-    /**
+        } catch (Exception e) {
+        }
+        List<Item> listItemsInWishList = wishList.getListItems();
+        session.setAttribute("wishList", wishList);
+        session.setAttribute("listItemsInWishList", listItemsInWishList);
+        session.setAttribute("wishListSize", listItemsInWishList.size());
+
+        request.getRequestDispatcher("home").forward(request, response);
+    } 
+
+    /** 
      * Handles the HTTP <code>POST</code> method.
-     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -131,12 +104,12 @@ public class CartServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    throws ServletException, IOException {
+        request.getRequestDispatcher("wishlist.jsp").forward(request, response);
     }
 
-    /**
+    /** 
      * Returns a short description of the servlet.
-     *
      * @return a String containing servlet description
      */
     @Override

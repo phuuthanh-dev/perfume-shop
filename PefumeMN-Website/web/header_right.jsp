@@ -67,7 +67,7 @@
                         </c:if>
                     </li>
                     <li class="header_wishlist">
-                        <a href="#">
+                        <a href="viewwishlist">
                             <i class="fa fa-heart-o"></i>
                             <c:if test="${sessionScope.wishList != null && sessionScope.wishListSize != 0}" >
                                 <span class="item_count">
@@ -84,7 +84,7 @@
                         </li>
                     </c:if>
                     <li class="mini_cart_wrapper">
-                        <a href="javascript:void(0)" data-toggle="modal" data-target="#modal_box">
+                        <a href="javascript:void(0)" >
                             <i class="fa fa-shopping-cart"></i>
                             <c:if test="${sessionScope.cart != null && sessionScope.cartSize != 0}" >
                                 <span class="item_count">
@@ -158,15 +158,9 @@
                     </li>
                     <c:if test="${sessionScope.account!=null}">
                         <li>
-<<<<<<< HEAD
-                            <a href="${sessionScope.account.roleID==1?"admin":"profile"}" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.name}!</a>
-                            <a href="${sessionScope.account.roleID==1?"admin":"profile"}">
-                                <img src="${sessionScope.account.image}" width="40px" style="color: white; border-radius: 50%">
-                            </a>
-=======
                             <!--<a href="${sessionScope.account.roleID==1?"admin":"profile"}" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.name}!</a>-->
                             <a href="${sessionScope.account.roleID==1?"admin":"profile"}"><img src="${sessionScope.account.image}" width="40px" style="color: white; border-radius: 50% ;border: 2px solid white;"></a>
->>>>>>> 304f764d35e5d9ca275be7b5ca0fd111bb95f8bb
+
                         </li>
                         <li>
                             <a id="logout" href="#" onclick="checkLogout()" style="color: white; text-decoration: underline; font-style: bold;

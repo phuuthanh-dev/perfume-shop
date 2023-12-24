@@ -36,7 +36,7 @@
                                         </a>
                                     </li>
                                     <li class="wishlist">
-                                        <a href="#" data-toggle="modal" data-target="#modal_box" title="Add to Wishlist">
+                                        <a href="wishlist?wishId=${i.id}"  title="Add to Wishlist">
                                             <i class="fa fa-heart-o"></i>
                                         </a>
                                     </li>

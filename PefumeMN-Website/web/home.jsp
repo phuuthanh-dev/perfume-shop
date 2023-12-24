@@ -379,7 +379,7 @@
                                                                 </a>
                                                             </li>
                                                             <li class="wishlist">
-                                                                <a href="cart?wishId=${p.id}" title="Add to Wishlist">
+                                                                <a href="wishlist?wishId=${p.id}" title="Add to Wishlist">
                                                                     <i class="fa fa-heart-o"></i>
                                                                 </a>
                                                             </li>
@@ -534,7 +534,7 @@
                                                                     </a>
                                                                 </li>
                                                                 <li class="wishlist">
-                                                                    <a href="cart?wishId=${hotDeal.id}" title="Add to Wishlist">
+                                                                    <a href="wishlist?wishId=${hotDeal.id}" title="Add to Wishlist">
                                                                         <i class="fa fa-heart-o"></i>
                                                                     </a>
                                                                 </li>
@@ -762,7 +762,7 @@
                                                                         </a>
                                                                     </li>
                                                                     <li class="wishlist">
-                                                                        <a href="cart?wishId=${t.id}" title="Add to Wishlist">
+                                                                        <a href="wishlist?wishId=${t.id}" title="Add to Wishlist">
                                                                             <i class="fa fa-heart-o"></i>
                                                                         </a>
                                                                     </li>
@@ -874,7 +874,7 @@
                                                                     </a>
                                                                 </li>
                                                                 <li class="wishlist">
-                                                                    <a href="cart?wishId=${i.id}" title="Add to Wishlist">
+                                                                    <a href="wishlist?wishId=${i.id}" title="Add to Wishlist">
                                                                         <i class="fa fa-heart-o"></i>
                                                                     </a>
                                                                 </li>
