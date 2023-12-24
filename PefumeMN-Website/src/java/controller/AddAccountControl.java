@@ -33,14 +33,14 @@ public class AddAccountControl extends HttpServlet {
 
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        String FullName = request.getParameter("user");
-        String UserName = request.getParameter("name");
+        String FullName = request.getParameter("name");
+        String UserName = request.getParameter("user");
         String Password = request.getParameter("pass");
         String roleId_raw = request.getParameter("roleId");
         String Email = request.getParameter("email");
         String Phone = request.getParameter("phone");
         String BirthDay = request.getParameter("birthdate");
-        int roleId = Integer.parseInt(roleId_raw);
+        int roleId = (roleId_raw == null ? 2 : Integer.parseInt(roleId_raw));
         String msg = "";
         UserDAO dao = new UserDAO();
         boolean check = dao.checkUserNameDuplicate(UserName);

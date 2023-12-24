@@ -24,11 +24,29 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link href="css/style.css" rel="stylesheet" type="text/css"/> 
         <link href="css/manager.css" rel="stylesheet" type="text/css"/>
-
         <style>
             body {
                 margin: 0;
                 padding: 0;
+            }
+
+            select option {
+                font-size: 16px;
+                padding: 5px;
+            }
+
+            select {
+                width: 32.3%;
+                margin: 0;
+                font-size: 16px;
+                padding: 7px 10px;
+                font-family: Segoe UI, Helvetica, sans-serif;
+                border: 1px solid #D0D0D0;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                border-radius: 10px;
+                outline: none;
             }
         </style>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap"><link rel="stylesheet" type="text/css" href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/mdb5/3.8.1/compiled.min.css"><link rel="stylesheet" type="text/css" href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/mdb-plugins-gathered.min.css"><style>body {
@@ -39,7 +57,14 @@
                     padding-left: 240px;
                 }
             }
-
+            .text_page_head{
+                font-size: 18px;
+                font-weight: 600;
+            }
+            .text_page {
+                font-size: 14px;
+                font-weight: 600;
+            }
             /* Sidebar */
             .sidebar {
                 position: fixed;
@@ -86,8 +111,8 @@
                     <section class="mb-4">
                         <div class="card">
                             <div class="row" style="">
-                                <div class="col-sm-4" style="text-align: center; margin-top: 20px; padding-top: 20px">
-                                    <h3 class="mb-0" id="" style="font-family: Times New Roman">
+                                <div class="col-sm-4" style="text-align: center; margin-top: 20px; margin-bottom: 20px;padding-top: 20px">
+                                    <h3 class="mb-0" id="">
                                         <strong>Manage Account</strong>
                                     </h3>
                                 </div>
@@ -111,22 +136,22 @@
                                 <table class="table table-hover text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Username</th>
-                                            <th>RoleID</th>
-                                            <th>FullName</th>
-                                            <th>BirthDate</th>
+                                            <th class="text_page_head">Full name</th>
+                                            <th class="text_page_head">Username</th>
+                                            <th class="text_page_head">Password</th>
+                                            <th class="text_page_head">Role</th>
+                                            <th class="text_page_head">Phone</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <c:forEach items="${requestScope.listUser}" var="u">
                                             <tr>
-                                                <td style="font-weight: 500">${u.userName}</td>
-                                                <td style="font-weight: 500">${u.password}</td>
-                                                <td style="font-weight: 500">${u.roleID}</td>
-                                                <td style="font-weight: 500">${u.fullName}</td>
-                                                <td style="font-weight: 500">${u.birthdate}</td>
-                                                <td>
+                                                <td class="text_page" style="font-weight: 500">${u.fullName}</td>
+                                                <td class="text_page"  style="font-weight: 500">${u.userName}</td>
+                                                <td class="text_page"  style="font-weight: 500">${u.password}</td>
+                                                <td class="text_page"  style="font-weight: 500">${u.roleID==1?"Admin":"Customer"}</td>
+                                                <td class="text_page"  style="font-weight: 500">${u.phone}</td>
+                                                <td class="text_page"  style="padding: 0 12px 16px">
                                                     <a href="deleteaccount?username=${u.userName}"><button type="button" class="btn btn-danger">
                                                             <i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i>
                                                         </button>
@@ -148,13 +173,13 @@
         <div id="addEmployeeModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="addaccount" method="get">
+                    <form id="form" action="addaccount" method="get">
                         <div class="modal-header">						
                             <h4 class="modal-title">Thêm tài khoản</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">	
-                             <div class="form-group">
+                            <div class="form-group">
                                 <label>Full name</label>
                                 <input name="name" type="text" class="form-control" required>
                             </div>
@@ -181,14 +206,16 @@
                                 <input name="email" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Birthdate</label>
-                                <input name="birthdate" type="text" class="form-control" required>
+                                <div style="margin-bottom: 10px">Date of birth</div>
+                                <input type="hidden" name="birthdate" value="" id="here"/>
+                                <select class="bear-dates" id="dobDay" ></select>
+                                <select class="bear-months" id="dobMonth"></select>
+                                <select class="bear-years" id="dobYear"></select>
                             </div>
-
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input type="submit" class="btn btn-success" value="Add">
+                            <input type="submit" onclick="submitForm()" class="btn btn-success" value="Add">
                         </div>
                     </form>
                 </div>
@@ -208,5 +235,46 @@
         <script type="text/javascript" src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/js/plugins/mdb-plugins-gathered.min.js"></script>
         <script type="text/javascript" src="js/mdb.min.js"></script>
         <script type="text/javascript" src="js/script.js"></script>
+
+        <script src="js/calender.js"></script>
+        <script type="text/javascript">
+            dates('option');
+            months('option', 11, 12);
+            years('option', 1980, 2023);
+            
+            function monthNameToNumber(monthName) {
+                var months = [
+                    'January', 'February', 'March', 'April', 'May', 'June',
+                    'July', 'August', 'September', 'October', 'November', 'December'
+                ];
+                var lowerMonthName = monthName.toLowerCase();
+                var monthIndex = months.findIndex(function (month) {
+                    return month.toLowerCase() === lowerMonthName;
+                });
+                return monthIndex !== -1 ? monthIndex + 1 : -1;
+            }
+
+            function submitForm() {
+                var here = document.querySelector('#here');
+                var form = document.getElementById('form');
+                var dobDay = document.getElementById('dobDay').value;
+                var dobMonthText = document.getElementById('dobMonth').value;
+                var dobMonth = monthNameToNumber(dobMonthText);
+                var dobYear = document.getElementById('dobYear').value;
+                if (dobMonth < 10 && dobDay < 10) {
+                    dobFull = dobYear + '-0' + dobMonth + '-0' + dobDay;
+                } else if (dobMonth < 10 && !(dobDay < 10)) {
+                    dobFull = dobYear + '-0' + dobMonth + '-' + dobDay;
+                } else if (dobDay < 10 && !(dobMonth < 10)) {
+                    dobFull = dobYear + '-' + dobMonth + '-0' + dobDay;
+                } else {
+                    dobFull = dobYear + '-' + dobMonth + '-' + dobDay;
+                }
+
+                here.value = dobFull;
+                form.submit();
+            }
+////////////////////////////////////////////////////////////////////////////////////////////
+        </script>
     </body>
 </html>
