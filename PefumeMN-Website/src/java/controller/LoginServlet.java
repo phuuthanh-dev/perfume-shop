@@ -105,7 +105,7 @@ public class LoginServlet extends HttpServlet {
             Cookie u = new Cookie("cUName", uName);
             Cookie p = new Cookie("pUName", uPass);
             Cookie r = new Cookie("reMem", remember);
-            u.setMaxAge(60);
+            u.setMaxAge(60*60*24*30*3);
             if (remember != null) {
                 p.setMaxAge(60*60*24*30*3);
                 r.setMaxAge(60*60*24*30*3);

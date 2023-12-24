@@ -38,7 +38,7 @@
                 <i style="margin-right: 10px; font-size: 18px" class="fas fa-user-circle fa-fw me-3"></i>
                 <span style="font-size: 16px; font-weight: 600">Top 5 Customer</span>
             </a>
-            <a href="managerSupplier" class="list-group-item list-group-item-action" style="margin-top: 10px">
+            <a href="managersupplier" class="list-group-item list-group-item-action" style="margin-top: 10px">
                 <i style="margin-right: 10px; font-size: 18px" class="fas fa-parachute-box fa-fw me-3"></i>
                 <span style="font-size: 16px; font-weight: 600">Supplier</span>
             </a>

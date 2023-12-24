@@ -4,49 +4,48 @@
 <html>
     <head>
         <meta charset="ISO-8859-1">
-        <title>Quản Lý Tài Khoản</title>
+        <title>Statistic</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <!------ Include the above in your HEAD tag ------>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link href="css/style.css" rel="stylesheet" type="text/css"/> 
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+        <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://mdbootstrap.com/previews/ecommerce-demo/css/bootstrap.min.css">
+        <!-- Material Design Bootstrap -->
         <link rel="stylesheet" href="https://mdbootstrap.com/previews/ecommerce-demo/css/mdb-pro.min.css">
+        <!-- Material Design Bootstrap Ecommerce -->
         <link rel="stylesheet" href="https://mdbootstrap.com/previews/ecommerce-demo/css/mdb.ecommerce.min.css">
+        <!-- Your custom styles (optional) -->
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <!------ Include the above in your HEAD tag ------>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link href="css/style.css" rel="stylesheet" type="text/css"/> 
         <link href="css/manager.css" rel="stylesheet" type="text/css"/>
+
+        <!--           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round"> -->
+        <!--         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+        <!--       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+        <!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
         <style>
             body {
                 margin: 0;
                 padding: 0;
-            }
-
-            select option {
-                font-size: 16px;
-                padding: 5px;
-            }
-
-            select {
-                width: 32.3%;
-                margin: 0;
-                font-size: 16px;
-                padding: 7px 10px;
-                font-family: Segoe UI, Helvetica, sans-serif;
-                border: 1px solid #D0D0D0;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                box-sizing: border-box;
-                border-radius: 10px;
-                outline: none;
             }
         </style>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap"><link rel="stylesheet" type="text/css" href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/mdb5/3.8.1/compiled.min.css"><link rel="stylesheet" type="text/css" href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/mdb-plugins-gathered.min.css"><style>body {
@@ -57,6 +56,7 @@
                     padding-left: 240px;
                 }
             }
+            
             .text_page_head{
                 font-size: 18px;
                 font-weight: 600;
@@ -65,6 +65,7 @@
                 font-size: 14px;
                 font-weight: 600;
             }
+
             /* Sidebar */
             .sidebar {
                 position: fixed;
@@ -94,8 +95,7 @@
                 padding-top: 0.5rem;
                 overflow-x: hidden;
                 overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-            }
-        </style>
+            }</style>
     </head>
     <body>
 
@@ -103,63 +103,63 @@
         <header>
             <jsp:include page="leftadmin.jsp"></jsp:include>
             </header>
-            <!--Main Navigation-->
         <jsp:include page="header_right.jsp"></jsp:include>
+            <!--Main Navigation-->
+
             <!--Main layout-->
             <main>
-                <div class="container pt-4">
+                <div class="container pt-4">          <!--Section: Quan Ly tai Khoan-->
                     <section class="mb-4">
                         <div class="card">
-                            <div class="row" style="">
-                                <div class="col-sm-4" style="text-align: center; margin-top: 20px; margin-bottom: 20px;padding-top: 20px">
-                                    <h3 class="mb-0" id="">
-                                        <strong>Manage Account</strong>
+                            <div class="py-3 row">
+                                <div class="col-sm-6" style="text-align: center; margin-top: 20px; margin-bottom: 20px;padding-top: 20px; margin-left: 10px">
+                                    <h3 class="mb-0 text-left" id="">
+                                        <strong>Manage Supplier</strong>
                                     </h3>
                                 </div>
                             </div>
 
                         <c:if test="${error!=null }">
-                            <div style="margin-top: 20px" class="alert alert-danger" role="alert">
+                            <div class="alert alert-danger" role="alert">
                                 ${error}
                             </div>
                         </c:if>
                         <c:if test="${mess!=null }">
-                            <div style="margin-top: 20px" class="alert alert-success" role="alert">
+                            <div class="alert alert-success" role="alert">
                                 ${mess}
                             </div>
                         </c:if>
-                        <div class="card-body" style="padding: 0">
+
+                        <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-hover text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th class="text_page_head">Full name</th>
-                                            <th class="text_page_head">Username</th>
-                                            <th class="text_page_head">Password</th>
-                                            <th class="text_page_head">Role</th>
-                                            <th class="text_page_head">Phone</th>
-                                            <th>
-                                                <a style="margin-left: 5px" href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
-                                                    <i class="fa-solid fa-plus"></i>
-                                                </a>
+                                            <th class="text_page_head" scope="col">ID</th>
+                                            <th class="text_page_head" scope="col">Company name</th>
+                                            <th class="text_page_head" scope="col">Phone</th>
+                                            <th class="text_page_head" scope="col">Contact name</th> 
+                                            <th class="text_page_head" scope="col">Country</th> 
+                                            <th class="text_page_head" scope="col">
+                                                <a  style="margin-left: 5px" href="#addEmployeeModal"  class="btn btn-success" data-toggle="modal"><i class="fa-solid fa-plus"></i></a>
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach items="${requestScope.listUser}" var="u">
+                                        <c:forEach items="${listAllSupplier}" var="o">
+
                                             <tr>
-                                                <td class="text_page" style="font-weight: 500">${u.fullName}</td>
-                                                <td class="text_page"  style="font-weight: 500">${u.userName}</td>
-                                                <td class="text_page"  style="font-weight: 500">${u.password}</td>
-                                                <td class="text_page"  style="font-weight: 500">${u.roleID==1?"Admin":"Customer"}</td>
-                                                <td class="text_page"  style="font-weight: 500">${u.phone}</td>
-                                                <td class="text_page"  style="padding: 0 12px 16px">
-                                                    <a href="deleteaccount?username=${u.userName}">
-                                                        <button type="button" class="btn btn-danger">
+                                                <td class="text_page">${o.id}</td>
+                                                <td class="text_page">${o.companyName}</td>
+                                                <td class="text_page">${o.phone}</td>
+                                                <td class="text_page">${o.contactName}</td>
+                                                <td class="text_page">${o.country}</td> 
+                                                <td class="text_page" style="padding: 0 12px 16px">
+                                                    <a href="deleteSupplier?id=${o.id}"><button type="button" class="btn btn-danger">
                                                             <i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i>
                                                         </button>
                                                     </a>
-                                                </td>
+                                                </td> 
                                             </tr>
                                         </c:forEach>
                                     </tbody>
@@ -170,55 +170,48 @@
                 </section>
                 <!--Section: Quan Ly tai Khoan-->
             </div>
+
+
         </main>
 
         <!-- Edit Modal HTML -->
         <div id="addEmployeeModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form id="form" action="addaccount" method="post">
+                    <form action="addSupplier" method="post">
                         <div class="modal-header">						
-                            <h4 class="modal-title">Add account</h4>
+                            <h4 class="modal-title">Thêm nhà cung cấp</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
-                        <div class="modal-body">	
+                        <div class="modal-body">					
                             <div class="form-group">
-                                <label>Full name</label>
-                                <input name="name" type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Username</label>
-                                <input name="user" type="text" class="form-control" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input name="pass" type="password" class="form-control" required>
+                                <label>Tên nhà cung cấp</label>
+                                <input name="nameSupplier" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Phone</label>
-                                <input name="phone" value="" type="text" class="form-control" id="phone">
-                            </div>
-
-                            <div class="form-group">
-                                <input name="roleId" value="1" type="checkbox" class="form-check-input" id="isAdmin">
-                                <label class="form-check-label" for="isAdmin">Admin</label>
+                                <input name="phoneSupplier" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input name="email" type="text" class="form-control" required>
+                                <input name="emailSupplier" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <div style="margin-bottom: 10px">Date of birth</div>
-                                <input type="hidden" name="birthdate" value="" id="here"/>
-                                <select class="bear-dates" id="dobDay" ></select>
-                                <select class="bear-months" id="dobMonth"></select>
-                                <select class="bear-years" id="dobYear"></select>
+                                <label>Địa chỉ</label>
+                                <input name="countrySupplier" type="text" class="form-control" required>
                             </div>
+<!--                            <div class="form-group">
+                                <label>Cung cấp cho</label>
+                                <select name="cateID" class="form-select" aria-label="Default select example">
+                                    <c:forEach items="${requestScope.list}" var="t">
+                                        <option value="${t.id}">${t.companyName}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>-->
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input type="submit" onclick="submitForm()" class="btn btn-success" value="Add">
+                            <input type="submit" class="btn btn-success" value="Add">
                         </div>
                     </form>
                 </div>
@@ -228,56 +221,27 @@
         <script src="js/manager.js" type="text/javascript"></script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!--Main layout-->
+        <!-- SCRIPTS -->
+        <!-- JQuery -->
         <script src="https://mdbootstrap.com/previews/ecommerce-demo/js/jquery-3.4.1.min.js"></script>
+        <!-- Bootstrap tooltips -->
         <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
         <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/bootstrap.js"></script>
+        <!-- MDB core JavaScript -->
         <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/mdb.min.js"></script>
+        <!-- MDB Ecommerce JavaScript -->
         <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/mdb.ecommerce.min.js"></script>
+        <!-- MDB -->
         <script type="text/javascript" src="js/mdb.min.js"></script>
+        <!-- Custom scripts -->
         <script type="text/javascript" src="js/script.js"></script>
+
         <script type="text/javascript" src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/js/plugins/mdb-plugins-gathered.min.js"></script>
+        <!-- MDB -->
         <script type="text/javascript" src="js/mdb.min.js"></script>
+        <!-- Custom scripts -->
         <script type="text/javascript" src="js/script.js"></script>
-
-        <script src="js/calender.js"></script>
-        <script type="text/javascript">
-            dates('option');
-            months('option', 11, 12);
-            years('option', 1980, 2023);
-            
-            function monthNameToNumber(monthName) {
-                var months = [
-                    'January', 'February', 'March', 'April', 'May', 'June',
-                    'July', 'August', 'September', 'October', 'November', 'December'
-                ];
-                var lowerMonthName = monthName.toLowerCase();
-                var monthIndex = months.findIndex(function (month) {
-                    return month.toLowerCase() === lowerMonthName;
-                });
-                return monthIndex !== -1 ? monthIndex + 1 : -1;
-            }
-
-            function submitForm() {
-                var here = document.querySelector('#here');
-                var form = document.getElementById('form');
-                var dobDay = document.getElementById('dobDay').value;
-                var dobMonthText = document.getElementById('dobMonth').value;
-                var dobMonth = monthNameToNumber(dobMonthText);
-                var dobYear = document.getElementById('dobYear').value;
-                if (dobMonth < 10 && dobDay < 10) {
-                    dobFull = dobYear + '-0' + dobMonth + '-0' + dobDay;
-                } else if (dobMonth < 10 && !(dobDay < 10)) {
-                    dobFull = dobYear + '-0' + dobMonth + '-' + dobDay;
-                } else if (dobDay < 10 && !(dobMonth < 10)) {
-                    dobFull = dobYear + '-' + dobMonth + '-0' + dobDay;
-                } else {
-                    dobFull = dobYear + '-' + dobMonth + '-' + dobDay;
-                }
-
-                here.value = dobFull;
-                form.submit();
-            }
-////////////////////////////////////////////////////////////////////////////////////////////
-        </script>
     </body>
 </html>

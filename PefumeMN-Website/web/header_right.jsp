@@ -68,7 +68,7 @@
                     </li>
                     <li class="header_wishlist">
                         <a href="#">
-                            <i class="fa fa-heart-o"></i>
+                            <i class="fa-regular fa-heart"></i>
                             <c:if test="${sessionScope.wishList != null && sessionScope.wishListSize != 0}" >
                                 <span class="item_count">
                                     ${sessionScope.wishListSize}
@@ -83,7 +83,7 @@
                             </a>
                         </li>
                     </c:if>
-                    <li class="mini_cart_wrapper">
+                    <li id="productsCart" class="mini_cart_wrapper">
                         <a href="javascript:void(0)">
                             <i class="fa fa-shopping-cart"></i>
                             <c:if test="${sessionScope.cart != null && sessionScope.cartSize != 0}" >
@@ -92,30 +92,31 @@
                                 </span>
                             </c:if>
                         </a>
-
                         <div class="mini_cart mini_cart2">
                             <c:set var="subTotal" value="0"/>
                             <c:set var="subPrice" value="0"/>
                             <div class="cart_gallery" style="max-height: 250px; overflow-y: auto;">
-                                <c:if test="${sessionScope.cart != null && sessionScope.cartSize != 0}">
-                                    <c:forEach items="${sessionScope.listItemsInCart}" var="p">
-                                        <div class="cart_item">
-                                            <div class="cart_img">
-                                                <a href="#"><img src="${p.product.image1}"
-                                                                 alt="Perfume"></a>
+                                <div >
+                                    <c:if test="${sessionScope.cart != null && sessionScope.cartSize != 0}">
+                                        <c:forEach items="${sessionScope.listItemsInCart}" var="p">
+                                            <div class="cart_item">
+                                                <div class="cart_img">
+                                                    <a href="#"><img src="${p.product.image1}"
+                                                                     alt="Perfume"></a>
+                                                </div>
+                                                <div class="cart_info">
+                                                    <a href="#">${p.product.name}</a>
+                                                    <p><span>Rs.${p.price}</span> X ${p.quantity}</p>
+                                                </div>
+                                                <div class="cart_remove">
+                                                    <a href="cart?rid=${p.product.id}"><i class="fa fa-times"></i></a>
+                                                </div>
                                             </div>
-                                            <div class="cart_info">
-                                                <a href="#">${p.product.name}</a>
-                                                <p><span>Rs.${p.price}</span> X ${p.quantity}</p>
-                                            </div>
-                                            <div class="cart_remove">
-                                                <a href="cart?rid=${p.product.id}"><i class="fa fa-times"></i></a>
-                                            </div>
-                                        </div>
-                                        <c:set var="subTotal" value="${subTotal + (p.product.price*p.quantity)}"/>
-                                        <c:set var="subPrice" value="${subPrice + (p.price * p.quantity)}"/>
-                                    </c:forEach>
-                                </c:if>
+                                            <c:set var="subTotal" value="${subTotal + (p.product.price*p.quantity)}"/>
+                                            <c:set var="subPrice" value="${subPrice + (p.price * p.quantity)}"/>
+                                        </c:forEach>
+                                    </c:if>
+                                </div>
                                 <c:if test="${sessionScope.cart == null || sessionScope.cartSize == 0}">
                                     <span class="header__cart-list--no-cart-msg">Nothing now!</span>
                                     <img src="images/emptycart.png" alt="Emptycart" style=" width: 60%;">
@@ -160,15 +161,10 @@
                     </li>
                     <c:if test="${sessionScope.account!=null}">
                         <li>
-<<<<<<< HEAD
-                            <a href="${sessionScope.account.roleID==1?"admin":"profile"}" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.name}!</a>
-                            <a href="${sessionScope.account.roleID==1?"admin":"profile"}">
-                                <img src="${sessionScope.account.image}" width="40px" style="color: white; border-radius: 50%">
-                            </a>
-=======
+
                             <!--<a href="${sessionScope.account.roleID==1?"admin":"profile"}" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.name}!</a>-->
                             <a href="${sessionScope.account.roleID==1?"admin":"profile"}"><img src="${sessionScope.account.image}" width="40px" style="color: white; border-radius: 50% ;border: 2px solid white;"></a>
->>>>>>> 304f764d35e5d9ca275be7b5ca0fd111bb95f8bb
+
                         </li>
                         <li>
                             <a id="logout" href="#" onclick="checkLogout()" style="color: white; text-decoration: underline; font-style: bold;

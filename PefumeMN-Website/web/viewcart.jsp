@@ -219,11 +219,11 @@
                 <c:forEach items="${sessionScope.listItemsInCart}" var="item">
                     <div class="row d-flex justify-content-center border-top">
                         <div class="col-4">
-                            <div class="row d-flex">
-                                <div class="book" style="margin-right: 30px; flex: 1">
+                            <div class="row">
+                                <div class="book col-7" style="margin-right: 30px; flex: 1">
                                     <img src="${item.product.image1}" style="width: 170px; height: 150px" class="book-img">
                                 </div>
-                                <div class="my-auto flex-column d-flex pad-left">
+                                <div class="my-auto flex-column d-flex pad-left col-5">
                                     <h6 class="mob-text">${item.product.name}</h6>
                                 </div>
                             </div>
@@ -233,19 +233,17 @@
                                 <div class="col-3">
                                     <p class="mob-text">${item.product.supplier.companyName}</p>
                                 </div>
-                                <div class="col-3">
-                                    <div class="">
-                                        <!--                                 href="subAmountCart?productID=21&amp;amount=6"-->
-                                        <input style="width: 100px"
-                                               name="quantity" type="number" min="1" max="100" step="1" value="${item.quantity}">
-                                    </div>
+                                <div class="col-3" style="margin-top: -10px">
+                                    <!--                                 href="subAmountCart?productID=21&amp;amount=6"-->
+                                    <input style="width: 100px"
+                                           name="quantity" type="number" min="1" max="100" step="1" value="${item.quantity}">
                                 </div>
                                 <div class="col-3">
                                     <h6 class="mob-text">${item.price}</h6>
                                 </div>
-                                <div class="col-3" style="margin-top: -15px">
+                                <div class="col-3">
                                     <a  href="viewcart?rid=${item.product.id}"
-                                        style="padding: 7px 15px; border: none; border-radius: 5px; background-color: orange; color: white">
+                                        style="padding: 8px 15px; border: none; border-radius: 5px; background-color: red; color: white">
                                         Delete
                                     </a>
                                 </div>

@@ -2,19 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/LoginServlet.java</file>
-            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/web/load.jsp</file>
-            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/dal/OrderDAO.java</file>
-            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/web/viewcart.jsp</file>
-            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/ViewCartServlet.java</file>
-            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/web/header_right.jsp</file>
-            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/CartServlet.java</file>
-            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/web/home.jsp</file>
+            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/ViewCartServlet.java</file>
+            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/dashboard/header_right.jsp</file>
+            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/CartServlet.java</file>
+            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/model/Cart.java</file>
+            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/model/Item.java</file>
+            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/dashboard/mngaccount.jsp</file>
+            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/header_right.jsp</file>
         </group>
->>>>>>> 304f764d35e5d9ca275be7b5ca0fd111bb95f8bb
     </open-files>
 </project-private>

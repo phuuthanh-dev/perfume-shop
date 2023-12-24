@@ -100,9 +100,10 @@ function openModal(
                                 </select>
                                 </div>
                                 <div class="modal_add_to_cart">
-                                    <form name="f" action="cart?id=${id} method="post">
-                                        <input name="quantity" type="number" min="1" max="100" step="1" value="1">
-                                        <button type="submit" >Add to cart</button>
+                                    <form>
+                                        <input id="quantity" name="quantity" type="number" min="1" max="100" step="1" value="1">
+                                        <input id="id" name="id" type="hidden" value="${id}">
+                                        <button onclick="loadProductCart(this)" type="button">Add to cart</button>
                                     </form>
                                 </div>
                             </div>
@@ -151,21 +152,22 @@ function checkLogout() {
 }
 //
 
-//function loadProduct23(obj) {
-//    var cid = obj.value;
-//    var row = document.getElementById("products23");
-//    $.ajax({
-//        url: "/PefumeMN-Website/loadproduct23",
-//        type: "get",
-//        data: {
-//            exist: cid
-//        },
-//        success: function (data) {
-//            var row = document.getElementById("products23");
-//            row.innerHTML = data;
-//        },
-//        error: function (xhr) {
-//        }
-//    });
-//}
+function loadProductCart(obj) {
+    var quantity = document.getElementById("quantity").value;
+    var id = document.getElementById("id").value;
+    $.ajax({
+        url: "/PefumeMN-Website/cartajax",
+        type: "post",
+        data: {
+            quantity: quantity,
+            id: id
+        },
+        success: function (data) {
+            var row = document.getElementById("productsCart");
+            row.innerHTML = data;
+        },
+        error: function (xhr) {
+        }
+    });
+}
 

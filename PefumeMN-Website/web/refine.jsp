@@ -13,7 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Perfume | E-Commerce</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
         <link rel="stylesheet"
@@ -86,56 +86,58 @@
                                             </li>
                                             <li class="header_wishlist">
                                                 <a href="#">
-                                                    <i class="fa fa-heart-o"></i>
-                                                    <span class="item_count">4</span>
-                                                </a>
-                                            </li>
-                                            <li class="mini_cart_wrapper">
-                                                <a href="javascript:void(0)">
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                    <c:if test="${sessionScope.size != null}" >
+                                                    <i style="" class="fa-regular fa-heart"></i>
+                                                    <c:if test="${sessionScope.wishList != null && sessionScope.wishListSize != 0}" >
                                                         <span class="item_count">
-                                                            ${sessionScope.size}
+                                                            ${sessionScope.wishListSize}
                                                         </span>
                                                     </c:if>
-                                                    <c:if test="${sessionScope.size == null}" >
+                                                </a>
+                                            </li>
+                                            <li id="productsCart" class="mini_cart_wrapper">
+                                                <a href="javascript:void(0)">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <c:if test="${sessionScope.cart != null && sessionScope.cartSize != 0}" >
                                                         <span class="item_count">
-                                                            0
+                                                            ${sessionScope.cartSize}
                                                         </span>
                                                     </c:if>
                                                 </a>
                                                 <div class="mini_cart mini_cart2">
                                                     <c:set var="subTotal" value="0"/>
                                                     <c:set var="subPrice" value="0"/>
-                                                    <div class="cart_gallery">
-                                                        <c:if test="${sessionScope.cart != null}">
-                                                            <c:forEach items="${sessionScope.listItems}" var="p">
-                                                                <div class="cart_item">
-                                                                    <div class="cart_img">
-                                                                        <a href="#"><img src="${p.product.image1}"
-                                                                                         alt="Perfume"></a>
+                                                    <div class="cart_gallery" style="max-height: 250px; overflow-y: auto;">
+                                                        <div >
+                                                            <c:if test="${sessionScope.cart != null && sessionScope.cartSize != 0}">
+                                                                <c:forEach items="${sessionScope.listItemsInCart}" var="p">
+                                                                    <div class="cart_item">
+                                                                        <div class="cart_img">
+                                                                            <a href="#"><img src="${p.product.image1}"
+                                                                                             alt="Perfume"></a>
+                                                                        </div>
+                                                                        <div class="cart_info">
+                                                                            <a href="#">${p.product.name}</a>
+                                                                            <p><span>Rs.${p.price}</span> X ${p.quantity}</p>
+                                                                        </div>
+                                                                        <div class="cart_remove">
+                                                                            <a href="cart?rid=${p.product.id}"><i class="fa fa-times"></i></a>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="cart_info">
-                                                                        <a href="#">${p.product.name}</a>
-                                                                        <p><span>Rs.${p.price}</span> X ${p.quantity}</p>
-                                                                    </div>
-                                                                    <div class="cart_remove">
-                                                                        <a href="#"><i class="fa fa-times"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                                <c:set var="subTotal" value="${subTotal + p.product.price}"/>
-                                                                <c:set var="subPrice" value="${subPrice + p.price}"/>
-                                                            </c:forEach>
-                                                        </c:if>
-                                                        <c:if test="${sessionScope.cart == null}">
-                                                            <h3>Nothing now!</h3>
+                                                                    <c:set var="subTotal" value="${subTotal + (p.product.price*p.quantity)}"/>
+                                                                    <c:set var="subPrice" value="${subPrice + (p.price * p.quantity)}"/>
+                                                                </c:forEach>
+                                                            </c:if>
+                                                        </div>
+                                                        <c:if test="${sessionScope.cart == null || sessionScope.cartSize == 0}">
+                                                            <span class="header__cart-list--no-cart-msg">Nothing now!</span>
+                                                            <img src="images/emptycart.png" alt="Emptycart" style=" width: 60%;">
                                                         </c:if>
                                                     </div>
                                                     <div class="mini_cart_table">
                                                         <div class="cart_table_border">
                                                             <div class="cart_total">
                                                                 <span>Sub Total :</span>
-                                                                <span class="price">Rs. ${subTotal}</span>
+                                                                <span class="price" style="color:grey">Rs. ${subTotal}</span>
                                                             </div>
 
                                                             <div class="cart_total mt-10">
@@ -147,10 +149,7 @@
                                                     </div>
                                                     <div class="mini_cart_footer">
                                                         <div class="cart_button">
-                                                            <a href="#">View Cart</a>
-                                                        </div>
-                                                        <div class="cart_button">
-                                                            <a href="#">Checkout</a>
+                                                            <a href="${sessionScope.account == null ? 'login' : 'viewcart'}">View Cart</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -203,7 +202,8 @@
                             <div class="testimonial_style_two mb-60 rightleft">
                                 <div class="testimonial_container">
                                     <div class="section_title section_title_style2">
-                                        <h2 style="font-size: 20px">Refine</h2>
+                                        <h2 style="font-size: 20px">Filter</h2>
+                                        <i style="font-size: 18px; margin-left: 5px" class="fa fa-filter"></i>
                                     </div>
                                     <form id="f1" action="refine" method="get">
                                         <div class="section_title section_title_style2">
@@ -222,14 +222,15 @@
                                                 <c:if test="${cat!=null}">
                                                     <c:forEach begin="0" end="${cat.size()-1}" var="i">
                                                         <div class="responsiveFacets_sectionItemLabel">
-                                                            <input type="checkbox"
-                                                                   ${cat.get(i).getId()==cid_refine?"checked":""}
-                                                                   class="responsiveFacets_sectionItemCheckbox"
-                                                                   id="cm" 
-                                                                   name="cid_refinee"
-                                                                   value="${cat.get(i).getId()}"
-                                                                   ${chid[i+1]?"checked":""}
-                                                                   onclick="setCheck(this)"/>
+                                                            <input
+                                                                type="checkbox"
+                                                                ${cat.get(i).getId()==cid_refine?"checked":""}
+                                                                class="responsiveFacets_sectionItemCheckbox"
+                                                                id="cm" 
+                                                                name="cid_refinee"
+                                                                value="${cat.get(i).getId()}"
+                                                                ${chid[i+1]?"checked":""}
+                                                                onclick="setCheck(this)"/>
                                                             <label class="responsiveFacets_sectionItem" for="brand" >
                                                                 ${cat.get(i).name} (${cat.get(i).getTotalProduct()})
                                                             </label>
@@ -392,7 +393,7 @@
                                                                 </li>
                                                                 <li class="wishlist">
                                                                     <a href="cart?wishId=${i.id}" title="Add to Wishlist">
-                                                                        <i class="fa fa-heart-o"></i>
+                                                                        <i style="color: #f6692a" class="fa-regular fa-heart"></i>
                                                                     </a>
                                                                 </li>
                                                                 <li style="border-color: orange" class="quick_button"

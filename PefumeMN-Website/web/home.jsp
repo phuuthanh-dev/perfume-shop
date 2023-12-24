@@ -112,7 +112,6 @@
                                             <span>Total :</span>
                                             <span class="price">Rs. 11990</span>
                                         </div>
-
                                     </div>
                                 </div>
                                 <div class="mini_cart_footer">
@@ -272,7 +271,7 @@
                                                     <a href="#">User <i class="fa fa-angle-down"></i></a>
                                                     <ul class="sub_menu pages">
                                                         <li><a href="login">Login In</a></li>
-                                                        <li><a href="register   ">Sign Up</a></li>
+                                                        <li><a href="register">Sign Up</a></li>
                                                     </ul>
                                                 </li>
                                             </c:if>
@@ -508,6 +507,7 @@
                             <div class="deals_product_area mb-68">
                                 <div class="section_title section_title_style2">
                                     <h2>Hot Deals</h2>
+                                    <i style="color: orangered; font-size: 22px; margin-left:5px" class="fa-solid fa-fire"></i>
                                 </div>
                                 <div class="row">
                                     <div class="deals_carousel product_column1 owl-carousel">
@@ -1001,8 +1001,6 @@
                                                         <a href="#" class="secondary_img">
                                                             <img src="${p.image2}" alt="">
                                                         </a>
-
-
                                                     </div>
                                                     <figcaption class="product_content">
                                                         <h4 class="product_name">
