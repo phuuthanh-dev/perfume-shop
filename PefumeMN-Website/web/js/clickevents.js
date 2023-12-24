@@ -100,10 +100,18 @@ function openModal(
                                 </select>
                                 </div>
                                 <div class="modal_add_to_cart">
+<<<<<<< HEAD
                                     <form>
                                         <input id="quantity" name="quantity" type="number" min="1" max="100" step="1" value="1">
                                         <input id="id" name="id" type="hidden" value="${id}">
                                         <button onclick="loadProductCart(this)" type="button">Add to cart</button>
+=======
+                                    <form action="cart" method="get">
+                                        <input name="quantity" type="number" min="1" max="100" step="1" value="1">
+                                        <input name="id" type="hidden" value="${id}">
+                                        <input name="role" type="hidden" value="add">
+                                        <button type="submit" >Add to cart</button>
+>>>>>>> ce4c314556da83545d7fa401072d643d9cb92406
                                     </form>
                                 </div>
                             </div>
@@ -114,9 +122,12 @@ function openModal(
         </div>
     </div>
 </div>`;
+    console.log("Id:"+ id);
     let result = modalElement.innerHTML = modal;
     return result;
 }
+//
+//function modalOpen()
 //
 function acceptRead() {
     var elements = document.querySelectorAll(".acceptEdit");

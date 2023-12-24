@@ -1,6 +1,4 @@
 ﻿
-=======
-﻿
 -- Tạo bảng Order
 CREATE TABLE [dbo].[Orders]( 
  	[OrderID] [int] IDENTITY(1,1) NOT NULL, 
@@ -15,14 +13,13 @@ CREATE TABLE [dbo].[Orders](
 
 
  -- Tạo bảng OrderDetails
- -- Tạo bảng OrderDetails
  CREATE TABLE [dbo].[OrderDetails]( 
- 	[OrderID] [int] FOREIGN KEY REFERENCES [dbo].[Orders]([OrderID]) NOT NULL,  	
-	[ProductID] [int] FOREIGN KEY REFERENCES [dbo].[Products]([ProductID]) NOT NULL, 
+ 	[OrderID] [int] NOT NULL,  	
+	[ProductID] [int] NOT NULL, 
  	[Quantity] [float] NOT NULL, 
  	[UnitPrice] [money] NULL,
 	[Discount] [float] NULL,
 	CONSTRAINT [PK_OrderDetail] PRIMARY KEY ([OrderID], [ProductID] ),
+	CONSTRAINT [FK_OrderDetail] FOREIGN KEY ([ProductID])
+	REFERENCES [dbo].[Products]([ProductID])
 )
-
-select * from Orders

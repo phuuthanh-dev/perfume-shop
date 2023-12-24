@@ -70,7 +70,7 @@ public class HomeServlet extends HttpServlet {
         List<Product> listAll = p.getAll();
         List<Product> productFooter1 = p.getFeaturedProducts();
         List<Product> productFooter2 = p.getFeaturedProducts();
-        
+
         //phan trang
         int page = 1, numPerPage = 9;
         int size = listAll.size();
@@ -117,8 +117,9 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    }
+        request.getRequestDispatcher("home.jsp").forward(request, response);
 
+    }
 
     /**
      * Returns a short description of the servlet.

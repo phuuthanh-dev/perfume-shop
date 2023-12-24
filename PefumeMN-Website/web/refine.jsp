@@ -392,8 +392,8 @@
                                                                     </a>
                                                                 </li>
                                                                 <li class="wishlist">
-                                                                    <a href="cart?wishId=${i.id}" title="Add to Wishlist">
-                                                                        <i style="color: #f6692a" class="fa-regular fa-heart"></i>
+                                                                    <a href="wishlist?wishId=${i.id}" title="Add to Wishlist">
+                                                                        <i class="fa fa-heart-o"></i>
                                                                     </a>
                                                                 </li>
                                                                 <li style="border-color: orange" class="quick_button"
