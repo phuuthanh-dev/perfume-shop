@@ -83,8 +83,8 @@
                             </a>
                         </li>
                     </c:if>
-                    <li id="productsCart" class="mini_cart_wrapper">
-                        <a href="javascript:void(0)">
+                    <li class="mini_cart_wrapper">
+                        <a href="javascript:void(0)" >
                             <i class="fa fa-shopping-cart"></i>
                             <c:if test="${sessionScope.cart != null && sessionScope.cartSize != 0}" >
                                 <span class="item_count">
@@ -115,6 +115,8 @@
                                                 <a href="#">${p.product.name}</a>
                                                 <p><span>Rs.${p.price}</span> X ${p.quantity}</p>
                                             </div>
+
+
                                             <div class="cart_remove">
                                                 <a href="cart?rid=${p.product.id}&role=remove"><i class="fa fa-times"></i></a>
                                             </div>
@@ -123,7 +125,9 @@
                                         <c:set var="subPrice" value="${subPrice + (p.price * p.quantity)}"/>
                                     </c:forEach>
                                 </c:if>
+
                                 </div>
+
                                 <c:if test="${sessionScope.cart == null || sessionScope.cartSize == 0}">
                                     <span class="header__cart-list--no-cart-msg">Nothing now!</span>
                                     <img src="images/emptycart.png" alt="Emptycart" style=" width: 60%;">

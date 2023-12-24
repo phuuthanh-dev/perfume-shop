@@ -26,6 +26,8 @@ import model.Product;
 @WebServlet(name="WishListServlet", urlPatterns={"/wishlist"})
 public class WishListServlet extends HttpServlet {
 
+
+
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
@@ -118,3 +120,4 @@ public class WishListServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+

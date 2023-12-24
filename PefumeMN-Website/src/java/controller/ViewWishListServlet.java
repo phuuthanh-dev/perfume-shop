@@ -20,7 +20,7 @@ import model.Product;
 
 /**
  *
- * @author Admin
+
  */
 @WebServlet(name = "ViewWishListServlet", urlPatterns = {"/viewwishlist"})
 public class ViewWishListServlet extends HttpServlet {
@@ -100,6 +100,7 @@ public class ViewWishListServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         HttpSession session = request.getSession();
         // Phan cart
         Cart cart = null;

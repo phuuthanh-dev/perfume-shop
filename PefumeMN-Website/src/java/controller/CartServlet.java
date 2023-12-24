@@ -76,47 +76,49 @@ public class CartServlet extends HttpServlet {
         } else {
             cart = new Cart();
         }
-        String tRid = request.getParameter("rid");
+
         ProductDAO pd = new ProductDAO();
-        int rid;
-        try {
-            rid = Integer.parseInt(tRid);
-            cart.removeItem(rid);
-        } catch (Exception e) {
-        }
-        List<Item> list = cart.getListItems();
-        session.setAttribute("cart", cart);
-        session.setAttribute("listItemsInCart", list);
-        session.setAttribute("cartSize", list.size());
 
-        // Phan wishlist
-        Cart wishList = null;
-        Object w = session.getAttribute("wishList");
-        // Check
-        if (w != null) {
-            wishList = (Cart) w;
-        } else {
-            wishList = new Cart();
-        }
-        String rWishId = request.getParameter("wishId");
-        int wishId;
-        try {
-            wishId = Integer.parseInt(rWishId);
-            Product p = pd.getProductByID(wishId);
-            Item e = new Item(p, 1);
-
-            if (wishList.getlistProducts().contains(p)) {
-                wishList.removeItem(wishId);
-            } else {
-                wishList.addItem(e);
+        String role = request.getParameter("role");
+        switch (role) {
+            case "add": {
+                String tnum = request.getParameter("quantity");
+                String tid = request.getParameter("id");
+                int num, id;
+                try {
+                    num = Integer.parseInt(tnum);
+                    id = Integer.parseInt(tid);
+                    Product p = pd.getProductByID(id);
+                    Item t = new Item(p, num);
+                    cart.addItem(t);
+                } catch (Exception e) {
+                }
+                List<Item> list = cart.getListItems();
+                session.setAttribute("cart", cart);
+                session.setAttribute("listItemsInCart", list);
+                session.setAttribute("cartSize", list.size());
+                request.getRequestDispatcher("home").forward(request, response);
+                break;
             }
-
-        } catch (Exception e) {
+            case "remove": {
+                String tRid = request.getParameter("rid");
+                int rid;
+                try {
+                    rid = Integer.parseInt(tRid);
+                    cart.removeItem(rid);
+                } catch (Exception e) {
+                }
+                List<Item> list = cart.getListItems();
+                session.setAttribute("cart", cart);
+                session.setAttribute("listItemsInCart", list);
+                session.setAttribute("cartSize", list.size());
+                request.getRequestDispatcher("home").forward(request, response);
+                break;
+            }
         }
-        List<Item> listItemsInWishList = wishList.getListItems();
-        session.setAttribute("wishList", wishList);
-        session.setAttribute("listItemsInWishList", listItemsInWishList);
-        session.setAttribute("wishListSize", listItemsInWishList.size());
+
+
+       
 
     }
 
@@ -131,6 +133,8 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+
 
     }
 

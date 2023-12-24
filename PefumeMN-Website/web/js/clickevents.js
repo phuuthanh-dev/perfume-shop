@@ -114,9 +114,12 @@ function openModal(
         </div>
     </div>
 </div>`;
+    console.log("Id:"+ id);
     let result = modalElement.innerHTML = modal;
     return result;
 }
+//
+//function modalOpen()
 //
 function acceptRead() {
     var elements = document.querySelectorAll(".acceptEdit");
