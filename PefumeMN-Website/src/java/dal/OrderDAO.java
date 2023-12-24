@@ -39,11 +39,11 @@ public class OrderDAO extends DBContext {
                     + "           ([Date]\n"
                     + "           ,[UserID]\n"
                     + "           ,[TotalMoney])\n"
-                    + "     VALUES (?,? ,?)";
+                    + "     VALUES (?,?,?)";
             PreparedStatement st1 = connection.prepareStatement(sql1);
             st1.setString(1, date);
             st1.setInt(2, cusID);
-            st1.setString(1, date);
+            st1.setString(3, cart.getTotalMoney().toString());
             st1.executeUpdate();
 
             // Lay ra orderID cuar Order vua tao

@@ -100,7 +100,7 @@ function openModal(
                                 </select>
                                 </div>
                                 <div class="modal_add_to_cart">
-                                    <form name="f" action="cart?id=${id}" method="post">
+                                    <form name="f" action="cart?id=${id} method="post">
                                         <input name="quantity" type="number" min="1" max="100" step="1" value="1">
                                         <button type="submit" >Add to cart</button>
                                     </form>

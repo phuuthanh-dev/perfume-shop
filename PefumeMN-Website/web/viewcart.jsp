@@ -188,10 +188,13 @@
             <jsp:include page="header_right.jsp"></jsp:include>
             </header>
             <div class="container px-4 py-5 mx-auto">
+            <c:if test="${requestScope.message != ' ' }">
+                <h2 style="color: green; text-align: center">${requestScope.message}</h2>
+            </c:if>
             <c:if test="${sessionScope.listItemsInCart == null || sessionScope.cartSize == 0}">
                 <<img src="images/emptycart1.png" width="400px"  alt="Emptycart" style="margin: auto"/>
             </c:if>
-            <c:if test="${sessionScope.listItemsInCart != null && sessionScope.cartSize != 0}">
+            <c:if test="${sessionScope.cartSize != 0}">
                 <div class="row d-flex justify-content-center">
                     <div class="col-4">
                         <h4 class="heading">Shopping Bag</h4>
@@ -251,7 +254,6 @@
                     </div>
                 </c:forEach>
             </c:if>
-
 
             <div class="row justify-content-center">
                 <div class="col-lg-12" style="padding: 0">

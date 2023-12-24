@@ -28,7 +28,7 @@
                             <div class="action_links">
                                 <ul>
                                     <li class="add_to_cart"
-                                        onclick="openModal('modal_box', '${i.image1}', '${i.image2}',
+                                        onclick="openModal('modal_box',${i.id}, '${i.image1}', '${i.image2}',
                                                             '${i.name}',${i.salePrice},${i.price}, '${i.describe}', '${i.classifyStr}',
                                                             '${i.supplier.getCompanyName()}')">
                                         <a href="#" data-toggle="modal" data-target="#modal_box" title="Add to Cart">
@@ -41,7 +41,7 @@
                                         </a>
                                     </li>
                                     <li class="quick_button" 
-                                        onclick="openModal('modal_box', '${i.image1}', '${i.image2}',
+                                        onclick="openModal('modal_box',${i.id}, '${i.image1}', '${i.image2}',
                                                             '${i.name}',${i.salePrice},${i.price}, '${i.describe}', '${i.classifyStr}',
                                                             '${i.supplier.getCompanyName()}')" >
                                         <a href="#" data-toggle="modal"

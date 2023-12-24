@@ -78,9 +78,9 @@ public class CartServlet extends HttpServlet {
             cart = new Cart();
         }
         String tRid = request.getParameter("rid");
+        ProductDAO pd = new ProductDAO();
         int rid;
         try {
-
             rid = Integer.parseInt(tRid);
             cart.removeItem(rid);
         } catch (Exception e) {
@@ -100,7 +100,6 @@ public class CartServlet extends HttpServlet {
             wishList = new Cart();
         }
         String rWishId = request.getParameter("wishId");
-        ProductDAO pd = new ProductDAO();
         int wishId;
         try {
             wishId = Integer.parseInt(rWishId);
@@ -119,6 +118,7 @@ public class CartServlet extends HttpServlet {
         session.setAttribute("wishList", wishList);
         session.setAttribute("listItemsInWishList", listItemsInWishList);
         session.setAttribute("wishListSize", listItemsInWishList.size());
+        
         //
         CategoryDAO d = new CategoryDAO();
         ProductDAO p = new ProductDAO();
@@ -129,7 +129,7 @@ public class CartServlet extends HttpServlet {
         List<Product> listAll = p.getAll();
         List<Product> productFooter1 = p.getFeaturedProducts();
         List<Product> productFooter2 = p.getFeaturedProducts();
-
+        
         //phan trang
         int page = 1, numPerPage = 9;
         int size = listAll.size();
@@ -162,6 +162,7 @@ public class CartServlet extends HttpServlet {
         request.setAttribute("giftSets", giftSets);
         request.setAttribute("productFooter1", productFooter1);
         request.setAttribute("productFooter2", productFooter2);
+
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
@@ -203,7 +204,6 @@ public class CartServlet extends HttpServlet {
         session.setAttribute("cart", cart);
         session.setAttribute("listItemsInCart", list);
         session.setAttribute("cartSize", list.size());
-
         //
         CategoryDAO d = new CategoryDAO();
         ProductDAO p = new ProductDAO();
@@ -214,7 +214,7 @@ public class CartServlet extends HttpServlet {
         List<Product> listAll = p.getAll();
         List<Product> productFooter1 = p.getFeaturedProducts();
         List<Product> productFooter2 = p.getFeaturedProducts();
-
+        
         //phan trang
         int page = 1, numPerPage = 9;
         int size = listAll.size();
@@ -247,6 +247,7 @@ public class CartServlet extends HttpServlet {
         request.setAttribute("giftSets", giftSets);
         request.setAttribute("productFooter1", productFooter1);
         request.setAttribute("productFooter2", productFooter2);
+
         request.getRequestDispatcher("home.jsp").forward(request, response);
 
     }
