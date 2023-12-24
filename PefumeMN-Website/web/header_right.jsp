@@ -84,7 +84,7 @@
                         </li>
                     </c:if>
                     <li class="mini_cart_wrapper">
-                        <a href="javascript:void(0)">
+                        <a href="javascript:void(0)" data-toggle="modal" data-target="#modal_box">
                             <i class="fa fa-shopping-cart"></i>
                             <c:if test="${sessionScope.cart != null && sessionScope.cartSize != 0}" >
                                 <span class="item_count">
@@ -109,7 +109,7 @@
                                                 <p><span>Rs.${p.price}</span> X ${p.quantity}</p>
                                             </div>
                                             <div class="cart_remove">
-                                                <a href="cart?rid=${p.product.id}"><i class="fa fa-times"></i></a>
+                                                <a href="cart?rid=${p.product.id}&role=remove"><i class="fa fa-times"></i></a>
                                             </div>
                                         </div>
                                         <c:set var="subTotal" value="${subTotal + (p.product.price*p.quantity)}"/>
@@ -152,10 +152,8 @@
                             <i class="fa fa-cog"></i>
                         </a>
                         <ul class="dropdown_links">
-                            <li><a href="#">Checkout</a></li>
-                            <li><a href="#">My Account</a></li>
+                            <li><a href="profile">My Account</a></li>
                             <li><a href="#">Shopping cart</a></li>
-                            <li><a href="#">Wishlist</a></li>
                         </ul>
                     </li>
                     <c:if test="${sessionScope.account!=null}">
