@@ -83,7 +83,7 @@
                             </a>
                         </li>
                     </c:if>
-                    <li class="mini_cart_wrapper">
+                    <li id="productsCart" class="mini_cart_wrapper">
                         <a href="javascript:void(0)" >
                             <i class="fa fa-shopping-cart"></i>
                             <c:if test="${sessionScope.cart != null && sessionScope.cartSize != 0}" >
@@ -104,27 +104,23 @@
                                                     <a href="#"><img src="${p.product.image1}"
                                                                      alt="Perfume"></a>
                                                 </div>
+                                                                     
                                                 <div class="cart_info">
                                                     <a href="#">${p.product.name}</a>
                                                     <p><span>Rs.${p.price}</span> X ${p.quantity}</p>
                                                 </div>
+                                                
                                                 <div class="cart_remove">
-                                                    <a href="cart?rid=${p.product.id}"><i class="fa fa-times"></i></a>
+                                                    <button style="padding: 0 5px" value="${p.product.id}" onclick="removeProductCart(this)">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
                                                 </div>
-                                            <div class="cart_info">
-                                                <a href="#">${p.product.name}</a>
-                                                <p><span>Rs.${p.price}</span> X ${p.quantity}</p>
+                                                
                                             </div>
-
-
-                                            <div class="cart_remove">
-                                                <a href="cart?rid=${p.product.id}&role=remove"><i class="fa fa-times"></i></a>
-                                            </div>
-                                        </div>
-                                        <c:set var="subTotal" value="${subTotal + (p.product.price*p.quantity)}"/>
-                                        <c:set var="subPrice" value="${subPrice + (p.price * p.quantity)}"/>
-                                    </c:forEach>
-                                </c:if>
+                                            <c:set var="subTotal" value="${subTotal + (p.product.price*p.quantity)}"/>
+                                            <c:set var="subPrice" value="${subPrice + (p.price * p.quantity)}"/>
+                                        </c:forEach>
+                                    </c:if>
 
                                 </div>
 
@@ -153,7 +149,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </li>
                 </ul>
             </div>

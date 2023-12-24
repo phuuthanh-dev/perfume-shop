@@ -116,10 +116,6 @@ public class CartServlet extends HttpServlet {
                 break;
             }
         }
-
-
-       
-
     }
 
     /**

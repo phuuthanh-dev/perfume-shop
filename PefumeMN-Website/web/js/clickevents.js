@@ -103,6 +103,7 @@ function openModal(
                                     <form>
                                         <input id="quantity" name="quantity" type="number" min="1" max="100" step="1" value="1">
                                         <input id="id" name="id" type="hidden" value="${id}">
+                                        <input id="role" name="role" type="hidden" value="add">
                                         <button onclick="loadProductCart(this)" type="button">Add to cart</button>
                                     </form>
                                 </div>
@@ -158,12 +159,14 @@ function checkLogout() {
 function loadProductCart(obj) {
     var quantity = document.getElementById("quantity").value;
     var id = document.getElementById("id").value;
+    var role = document.getElementById("role").value;
     $.ajax({
         url: "/PefumeMN-Website/cartajax",
         type: "post",
         data: {
             quantity: quantity,
-            id: id
+            id: id,
+            role: role
         },
         success: function (data) {
             var row = document.getElementById("productsCart");
@@ -174,3 +177,22 @@ function loadProductCart(obj) {
     });
 }
 
+function removeProductCart(obj) {
+    var role = "remove";
+    var id = obj.value;
+    console.log(role, id);
+    $.ajax({
+        url: "/PefumeMN-Website/cartajax",
+        type: "post",
+        data: {
+            id: id,
+            role: role
+        },
+        success: function (data) {
+            var row = document.getElementById("productsCart");
+            row.innerHTML = data;
+        },
+        error: function (xhr) {
+        }
+    });
+}

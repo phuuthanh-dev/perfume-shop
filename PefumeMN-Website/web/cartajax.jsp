@@ -13,7 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <a href="javascript:void(0)">
+        <a href="javascript:void(0)" >
             <i class="fa fa-shopping-cart"></i>
             <c:if test="${sessionScope.cart != null && sessionScope.cartSize != 0}" >
                 <span class="item_count">
@@ -21,12 +21,11 @@
                 </span>
             </c:if>
         </a>
-
         <div class="mini_cart mini_cart2">
             <c:set var="subTotal" value="0"/>
             <c:set var="subPrice" value="0"/>
             <div class="cart_gallery" style="max-height: 250px; overflow-y: auto;">
-                <div id="productsCart">
+                <div >
                     <c:if test="${sessionScope.cart != null && sessionScope.cartSize != 0}">
                         <c:forEach items="${sessionScope.listItemsInCart}" var="p">
                             <div class="cart_item">
@@ -34,19 +33,26 @@
                                     <a href="#"><img src="${p.product.image1}"
                                                      alt="Perfume"></a>
                                 </div>
+
                                 <div class="cart_info">
                                     <a href="#">${p.product.name}</a>
                                     <p><span>Rs.${p.price}</span> X ${p.quantity}</p>
                                 </div>
+
                                 <div class="cart_remove">
-                                    <a href="cart?rid=${p.product.id}"><i class="fa fa-times"></i></a>
+                                    <button style="padding: 0 5px" value="${p.product.id}" onclick="removeProductCart(this)">
+                                        <i class="fa fa-times"></i>
+                                    </button>
                                 </div>
+
                             </div>
                             <c:set var="subTotal" value="${subTotal + (p.product.price*p.quantity)}"/>
                             <c:set var="subPrice" value="${subPrice + (p.price * p.quantity)}"/>
                         </c:forEach>
                     </c:if>
+
                 </div>
+
                 <c:if test="${sessionScope.cart == null || sessionScope.cartSize == 0}">
                     <span class="header__cart-list--no-cart-msg">Nothing now!</span>
                     <img src="images/emptycart.png" alt="Emptycart" style=" width: 60%;">
@@ -71,6 +77,6 @@
                     <a href="${sessionScope.account == null ? 'login' : 'viewcart'}">View Cart</a>
                 </div>
             </div>
-        </div>
+        </div> 
     </body>
 </html>
