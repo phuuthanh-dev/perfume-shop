@@ -65,7 +65,7 @@ public class Cart {
     }
 
     // 
-    public double getTotalMoney() {
+    public Double getTotalMoney() {
         double total = 0;
         for (Item item : listItems) {
             total += (item.getQuantity() * item.getPrice());
