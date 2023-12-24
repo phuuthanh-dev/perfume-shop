@@ -31,6 +31,17 @@ public class ManagerAccountServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        User a = (User) session.getAttribute("account");
+        String userName = a.getUserName();
+        UserDAO dao = new UserDAO();
+
+        List<User> list = dao.getAllUsers();
+
+        request.setAttribute("listUser", list);
+
+        request.getRequestDispatcher("dashboard/mngaccount.jsp").forward(request, response);
 
     }
 
@@ -46,17 +57,7 @@ public class ManagerAccountServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        User a = (User) session.getAttribute("account");
-        String userName = a.getUserName();
-        UserDAO dao = new UserDAO();
-
-        List<User> list = dao.getAllUsers();
-
-        request.setAttribute("listUser", list);
-        
-        request.getRequestDispatcher("dashboard/mngaccount.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

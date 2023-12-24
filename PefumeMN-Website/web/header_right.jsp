@@ -158,8 +158,15 @@
                     </li>
                     <c:if test="${sessionScope.account!=null}">
                         <li>
+<<<<<<< HEAD
+                            <a href="${sessionScope.account.roleID==1?"admin":"profile"}" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.name}!</a>
+                            <a href="${sessionScope.account.roleID==1?"admin":"profile"}">
+                                <img src="${sessionScope.account.image}" width="40px" style="color: white; border-radius: 50%">
+                            </a>
+=======
                             <!--<a href="${sessionScope.account.roleID==1?"admin":"profile"}" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.name}!</a>-->
                             <a href="${sessionScope.account.roleID==1?"admin":"profile"}"><img src="${sessionScope.account.image}" width="40px" style="color: white; border-radius: 50% ;border: 2px solid white;"></a>
+>>>>>>> 304f764d35e5d9ca275be7b5ca0fd111bb95f8bb
                         </li>
                         <li>
                             <a id="logout" href="#" onclick="checkLogout()" style="color: white; text-decoration: underline; font-style: bold;

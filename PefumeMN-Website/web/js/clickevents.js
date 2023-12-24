@@ -150,7 +150,6 @@ function notAccept() {
 //
 function checkLogout() {
     let ok = confirm('Are you sure you want to logout?');
-    console.log(ok)
     if (ok) {
         document.getElementById('logout').href = 'logout';
     }
