@@ -188,8 +188,11 @@
             <jsp:include page="header_right.jsp"></jsp:include>
             </header>
             <div class="container px-4 py-5 mx-auto">
-            <c:if test="${requestScope.message != ' ' }">
+            <c:if test="${requestScope.message == 'Order Success'}">
                 <h2 style="color: green; text-align: center">${requestScope.message}</h2>
+            </c:if>
+            <c:if test="${requestScope.message == 'Order Fail'}">
+                <h2 style="color: red; text-align: center">${requestScope.message}</h2>
             </c:if>
             <c:if test="${sessionScope.listItemsInCart == null || sessionScope.cartSize == 0}">
                 <<img src="images/emptycart1.png" width="400px"  alt="Emptycart" style="margin: auto"/>
@@ -234,17 +237,18 @@
                                     <p class="mob-text">${item.product.supplier.companyName}</p>
                                 </div>
                                 <div class="col-3">
-                                    <div class="">
-                                        <input style="width: 100px"
-                                               name="quantity" type="number" min="1" max="100" step="1" value="${item.quantity}">
-                                    </div>
+                                    <!--                                    <div class="">
+                                                                            <input style="width: 100px"
+                                                                                   name="quantity" type="number" min="1" max="100" step="1" value="${item.quantity}">
+                                                                        </div>-->
+                                    <h6>${item.quantity}</h6>
                                 </div>
                                 <div class="col-3">
                                     <h6 class="mob-text">${item.price}</h6>
                                 </div>
                                 <div class="col-3">
                                     <a  href="viewcart?rid=${item.product.id}"
-                                        style="padding: 8px 15px; border: none; border-radius: 5px; background-color: red; color: white">
+                                        style="padding: 8px 15px; border: none; border-radius: 5px; background-color: #1763c7; color: white">
                                         Delete
                                     </a>
                                 </div>

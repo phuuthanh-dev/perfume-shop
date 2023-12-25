@@ -236,20 +236,20 @@
                                 <div class="col-4">
                                     <p class="mob-text">${item.product.supplier.companyName}</p>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-2">
                                     <h6 class="mob-text">${item.price}</h6>
                                 </div>
-                                <div class="col-4" style="margin-top: -15px">
-                                    <form action="viewwishlist" method="post">
-                                        <input name="quantity" type="number" min="1" max="100" step="1" value="1">
+                                <div class="col-6" style="margin-top: -15px" >
+                                    <form action="viewwishlist" method="post" style="display:flex">
+                                        <input name="quantity" type="number" min="1" max="100" step="1" value="1" style="width:100px">
                                         <input name="id" type="hidden" value="${p.id}">
                                         <input name="role" type="hidden" value="add">
-                                        <button type="submit"  style="padding: 7px 15px; border: none; border-radius: 5px; background-color: orange; color: white"F >
+                                        <button type="submit"  style="padding: 7px 15px; border: none; border-radius: 5px; background-color: orangered; color: white"F >
                                             Add
                                         </button>
                                     </form>
                                     <a  href="viewwishlist?rid=${item.product.id}"
-                                        style="padding: 7px 15px; border: none; border-radius: 5px; background-color: orange; color: white">
+                                        style="padding: 7px 15px; border: none; border-radius: 5px; background-color: #1763c7; color: white">
                                         Delete
                                     </a>
                                 </div>

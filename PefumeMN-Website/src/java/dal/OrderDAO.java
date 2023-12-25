@@ -18,6 +18,19 @@ import model.User;
 public class OrderDAO extends DBContext {
 
     //
+    public int getNumberOrders() {
+        try {
+           String sql = "SELECT COUNT(*) FROM Orders"; 
+           PreparedStatement st = connection.prepareStatement(sql);
+           ResultSet rs = st.executeQuery();
+           if(rs.next()) {
+               int number = rs.getInt(1);
+               return number;
+           }
+        } catch (Exception e) {
+        }
+        return 1;
+    }
     public void addOrder(User cus, Cart cart) {
         LocalDate curDate = java.time.LocalDate.now();
         String date = curDate.toString();
@@ -27,12 +40,10 @@ public class OrderDAO extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, cus.getUserName());
             ResultSet resultCusID = st.executeQuery();
-            String resultCusIDStr = resultCusID.toString();
             int cusID = 0;
-            try {
-                cusID = Integer.parseInt(resultCusIDStr);
-            } catch (Exception e) {
-            }
+            if(resultCusID.next()) {
+               cusID = resultCusID.getInt(1);
+           }
 
             // add vao bang Order
             String sql1 = "INSERT INTO [dbo].[Orders]\n"
@@ -46,7 +57,7 @@ public class OrderDAO extends DBContext {
             st1.setString(3, cart.getTotalMoney().toString());
             st1.executeUpdate();
 
-            // Lay ra orderID cuar Order vua tao
+            // Lay ra orderID cua Order vua tao
             String sql2 = "SELECT Top 1 [OrderID] FROM [dbo].[Orders] ORDER BY  [OrderID] DESC";
             PreparedStatement st2 = connection.prepareStatement(sql2);
             ResultSet rs = st2.executeQuery();

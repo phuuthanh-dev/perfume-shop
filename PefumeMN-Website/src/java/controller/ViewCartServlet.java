@@ -107,11 +107,23 @@ public class ViewCartServlet extends HttpServlet {
 
         OrderDAO od = new OrderDAO();
 
+        // So luong oders ban dau
+        int pre = od.getNumberOrders();
+
+        // add Order
         od.addOrder(user, cart);
 
-        // xoa cart
-        session.removeAttribute("cart");
-        String msg = "Order Success";
+        // So luong order tiep theo
+        int after = od.getNumberOrders();
+
+        String msg = "";
+        if (pre < after) {
+            msg = "Order Success";
+            session.removeAttribute("cart");
+
+        } else {
+            msg = "Order Fail";
+        }
         request.setAttribute("message", msg);
         request.getRequestDispatcher("viewcart.jsp").forward(request, response);
 
