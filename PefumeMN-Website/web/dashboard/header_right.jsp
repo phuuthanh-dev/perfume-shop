@@ -56,10 +56,11 @@
         </style>
     </head>
     <body>
-        <div style="width: 100%;
+        <div id="head_vip" class="header_container sticky-header" style="width: 100%;
              background-color: black;
              padding: 21px;
-             margin-bottom: 20px; z-index: 1">
+             margin-bottom: 40px;
+             z-index: 1">
             <div style="">
                 <ul style="color: black;
                     display: flex;
@@ -74,7 +75,7 @@
                     </li>
                     <li onclick="change()" style="position: relative">
                         <img src="${sessionScope.account.image}" width="45px" style="color: white;
-                             border-radius: 50%">
+                             border-radius: 50%; cursor: pointer">
                         <ul id="avt" class="header_avt" style="margin-top:25px;
                             position: absolute;
                             left: -96px ;
@@ -93,23 +94,29 @@
                 </ul>
             </div>
         </div>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>   
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
+        <script src="js/countdown.js"></script>
+        <script src="js/clickevents.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
         <script type="text/javascript">
-            function change() {
-                var a = document.getElementById("avt");
-                if (a.style.display === 'none' || a.style.display === '') {
-                    a.style.display = 'block';
-                } else {
-                    a.style.display = 'none';
-                }
-            }
-            function checkLogout() {
-                let ok = confirm('Are you sure you want to logout?');
-                console.log(ok)
-                if (ok) {
-                    document.getElementById('logout').href = 'logout';
-                }
-            }
+                                function change() {
+                                    var a = document.getElementById("avt");
+                                    if (a.style.display === 'none' || a.style.display === '') {
+                                        a.style.display = 'block';
+                                    } else {
+                                        a.style.display = 'none';
+                                    }
+                                }
+                                function checkLogout() {
+                                    let ok = confirm('Are you sure you want to logout?');
+                                    console.log(ok)
+                                    if (ok) {
+                                        document.getElementById('logout').href = 'logout';
+                                    }
+                                }
 
         </script>
     </body>

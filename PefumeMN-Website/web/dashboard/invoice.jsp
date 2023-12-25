@@ -11,13 +11,16 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
         <!------ Include the above in your HEAD tag ------>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link href="css/style.css" rel="stylesheet" type="text/css"/> 
 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+        <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://mdbootstrap.com/previews/ecommerce-demo/css/bootstrap.min.css">
         <!-- Material Design Bootstrap -->
         <link rel="stylesheet" href="https://mdbootstrap.com/previews/ecommerce-demo/css/mdb-pro.min.css">
@@ -30,16 +33,6 @@
         <!------ Include the above in your HEAD tag ------>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link href="css/style.css" rel="stylesheet" type="text/css"/> 
-        <link href="css/manager.css" rel="stylesheet" type="text/css"/>
-
-        <!--           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round"> -->
-        <!--         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
-        <!--       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-        <!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <style>
-        </style>
         <style>
             body {
                 margin: 0;
@@ -53,15 +46,6 @@
                 main {
                     padding-left: 240px;
                 }
-            }
-            
-            .text_page_head{
-                font-size: 18px;
-                font-weight: 600;
-            }
-            .text_page {
-                font-size: 14px;
-                font-weight: 600;
             }
 
             /* Sidebar */
@@ -86,9 +70,6 @@
                 box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
             }
 
-            *{
-                font-family: "Lato", sans-serif;
-            }
             .sidebar-sticky {
                 position: relative;
                 top: 0;
@@ -96,72 +77,85 @@
                 padding-top: 0.5rem;
                 overflow-x: hidden;
                 overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-            }</style>
+            }
+            .text_page_head{
+                font-size: 18px;
+                font-weight: 600;
+            }
+            .text_page {
+                font-size: 14px;
+                font-weight: 600;
+            }
+        </style>
     </head>
     <body>
-
         <!--Main Navigation-->
         <header>
             <jsp:include page="leftadmin.jsp"></jsp:include>
-
-
             </header>
-            <jsp:include page="header_right.jsp"></jsp:include>
             <!--Main Navigation-->
-
+        <jsp:include page="header_right.jsp"></jsp:include>
             <!--Main layout-->
             <main>
-                <div class="container pt-4">
-                    <!--Section: Top 10 san pham ban chay-->
+                <div class="container pt-4"><!--Section: Sales Performance KPIs-->
                     <section class="mb-4">
-                        <div class="card"> 
-                            <div class="card-header py-3">
-                                <h3 style="padding: 10px" class="mb-0 text-center"><strong>TOP 10 BEST-SELLING PRODUCTS</strong></h3>
-                            </div>
+                    <c:if test="${error!=null }">
+                        <div class="alert alert-danger" role="alert">
+                            ${error}
+                        </div>
+                    </c:if>
+                    <c:if test="${mess!=null }">
+                        <div class="alert alert-success" role="alert">
+                            ${mess}
+                        </div>
+                    </c:if>
 
-                        <c:if test="${mess!=null }">
-                            <div class="alert alert-success" role="alert">
-                                ${mess}
+                    <div class="card">
+                        <div class="py-3 row">
+                            <div class="col-sm-12" style="padding:15px 0">
+                                <h3 class="mb-0 text-center" id="">
+                                    <strong>Invoice</strong>
+                                </h3>
                             </div>
-                        </c:if>
-
+                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-hover text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th class="text_page_head" scope="col">ID</th>
-                                            <th class="text_page_head" scope="col">Name</th>
-                                            <th class="text_page_head"  style="text-align: center" scope="col">Image</th>
-                                            <th class="text_page_head" scope="col">Price</th>
-                                            <th class="text_page_head" scope="col">Quantity sold</th>
+                                            <th class="text_page_head" scope="col"></th>
+                                            <th  class="text_page_head" scope="col">Order Id</th>
+                                            <th class="text_page_head" scope="col">Username</th>
+                                            <th class="text_page_head" scope="col">Total money($)</th>
+                                            <th class="text_page_head" scope="col">Order date</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <c:forEach items="${list}" var="t">
+                                    <tbody id="content">
+                                        <c:forEach items="${listAllInvoice}" var="i">
                                             <tr>
-                                                <td class="text_page">${t.id}</td>
-                                                <td class="text_page">${t.name}</td>
-                                                <td class="text_page" style="text-align: center">
-                                                    <img style="width: 170px; height:180px" src="${t.image1}">
-                                                </td>
-                                                <td class="text_page">${t.price} $</td>
-                                                <td class="text_page">${t.quantity}</td>
+                                                <th scope="row"></th>
+                                                <td  class="text_page">${i.orderId}</td>
+                                                <c:forEach items="${listAllAccount}" var="a">
+                                                    <c:if test="${i.userName==a.userName}">
+                                                        <td class="text_page">${a.userName}</td>
+                                                    </c:if>
+                                                </c:forEach>
+                                                <td class="text_page">${String.format("%.02f",i.total)}</td>
+                                                <td class="text_page">${i.date}</td> 
                                             </tr>
                                         </c:forEach>
                                     </tbody>
-                                </table>
+                                </table> 
                             </div>
                         </div>
                     </div>
                 </section>
-                <!--Section: Quan Ly tai Khoan-->
+                <!--Section: Sales Performance KPIs-->
+
+
+
             </div>
-
-
         </main>
-
-
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>   
@@ -171,5 +165,21 @@
         <script src="js/clickevents.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
         <script src="js/main.js"></script>
+        <script>
+            function searchByDate(param) {
+                var txtSearchDate = param.value;
+                $.ajax({
+                    url: "/WebsiteBanGiay/searchAjaxHoaDon",
+                    type: "get", //send it through get method
+                    data: {
+                        ngayXuat: txtSearchDate
+                    },
+                    success: function (responseData) {
+                        document.getElementById("content").innerHTML = responseData;
+                    }
+
+                });
+            }
+        </script>
     </body>
 </html>

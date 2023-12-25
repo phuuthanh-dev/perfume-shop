@@ -7,8 +7,11 @@ package dal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import model.Cart;
 import model.Item;
+import model.Order;
 import model.User;
 
 /**
@@ -85,6 +88,80 @@ public class OrderDAO extends DBContext {
 
             // add vao bang orderDetail
         } catch (Exception e) {
+        }
+    }
+    
+    public double totalMoneyMonth(int month, int year) {
+        String sql = "select SUM([TotalMoney]) from [Orders]\r\n"
+        		+ "where MONTH([Date])=? and year([Date])=?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, month);
+            st.setInt(2, year);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+               return rs.getDouble(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+    
+    public double totalMoneyDay(int day, int year) {
+        String sql = "select \n"
+        		+ "	SUM(TotalMoney) \n"
+        		+ "     from Orders\n"
+        		+ "     where DATEPART(dw,[Date])\n"
+                        + "     = ? and year([Date])=?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, day);
+            st.setInt(2, year);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+               return rs.getDouble(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+    
+    public double sumAllMoneyOrder() {
+        String sql = "select SUM([TotalMoney]) from Orders";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+               return rs.getDouble(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+    
+    public List<Order> getAll() {
+        List<Order> list = new ArrayList<>();
+        String sql = "select * from Orders";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                list.add(new Order(rs.getInt(1),
+                        rs.getDate(2),
+                        rs.getString(3),
+                        rs.getDouble(4)
+                       ));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    
+    public static void main(String[] args) {
+        OrderDAO dao = new OrderDAO();
+        List<Order> list = dao.getAll();
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
         }
     }
 }

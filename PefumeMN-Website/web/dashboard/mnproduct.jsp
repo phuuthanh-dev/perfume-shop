@@ -257,13 +257,15 @@
         </div>
 
 
-
-        <script src="js/manager.js" type="text/javascript"></script>
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <!--Main layout-->
-        <!-- SCRIPTS -->
-        <!-- JQuery -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>   
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
+        <script src="js/countdown.js"></script>
+        <script src="js/clickevents.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+        <script src="js/main.js"></script>
         <script src="https://mdbootstrap.com/previews/ecommerce-demo/js/jquery-3.4.1.min.js"></script>
         <!-- Bootstrap tooltips -->
         <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/popper.min.js"></script>
@@ -272,17 +274,9 @@
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/mdb.min.js"></script>
         <!-- MDB Ecommerce JavaScript -->
-        <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/mdb.ecommerce.min.js"></script>
-        <!-- MDB -->
-        <script type="text/javascript" src="js/mdb.min.js"></script>
-        <!-- Custom scripts -->
-        <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/mdb.ecommerce.min.js"></script>js/script.js"></script>
 
         <script type="text/javascript" src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/js/plugins/mdb-plugins-gathered.min.js"></script>
-        <!-- MDB -->
-        <script type="text/javascript" src="js/mdb.min.js"></script>
-        <!-- Custom scripts -->
-        <script type="text/javascript" src="js/script.js"></script>
         <script type="text/javascript">
         </script>
     </body>

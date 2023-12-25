@@ -17,7 +17,11 @@
         <url-pattern>/admin</url-pattern>
         <url-pattern>/manager</url-pattern>
         <url-pattern>/top10</url-pattern>
+        <url-pattern>/invoice</url-pattern>
+        <url-pattern>/weekrevenue</url-pattern>
+        <url-pattern>/mothlyrevenue</url-pattern>
         <url-pattern>/managerAccount</url-pattern>
+        <url-pattern>/managersupplier</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>HomeFilter</filter-name>

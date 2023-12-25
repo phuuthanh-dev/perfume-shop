@@ -5,23 +5,16 @@
  */
 package controller;
 
-import dal.ProductDAO;
+import dal.OrderDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Product;
 
-/**
- *
- * @author trinh
- */
-@WebServlet(name = "LoadPagingServlet", urlPatterns = {"/load"})
-public class LoadPagingServlet extends HttpServlet {
+@WebServlet(name = "WeekRevenueServletControl", urlPatterns = {"/weekrevenue"})
+public class WeekRevenueServletControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,6 +27,31 @@ public class LoadPagingServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+
+        String year_raw = request.getParameter("year");
+        int year = (year_raw == null ? 2023 : Integer.parseInt(year_raw));
+
+        OrderDAO dao = new OrderDAO();
+        double totalMoney1 = dao.totalMoneyDay(1, year);
+        double totalMoney2 = dao.totalMoneyDay(2, year);
+        double totalMoney3 = dao.totalMoneyDay(3, year);
+        double totalMoney4 = dao.totalMoneyDay(4, year);
+        double totalMoney5 = dao.totalMoneyDay(5, year);
+        double totalMoney6 = dao.totalMoneyDay(6, year);
+        double totalMoney7 = dao.totalMoneyDay(7, year);
+
+        request.setAttribute("totalMoney1", totalMoney1);
+        request.setAttribute("totalMoney2", totalMoney2);
+        request.setAttribute("totalMoney3", totalMoney3);
+        request.setAttribute("totalMoney4", totalMoney4);
+        request.setAttribute("totalMoney5", totalMoney5);
+        request.setAttribute("totalMoney6", totalMoney6);
+        request.setAttribute("totalMoney7", totalMoney7);
+        request.setAttribute("year", year);
+
+        request.getRequestDispatcher("dashboard/weekrevenue.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -48,15 +66,7 @@ public class LoadPagingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        //tam thoi load ra 9 san pham truoc 
-        String amount = request.getParameter("exits");
-        int iamount = Integer.parseInt(amount);
-        ProductDAO p = new ProductDAO();
-        List<Product> list = p.getNext9Product(iamount);
-        request.setAttribute("productPage", list);
-        request.setAttribute("col", 4);
-        request.getRequestDispatcher("load.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

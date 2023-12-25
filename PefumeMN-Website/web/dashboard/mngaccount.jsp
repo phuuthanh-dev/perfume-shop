@@ -225,58 +225,60 @@
             </div>
         </div>
 
-        <script src="js/manager.js" type="text/javascript"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>   
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
+        <script src="js/countdown.js"></script>
+        <script src="js/clickevents.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+        <script src="js/main.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://mdbootstrap.com/previews/ecommerce-demo/js/jquery-3.4.1.min.js"></script>
         <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/popper.min.js"></script>
         <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/bootstrap.js"></script>
         <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/mdb.min.js"></script>
         <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/mdb.ecommerce.min.js"></script>
-        <script type="text/javascript" src="js/mdb.min.js"></script>
-        <script type="text/javascript" src="js/script.js"></script>
         <script type="text/javascript" src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/js/plugins/mdb-plugins-gathered.min.js"></script>
-        <script type="text/javascript" src="js/mdb.min.js"></script>
-        <script type="text/javascript" src="js/script.js"></script>
 
         <script src="js/calender.js"></script>
         <script type="text/javascript">
-            dates('option');
-            months('option', 11, 12);
-            years('option', 1980, 2023);
-            
-            function monthNameToNumber(monthName) {
-                var months = [
-                    'January', 'February', 'March', 'April', 'May', 'June',
-                    'July', 'August', 'September', 'October', 'November', 'December'
-                ];
-                var lowerMonthName = monthName.toLowerCase();
-                var monthIndex = months.findIndex(function (month) {
-                    return month.toLowerCase() === lowerMonthName;
-                });
-                return monthIndex !== -1 ? monthIndex + 1 : -1;
-            }
+                                dates('option');
+                                months('option', 11, 12);
+                                years('option', 1980, 2023);
 
-            function submitForm() {
-                var here = document.querySelector('#here');
-                var form = document.getElementById('form');
-                var dobDay = document.getElementById('dobDay').value;
-                var dobMonthText = document.getElementById('dobMonth').value;
-                var dobMonth = monthNameToNumber(dobMonthText);
-                var dobYear = document.getElementById('dobYear').value;
-                if (dobMonth < 10 && dobDay < 10) {
-                    dobFull = dobYear + '-0' + dobMonth + '-0' + dobDay;
-                } else if (dobMonth < 10 && !(dobDay < 10)) {
-                    dobFull = dobYear + '-0' + dobMonth + '-' + dobDay;
-                } else if (dobDay < 10 && !(dobMonth < 10)) {
-                    dobFull = dobYear + '-' + dobMonth + '-0' + dobDay;
-                } else {
-                    dobFull = dobYear + '-' + dobMonth + '-' + dobDay;
-                }
+                                function monthNameToNumber(monthName) {
+                                    var months = [
+                                        'January', 'February', 'March', 'April', 'May', 'June',
+                                        'July', 'August', 'September', 'October', 'November', 'December'
+                                    ];
+                                    var lowerMonthName = monthName.toLowerCase();
+                                    var monthIndex = months.findIndex(function (month) {
+                                        return month.toLowerCase() === lowerMonthName;
+                                    });
+                                    return monthIndex !== -1 ? monthIndex + 1 : -1;
+                                }
 
-                here.value = dobFull;
-                form.submit();
-            }
+                                function submitForm() {
+                                    var here = document.querySelector('#here');
+                                    var form = document.getElementById('form');
+                                    var dobDay = document.getElementById('dobDay').value;
+                                    var dobMonthText = document.getElementById('dobMonth').value;
+                                    var dobMonth = monthNameToNumber(dobMonthText);
+                                    var dobYear = document.getElementById('dobYear').value;
+                                    if (dobMonth < 10 && dobDay < 10) {
+                                        dobFull = dobYear + '-0' + dobMonth + '-0' + dobDay;
+                                    } else if (dobMonth < 10 && !(dobDay < 10)) {
+                                        dobFull = dobYear + '-0' + dobMonth + '-' + dobDay;
+                                    } else if (dobDay < 10 && !(dobMonth < 10)) {
+                                        dobFull = dobYear + '-' + dobMonth + '-0' + dobDay;
+                                    } else {
+                                        dobFull = dobYear + '-' + dobMonth + '-' + dobDay;
+                                    }
+
+                                    here.value = dobFull;
+                                    form.submit();
+                                }
 ////////////////////////////////////////////////////////////////////////////////////////////
         </script>
     </body>
