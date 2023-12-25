@@ -28,6 +28,7 @@
                 height: 10rem;
             }
             .rounded-circle {
+                width: 150px;
                 border-radius: 50% !important;
             }
             .card .card-header {
@@ -93,6 +94,48 @@
                 background-position: center;
                 background-size: cover;
             }
+
+            .card{
+                border: none;
+                border-radius: 10px;
+                width: 100%;
+                margin-top: 10%;
+            }
+
+            .fa-ellipsis-v{
+                font-size: 10px;
+                color: #C2C2C4;
+                margin-top: 6px;
+                cursor: pointer;
+            }
+            .text-dark{
+                font-weight: bold;
+                margin-top: 8px;
+                font-size: 13px;
+                letter-spacing: 0.5px;
+            }
+            .card-bottom{
+                background: #3E454D;
+                border-radius: 6px;
+            }
+            .flex-column{
+                color: #adb5bd;
+                font-size: 13px;
+            }
+            .flex-column p{
+                letter-spacing: 1px;
+                font-size: 18px;
+            }
+            .btn-secondary{
+                height: 40px!important;
+                margin-top: 3px;
+            }
+            .btn-secondary:focus{
+                box-shadow: none;
+            }
+
+
+
         </style>
         <link rel="stylesheet" href="css/style.css">
     </head>
@@ -196,19 +239,19 @@
                                                 </li>
                                             </ul>
                                         </div>-->
-<!--                    <div class="header_account">
-                        <ul>
-                            <c:if test="${user!=null}">
-                                <li>
-                                    <h4 href="profile" style="color: white">Hello, ${user==null ? "": sessionScope.name}!</h4>
-                                </li>
-                                <li >
-                                    <a id="logout" href="#" onclick="checkLogout()" style="color: white; font-size: 13px; font-weight: 800; text-decoration: underline">
-                                        ${user==null ? "": "LOGOUT"}</a>
-                                </li>
-                            </c:if>
-                        </ul>
-                    </div>-->
+                    <!--                    <div class="header_account">
+                                            <ul>
+                    <c:if test="${user!=null}">
+                        <li>
+                            <h4 href="profile" style="color: white">Hello, ${user==null ? "": sessionScope.name}!</h4>
+                        </li>
+                        <li >
+                            <a id="logout" href="#" onclick="checkLogout()" style="color: white; font-size: 13px; font-weight: 800; text-decoration: underline">
+                        ${user==null ? "": "LOGOUT"}</a>
+                </li>
+                    </c:if>
+                </ul>
+            </div>-->
                 </div>
             </div>
         </header>
@@ -233,7 +276,7 @@
                             </c:if>
                             <c:if test="${imageSession==null}">
                                 <div class="avatar">
-                                    <img class="user_image" src="images/users/user.PNG" alt="" id="iUser"/>
+                                    <img class="user_image" style="width: 150px" src="images/users/user.PNG" alt="" id="iUser"/>
                                     <input type="file" name="" id="form_file" value=""/>
                                 </div>
                             </c:if>
@@ -247,8 +290,25 @@
                             </form>
                         </div>
                     </div>
+                    <div class="card mb-4 mb-xl-0">
+                        <div class="container d-flex justify-content-center">
+                            <div class="card p-3" style="margin: 10px 0">
+                                <div class="d-flex flex-row justify-content-between text-align-center">
+                                    <img src="https://imgur.com/vvK2ARv.png">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </div>
+                                <p class="text-dark">Elementery Business Account</p>
+                                <div class="card-bottom pt-3 px-3 mb-2" style="padding: 10px">
+                                    <div class="d-flex flex-row justify-content-between text-align-center">
+                                        <div class="d-flex flex-column"><span>Balance amount</span><p>&euro; <span class="text-white">88,989</span></p></div>
+                                        <button class="btn btn-secondary"><i class="fas fa-arrow-right text-white"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-xl-8">
+                <div class="col-xl-8" style="margin-top: -37px">
 
                     <div class="card mb-4">
                         <div class="card-header" style="font-weight: 700">YOUR PROFILE</div>

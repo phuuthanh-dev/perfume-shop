@@ -99,8 +99,6 @@
         <!--Main Navigation-->
         <header>
             <jsp:include page="leftadmin.jsp"></jsp:include>
-
-
             </header>
         <jsp:include page="header_right.jsp"></jsp:include>
             <!--Main layout-->

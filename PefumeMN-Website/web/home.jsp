@@ -673,7 +673,6 @@
 
                             <!-- small product area ends -->
 
-                            <!-- testimonial section starts  -->
                             <c:set var="cat" value="${requestScope.category}"/>
                             <div class="testimonial_style_two mb-60 rightleft">
                                 <div class="testimonial_container">

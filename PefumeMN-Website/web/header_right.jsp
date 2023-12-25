@@ -104,18 +104,18 @@
                                                     <a href="#"><img src="${p.product.image1}"
                                                                      alt="Perfume"></a>
                                                 </div>
-                                                                     
+
                                                 <div class="cart_info">
                                                     <a href="#">${p.product.name}</a>
                                                     <p><span>Rs.${p.price}</span> X ${p.quantity}</p>
                                                 </div>
-                                                
+
                                                 <div class="cart_remove">
                                                     <button style="padding: 0 5px" value="${p.product.id}" onclick="removeProductCart(this)">
                                                         <i class="fa fa-times"></i>
                                                     </button>
                                                 </div>
-                                                
+
                                             </div>
                                             <c:set var="subTotal" value="${subTotal + (p.product.price*p.quantity)}"/>
                                             <c:set var="subPrice" value="${subPrice + (p.price * p.quantity)}"/>
@@ -164,15 +164,29 @@
                         </ul>
                     </li>
                     <c:if test="${sessionScope.account!=null}">
-                        <li>
+                        <!--                        <li>
+                        
+                                                    <a href="${sessionScope.account.roleID==1?"admin":"profile"}" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.name}!</a>
+                                                    <a href="${sessionScope.account.roleID==1?"admin":"profile"}"><img src="${sessionScope.account.image}" width="40px" style="color: white; border-radius: 50% ;border: 2px solid white;"></a>
+                        
+                                                </li>-->
+                        <li onclick="change()" style="position: relative; cursor: pointer;">
+                            <img src="${sessionScope.account.image}" width="40px" style="color: white; border-radius: 50% ;border: 2px solid white;">
+                            <ul id="avt" class="header_avt" style="margin-top:25px;
+                                position: absolute;
+                                left: -96px ;
+                                background-color: white;
+                                color: black;
+                                padding: 10px;
+                                max-width: 160px;
+                                z-index: 1;
+                                border-radius: 5px;
+                                box-shadow: 0 1px 3.125rem 0 rgba(0, 0, 0, 0.2);">
+                                <li class="option_avt"><a href="#">Checkout</a>
+                                <li class="option_avt"><a href="${sessionScope.account.roleID==1?"admin":"profile"}">My Account</a></li>
+                                <li class="option_avt"><a id="logout" href="#" onclick="checkLogout()">${sessionScope.account==null ? "": "Logout"}</a></li>
+                            </ul>
 
-                            <!--<a href="${sessionScope.account.roleID==1?"admin":"profile"}" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.name}!</a>-->
-                            <a href="${sessionScope.account.roleID==1?"admin":"profile"}"><img src="${sessionScope.account.image}" width="40px" style="color: white; border-radius: 50% ;border: 2px solid white;"></a>
-
-                        </li>
-                        <li>
-                            <a id="logout" href="#" onclick="checkLogout()" style="color: white; text-decoration: underline; font-style: bold;
-                               text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">${sessionScope.account==null ? "": "LOGOUT"}</a>
                         </li>
                     </c:if>
                 </ul>
@@ -186,5 +200,15 @@
         <script src="js/countdown.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
         <script src="js/clickevents.js"></script>
+        <script type="text/javascript">
+                                    function change() {
+                                        var a = document.getElementById("avt");
+                                        if (a.style.display === 'none' || a.style.display === '') {
+                                            a.style.display = 'block';
+                                        } else {
+                                            a.style.display = 'none';
+                                        }
+                                    }
+        </script>
     </body>
 </html>

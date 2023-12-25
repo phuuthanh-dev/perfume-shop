@@ -59,7 +59,7 @@
         <div style="width: 100%;
              background-color: black;
              padding: 21px;
-             margin-bottom: 20px">
+             margin-bottom: 20px; z-index: 1">
             <div style="">
                 <ul style="color: black;
                     display: flex;
@@ -73,23 +73,22 @@
                         </a>
                     </li>
                     <li onclick="change()" style="position: relative">
-                        <a href="#"> <img src="${sessionScope.account.image}" width="45px" style="color: white;
-                                          border-radius: 50%">
-                            <ul id="avt" class="header_avt" style="margin-top:25px;
-                                position: absolute;
-                                left: -96px ;
-                                background-color: white;
-                                color: black;
-                                padding: 10px;
-                                max-width: 160px;
-                                z-index: 1;
-                                border-radius: 5px;
-                                box-shadow: 0 1px 3.125rem 0 rgba(0, 0, 0, 0.2);">
-                                <li class="option_avt"><a href="#">Checkout</a>
-                                <li class="option_avt"><a href="#">My Account</a></li>
-                                <li class="option_avt"><a id="logout" href="#" onclick="checkLogout()">${sessionScope.account==null ? "": "Logout"}</a></li>
-                            </ul>
-                        </a>
+                        <img src="${sessionScope.account.image}" width="45px" style="color: white;
+                             border-radius: 50%">
+                        <ul id="avt" class="header_avt" style="margin-top:25px;
+                            position: absolute;
+                            left: -96px ;
+                            background-color: white;
+                            color: black;
+                            padding: 10px;
+                            max-width: 160px;
+                            z-index: 1;
+                            border-radius: 5px;
+                            box-shadow: 0 1px 3.125rem 0 rgba(0, 0, 0, 0.2);">
+                            <li class="option_avt"><a href="#">Checkout</a>
+                            <li class="option_avt"><a href="#">My Account</a></li>
+                            <li class="option_avt"><a id="logout" href="#" onclick="checkLogout()">${sessionScope.account==null ? "": "Logout"}</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
