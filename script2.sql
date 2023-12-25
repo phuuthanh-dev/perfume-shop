@@ -16,6 +16,7 @@ INSERT INTO [dbo].[Orders] ([Date], [UserID], [TotalMoney]) VALUES
     ('2023-12-25', 5, 92.95),
     ('2023-02-25', 5, 519.88),
     ('2023-07-25', 6, 196.93),
+
     ('2023-12-25', 7, 131.93);
 
  -- Tạo bảng OrderDetails
@@ -46,4 +47,6 @@ INSERT INTO [dbo].[OrderDetails] ([OrderID], [ProductID], [Quantity], [UnitPrice
     (5, 55, 4, 49.99, 0.3),
     (5, 58, 3, 29.99, 0.5),
     (6, 66, 3, 19.99, 0),
+
     (6, 68, 4, 17.99, 0);
+
