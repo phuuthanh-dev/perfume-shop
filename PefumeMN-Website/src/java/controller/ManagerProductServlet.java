@@ -36,28 +36,14 @@ public class ManagerProductServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("account");
-
-        if (user == null) {
-            response.sendRedirect("login");
-            return;
-        }
-        String id = user.getUserName();
-        String index = request.getParameter("index");
-        if (index == null) {
-            index = "1";
-        }
-        int indexPage = Integer.parseInt(index);
-
         ProductDAO daoP = new ProductDAO();
         CategoryDAO daoC = new CategoryDAO();
         List<Product> list = daoP.getAll();
         List<Category> listC = daoC.getAll();
 
-        int page = 1, numPerPage = 5;
+        int page = 1, numPerPage = 6;
         int size = list.size();
-        int numberpage = ((size % numPerPage == 0) ? (size / 5) : (size / 5) + 1);
+        int numberpage = ((size % numPerPage == 0) ? (size / 6) : (size / 6) + 1);
         String xpage = request.getParameter("page");
         if (xpage == null) {
             page = 1;
@@ -65,7 +51,7 @@ public class ManagerProductServlet extends HttpServlet {
             page = Integer.parseInt(xpage);
         }
         int start, end;
-        start = (page - 1) * 5;
+        start = (page - 1) * 6;
         end = Math.min(page * numPerPage, size);
 
         List<Product> listByPage = daoP.getListByPage(list, start, end);

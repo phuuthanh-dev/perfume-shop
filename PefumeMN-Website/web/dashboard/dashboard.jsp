@@ -139,7 +139,7 @@
                                         <div style="text-align: end">
                                             <h4 style="color: #E94644;">Total Sales</h4>
                                             <p class="mb-0"></p>
-                                            <h2 class="h1 mb-0">3$</h2>
+                                            <h2 class="h1 mb-0">${requestScope.totalmoneyAll}$</h2>
                                         </div>
                                     </div>
                                 </div>
