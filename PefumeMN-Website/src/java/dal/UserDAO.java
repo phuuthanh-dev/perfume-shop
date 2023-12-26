@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model.Spending;
 import model.User;
 
 /**
@@ -222,9 +223,27 @@ public class UserDAO extends DBContext {
     public static void main(String[] args) {
         UserDAO p = new UserDAO();
         p.insertUser("adminafa", "Phùng Hữu Thành", "123", 1, "phuuthanh2003@gmai.com", "2003-08-10", "0707064154");
-        List<User> list = p.getAllUsers();
+        List<Spending> list = p.getTop5Customers();
         for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).getUserName());
+            System.out.println(list.get(i).getTotalSpending());
         }
+    }
+
+    public List<Spending> getTop5Customers() {
+        List<Spending> list = new ArrayList<>();
+        String sql = "select top(5) u.*, sum(TotalMoney) as TotalMoney from Orders o inner join Users u on o.UserName = u.UserName group by u.Address, "
+                + "u.BirthDay, u.Email, u.FullName, u.UserName, u.Password, u.Image, u.RoleID, u.UserID, u.Phone\n" + " order by TotalMoney desc";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                User user = new User(rs.getString("userName"), rs.getString("fullName"), rs.getString("password"),
+                        rs.getString("address"), rs.getString("phone"), rs.getString("email"), rs.getString("Image"), 
+                        rs.getString("BirthDay"), rs.getInt("roleID"));
+                list.add(new Spending(user, rs.getDouble("TotalMoney")));
+            }
+        } catch (Exception e) {
+        }
+        return list;
     }
 }

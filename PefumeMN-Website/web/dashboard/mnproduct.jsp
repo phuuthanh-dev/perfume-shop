@@ -110,7 +110,7 @@
                             <div class="row" style="">
                                 <div class="col-sm-4" style="text-align: center; margin-top: 20px; padding-top: 20px">
                                     <h3 class="mb-0" id="">
-                                        <strong>Manage Account</strong>
+                                        <strong>Manage Products</strong>
                                     </h3>
                                 </div>
                                 <a href="#addEmployeeModal" style="height: 40px" class="buttonadd btn btn-success" data-toggle="modal"><i class="fa-solid fa-plus"></i></a>
