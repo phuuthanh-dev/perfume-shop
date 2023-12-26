@@ -297,11 +297,11 @@
                                     <img src="https://imgur.com/vvK2ARv.png">
                                     <i class="fas fa-ellipsis-v"></i>
                                 </div>
-                                <p class="text-dark">Elementery Business Account</p>
+                                <p class="text-dark">Shopping wallet</p>
                                 <div class="card-bottom pt-3 px-3 mb-2" style="padding: 10px">
                                     <div class="d-flex flex-row justify-content-between text-align-center">
-                                        <div class="d-flex flex-column"><span>Balance amount</span><p>&euro; <span class="text-white">88,989</span></p></div>
-                                        <button class="btn btn-secondary"><i class="fas fa-arrow-right text-white"></i></button>
+                                        <div class="d-flex flex-column"><span>Balance amount</span><p>&euro; <span class="text-white">${sessionScope.wallet.balance}</span></p></div>
+                                        <button class="btn btn-secondary" data-toggle="modal" data-target="#modal_box" onclick="modalOpen2('modal_box', '${user.userName}', '${imageSession}',${sessionScope.wallet.balance})"><i class="fas fa-plus text-white"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -376,10 +376,11 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="modal_box" role="dialog"></div>
         <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
         <script src="js/profile.js" type="text/javascript"></script>
-        <script src="js/main.js" type="text/javascript"></script>
+        <!--<script src="js/main.js" type="text/javascript"></script>-->
         <script src="js/clickevents.js" type="text/javascript"></script>
     </body>
 </html>

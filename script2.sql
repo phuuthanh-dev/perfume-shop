@@ -58,6 +58,29 @@ INSERT INTO [dbo].[OrderDetails] ([OrderID], [ProductID], [Quantity], [UnitPrice
     (5, 55, 4, 49.99, 0.3),
     (5, 58, 3, 29.99, 0.5),
     (6, 66, 3, 19.99, 0),
-
     (6, 68, 4, 17.99, 0);
 
+	CREATE TABLE Wallets (
+    WalletID INT IDENTITY(1,1),
+	UserName [nvarchar](50),
+    Balance DECIMAL(10, 2),
+	CONSTRAINT [PK_Wallets] PRIMARY KEY ([WalletID]),
+	CONSTRAINT [FK_Wallets_Users] FOREIGN KEY ([UserName])
+	REFERENCES [dbo].[Users]([UserName])
+)
+
+INSERT INTO Wallets (UserName, Balance)
+VALUES
+('john_doe', 300),
+('john_doeee', 0),
+('phuuthanh2003', 0),
+('user1', 0),
+('user10', 0),
+('user2', 0),
+('user3', 0),
+('user4', 0),
+('user5', 0),
+('user6', 0),
+('user7', 0),
+('user8', 0),
+('user9', 0);

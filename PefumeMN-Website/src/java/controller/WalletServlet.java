@@ -1,11 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
+
 package controller;
 
-import dal.UserDAO;
 import dal.WalletDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,46 +13,42 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.User;
 import model.Wallet;
 
 /**
  *
- * @author Admin
+ * @author lvhho
  */
-@WebServlet(name = "RegisterServlet", urlPatterns = {"/register"})
-public class RegisterServlet extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
+@WebServlet(name="WalletServlet", urlPatterns={"/wallet"})
+public class WalletServlet extends HttpServlet {
+   
+    /** 
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RegisterServlet</title>");
+            out.println("<title>Servlet WalletServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RegisterServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet WalletServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
-    }
+    } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
+    /** 
      * Handles the HTTP <code>GET</code> method.
-     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -61,13 +56,23 @@ public class RegisterServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.getRequestDispatcher("register.jsp").forward(request, response);
-    }
+    throws ServletException, IOException {
+        String userName = request.getParameter("userN");
+        String valueStr =  request.getParameter("add");
+        double value = 0;
+        try {
+            value = Double.parseDouble(valueStr);
+        } catch (Exception e) {
+        }
+        WalletDAO wd = new WalletDAO();
+        // udate amount
+        wd.inputMoney(userName, value);
+        
+        request.getRequestDispatcher("profile").forward(request, response);
+    } 
 
-    /**
+    /** 
      * Handles the HTTP <code>POST</code> method.
-     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -75,35 +80,13 @@ public class RegisterServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        String fName = request.getParameter("name");
-        String uName = request.getParameter("username");
-        String uPass = request.getParameter("password");
-        String uPho = request.getParameter("phone");
-        String birthDate = request.getParameter("dob");
-        UserDAO ud = new UserDAO();
-        WalletDAO wd = new WalletDAO();
-        User user;
-        Wallet wallet;
-        boolean isDup = ud.checkUserNameDuplicate(uName);
-        if (isDup == true) {
-            request.setAttribute("error", "Username already exist!");
-            request.getRequestDispatcher("register.jsp").forward(request, response);
-        } else {
-            System.out.println(birthDate.toString());
-            user = new User(uName, fName, uPass, "", uPho, "", "", birthDate, 2);
-            wallet = new Wallet(uName, 0);
-            ud.insert(user);
-            wd.addWallet(wallet);
-            request.setAttribute("successfully", "Register successfully. Please Login!");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
+    throws ServletException, IOException {
+        
+        
     }
 
-    /**
+    /** 
      * Returns a short description of the servlet.
-     *
      * @return a String containing servlet description
      */
     @Override
