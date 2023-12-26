@@ -97,7 +97,7 @@ public class CartServlet extends HttpServlet {
                 session.setAttribute("cart", cart);
                 session.setAttribute("listItemsInCart", list);
                 session.setAttribute("cartSize", list.size());
-                request.getRequestDispatcher("home").forward(request, response);
+                request.getRequestDispatcher("header_right_ajax.jsp").forward(request, response);
                 break;
             }
             case "remove": {
@@ -112,7 +112,7 @@ public class CartServlet extends HttpServlet {
                 session.setAttribute("cart", cart);
                 session.setAttribute("listItemsInCart", list);
                 session.setAttribute("cartSize", list.size());
-                request.getRequestDispatcher("home").forward(request, response);
+                request.getRequestDispatcher("header_right_ajax.jsp").forward(request, response);
                 break;
             }
         }

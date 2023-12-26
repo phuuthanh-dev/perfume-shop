@@ -104,7 +104,7 @@ function openModal(
                                         <input id="quantity" name="quantity" type="number" min="1" max="100" step="1" value="1">
                                         <input id="id" name="id" type="hidden" value="${id}">
                                         <input id="role" name="role" type="hidden" value="add">
-                                        <button onclick="loadProductCart(this)" type="submit">Add to cart</button>
+                                        <button onclick="loadProductCart(this)" type="button">Add to cart</button>
                                     </form>
                                 </div>
                             </div>
@@ -148,7 +148,7 @@ function modalOpen2(modalID, name, avt, balance) {
                                         <input  name="add" type="text" min="25" max="50000" step="5" value="25">
                                         <p style="color: grey">Enter a minimum amount of $50 and a maximum of $10000</p>
                                         <input  name="userN" type="hidden" value="${name}">
-                                        <button type="submit" type="button">Input to card</button>
+                                        <button type="submit">Input to card</button>
                                     </form>
                                 </div>
                             </div>
@@ -201,15 +201,15 @@ function loadProductCart(obj) {
     var id = document.getElementById("id").value;
     var role = document.getElementById("role").value;
     $.ajax({
-        url: "/PefumeMN-Website/cartajax",
-        type: "post",
+        url: "/PefumeMN-Website/cart",
+        type: "get",
         data: {
             quantity: quantity,
             id: id,
             role: role
         },
         success: function (data) {
-            var row = document.getElementById("productsCart");
+            var row = document.getElementById("header_right");
             row.innerHTML = data;
         },
         error: function (xhr) {
@@ -222,14 +222,31 @@ function removeProductCart(obj) {
     var id = obj.value;
     console.log(role, id);
     $.ajax({
-        url: "/PefumeMN-Website/cartajax",
-        type: "post",
+        url: "/PefumeMN-Website/cart",
+        type: "get",
         data: {
-            id: id,
+            rid: id,
             role: role
         },
         success: function (data) {
-            var row = document.getElementById("productsCart");
+            var row = document.getElementById("header_right");
+            row.innerHTML = data;
+        },
+        error: function (xhr) {
+        }
+    });
+}
+
+function toggleWishlist(id) {
+    event.preventDefault();
+    $.ajax({
+        url: "/PefumeMN-Website/wishlist",
+        type: "get",
+        data: {
+            wishId: id
+        },
+        success: function (data) {
+            var row = document.getElementById("header_right");
             row.innerHTML = data;
         },
         error: function (xhr) {

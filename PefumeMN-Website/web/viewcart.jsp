@@ -187,7 +187,7 @@
             </div>
             <jsp:include page="header_right.jsp"></jsp:include>
             </header>
-            <div class="container px-4 py-5 mx-auto">
+            <div class="container px-4 py-5 mx-auto text-center">
             <c:if test="${requestScope.message1 == 'Order Success'}">
                 <h2 style="color: green; text-align: center">${requestScope.message1}</h2>
             </c:if>
@@ -196,7 +196,7 @@
                 <h4 style="color: red; text-align: center">${requestScope.message2}</h4>
             </c:if>
             <c:if test="${sessionScope.listItemsInCart == null || sessionScope.cartSize == 0}">
-                <<img src="images/emptycart1.png" width="400px"  alt="Emptycart" style="margin: auto"/>
+                <<img src="images/emptycart1.png" width="400px"  alt="Emptycart"/>
             </c:if>
             <c:if test="${sessionScope.cartSize != 0}">
                 <div class="row d-flex justify-content-center">

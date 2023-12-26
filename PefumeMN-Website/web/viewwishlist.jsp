@@ -192,12 +192,12 @@
             </div>
             <jsp:include page="header_right.jsp"></jsp:include>
             </header>
-            <div class="container px-4 py-5 mx-auto">
+            <div class="container px-4 py-5 mx-auto text-center">
             <c:if test="${requestScope.message != ' ' }">
                 <h2 style="color: green; text-align: center">${requestScope.message}</h2>
             </c:if>
             <c:if test="${sessionScope.listItemsInWishList == null || sessionScope.wishListSize == 0}">
-                <<img src="images/emptycart2.png" width="400px"  alt="Emptycart" style="margin: auto"/>
+                <<img src="images/emptycart2.png" width="600px"  alt="Emptycart" />
             </c:if>
             <c:if test="${sessionScope.wishListSize != 0}">
                 <div class="row d-flex justify-content-center">

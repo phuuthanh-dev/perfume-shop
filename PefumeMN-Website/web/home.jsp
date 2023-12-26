@@ -54,79 +54,6 @@
                     </ul>
                 </div>
 
-                <div class="header_right_info">
-                    <ul>
-                        <li class="search_box">
-                            <a href="javascript:void(0)"><i class="fa-solid fa-magnifying-glass"></i></a>
-                            <div class="search_widget">
-                                <form action="refine" method="get">
-                                    <input id="searchId" name="nameSearch" type="text" placeholder="Search Your Perfume">
-                                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                                </form>
-                            </div>
-                        </li>
-                        <li class="header_wishlist">
-                            <a href="#"><i class="fa fa-heart-o"></i>
-                            </a>
-                        </li>
-                        <li class="mini_cart_wrapper">
-                            <a href="javascript:void">
-                                <i class="fa fa-shopping-cart"></i>
-                                <span class="item_count">2</span>
-                            </a>
-                            <div class="mini_cart mini_cart2">
-                                <div class="cart_gallery">
-                                    <div class="cart_item">
-                                        <div class="cart_img">
-                                            <a href="#"><img src="images/small-product/mini1.png" alt="Perfume"></a>
-                                        </div>
-                                        <div class="cart_info">
-                                            <a href="#">Hugo Boss</a>
-                                            <p><span>Rs. 3640</span> X 1</p>
-                                        </div>
-                                        <div class="cart_remove">
-                                            <a href="#"><i class="fa fa-times"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="cart_item">
-                                        <div class="cart_img">
-                                            <a href="#"><img src="images/small-product/mini2.png" alt="Perfume"></a>
-                                        </div>
-                                        <div class="cart_info">
-                                            <a href="#">Bvlgari</a>
-                                            <p><span>Rs. 8350</span> X 1</p>
-                                        </div>
-                                        <div class="cart_remove">
-                                            <a href="#"><i class="fa fa-times"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mini_cart_table">
-                                    <div class="cart_table_border">
-                                        <div class="cart_total">
-                                            <span>Sub Total :</span>
-                                            <span class="price">Rs. 11990</span>
-                                        </div>
-
-                                        <div class="cart_total mt-10">
-                                            <span>Total :</span>
-                                            <span class="price">Rs. 11990</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mini_cart_footer">
-                                    <div class="cart_button">
-                                        <a href="viewcart">View Cart</a>
-                                    </div>
-                                    <div class="cart_button">
-                                        <a href="#">Checkout</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- mini cart ends here -->
-                        </li>
-                    </ul>
-                </div>
 
                 <div id="menu" class="text-left">
                     <ul class="offcanvas_main_menu">
@@ -378,7 +305,7 @@
                                                                 </a>
                                                             </li>
                                                             <li class="wishlist">
-                                                                <a href="wishlist?wishId=${p.id}" title="Add to Wishlist">
+                                                                <a href="#" onclick="toggleWishlist(${p.id})" title="Add to Wishlist">
                                                                     <i class="fa fa-heart-o"></i>
                                                                 </a>
                                                             </li>
@@ -534,7 +461,7 @@
                                                                     </a>
                                                                 </li>
                                                                 <li class="wishlist">
-                                                                    <a href="wishlist?wishId=${hotDeal.id}" title="Add to Wishlist">
+                                                                    <a href="#" onclick="toggleWishlist(${hotDeal.id})" title="Add to Wishlist">
                                                                         <i class="fa fa-heart-o"></i>
                                                                     </a>
                                                                 </li>
@@ -761,7 +688,7 @@
                                                                         </a>
                                                                     </li>
                                                                     <li class="wishlist">
-                                                                        <a href="wishlist?wishId=${t.id}" title="Add to Wishlist">
+                                                                        <a href="#" onclick="toggleWishlist(${t.id})" title="Add to Wishlist">
                                                                             <i class="fa fa-heart-o"></i>
                                                                         </a>
                                                                     </li>
@@ -873,7 +800,7 @@
                                                                     </a>
                                                                 </li>
                                                                 <li class="wishlist">
-                                                                    <a href="wishlist?wishId=${i.id}" title="Add to Wishlist">
+                                                                    <a href="#" onclick="toggleWishlist(${i.id})" title="Add to Wishlist">
                                                                         <i class="fa fa-heart-o"></i>
                                                                     </a>
                                                                 </li>

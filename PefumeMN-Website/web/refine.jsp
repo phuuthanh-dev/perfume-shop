@@ -68,8 +68,8 @@
                                 </form>
                             </div>
                             <div class="col-lg-3">
-                                <%--         <%@ include file="header_right.jsp" %> --%>
-                                <div class="header_top_right">
+                                <%@ include file="header_right.jsp" %> 
+<!--                                <div class="header_top_right">
                                     <div class="header_right_info">
                                         <ul>
                                             <li class="user">
@@ -104,8 +104,6 @@
                                                     </c:if>
                                                 </a>
                                                 <div class="mini_cart mini_cart2">
-                                                    <c:set var="subTotal" value="0"/>
-                                                    <c:set var="subPrice" value="0"/>
                                                     <div class="cart_gallery" style="max-height: 250px; overflow-y: auto;">
                                                         <div >
                                                             <c:if test="${sessionScope.cart != null && sessionScope.cartSize != 0}">
@@ -123,8 +121,6 @@
                                                                             <a href="cart?rid=${p.product.id}"><i class="fa fa-times"></i></a>
                                                                         </div>
                                                                     </div>
-                                                                    <c:set var="subTotal" value="${subTotal + (p.product.price*p.quantity)}"/>
-                                                                    <c:set var="subPrice" value="${subPrice + (p.price * p.quantity)}"/>
                                                                 </c:forEach>
                                                             </c:if>
                                                         </div>
@@ -137,12 +133,12 @@
                                                         <div class="cart_table_border">
                                                             <div class="cart_total">
                                                                 <span>Sub Total :</span>
-                                                                <span class="price" style="color:grey">Rs. ${subTotal}</span>
+                                                                <span class="price" style="color:grey">Rs.${sessionScope.cart.getTotalPriceWithOutDiscount()}</span>
                                                             </div>
 
                                                             <div class="cart_total mt-10">
                                                                 <span>Total :</span>
-                                                                <span class="price">Rs. ${subPrice}</span>
+                                                                <span class="price">Rs. ${sessionScope.cart.getTotalMoney()}</span>
                                                             </div>
 
                                                         </div>
@@ -170,7 +166,7 @@
                                             </c:if>
                                         </ul>
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                         <div class="row" style="justify-content: flex-start; padding: 10px 0"">
@@ -392,7 +388,7 @@
                                                                     </a>
                                                                 </li>
                                                                 <li class="wishlist">
-                                                                    <a href="wishlist?wishId=${i.id}" title="Add to Wishlist">
+                                                                    <a href="#" onclick="toggleWishlist(${i.id})" title="Add to Wishlist">
                                                                         <i class="fa fa-heart-o"></i>
                                                                     </a>
                                                                 </li>

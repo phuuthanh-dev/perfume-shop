@@ -52,143 +52,146 @@
         </style>
     </head>
     <body>
-        <div class="header_top_right">
-            <div class="header_right_info">
-                <ul>
-                    <li class="user">
-                        <c:if test="${sessionScope.account == null}">
-                            <a href="login" title="Icon User">
-                                <i class="fa fa-user-circle"></i>
-                            </a>
-                        </c:if>
-                        <c:if test="${sessionScope.account != null && sessionScope.account.roleID!=1}">
-                            <a href="profile" title="Icon User">
-                                <i class="fa fa-user-circle"></i>
-                            </a>
-                        </c:if>
-                    </li>
-                    <li class="header_wishlist">
-                        <a href="viewwishlist">
-                            <i class="fa fa-heart-o"></i>
-                            <c:if test="${sessionScope.wishList != null && sessionScope.wishListSize != 0}" >
-                                <span class="item_count">
-                                    ${sessionScope.wishListSize}
-                                </span>
+        <div id="header_right">
+            <div class="header_top_right">
+                <div class="header_right_info">
+                    <ul>
+                        <li class="user">
+                            <c:if test="${sessionScope.account == null}">
+                                <a href="login" title="Icon User">
+                                    <i class="fa fa-user-circle"></i>
+                                </a>
                             </c:if>
-                        </a>
-                    </li>
-                    <c:if test="${sessionScope.account.roleID==1}">
+                            <c:if test="${sessionScope.account != null && sessionScope.account.roleID!=1}">
+                                <a href="profile" title="Icon User">
+                                    <i class="fa fa-user-circle"></i>
+                                </a>
+                            </c:if>
+                        </li>
                         <li class="header_wishlist">
-                            <a href="admin">
-                                <i class="fa-solid fa-chalkboard-user"></i>
+                            <a href="viewwishlist">
+                                <i class="fa fa-heart-o"></i>
+                                <c:if test="${sessionScope.wishList != null && sessionScope.wishListSize != 0}" >
+                                    <span class="item_count">
+                                        ${sessionScope.wishListSize}
+                                    </span>
+                                </c:if>
                             </a>
                         </li>
-                    </c:if>
-                    <li id="productsCart" class="mini_cart_wrapper">
-                        <a href="javascript:void(0)" >
-                            <i class="fa fa-shopping-cart"></i>
-                            <c:if test="${sessionScope.cart != null && sessionScope.cartSize != 0}" >
-                                <span class="item_count">
-                                    ${sessionScope.cartSize}
-                                </span>
-                            </c:if>
-                        </a>
-                        <div class="mini_cart mini_cart2">
-                            <div class="cart_gallery" style="max-height: 250px; overflow-y: auto;">
-                                <div >
-                                    <c:if test="${sessionScope.cart != null && sessionScope.cartSize != 0}">
-                                        <c:forEach items="${sessionScope.listItemsInCart}" var="p">
-                                            <div class="cart_item">
-                                                <div class="cart_img">
-                                                    <a href="#"><img src="${p.product.image1}"
-                                                                     alt="Perfume"></a>
-                                                </div>
-
-                                                <div class="cart_info">
-                                                    <a href="#">${p.product.name}</a>
-                                                    <p><span>Rs.${p.price}</span> X ${p.quantity}</p>
-                                                </div>
-
-                                                <div class="cart_remove">
-                                                    <button style="padding: 0 5px" value="${p.product.id}" onclick="removeProductCart(this)">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </div>
-
-                                            </div>
-                                        </c:forEach>
-                                    </c:if>
-
-                                </div>
-
-                                <c:if test="${sessionScope.cart == null || sessionScope.cartSize == 0}">
-                                    <span class="header__cart-list--no-cart-msg">Nothing now!</span>
-                                    <img src="images/emptycart.png" alt="Emptycart" style=" width: 60%;">
+                        <c:if test="${sessionScope.account.roleID==1}">
+                            <li class="header_wishlist">
+                                <a href="admin">
+                                    <i class="fa-solid fa-chalkboard-user"></i>
+                                </a>
+                            </li>
+                        </c:if>
+                        <li id="productsCart" class="mini_cart_wrapper">
+                            <a href="javascript:void(0)" >
+                                <i class="fa fa-shopping-cart"></i>
+                                <c:if test="${sessionScope.cart != null && sessionScope.cartSize != 0}" >
+                                    <span class="item_count">
+                                        ${sessionScope.cartSize}
+                                    </span>
                                 </c:if>
-                            </div>
-                            <div class="mini_cart_table">
-                                <div class="cart_table_border">
-                                    <div class="cart_total">
-                                        <span>Sub Total :</span>
-                                        <span class="price" style="color:grey">Rs.${sessionScope.cart.getTotalPriceWithOutDiscount()}</span>
+                            </a>
+                            <div class="mini_cart mini_cart2">
+                                <div class="cart_gallery" style="max-height: 250px; overflow-y: auto;">
+                                    <div >
+                                        <c:if test="${sessionScope.cart != null && sessionScope.cartSize != 0}">
+                                            <c:forEach items="${sessionScope.listItemsInCart}" var="p">
+                                                <div class="cart_item">
+                                                    <div class="cart_img">
+                                                        <a href="#"><img src="${p.product.image1}"
+                                                                         alt="Perfume"></a>
+                                                    </div>
+
+                                                    <div class="cart_info">
+                                                        <a href="#">${p.product.name}</a>
+                                                        <p><span>Rs.${p.price}</span> X ${p.quantity}</p>
+                                                    </div>
+
+                                                    <div class="cart_remove">
+                                                        <button style="padding: 0 5px; border: #fff" value="${p.product.id}" onclick="removeProductCart(this)">
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </c:forEach>
+                                        </c:if>
+
                                     </div>
 
-                                    <div class="cart_total mt-10">
-                                        <span>Total :</span>
-                                        <span class="price">Rs. ${sessionScope.cart.getTotalMoney()}</span>
+                                    <c:if test="${sessionScope.cart == null || sessionScope.cartSize == 0}">
+                                        <span class="header__cart-list--no-cart-msg">Nothing now!</span>
+                                        <img src="images/emptycart.png" alt="Emptycart" style=" width: 60%;">
+                                    </c:if>
+                                </div>
+                                <div class="mini_cart_table">
+                                    <div class="cart_table_border">
+                                        <div class="cart_total">
+                                            <span>Sub Total :</span>
+                                            <span class="price" style="color:grey">Rs.${sessionScope.cart.getTotalPriceWithOutDiscount()}</span>
+                                        </div>
+
+                                        <div class="cart_total mt-10">
+                                            <span>Total :</span>
+                                            <span class="price">Rs. ${sessionScope.cart.getTotalMoney()}</span>
+                                        </div>
+
                                     </div>
-
+                                </div>
+                                <div class="mini_cart_footer">
+                                    <div class="cart_button">
+                                        <a href="${sessionScope.account == null ? 'login' : 'viewcart'}">View Cart</a>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="mini_cart_footer">
-                                <div class="cart_button">
-                                    <a href="${sessionScope.account == null ? 'login' : 'viewcart'}">View Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="header_account">
-                <ul>
-                    <li class="top_links">
-                        <a href="#">
-                            <i class="fa fa-cog"></i>
-                        </a>
-                        <ul class="dropdown_links">
-                            <li><a href="profile">My Account</a></li>
-                            <li><a href="profile">Shopping cart</a></li>
-                        </ul>
-                    </li>
-                    <c:if test="${sessionScope.account!=null}">
-                        <!--                        <li>
-                        
-                                                    <a href="${sessionScope.account.roleID==1?"admin":"profile"}" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.name}!</a>
-                                                    <a href="${sessionScope.account.roleID==1?"admin":"profile"}"><img src="${sessionScope.account.image}" width="40px" style="color: white; border-radius: 50% ;border: 2px solid white;"></a>
-                        
-                                                </li>-->
-                        <li onclick="change()" style="position: relative; cursor: pointer;">
-                            <img src="${sessionScope.account.image}" width="40px" style="color: white; border-radius: 50% ;border: 2px solid white;">
-                            <ul id="avt" class="header_avt" style="margin-top:25px;
-                                position: absolute;
-                                left: -96px ;
-                                background-color: white;
-                                color: black;
-                                padding: 10px;
-                                max-width: 160px;
-                                z-index: 1;
-                                border-radius: 5px;
-                                box-shadow: 0 1px 3.125rem 0 rgba(0, 0, 0, 0.2);">
-                                <li class="option_avt"><a href="#">Checkout</a>
-                                <li class="option_avt"><a href="${sessionScope.account.roleID==1?"admin":"profile"}">My Account</a></li>
-                                <li class="option_avt"><a id="logout" href="#" onclick="checkLogout()">${sessionScope.account==null ? "": "Logout"}</a></li>
-                            </ul>
-
                         </li>
-                    </c:if>
-                </ul>
+                    </ul>
+                </div>
+                <div class="header_account">
+                    <ul>
+                        <li class="top_links">
+                            <a href="#">
+                                <i class="fa fa-cog"></i>
+                            </a>
+                            <ul class="dropdown_links">
+                                <li><a href="profile">My Account</a></li>
+                                <li><a href="profile">Shopping cart</a></li>
+                            </ul>
+                        </li>
+                        <c:if test="${sessionScope.account!=null}">
+                            <!--                        <li>
+                            
+                                                        <a href="${sessionScope.account.roleID==1?"admin":"profile"}" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.name}!</a>
+                                                        <a href="${sessionScope.account.roleID==1?"admin":"profile"}"><img src="${sessionScope.account.image}" width="40px" style="color: white; border-radius: 50% ;border: 2px solid white;"></a>
+                            
+                                                    </li>-->
+                            <li onclick="change()" style="position: relative; cursor: pointer;">
+                                <img src="${sessionScope.account.image}" width="40px" style="color: white; border-radius: 50% ;border: 2px solid white;">
+                                <ul id="avt" class="header_avt" style="margin-top:25px;
+                                    position: absolute;
+                                    left: -96px ;
+                                    background-color: white;
+                                    color: black;
+                                    padding: 10px;
+                                    max-width: 160px;
+                                    z-index: 1;
+                                    border-radius: 5px;
+                                    box-shadow: 0 1px 3.125rem 0 rgba(0, 0, 0, 0.2);">
+                                    <li class="option_avt"><a href="#">Checkout</a>
+                                    <li class="option_avt"><a href="${sessionScope.account.roleID==1?"admin":"profile"}">My Account</a></li>
+                                    <li class="option_avt"><a id="logout" href="#" onclick="checkLogout()">${sessionScope.account==null ? "": "Logout"}</a></li>
+                                </ul>
+
+                            </li>
+                        </c:if>
+                    </ul>
+                </div>
             </div>
         </div>
+
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>   
