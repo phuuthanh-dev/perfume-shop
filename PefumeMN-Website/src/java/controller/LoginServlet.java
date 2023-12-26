@@ -6,6 +6,7 @@
 package controller;
 
 import dal.UserDAO;
+import dal.WalletDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -16,6 +17,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.User;
+import model.Wallet;
 
 /**
  *
@@ -95,12 +97,15 @@ public class LoginServlet extends HttpServlet {
         String uPass = request.getParameter("password");
         String remember = request.getParameter("remember");
         UserDAO ud = new UserDAO();
+        WalletDAO wd = new WalletDAO();
         User user = ud.check(uName, uPass);
         HttpSession session = request.getSession();
         if (user == null) {
             request.setAttribute("error", "Username or password invalid!");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
+            Wallet wallet = wd.getWalletByUserName(uName);
+            session.setAttribute("wallet", wallet);
             session.setAttribute("account", user);
             Cookie u = new Cookie("cUName", uName);
             Cookie p = new Cookie("pUName", uPass);

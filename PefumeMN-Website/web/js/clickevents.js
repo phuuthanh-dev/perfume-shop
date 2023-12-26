@@ -115,12 +115,52 @@ function openModal(
         </div>
     </div>
 </div>`;
-    console.log("Id:"+ id);
+    console.log("Id:" + id);
     let result = modalElement.innerHTML = modal;
     return result;
 }
 //
-//function modalOpen()
+function modalOpen2(modalID, name, avt, balance) {
+    let modalElement = document.getElementById(modalID);
+    let modal = `<div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <button type="button" data-dismiss="modal" aria-label="close" class="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="modal_body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-5 col-md-5 col-sm-12">
+                                <img src="images/bannerwallet.png" alt="banner">
+                            </div>
+
+                            <div class="col-lg-7 col-md-7 col-sm-12">
+                                <div class="modal_add_to_cart">
+                                    <div style="display: flex;">
+                                        <div ><img src="${avt}" atl="avatar" width="100px" style="border-radius:50%;"/></div>
+                                        <div><h4>${name}</h4></div>
+                                    </div>
+                                        <div>
+                                            <h4>Balance in card:</h4>
+                                            <h3 style="color: green">$ ${balance}</h3>
+                                        </div>
+                                    <form action="wallet" method="get">
+                                        <input  name="add" type="text" min="25" max="50000" step="5" value="25">
+                                        <p style="color: grey">Enter a minimum amount of $50 and a maximum of $10000</p>
+                                        <input  name="userN" type="hidden" value="${name}">
+                                        <button type="submit" type="button">Input to card</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+   </div>`;
+    let result = modalElement.innerHTML = modal;
+    return result;
+}
+
 //
 function acceptRead() {
     var elements = document.querySelectorAll(".acceptEdit");
