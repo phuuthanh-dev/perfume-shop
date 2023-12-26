@@ -63,8 +63,17 @@ public class Cart {
             listItems.remove(getItemByID(id));
         }
     }
+    // lay gia san pham ban dau - gia chua sale
+    public Double getTotalPriceWithOutDiscount() {
+        double total = 0;
+        for (Item item : listItems) {
+            total += (item.getQuantity() * item.getProduct().getPrice());
+        }
+        DecimalFormat df = new DecimalFormat("#.##");
+        return Double.parseDouble(df.format(total));
+    }
 
-    // 
+    // lay gia ban - gia san pham da sale
     public Double getTotalMoney() {
         double total = 0;
         for (Item item : listItems) {
