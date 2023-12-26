@@ -188,11 +188,12 @@
             <jsp:include page="header_right.jsp"></jsp:include>
             </header>
             <div class="container px-4 py-5 mx-auto">
-            <c:if test="${requestScope.message == 'Order Success'}">
-                <h2 style="color: green; text-align: center">${requestScope.message}</h2>
+            <c:if test="${requestScope.message1 == 'Order Success'}">
+                <h2 style="color: green; text-align: center">${requestScope.message1}</h2>
             </c:if>
-            <c:if test="${requestScope.message == 'Order Fail'}">
-                <h2 style="color: red; text-align: center">${requestScope.message}</h2>
+            <c:if test="${requestScope.message1 == 'Order Fail'}">
+                <h2 style="color: red; text-align: center">${requestScope.message1}</h2>
+                <h4 style="color: red; text-align: center">${requestScope.message2}</h4>
             </c:if>
             <c:if test="${sessionScope.listItemsInCart == null || sessionScope.cartSize == 0}">
                 <<img src="images/emptycart1.png" width="400px"  alt="Emptycart" style="margin: auto"/>

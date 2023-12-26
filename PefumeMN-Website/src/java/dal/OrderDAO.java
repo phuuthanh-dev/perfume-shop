@@ -38,25 +38,16 @@ public class OrderDAO extends DBContext {
         LocalDate curDate = java.time.LocalDate.now();
         String date = curDate.toString();
         try {
-            // lay id user
-            String sql = "SELECT [UserID] FROM [dbo].[Users] WHERE UserName = ?";
-            PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(1, cus.getUserName());
-            ResultSet resultCusID = st.executeQuery();
-            int cusID = 0;
-            if(resultCusID.next()) {
-               cusID = resultCusID.getInt(1);
-           }
 
             // add vao bang Order
             String sql1 = "INSERT INTO [dbo].[Orders]\n"
                     + "           ([Date]\n"
-                    + "           ,[UserID]\n"
+                    + "           ,[UserName]\n"
                     + "           ,[TotalMoney])\n"
                     + "     VALUES (?,?,?)";
             PreparedStatement st1 = connection.prepareStatement(sql1);
             st1.setString(1, date);
-            st1.setInt(2, cusID);
+            st1.setString(2, cus.getUserName());
             st1.setString(3, cart.getTotalMoney().toString());
             st1.executeUpdate();
 

@@ -104,7 +104,7 @@ function openModal(
                                         <input id="quantity" name="quantity" type="number" min="1" max="100" step="1" value="1">
                                         <input id="id" name="id" type="hidden" value="${id}">
                                         <input id="role" name="role" type="hidden" value="add">
-                                        <button onclick="loadProductCart(this)" type="button">Add to cart</button>
+                                        <button onclick="loadProductCart(this)" type="submit">Add to cart</button>
                                     </form>
                                 </div>
                             </div>

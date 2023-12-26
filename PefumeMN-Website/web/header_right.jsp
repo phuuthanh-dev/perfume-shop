@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.text.DecimalFormat" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -93,8 +94,6 @@
                             </c:if>
                         </a>
                         <div class="mini_cart mini_cart2">
-                            <c:set var="subTotal" value="0"/>
-                            <c:set var="subPrice" value="0"/>
                             <div class="cart_gallery" style="max-height: 250px; overflow-y: auto;">
                                 <div >
                                     <c:if test="${sessionScope.cart != null && sessionScope.cartSize != 0}">
@@ -117,8 +116,6 @@
                                                 </div>
 
                                             </div>
-                                            <c:set var="subTotal" value="${subTotal + (p.product.price*p.quantity)}"/>
-                                            <c:set var="subPrice" value="${subPrice + (p.price * p.quantity)}"/>
                                         </c:forEach>
                                     </c:if>
 
@@ -133,12 +130,12 @@
                                 <div class="cart_table_border">
                                     <div class="cart_total">
                                         <span>Sub Total :</span>
-                                        <span class="price" style="color:grey">Rs. ${subTotal}</span>
+                                        <span class="price" style="color:grey">Rs.${sessionScope.cart.getTotalPriceWithOutDiscount()}</span>
                                     </div>
 
                                     <div class="cart_total mt-10">
                                         <span>Total :</span>
-                                        <span class="price">Rs. ${subPrice}</span>
+                                        <span class="price">Rs. ${sessionScope.cart.getTotalMoney()}</span>
                                     </div>
 
                                 </div>

@@ -17,6 +17,7 @@ import java.util.List;
 import model.Cart;
 import model.Item;
 import model.User;
+import model.Wallet;
 
 /**
  *
@@ -104,28 +105,39 @@ public class ViewCartServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Cart cart = (Cart) session.getAttribute("cart");
         User user = (User) session.getAttribute("account");
-
+        Wallet wallet = (Wallet) session.getAttribute("wallet");
         OrderDAO od = new OrderDAO();
-
-        // So luong oders ban dau
-        int pre = od.getNumberOrders();
-
-        // add Order
-        od.addOrder(user, cart);
-
-        // So luong order tiep theo
-        int after = od.getNumberOrders();
-
-        String msg = "";
-        if (pre < after) {
-            msg = "Order Success";
-            session.removeAttribute("cart");
-
+        double amount = wallet.getBalance();
+        double totalCart = cart.getTotalMoney();
+        String msg1 = " ";
+        String msg2 = " ";
+        if (amount < totalCart) {
+            msg1 = "Order Fail";
+            msg2 = "The balance in the account is not enough to make this transaction";
+            request.setAttribute("message1", msg1);
+            request.setAttribute("message2", msg2);
+            request.getRequestDispatcher("viewcart.jsp").forward(request, response);
         } else {
-            msg = "Order Fail";
+            // So luong oders ban dau
+            int pre = od.getNumberOrders();
+
+            // add Order
+            od.addOrder(user, cart);
+
+            // So luong order tiep theo
+            int after = od.getNumberOrders();
+
+            if (pre < after) {
+                msg1 = "Order Success";
+                session.removeAttribute("cart");
+            } else {
+                msg1 = "Order Fail";
+                msg2 = "Check your network status again";
+            }
+            request.setAttribute("message1", msg1);
+            request.setAttribute("message2", msg2);
+            request.getRequestDispatcher("viewcart.jsp").forward(request, response);
         }
-        request.setAttribute("message", msg);
-        request.getRequestDispatcher("viewcart.jsp").forward(request, response);
 
     }
 
