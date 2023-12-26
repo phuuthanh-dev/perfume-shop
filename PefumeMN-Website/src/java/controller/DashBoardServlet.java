@@ -6,6 +6,7 @@
 package controller;
 
 import dal.ProductDAO;
+import dal.OrderDAO;
 import dal.UserDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -47,10 +48,13 @@ public class DashBoardServlet extends HttpServlet {
             throws ServletException, IOException {        
         ProductDAO dao = new ProductDAO();
         UserDAO udao = new UserDAO();
+        OrderDAO odao = new OrderDAO();
         int count = dao.countAllProduct();
         int countu = udao.countAllUser();
+        double totalmoneyAll = odao.sumAllMoneyOrder();
         request.setAttribute("countProduct", count);
         request.setAttribute("countUser", countu);
+        request.setAttribute("totalmoneyAll", totalmoneyAll);
         request.getRequestDispatcher("dashboard/dashboard.jsp").forward(request, response);
     }
 
