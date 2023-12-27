@@ -183,10 +183,10 @@
                                     <li class="option_avt"><a href="#">Checkout</a>
                                     <li class="option_avt"><a href="${sessionScope.account.roleID==1?"admin":"profile"}">My Account</a></li>
                                     <li class="option_avt">
-<!--                                        <a id="logout" href="#" onclick="checkLogout()">${sessionScope.account==null ? "": "Logout"}</a>-->
-                                        <button class="btn btn-secondary" data-toggle="modal" data-target="#modal_box" onclick="modalLogout('modalLogout')">
+                                        <a id="logout" data-toggle="modal" data-target="#modal_box" href="#" onclick="confirmLogout('modal_box')">
                                             <i class="fa-solid fa-right-from-bracket"></i>
-                                        </button>
+                                            ${sessionScope.account==null ? "": "Logout"}
+                                        </a>
                                     </li>
                                 </ul>
 
