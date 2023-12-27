@@ -161,6 +161,7 @@ function modalOpen2(modalID, name, avt, balance) {
     return result;
 }
 
+
 function confirmLogout(modalID) {
     let modalElement = document.getElementById(modalID);
     let modal = `
@@ -174,6 +175,7 @@ function confirmLogout(modalID) {
         </div>
     </div>
 </div>`;
+
     let result = modalElement.innerHTML = modal;
     return result;
 }
