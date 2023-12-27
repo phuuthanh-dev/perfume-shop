@@ -5,30 +5,32 @@ CREATE TABLE [dbo].[Orders](
  	[Date] [date] NOT NULL, 
  	[UserName] [nvarchar](50) NOT NULL, 
  	[TotalMoney] [money] NULL, 
+	[status] bit not null,
  CONSTRAINT [PK_Order] PRIMARY KEY ([OrderID]),
  CONSTRAINT [FK_Order_User] FOREIGN KEY ([UserName])
  REFERENCES [dbo].[Users] ([UserName])
 )
 
-INSERT INTO [dbo].[Orders] ([Date], [UserName], [TotalMoney]) VALUES 
-    ('2023-11-25', 'user1', 155.93),
-    ('2023-05-24', 'user3', 195.96),
-    ('2023-12-15', 'user2', 92.95),
-    ('2022-02-05', 'user3', 519.88),
-    ('2021-07-12', 'user6', 196.93),
-	('2023-07-03', 'user5', 176.2),
-    ('2023-10-18', 'user1', 131.93),
-	('2023-08-21', 'user5', 196),
-	('2023-07-26', 'user6', 196.65),
-	('2023-06-22', 'user4', 129.13),
-    ('2023-12-21', 'user2', 92.95),
-    ('2023-02-28', 'user4', 119.88),
-    ('2023-07-22', 'user2', 96.93),
-	('2022-07-21', 'user2', 56.93),
-    ('2023-11-26', 'user2', 13.5),
-	('2023-03-15', 'user1', 26.13),
-	('2023-02-12', 'user2', 16.93),
-	('2023-01-15', 'user2', 216.93);
+INSERT INTO [dbo].[Orders] ([Date], [UserName], [TotalMoney], [status]) VALUES 
+    ('2023-11-25', 'user1', 155.93, 1),
+    ('2023-05-24', 'user3', 195.96, 1),
+    ('2023-12-15', 'user2', 92.95, 1),
+    ('2022-02-05', 'user3', 519.88, 1),
+    ('2021-07-12', 'user6', 196.93, 1),
+	('2023-07-03', 'user5', 176.2, 1),
+    ('2023-10-18', 'user1', 131.93, 1),
+	('2023-08-21', 'user5', 196, 1),
+	('2023-07-26', 'user6', 196.65, 1),
+	('2023-06-22', 'user4', 129.13, 1),
+    ('2023-12-21', 'user2', 92.95, 1),
+    ('2023-02-28', 'user4', 119.88, 1),
+    ('2023-07-22', 'user2', 96.93, 1),
+	('2022-07-21', 'user2', 56.93, 1),
+    ('2023-11-26', 'user2', 13.5, 1),
+	('2023-03-15', 'user1', 26.13, 1),
+	('2023-02-12', 'user2', 16.93, 1),
+	('2023-02-12', 'user2', 19.93, 0),
+	('2023-01-15', 'user2', 216.93, 1);
 
  -- Tạo bảng OrderDetails
  CREATE TABLE [dbo].[OrderDetails]( 
@@ -38,8 +40,10 @@ INSERT INTO [dbo].[Orders] ([Date], [UserName], [TotalMoney]) VALUES
  	[UnitPrice] [money] NULL,
 	[Discount] [float] NULL,
 	CONSTRAINT [PK_OrderDetail] PRIMARY KEY ([OrderID], [ProductID] ),
-	CONSTRAINT [FK_OrderDetail] FOREIGN KEY ([ProductID])
-	REFERENCES [dbo].[Products]([ProductID]) ON DELETE CASCADE
+	CONSTRAINT [FK_ProductDetail] FOREIGN KEY ([ProductID])
+	REFERENCES [dbo].[Products]([ProductID]) ON DELETE CASCADE,
+	CONSTRAINT [FK_OrderDetail] FOREIGN KEY ([OrderID])
+	REFERENCES [dbo].[Orders]([OrderID]) ON DELETE CASCADE
 )
 
 INSERT INTO [dbo].[OrderDetails] ([OrderID], [ProductID], [Quantity], [UnitPrice], [Discount]) VALUES 

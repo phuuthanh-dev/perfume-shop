@@ -8,16 +8,26 @@ public class Order {
     private int orderId;
     private double total;
     Date date;
+    private boolean status;
 
-    public Order(int orderId, Date date, String userName,  double total) {
+    public Order(int orderId, Date date, String userName, double total, boolean status) {
         this.userName = userName;
         this.orderId = orderId;
         this.total = total;
         this.date = date;
+        this.status = status;
     }
 
     public Order() {
 
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public String getUserName() {
@@ -57,5 +67,4 @@ public class Order {
         return "Order{" + "userName=" + userName + ", orderId=" + orderId + ", total=" + total + ", date=" + date + '}';
     }
 
-    
 }

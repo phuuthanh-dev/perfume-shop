@@ -45,12 +45,14 @@ public class OrderDAO extends DBContext {
             String sql1 = "INSERT INTO [dbo].[Orders]\n"
                     + "           ([Date]\n"
                     + "           ,[UserName]\n"
-                    + "           ,[TotalMoney])\n"
-                    + "     VALUES (?,?,?)";
+                    + "           ,[TotalMoney]\n"
+                    + "           ,[status])\n"
+                    + "     VALUES (?,?,?,?)";
             PreparedStatement st1 = connection.prepareStatement(sql1);
             st1.setString(1, date);
             st1.setString(2, cus.getUserName());
             st1.setString(3, cart.getTotalMoney().toString());
+            st1.setInt(4, 0);
             st1.executeUpdate();
 
             // Lay ra orderID cua Order vua tao
@@ -136,7 +138,7 @@ public class OrderDAO extends DBContext {
 
     public List<Order> getAll() {
         List<Order> list = new ArrayList<>();
-        String sql = "select * from Orders";
+        String sql = "select * from Orders order by status asc";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
@@ -144,7 +146,8 @@ public class OrderDAO extends DBContext {
                 list.add(new Order(rs.getInt(1),
                         rs.getDate(2),
                         rs.getString(3),
-                        rs.getDouble(4)
+                        rs.getDouble(4),
+                        rs.getBoolean(5)
                 ));
             }
         } catch (Exception e) {

@@ -311,30 +311,30 @@
                                             <fieldset class="responsiveFacets_sectionContent " aria-hidden="false">
                                                 <div>
                                                     <label class="responsiveFacets_sectionItemLabel">
-                                                        <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Abercrombie+%26+Fitch" aria-label="Abercrombie &amp; Fitch (6 available products)" tabindex="0">
+                                                        <input ${discount==0.25?"checked":""} name="discountSearch" value="0.25" onclick="setCheck(this)" type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Abercrombie+%26+Fitch" aria-label="Abercrombie &amp; Fitch (6 available products)" tabindex="0">
                                                         <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Abercrombie+%26+Fitch">
                                                             <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                                Up to 25% ()
+                                                                Up to 25% (${dis25})
                                                             </span>
                                                         </span>
                                                     </label>
                                                 </div>
                                                 <div>
                                                     <label class="responsiveFacets_sectionItemLabel">
-                                                        <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
+                                                        <input ${discount==0.5?"checked":""} name="discountSearch" value="0.5" onclick="setCheck(this)" type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
                                                         <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
                                                             <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                                Up to 50% ()
+                                                                Up to 50% (${dis50})
                                                             </span>
                                                         </span>
                                                     </label> 
                                                 </div>
                                                 <div>
                                                     <label class="responsiveFacets_sectionItemLabel">
-                                                        <input type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
+                                                        <input ${discount==0.75?"checked":""} name="discountSearch" value="0.75" onclick="setCheck(this)" type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
                                                         <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
                                                             <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
-                                                                Up to 75% ()
+                                                                Up to 75% (${dis75})
                                                             </span>
                                                         </span>
                                                     </label>
@@ -451,7 +451,7 @@
                                     </c:if>
                                     <c:if test="${requestScope.cid_refinee != null}">
                                         <c:forEach begin="${1}" end="${requestScope.numberpage}" var="i"> 
-                                            <a href="refine?${stringForLink}&numberStar=${numberStar}&pricefrom=${price1}&priceto=${price2}&page=${i}">${i}</a>
+                                            <a href="refine?${stringForLink}&numberStar=${numberStar}&pricefrom=${price1}&priceto=${price2}&discountSearch=${discount}&page=${i}">${i}</a>
                                         </c:forEach>
                                     </c:if>
                                 </div>
@@ -476,6 +476,10 @@
         <!--<script src="js/main.js"></script>-->
         <script type="text/javascript">
                                                                         function setCheck(obj) {
+                                                                            document.getElementById('f1').submit();
+                                                                        }
+                                                                        
+                                                                        function setCheckStar(obj) {
                                                                             var fries = document.getElementsByName('cid_refinee');
                                                                             if ((obj.id == 'c0') && (fries[0].checked) == true) {
                                                                                 for (var i = 1; i < fries.length; i++) {

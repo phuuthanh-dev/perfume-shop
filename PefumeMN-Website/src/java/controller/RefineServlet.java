@@ -74,6 +74,7 @@ public class RefineServlet extends HttpServlet {
         String priceTo_raw = request.getParameter("priceto");
         String numberStar_raw = request.getParameter("numberStar");
         String nameSearch = request.getParameter("nameSearch");
+        String discountSearch = request.getParameter("discountSearch");
         String stringForLink = "";
         int cid_refine = 0;
 
@@ -97,6 +98,9 @@ public class RefineServlet extends HttpServlet {
         //RefinePrice
         int numberStar = ((numberStar_raw == null || "".equals(numberStar_raw)) ? 0 : Integer.parseInt(numberStar_raw));
 
+        //RefineDiscount
+        double discount = ((discountSearch == null || "".equals(discountSearch)) ? 0 : Double.parseDouble(discountSearch));
+        
         //RefineHeaderBrand
         if (cid_refine_raw == null) {
             chid[0] = true;
@@ -118,7 +122,11 @@ public class RefineServlet extends HttpServlet {
         }
 
         if (numberStar != 0) {
-            productsCid = searchByPrice(productsCid, numberStar);
+            productsCid = searchByStar(productsCid, numberStar);
+        }
+        
+        if (discount != 0) {
+            productsCid = searchByDiscount(productsCid, discount);
         }
 
         //Paging
@@ -156,6 +164,7 @@ public class RefineServlet extends HttpServlet {
         }
 
         request.setAttribute("numberStar", numberStar);
+        request.setAttribute("discount", discount);
         request.setAttribute("stringForLink", stringForLink);
         
         if (price1 != 0 || price2 != 0) {
@@ -169,6 +178,9 @@ public class RefineServlet extends HttpServlet {
         
         Category ca = d.getCategoryById(cid_refine);
         
+        request.setAttribute("dis25", p.getNumberProductsByDiscount(0.25));
+        request.setAttribute("dis50", p.getNumberProductsByDiscount(0.5));
+        request.setAttribute("dis75", p.getNumberProductsByDiscount(0.75));
         request.setAttribute("searchAtHome", nameSearch);
         request.setAttribute("cat", ca);
         request.setAttribute("category", categories);
@@ -182,10 +194,20 @@ public class RefineServlet extends HttpServlet {
         request.getRequestDispatcher("refine.jsp").forward(request, response);
     }
 
-    public List<Product> searchByPrice(List<Product> list, int star) {
+    public List<Product> searchByStar(List<Product> list, int star) {
         List<Product> rs = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getStarRating() >= star) {
+                rs.add(list.get(i));
+            }
+        }
+        return rs;
+    }
+    
+    public List<Product> searchByDiscount(List<Product> list, double discount) {
+        List<Product> rs = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getDiscount() >= discount) {
                 rs.add(list.get(i));
             }
         }

@@ -484,7 +484,7 @@ public class ProductDAO extends DBContext {
 
     //
     public void updateValueProduct(Product product, int value) {
-         try {
+        try {
             String sql = "UPDATE [dbo].[Products] SET [UnitsInStock] = (UnitsInStock - ?) AND [QuantitySold] = (QuantitySold + ?) WHERE [ProductName] = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, value);
@@ -494,7 +494,7 @@ public class ProductDAO extends DBContext {
         } catch (Exception e) {
         }
     }
-    
+
     //
     public List<Product> getNext6Product(int amount) {
         List<Product> list = new ArrayList<>();
@@ -620,22 +620,21 @@ public class ProductDAO extends DBContext {
         }
         return null;
     }
-    
+
     public int getSumQuantitySold() {
         String sql = "select SUM([QuantitySold]) from Products";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-               return rs.getInt(1);
+                return rs.getInt(1);
             }
         } catch (Exception e) {
         }
         return 0;
     }
-    
 
-     public void deleteProduct(int pid) {
+    public void deleteProduct(int pid) {
         String sql = "delete from Products where ProductID= ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -643,5 +642,19 @@ public class ProductDAO extends DBContext {
             st.executeUpdate();
         } catch (Exception e) {
         }
+    }
+
+    public int getNumberProductsByDiscount(double discount) {
+        String sql = "select count(*) from products where discount >= ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setDouble(1, discount);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
     }
 }

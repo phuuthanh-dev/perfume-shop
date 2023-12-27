@@ -13,7 +13,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-
 @WebServlet(name = "DeleteProductControl", urlPatterns = {"/deleteproduct"})
 public class DeleteProductControl extends HttpServlet {
 
@@ -32,9 +31,11 @@ public class DeleteProductControl extends HttpServlet {
         String pid = request.getParameter("pid");
         ProductDAO dao = new ProductDAO();
         int id = Integer.parseInt(pid);
+        String msg = "";
 //        dao.deleteCartByProductID(pid);
         dao.deleteProduct(id);
-        request.setAttribute("mess", "Deleted!");
+        msg = "Product " + pid + " deleted successfully";
+        request.setAttribute("mess", msg);
         request.getRequestDispatcher("manager").forward(request, response);
     }
 

@@ -128,6 +128,7 @@
                                             <th class="text_page_head" scope="col">Username</th>
                                             <th class="text_page_head" scope="col">Total money($)</th>
                                             <th class="text_page_head" scope="col">Order date</th>
+                                            <th class="text_page_head" scope="col">Status</th>
                                         </tr>
                                     </thead>
                                     <tbody id="content">
@@ -142,6 +143,14 @@
                                                 </c:forEach>
                                                 <td class="text_page">${String.format("%.02f",i.total)}</td>
                                                 <td class="text_page">${i.date}</td> 
+                                                <td class="text_page">
+                                                    ${i.status?"Delivered":"Not delivery"}
+                                                    <c:if test="${!i.status}">
+                                                        <button style="margin-left: 20px" onclick="changeStatus(i.orderId)">
+                                                            <i style="color: green" class="fa-solid fa-check"></i>
+                                                        </button>
+                                                    </c:if>
+                                                </td> 
                                             </tr>
                                         </c:forEach>
                                     </tbody>

@@ -22,7 +22,7 @@ import model.Supplier;
  * @author Admin
  */
 @WebServlet(name = "DeleteSupplier", urlPatterns = {"/deletesupplier"})
-public class DeleteSupplier extends HttpServlet {
+public class DeleteSupplierControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,11 +38,13 @@ public class DeleteSupplier extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String idSupplier_raw = request.getParameter("sid");
         SupplierDAO dao = new SupplierDAO();
+        String msg = "";
         int idSup;
         try {
             idSup = Integer.parseInt(idSupplier_raw);
             dao.deleteSupplier(idSup);
-            request.setAttribute("mess", "Supplier Deleted!");
+            msg = "Supplier " + idSup + "deleted successfully";
+            request.setAttribute("mess", msg);
             request.getRequestDispatcher("managersupplier").forward(request, response);
         } catch (NumberFormatException e) {
             System.out.println(e);
@@ -75,7 +77,7 @@ public class DeleteSupplier extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         processRequest(request, response);
     }
 
