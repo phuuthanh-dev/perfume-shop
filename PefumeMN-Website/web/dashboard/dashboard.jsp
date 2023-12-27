@@ -119,7 +119,7 @@
                                         <div style="text-align: end"> 
                                             <h4 style="color: #06439F;">Number of products sold</h4>
                                             <p class="mb-0"></p>
-                                            <h2 class="h1 mb-0">19</h2> 
+                                            <h2 class="h1 mb-0">${requestScope.sumquantitySold}</h2> 
                                         </div>
                                     </div>
                                 </div>

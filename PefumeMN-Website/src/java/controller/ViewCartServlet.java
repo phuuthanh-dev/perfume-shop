@@ -113,8 +113,8 @@ public class ViewCartServlet extends HttpServlet {
         WalletDAO wd = new WalletDAO();
         double amount = wallet.getBalance();
         double totalCart = cart.getTotalMoney();
-        String msg1 = " ";
-        String msg2 = " ";
+        String msg1 = "";
+        String msg2 = "";
         if (amount < totalCart) {
             msg1 = "Order Fail";
             msg2 = "The balance in the account is not enough to make this transaction";

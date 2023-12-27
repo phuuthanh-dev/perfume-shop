@@ -620,4 +620,28 @@ public class ProductDAO extends DBContext {
         }
         return null;
     }
+    
+    public int getSumQuantitySold() {
+        String sql = "select SUM([QuantitySold]) from Products";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+               return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+    
+
+     public void deleteProduct(int pid) {
+        String sql = "delete from Products where ProductID= ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, pid);
+            st.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
 }

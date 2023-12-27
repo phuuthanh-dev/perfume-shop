@@ -19,7 +19,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-
 @WebServlet(name = "ManagerSupplierControl", urlPatterns = {"/managersupplier"})
 public class ManagerSupplierServlet extends HttpServlet {
 
@@ -35,13 +34,12 @@ public class ManagerSupplierServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       
+
         SupplierDAO daoS = new SupplierDAO();
         CategoryDAO daoC = new CategoryDAO();
 
         List<Supplier> listAllSupplier = daoS.getAll();
         List<Category> listAllCategory = daoC.getAll();
-
 
         request.setAttribute("listAllSupplier", listAllSupplier);
         request.setAttribute("listAllCategory", listAllCategory);

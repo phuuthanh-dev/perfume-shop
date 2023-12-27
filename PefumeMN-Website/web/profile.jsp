@@ -293,11 +293,10 @@
                     <div class="card mb-4 mb-xl-0">
                         <div class="container d-flex justify-content-center">
                             <div class="card p-3" style="margin: 10px 0">
-                                <div class="d-flex flex-row justify-content-between text-align-center">
-                                    <img src="https://imgur.com/vvK2ARv.png">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </div>
+                                <div class="d-flex flex-row justify-content-center text-align-center">
+                                    <img src="images/logo.png">
                                 <p class="text-dark">Shopping wallet</p>
+                                </div>
                                 <div class="card-bottom pt-3 px-3 mb-2" style="padding: 10px">
                                     <div class="d-flex flex-row justify-content-between text-align-center">
                                         <div class="d-flex flex-column"><span>Balance amount</span><p>&euro; <span class="text-white">${sessionScope.wallet.balance}</span></p></div>

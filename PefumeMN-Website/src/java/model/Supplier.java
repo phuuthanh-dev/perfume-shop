@@ -10,18 +10,17 @@ package model;
  */
 public class Supplier {
     private int id;
-    private String companyName, contactName, country, phone, fax, homepage;
+    private String companyName, contactName, country, phone, homepage;
 
     public Supplier() {
     }
 
-    public Supplier(int id, String companyName, String contactName, String country, String phone, String fax, String homepage) {
+    public Supplier(int id, String companyName, String contactName, String country, String phone, String homepage) {
         this.id = id;
         this.companyName = companyName;
         this.contactName = contactName;
         this.country = country;
         this.phone = phone;
-        this.fax = fax;
         this.homepage = homepage;
     }
 
@@ -65,13 +64,6 @@ public class Supplier {
         this.phone = phone;
     }
 
-    public String getFax() {
-        return fax;
-    }
-
-    public void setFax(String fax) {
-        this.fax = fax;
-    }
 
     public String getHomepage() {
         return homepage;
@@ -83,7 +75,7 @@ public class Supplier {
 
     @Override
     public String toString() {
-        return "Supplier{" + "id=" + id + ", companyName=" + companyName + ", conTactName=" + contactName + ", country=" + country + ", phone=" + phone + ", fax=" + fax + ", homepage=" + homepage + '}';
+        return "Supplier{" + "id=" + id + ", companyName=" + companyName + ", conTactName=" + contactName + ", country=" + country + ", phone=" + phone + ", homepage=" + homepage + '}';
     }
     
     
