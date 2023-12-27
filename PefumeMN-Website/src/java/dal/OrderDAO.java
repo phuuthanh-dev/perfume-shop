@@ -23,18 +23,20 @@ public class OrderDAO extends DBContext {
     //
     public int getNumberOrders() {
         try {
-           String sql = "SELECT COUNT(*) FROM Orders"; 
-           PreparedStatement st = connection.prepareStatement(sql);
-           ResultSet rs = st.executeQuery();
-           if(rs.next()) {
-               int number = rs.getInt(1);
-               return number;
-           }
+            String sql = "SELECT COUNT(*) FROM Orders";
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                int number = rs.getInt(1);
+                return number;
+            }
         } catch (Exception e) {
         }
         return 1;
     }
+
     public void addOrder(User cus, Cart cart) {
+        ProductDAO pd = new ProductDAO();
         LocalDate curDate = java.time.LocalDate.now();
         String date = curDate.toString();
         try {
@@ -74,6 +76,8 @@ public class OrderDAO extends DBContext {
                     st3.setDouble(4, item.getProduct().getPrice());
                     st3.setDouble(5, item.getProduct().getDiscount());
                     st3.executeUpdate();
+                    // update quantiy sp
+                    pd.updateValueProduct(item.getProduct(), item.getProduct().getId());
                 }
             }
 
@@ -81,55 +85,55 @@ public class OrderDAO extends DBContext {
         } catch (Exception e) {
         }
     }
-    
+
     public double totalMoneyMonth(int month, int year) {
         String sql = "select SUM([TotalMoney]) from [Orders]\r\n"
-        		+ "where MONTH([Date])=? and year([Date])=?";
+                + "where MONTH([Date])=? and year([Date])=?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, month);
             st.setInt(2, year);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-               return rs.getDouble(1);
+                return rs.getDouble(1);
             }
         } catch (Exception e) {
         }
         return 0;
     }
-    
+
     public double totalMoneyDay(int day, int year) {
         String sql = "select \n"
-        		+ "	SUM(TotalMoney) \n"
-        		+ "     from Orders\n"
-        		+ "     where DATEPART(dw,[Date])\n"
-                        + "     = ? and year([Date])=?";
+                + "	SUM(TotalMoney) \n"
+                + "     from Orders\n"
+                + "     where DATEPART(dw,[Date])\n"
+                + "     = ? and year([Date])=?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, day);
             st.setInt(2, year);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-               return rs.getDouble(1);
+                return rs.getDouble(1);
             }
         } catch (Exception e) {
         }
         return 0;
     }
-    
+
     public double sumAllMoneyOrder() {
         String sql = "select SUM([TotalMoney]) from Orders";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-               return rs.getDouble(1);
+                return rs.getDouble(1);
             }
         } catch (Exception e) {
         }
         return 0;
     }
-    
+
     public List<Order> getAll() {
         List<Order> list = new ArrayList<>();
         String sql = "select * from Orders";
@@ -141,13 +145,13 @@ public class OrderDAO extends DBContext {
                         rs.getDate(2),
                         rs.getString(3),
                         rs.getDouble(4)
-                       ));
+                ));
             }
         } catch (Exception e) {
         }
         return list;
     }
-    
+
     public static void main(String[] args) {
         OrderDAO dao = new OrderDAO();
         List<Order> list = dao.getAll();

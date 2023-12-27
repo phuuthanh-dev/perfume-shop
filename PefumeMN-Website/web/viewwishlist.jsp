@@ -193,9 +193,6 @@
             <jsp:include page="header_right.jsp"></jsp:include>
             </header>
             <div class="container px-4 py-5 mx-auto text-center">
-            <c:if test="${requestScope.message != ' ' }">
-                <h2 style="color: green; text-align: center">${requestScope.message}</h2>
-            </c:if>
             <c:if test="${sessionScope.listItemsInWishList == null || sessionScope.wishListSize == 0}">
                 <<img src="images/emptycart2.png" width="600px"  alt="Emptycart" />
             </c:if>
@@ -223,10 +220,10 @@
                     <div class="row d-flex justify-content-center border-top">
                         <div class="col-4">
                             <div class="row d-flex">
-                                <div class="book" style="margin-right: 30px; flex: 1">
+                                <div class="book col-7" style="margin-right: 30px; flex: 1">
                                     <img src="${item.product.image1}" style="width: 170px; height: 150px" class="book-img">
                                 </div>
-                                <div class="my-auto flex-column d-flex pad-left">
+                                <div class="my-auto flex-column d-flex pad-left col-5">
                                     <h6 class="mob-text">${item.product.name}</h6>
                                 </div>
                             </div>
@@ -239,19 +236,23 @@
                                 <div class="col-2">
                                     <h6 class="mob-text">${item.price}</h6>
                                 </div>
-                                <div class="col-6" style="margin-top: -15px" >
-                                    <form action="viewwishlist" method="post" style="display:flex">
-                                        <input name="quantity" type="number" min="1" max="100" step="1" value="1" style="width:100px">
-                                        <input name="id" type="hidden" value="${p.id}">
-                                        <input name="role" type="hidden" value="add">
-                                        <button type="submit"  style="padding: 7px 15px; border: none; border-radius: 5px; background-color: orangered; color: white"F >
-                                            Add
-                                        </button>
-                                    </form>
-                                    <a  href="viewwishlist?rid=${item.product.id}"
-                                        style="padding: 7px 15px; border: none; border-radius: 5px; background-color: #1763c7; color: white">
-                                        Delete
-                                    </a>
+                                <div class="col-6" style="margin-top: -15px;display: flex; justify-content: space-between; align-items: center;" >
+                                    <div>
+                                        <form action="viewwishlist" method="post" style="display:flex">
+                                            <input name="quantity" type="number" min="1" max="100" step="1" value="1" style="width:100px">
+                                            <input name="id" type="hidden" value="${p.id}">
+                                            <input name="role" type="hidden" value="add">
+                                            <button type="submit"  style="padding: 7px 15px; border: none; border-radius: 5px; background-color: orangered; color: white"F >
+                                                Add
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div>
+                                        <a  href="viewwishlist?rid=${item.product.id}"
+                                            style="padding: 7px 15px; border: none; border-radius: 5px; background-color: #1763c7; color: white">
+                                            Delete
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -482,6 +482,20 @@ public class ProductDAO extends DBContext {
         return null;
     }
 
+    //
+    public void updateValueProduct(Product product, int value) {
+         try {
+            String sql = "UPDATE [dbo].[Products] SET [UnitsInStock] = (UnitsInStock - ?) AND [QuantitySold] = (QuantitySold + ?) WHERE [ProductName] = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, value);
+            st.setInt(2, value);
+            st.setString(2, product.getName());
+            st.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    
+    //
     public List<Product> getNext6Product(int amount) {
         List<Product> list = new ArrayList<>();
         String sql = "SELECT *\n"

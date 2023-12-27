@@ -1099,29 +1099,6 @@
         <script src="js/clickevents.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
         <script src="js/main.js"></script>
-        <script type="text/javascript">
-                                                                        function loadMore(obj) {
-                                                                            var amount = document.getElementsByClassName("product_items").length;
-                                                                            var numPage = ((parseInt(obj.textContent) - 1) * 9);
-                                                                            $(".linkLoad").removeClass("active");
-                                                                            $(obj).addClass("active");
-
-                                                                            $.ajax({
-                                                                                url: "/PefumeMN-Website/load",
-                                                                                type: "get",
-                                                                                data: {
-                                                                                    exits: numPage
-                                                                                },
-                                                                                success: function (data) {
-                                                                                    var row = document.getElementById("contentt");
-                                                                                    row.innerHTML = data;
-                                                                                },
-                                                                                error: function (xhr) {
-                                                                                }
-                                                                            });
-                                                                        }
-
-        </script>
     </body>
 
 </html>

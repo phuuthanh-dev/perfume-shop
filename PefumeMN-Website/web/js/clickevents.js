@@ -237,6 +237,24 @@ function removeProductCart(obj) {
     });
 }
 
+
+function reloadPriceViewCart(id) {
+    event.preventDefault();
+    $.ajax({
+        url: "/PefumeMN-Website/priceviewcart",
+        type: "get",
+        data: {
+            rid: id
+        },
+        success: function (data) {
+            var row = document.getElementById("viewcart_content");
+            row.innerHTML = data;
+        },
+        error: function (xhr) {
+        }
+    });
+}
+
 function toggleWishlist(id) {
     event.preventDefault();
     $.ajax({
@@ -247,6 +265,26 @@ function toggleWishlist(id) {
         },
         success: function (data) {
             var row = document.getElementById("header_right");
+            row.innerHTML = data;
+        },
+        error: function (xhr) {
+        }
+    });
+}
+function loadMore(obj) {
+    var amount = document.getElementsByClassName("product_items").length;
+    var numPage = ((parseInt(obj.textContent) - 1) * 9);
+    $(".linkLoad").removeClass("active");
+    $(obj).addClass("active");
+
+    $.ajax({
+        url: "/PefumeMN-Website/load",
+        type: "get",
+        data: {
+            exits: numPage
+        },
+        success: function (data) {
+            var row = document.getElementById("contentt");
             row.innerHTML = data;
         },
         error: function (xhr) {

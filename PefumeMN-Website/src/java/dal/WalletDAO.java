@@ -59,4 +59,16 @@ public class WalletDAO extends DBContext {
         } catch (Exception e) {
         }
     }
+    
+    // 
+    public void decuctionMoney(String userName, double value ){
+        try {
+            String sql = "UPDATE [dbo].[Wallets] SET [Balance] = (Balance - ?) WHERE UserName = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setDouble(1, value);
+            st.setString(2, userName);
+            st.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
 }
