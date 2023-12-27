@@ -2,6 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/dal/WalletDAO.java</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/web/js/clickevents.js</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/dal/OrderDAO.java</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/dal/ProductDAO.java</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/web/viewcart_ajax.jsp</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/PriceViewCartServlet.java</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/model/Product.java</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/ViewCartServlet.java</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/web/header_right.jsp</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/WalletServlet.java</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/web/home.jsp</file>
+        </group>
     </open-files>
 </project-private>
