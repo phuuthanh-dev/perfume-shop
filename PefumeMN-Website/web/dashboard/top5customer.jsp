@@ -119,7 +119,7 @@
                                             <th class="text_page_head" scope="col">Full Name</th>
                                             <th class="text_page_head" scope="col">Username</th> 
                                             <th class="text_page_head" scope="col">Phone</th>
-                                            <th class="text_page_head" scope="col">Tổng chi tiêu</th>
+                                            <th class="text_page_head" scope="col">Total Spending</th>
                                         </tr>
                                     </thead>
                                     <tbody>

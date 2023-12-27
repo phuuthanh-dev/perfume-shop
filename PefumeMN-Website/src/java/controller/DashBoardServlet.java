@@ -51,8 +51,10 @@ public class DashBoardServlet extends HttpServlet {
         OrderDAO odao = new OrderDAO();
         int count = dao.countAllProduct();
         int countu = udao.countAllUser();
+        int sumquantitySold = dao.getSumQuantitySold();
         double totalmoneyAll = odao.sumAllMoneyOrder();
         request.setAttribute("countProduct", count);
+        request.setAttribute("sumquantitySold", sumquantitySold);
         request.setAttribute("countUser", countu);
         request.setAttribute("totalmoneyAll", totalmoneyAll);
         request.getRequestDispatcher("dashboard/dashboard.jsp").forward(request, response);

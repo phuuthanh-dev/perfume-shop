@@ -30,7 +30,6 @@ public class SupplierDAO extends DBContext {
                 s.setConTactName(rs.getString("ContactName"));
                 s.setCountry(rs.getString("Country"));
                 s.setPhone(rs.getString("Phone"));
-                s.setFax(rs.getString("Fax"));
                 s.setHomepage(rs.getString("HomePage"));
                 list.add(s);
             }
@@ -56,7 +55,6 @@ public class SupplierDAO extends DBContext {
                 s.setConTactName(rs.getString("ContactName"));
                 s.setCountry(rs.getString("Country"));
                 s.setPhone(rs.getString("Phone"));
-                s.setFax(rs.getString("Fax"));
                 s.setHomepage(rs.getString("HomePage"));
                 return s;
             }
@@ -64,6 +62,39 @@ public class SupplierDAO extends DBContext {
             System.out.println(e);
         }
         return null;
+    }
+
+    public void insert(Supplier c) {
+        String sql = "INSERT INTO [dbo].[Suppliers]\n"
+                + "           ([CompanyName]\n"
+                + "           ,[ContactName]\n"
+                + "           ,[Country]\n"
+                + "           ,[Phone]\n"
+                + "           ,[HomePage])\n"
+                + "     VALUES\n"
+                + "           (?,?,?,?,?)";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+
+            st.setString(1, c.getCompanyName());
+            st.setString(2, c.getContactName());
+            st.setString(3, c.getCountry());
+            st.setString(4, c.getPhone());
+            st.setString(5, c.getHomepage());
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public void deleteSupplier(int sid) {
+        String sql = "delete from Suppliers where SupplierID= ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, sid);
+            st.executeUpdate();
+        } catch (Exception e) {
+        }
     }
 
     public static void main(String[] args) {

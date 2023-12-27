@@ -39,7 +39,7 @@ INSERT INTO [dbo].[Orders] ([Date], [UserName], [TotalMoney]) VALUES
 	[Discount] [float] NULL,
 	CONSTRAINT [PK_OrderDetail] PRIMARY KEY ([OrderID], [ProductID] ),
 	CONSTRAINT [FK_OrderDetail] FOREIGN KEY ([ProductID])
-	REFERENCES [dbo].[Products]([ProductID])
+	REFERENCES [dbo].[Products]([ProductID]) ON DELETE CASCADE
 )
 
 INSERT INTO [dbo].[OrderDetails] ([OrderID], [ProductID], [Quantity], [UnitPrice], [Discount]) VALUES 

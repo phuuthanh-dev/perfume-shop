@@ -56,7 +56,7 @@
                     padding-left: 240px;
                 }
             }
-            
+
             .text_page_head{
                 font-size: 18px;
                 font-weight: 600;
@@ -155,7 +155,7 @@
                                                 <td class="text_page">${o.contactName}</td>
                                                 <td class="text_page">${o.country}</td> 
                                                 <td class="text_page" style="padding: 0 12px 16px">
-                                                    <a href="deleteSupplier?id=${o.id}"><button type="button" class="btn btn-danger">
+                                                    <a href="deletesupplier?sid=${o.id}"><button type="button" class="btn btn-danger">
                                                             <i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i>
                                                         </button>
                                                     </a>
@@ -178,36 +178,32 @@
         <div id="addEmployeeModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="addSupplier" method="post">
+                    <form action="addsupplier" method="post">
                         <div class="modal-header">						
                             <h4 class="modal-title">Thêm nhà cung cấp</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">					
                             <div class="form-group">
-                                <label>Tên nhà cung cấp</label>
-                                <input name="nameSupplier" type="text" class="form-control" required>
+                                <label>Company Name</label>
+                                <input name="CompanyName" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Contact Name</label>
+                                <input name="ContactName" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Country</label>
+                                <input name="Country" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Phone</label>
-                                <input name="phoneSupplier" type="text" class="form-control" required>
+                                <input name="Phone" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
-                                <input name="emailSupplier" type="text" class="form-control" required>
+                                <label>Home Page</label>
+                                <input name="HomePage" type="text" class="form-control" required>
                             </div>
-                            <div class="form-group">
-                                <label>Địa chỉ</label>
-                                <input name="countrySupplier" type="text" class="form-control" required>
-                            </div>
-<!--                            <div class="form-group">
-                                <label>Cung cấp cho</label>
-                                <select name="cateID" class="form-select" aria-label="Default select example">
-                                    <c:forEach items="${requestScope.list}" var="t">
-                                        <option value="${t.id}">${t.companyName}</option>
-                                    </c:forEach>
-                                </select>
-                            </div>-->
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">

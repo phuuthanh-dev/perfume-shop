@@ -151,7 +151,7 @@
                                                 <td class="text_page">${o.price}$</td>
                                                 <td class="text_page">
                                                     <a href="loadProduct?pid=${o.id}"><button type="button" class="btn btn-warning"><i class="fa-solid fa-pen"></i></button></a>
-                                                    <a href="delete?pid=${o.id}"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button></a>
+                                                    <a href="deleteproduct?pid=${o.id}"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button></a>
                                                 </td>
                                             </tr>
                                         </c:forEach>

@@ -4,7 +4,6 @@
  */
 package controller;
 
-import dal.CategoryDAO;
 import dal.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,7 +15,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import model.Cart;
-import model.Category;
 import model.Item;
 import model.Product;
 
