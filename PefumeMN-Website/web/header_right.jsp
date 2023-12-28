@@ -186,7 +186,6 @@
 
                                         <a id="logout" data-toggle="modal" data-target="#modal_box" href="#" onclick="confirmLogout('modal_box')">
                                             <i class="fa-solid fa-right-from-bracket"></i>
-
                                             ${sessionScope.account==null ? "": "Logout"}
                                         </a>
                                     </li>

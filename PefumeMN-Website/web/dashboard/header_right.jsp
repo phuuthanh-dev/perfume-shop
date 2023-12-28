@@ -88,12 +88,18 @@
                             box-shadow: 0 1px 3.125rem 0 rgba(0, 0, 0, 0.2);">
                             <li class="option_avt"><a href="#">Checkout</a>
                             <li class="option_avt"><a href="#">My Account</a></li>
-                            <li class="option_avt"><a id="logout" href="#" onclick="checkLogout()">${sessionScope.account==null ? "": "Logout"}</a></li>
+                            <li class="option_avt">
+                                <a id="logout" data-toggle="modal" data-target="#modal_box" href="#" onclick="confirmLogout('modal_box')">
+                                    <i class="fa-solid fa-right-from-bracket"></i>
+                                    ${sessionScope.account==null ? "": "Logout"}
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
             </div>
         </div>
+        <div class="modal fade" id="modal_box" role="dialog"></div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>   
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -102,21 +108,21 @@
         <script src="js/clickevents.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
         <script type="text/javascript">
-                                function change() {
-                                    var a = document.getElementById("avt");
-                                    if (a.style.display === 'none' || a.style.display === '') {
-                                        a.style.display = 'block';
-                                    } else {
-                                        a.style.display = 'none';
+                                    function change() {
+                                        var a = document.getElementById("avt");
+                                        if (a.style.display === 'none' || a.style.display === '') {
+                                            a.style.display = 'block';
+                                        } else {
+                                            a.style.display = 'none';
+                                        }
                                     }
-                                }
-                                function checkLogout() {
-                                    let ok = confirm('Are you sure you want to logout?');
-                                    console.log(ok)
-                                    if (ok) {
-                                        document.getElementById('logout').href = 'logout';
+                                    function checkLogout() {
+                                        let ok = confirm('Are you sure you want to logout?');
+                                        console.log(ok)
+                                        if (ok) {
+                                            document.getElementById('logout').href = 'logout';
+                                        }
                                     }
-                                }
 
         </script>
     </body>

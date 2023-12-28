@@ -69,104 +69,6 @@
                             </div>
                             <div class="col-lg-3">
                                 <%@ include file="header_right.jsp" %> 
-<!--                                <div class="header_top_right">
-                                    <div class="header_right_info">
-                                        <ul>
-                                            <li class="user">
-                                                <c:if test="${sessionScope.account == null}">
-                                                    <a href="login" title="Icon User">
-                                                        <i class="fa fa-user-circle"></i>
-                                                    </a>
-                                                </c:if>
-                                                <c:if test="${sessionScope.account != null}">
-                                                    <a href="profile" title="Icon User">
-                                                        <i class="fa fa-user-circle"></i>
-                                                    </a>
-                                                </c:if>
-                                            </li>
-                                            <li class="header_wishlist">
-                                                <a href="#">
-                                                    <i style="" class="fa-regular fa-heart"></i>
-                                                    <c:if test="${sessionScope.wishList != null && sessionScope.wishListSize != 0}" >
-                                                        <span class="item_count">
-                                                            ${sessionScope.wishListSize}
-                                                        </span>
-                                                    </c:if>
-                                                </a>
-                                            </li>
-                                            <li id="productsCart" class="mini_cart_wrapper">
-                                                <a href="javascript:void(0)">
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                    <c:if test="${sessionScope.cart != null && sessionScope.cartSize != 0}" >
-                                                        <span class="item_count">
-                                                            ${sessionScope.cartSize}
-                                                        </span>
-                                                    </c:if>
-                                                </a>
-                                                <div class="mini_cart mini_cart2">
-                                                    <div class="cart_gallery" style="max-height: 250px; overflow-y: auto;">
-                                                        <div >
-                                                            <c:if test="${sessionScope.cart != null && sessionScope.cartSize != 0}">
-                                                                <c:forEach items="${sessionScope.listItemsInCart}" var="p">
-                                                                    <div class="cart_item">
-                                                                        <div class="cart_img">
-                                                                            <a href="#"><img src="${p.product.image1}"
-                                                                                             alt="Perfume"></a>
-                                                                        </div>
-                                                                        <div class="cart_info">
-                                                                            <a href="#">${p.product.name}</a>
-                                                                            <p><span>Rs.${p.price}</span> X ${p.quantity}</p>
-                                                                        </div>
-                                                                        <div class="cart_remove">
-                                                                            <a href="cart?rid=${p.product.id}"><i class="fa fa-times"></i></a>
-                                                                        </div>
-                                                                    </div>
-                                                                </c:forEach>
-                                                            </c:if>
-                                                        </div>
-                                                        <c:if test="${sessionScope.cart == null || sessionScope.cartSize == 0}">
-                                                            <span class="header__cart-list--no-cart-msg">Nothing now!</span>
-                                                            <img src="images/emptycart.png" alt="Emptycart" style=" width: 60%;">
-                                                        </c:if>
-                                                    </div>
-                                                    <div class="mini_cart_table">
-                                                        <div class="cart_table_border">
-                                                            <div class="cart_total">
-                                                                <span>Sub Total :</span>
-                                                                <span class="price" style="color:grey">Rs.${sessionScope.cart.getTotalPriceWithOutDiscount()}</span>
-                                                            </div>
-
-                                                            <div class="cart_total mt-10">
-                                                                <span>Total :</span>
-                                                                <span class="price">Rs. ${sessionScope.cart.getTotalMoney()}</span>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="mini_cart_footer">
-                                                        <div class="cart_button">
-                                                            <a href="${sessionScope.account == null ? 'login' : 'viewcart'}">View Cart</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="header_account">
-                                        <ul>
-                                            <li class="top_links">
-                                                <a href="profile">
-                                                    <img src="${sessionScope.account.image}" width="40px" style="color: white; border-radius: 50%">
-                                                </a>
-                                            </li>
-                                            <c:if test="${sessionScope.account!=null}">
-                                                <li>
-                                                    <a id="logout" href="#" onclick="checkLogout()" style="color: white; text-decoration: underline">${sessionScope.account==null ? "": "LOGOUT"}</a>
-                                                </li>
-                                            </c:if>
-                                        </ul>
-                                    </div>
-                                </div>-->
                             </div>
                         </div>
                         <div class="row" style="justify-content: flex-start; padding: 10px 0"">
@@ -311,7 +213,7 @@
                                             <fieldset class="responsiveFacets_sectionContent " aria-hidden="false">
                                                 <div>
                                                     <label class="responsiveFacets_sectionItemLabel">
-                                                        <input ${discount==0.25?"checked":""} name="discountSearch" value="0.25" onclick="setCheck(this)" type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Abercrombie+%26+Fitch" aria-label="Abercrombie &amp; Fitch (6 available products)" tabindex="0">
+                                                        <input ${discount==0.25?"checked":""} name="discount" value="0.25" onclick="setCheckk(this)" type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Abercrombie+%26+Fitch" aria-label="Abercrombie &amp; Fitch (6 available products)" tabindex="0">
                                                         <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Abercrombie+%26+Fitch">
                                                             <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
                                                                 Up to 25% (${dis25})
@@ -321,7 +223,7 @@
                                                 </div>
                                                 <div>
                                                     <label class="responsiveFacets_sectionItemLabel">
-                                                        <input ${discount==0.5?"checked":""} name="discountSearch" value="0.5" onclick="setCheck(this)" type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
+                                                        <input ${discount==0.5?"checked":""} name="discount" value="0.5" onclick="setCheckk(this)" type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
                                                         <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
                                                             <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
                                                                 Up to 50% (${dis50})
@@ -331,7 +233,7 @@
                                                 </div>
                                                 <div>
                                                     <label class="responsiveFacets_sectionItemLabel">
-                                                        <input ${discount==0.75?"checked":""} name="discountSearch" value="0.75" onclick="setCheck(this)" type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
+                                                        <input ${discount==0.75?"checked":""} name="discount" value="0.75" onclick="setCheckk(this)" type="checkbox" class="responsiveFacets_sectionItemCheckbox" name="en_brand_content" data-facet-value="Allsaints" aria-label="Allsaints (2 available products)" tabindex="0">
                                                         <span class="responsiveFacets_sectionItem " data-facet-key="en_brand_content" data-facet-value="Allsaints">
                                                             <span class="responsiveFacets_sectionItemValue " aria-hidden="true">
                                                                 Up to 75% (${dis75})
@@ -451,7 +353,7 @@
                                     </c:if>
                                     <c:if test="${requestScope.cid_refinee != null}">
                                         <c:forEach begin="${1}" end="${requestScope.numberpage}" var="i"> 
-                                            <a href="refine?${stringForLink}&numberStar=${numberStar}&pricefrom=${price1}&priceto=${price2}&discountSearch=${discount}&page=${i}">${i}</a>
+                                            <a href="refine?${stringForLink}&numberStar=${numberStar}&pricefrom=${price1}&priceto=${price2}&discount=${discount}&page=${i}">${i}</a>
                                         </c:forEach>
                                     </c:if>
                                 </div>
@@ -475,10 +377,40 @@
         <script src="js/clickevents.js"></script>
         <!--<script src="js/main.js"></script>-->
         <script type="text/javascript">
-                                                                        function setCheck(obj) {
+                                                                        function setCheckk(obj) {
+                                                                            var fries = document.getElementsByName('discount');
+                                                                            var checked = obj.value;
+                                                                            console.log(obj.checked)
+                                                                            for (var i = 0; i < fries.length; i++) {
+                                                                                if (checked == fries[i].value) {
+                                                                                    fries[i].checked = obj.checked;
+                                                                                } else {
+                                                                                    fries[i].checked = false;
+                                                                                }
+                                                                            }
+
                                                                             document.getElementById('f1').submit();
                                                                         }
-                                                                        
+
+
+                                                                        function setCheck(obj) {
+                                                                            var fries = document.getElementsByName('cid_refinee');
+                                                                            if ((obj.id == 'c0') && (fries[0].checked) == true) {
+                                                                                for (var i = 1; i < fries.length; i++) {
+                                                                                    fries[i].checked = false;
+                                                                                }
+                                                                            } else {
+                                                                                for (var i = 1; i < fries.length; i++) {
+                                                                                    if (fries[i].checked == true) {
+                                                                                        fries[0].checked = false;
+                                                                                        break;
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                            document.getElementById('f1').submit();
+                                                                        }
+
+
                                                                         function setCheckStar(obj) {
                                                                             var fries = document.getElementsByName('cid_refinee');
                                                                             if ((obj.id == 'c0') && (fries[0].checked) == true) {

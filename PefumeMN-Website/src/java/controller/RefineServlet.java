@@ -74,7 +74,7 @@ public class RefineServlet extends HttpServlet {
         String priceTo_raw = request.getParameter("priceto");
         String numberStar_raw = request.getParameter("numberStar");
         String nameSearch = request.getParameter("nameSearch");
-        String discountSearch = request.getParameter("discountSearch");
+        String discountSearch = request.getParameter("discount");
         String stringForLink = "";
         int cid_refine = 0;
 

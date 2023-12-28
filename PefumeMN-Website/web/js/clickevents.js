@@ -170,7 +170,7 @@ function confirmLogout(modalID) {
       <div class="modal-header" style="font-size:28px;padding: 30px 0; font-weight: 600; margin: 0 auto"><div>Sign out</div></div>
       <div class="modal-body" style="font-size: 16px; font-weight: 600">Are you sure you would like to sign out of your account?</div>
         <div class="modal-footer" style="justify-content: center;">
-            <div style="width:40%; background-color: white"><a style="background-color: white; color: black; border-color: black;" class="btn btn-primary btn-block" href="logout">Logout</a></div>
+            <div style="width:40%; background-color: white"><a style="background-color: white!important; color: black; border-color: black;" class="btn btn-primary btn-block" href="logout">Logout</a></div>
             <div style="width:40%"><button data-dismiss="modal" aria-label="close" class="btn btn-primary btn-block">Cancel</button></div>
         </div>
     </div>
