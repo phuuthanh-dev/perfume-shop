@@ -7,7 +7,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Perfume Shop</title>
+        <title>Perfume Paradise Store</title>
         <link rel="icon" href="images/logo1.png"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -34,132 +34,6 @@
     </head>
 
     <body>
-        
-
-        <div class="offcanvas_menu offcanvas_two">
-            <div class="canvas_open">
-                <a href="javascript:void(0)"><i class="fa fa-bars"></i></a>
-            </div>
-            <div class="offcanvas_menu_wrapper">
-                <div class="canvas_close">
-                    <a href="javascript:void(0)"><i class="fa fa-times"></i></a>
-                </div>
-                <div class="header_account">
-                    <ul>
-                        <li class="top_links">
-                            <a href="#">My Account <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown_links">
-                                <li><a href="#">Checkout</a></li>
-                                <li><a href="profile">My Account</a></li>
-                                <li><a href="#">Shopping Cart</a></li>
-                                <li><a href="#">Wishlist</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="h-screen bg-black flex items-center justify-center">
-                    <div class="p-4 sm:p-10 bg-gray-50 rounded-md  w-[300px] md:w-[500px] text-center overflow-y-auto">
-                        <span class="mb-4 inline-flex justify-center items-center w-[62px] h-[62px] rounded-full border-4 border-yellow-50 bg-yellow-100 text-yellow-500">
-                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"></path>
-                            </svg>
-                        </span>
-
-                        <h3 class="mb-2 text-2xl font-bold text-gray-800">
-                            Sign out
-                        </h3>
-                        <p class="text-gray-500">
-                            Are you sure you would like to sign out of your account?
-                        </p>
-
-                        <div class="mt-6 flex justify-center gap-x-4">
-                            <a class="py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm"
-                               href="javascript:;" target="_blank">
-                                Sign out
-                            </a>
-                            <button @click="open = false" type="button" class="py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm">
-                                Cancel
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div id="menu" class="text-left">
-                    <ul class="offcanvas_main_menu">
-                        <li class="menu-item-has-children active">
-                            <a href="#">Home</a>
-                            <ul class="sub-menu">
-                                <c:forEach items="${requestScope.category}" var="c">
-
-                                    <li><a href="#">${c.name}</a></li>
-                                    </c:forEach>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="#">Brands</a>
-                            <ul class="sub-menu">
-                                <li class="menu-item-has-children">
-                                    <a href="#">Men</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="#">Versace</a></li>
-                                        <li><a href="#">Hugo Boss</a></li>
-                                        <li><a href="#">Jaguar</a></li>
-                                        <li><a href="#">Armani</a></li>
-                                        <li><a href="#">Paco Rabbane</a></li>
-                                        <li><a href="#">Ralph Lauren</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Women</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="#">Bvlgari</a></li>
-                                        <li><a href="#">Coach</a></li>
-                                        <li><a href="#">Kenzo</a></li>
-                                        <li><a href="#">D&G</a></li>
-                                        <li><a href="#">Jean Paul Gaultier</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Unisex</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="#">Ajmal</a></li>
-                                        <li><a href="#">Calvin Klein</a></li>
-                                        <li><a href="#">The Body Shop</a></li>
-                                        <li><a href="#">Lattafa</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="profile">My Account</a>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="#">About Us</a>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="#">User</a>
-                            <ul class="sub-menu">
-                                <li><a href="login">Login In</a></li>
-                                <li><a href="register">Sign up</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="offcanvas_footer">
-                    <span><a href="#"><i class="fa fa-envelope-0"></i>deo@gmail.com</a></span>
-                    <ul>
-                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li class="pinterest"><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                        <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-
 
         <header>
             <div class="main_header header_transparent header-mobile-m">
@@ -177,50 +51,23 @@
                                 <div class="main_menu menu_two menu_position">
                                     <nav>
                                         <ul>
-                                            <li>
-                                                <a href="home" class="active">Home</a>
-                                            </li>
                                             <li class="mega_items">
-                                                <a href="#">Brands <i class="fa fa-angle-down"></i></a>
+                                                <a href="#">Collections <i class="fa fa-angle-down"></i></a>
                                                 <div class="mega_menu">
                                                     <ul class="mega_menu_inner">
-                                                        <li>
-                                                            <a href="#">Men</a>
-                                                            <ul>
-                                                                <li><a href="#">Versace</a></li>
-                                                                <li><a href="#">Hugo Boss</a></li>
-                                                                <li><a href="#">Jaguar</a></li>
-                                                                <li><a href="#">Armani</a></li>
-                                                                <li><a href="#">Paco Rabbane</a></li>
-                                                                <li><a href="#">Ralph Lauren</a></li>
-                                                            </ul>
+                                                        <li style="color: black; font-size: 16px">
 
+                                                            <a href="refine?cid_refine=${0}">ALL</a>
                                                         </li>
-                                                        <li>
-                                                            <a href="#">Women</a>
-                                                            <ul>
-                                                                <li><a href="#">Bvlgari</a></li>
-                                                                <li><a href="#">Coach</a></li>
-                                                                <li><a href="#">Kenzo</a></li>
-                                                                <li><a href="#">D&G</a></li>
-                                                                <li><a href="#">Jean Paul Gaultier</a></li>
-                                                            </ul>
-
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Unisex</a>
-                                                            <ul>
-                                                                <li><a href="#">Ajmal</a></li>
-                                                                <li><a href="#">Calvin Klein</a></li>
-                                                                <li><a href="#">The Body Shop</a></li>
-                                                                <li><a href="#">Lattafa</a></li>
-                                                            </ul>
-
-                                                        </li>
+                                                        <c:forEach items="${requestScope.category}" var="c">
+                                                            <li style="color: black; font-size: 16px">
+                                                                <a href="refine?cid_refine=${c.id}">${c.name}</a>
+                                                            </li>
+                                                        </c:forEach>
                                                     </ul>
                                                 </div>
                                             </li>
-                                            <li><a href="#">About Us</a></li>
+                                            <li><a href="aboutus">About Us</a></li>
                                             <li><a href="#">Contact Us</a></li>
                                                 <c:if test="${sessionScope.account==null}">
                                                 <li>
@@ -246,19 +93,6 @@
                             </div>
                         </div>
 
-                        <div class="row" style="justify-content: center; padding: 10px 0"">
-                            <ul style="display: flex">
-                                <li style="color: white; margin-left:50px; font-size: 16px">
-
-                                    <a href="refine?cid_refine=${0}">ALL</a>
-                                </li>
-                                <c:forEach items="${requestScope.category}" var="c">
-                                    <li style="color: white; margin-left: 50px; font-size: 16px">
-                                        <a href="refine?cid_refine=${c.id}">${c.name}</a>
-                                    </li>
-                                </c:forEach>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>

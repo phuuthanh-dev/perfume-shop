@@ -1048,12 +1048,13 @@ h6 {
 .main_menu nav > ul > li:hover ul.sub_menu {
     visibility: visible;
     max-height: 300px;
-    padding: 24px 30px;
+/*    padding: 24px 30px;*/
 }
 .main_menu nav > ul > li:hover .mega_menu {
     visibility: visible;
-    max-height: 300px;
-    padding: 25px 30px 30px 30px;
+    max-height: 450px;
+    border-radius: 3px;
+    padding: 0 30px;
 }
 
 .main_menu nav > ul > li:hover > a {
@@ -1116,20 +1117,19 @@ h6 {
 
 .main_menu nav > ul > li .mega_menu {
     position: absolute;
-    min-width: 100%;
-    padding: 0 30px 0 30px;
+/*    padding: 0 30px 0 30px;*/
     background: #fff;
     box-shadow: 0 3px 11px 0 rgba(0, 0, 0, 0.1);
     max-height: 0;
     transform-origin: 0 0 0;
-    left: 0;
+    left: 110px;
     right: auto;
     visibility: hidden;
     overflow: hidden;
     transition: 0.5s;
     z-index: 99;
     top: 100%;
-    text-align: left;
+    text-align: Left;
 }
 
 .menu_two nav > ul {
@@ -1177,10 +1177,11 @@ h6 {
 .menu_position {
     position: relative;
 }
-.mega_menu_inner {
-    display: flex;
-    justify-content: space-between;
+
+.mega_menu_inner > li {
+    padding: 10px;
 }
+
 
 .mega_menu_inner > li > a {
     font-size: 14px;

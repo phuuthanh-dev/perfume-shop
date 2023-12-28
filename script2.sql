@@ -88,3 +88,13 @@ VALUES
 ('user7', 0),
 ('user8', 0),
 ('user9', 0);
+
+drop table Wallets
+drop table OrderDetails
+drop table Orders
+drop table Products
+drop table Suppliers
+drop table Categories
+drop table Users
+
+
