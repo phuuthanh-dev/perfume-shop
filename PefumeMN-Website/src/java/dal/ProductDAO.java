@@ -32,13 +32,14 @@ public class ProductDAO extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
+                String image = rs.getString("image");
+                String[] images = image.split(",");
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
                 Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
                         rs.getString("ProductName"),
-                        rs.getString("image1"),
-                        rs.getString("image2"),
+                        images,
                         rs.getString("describe"),
                         rs.getString("QuantityPerUnit"),
                         rs.getInt("ProductID"),
@@ -72,13 +73,14 @@ public class ProductDAO extends DBContext {
             st.setInt(1, cid);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
+                String image = rs.getString("image");
+                String[] images = image.split(",");
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
                 Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
                         rs.getString("ProductName"),
-                        rs.getString("image1"),
-                        rs.getString("image2"),
+                        images,
                         rs.getString("describe"),
                         rs.getString("QuantityPerUnit"),
                         rs.getInt("ProductID"),
@@ -109,13 +111,14 @@ public class ProductDAO extends DBContext {
             st.setInt(1, year);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
+                String image = rs.getString("image");
+                String[] images = image.split(",");
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
                 Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
                         rs.getString("ProductName"),
-                        rs.getString("image1"),
-                        rs.getString("image2"),
+                        images,
                         rs.getString("describe"),
                         rs.getString("QuantityPerUnit"),
                         rs.getInt("ProductID"),
@@ -142,13 +145,14 @@ public class ProductDAO extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
+                String image = rs.getString("image");
+                String[] images = image.split(",");
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
                 Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
                         rs.getString("ProductName"),
-                        rs.getString("image1"),
-                        rs.getString("image2"),
+                        images,
                         rs.getString("describe"),
                         rs.getString("QuantityPerUnit"),
                         rs.getInt("ProductID"),
@@ -175,13 +179,14 @@ public class ProductDAO extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
+                String image = rs.getString("image");
+                String[] images = image.split(",");
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
                 Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
                         rs.getString("ProductName"),
-                        rs.getString("image1"),
-                        rs.getString("image2"),
+                        images,
                         rs.getString("describe"),
                         rs.getString("QuantityPerUnit"),
                         rs.getInt("ProductID"),
@@ -208,13 +213,14 @@ public class ProductDAO extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
+                String image = rs.getString("image");
+                String[] images = image.split(",");
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
                 Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
                         rs.getString("ProductName"),
-                        rs.getString("image1"),
-                        rs.getString("image2"),
+                        images,
                         rs.getString("describe"),
                         rs.getString("QuantityPerUnit"),
                         rs.getInt("ProductID"),
@@ -241,13 +247,14 @@ public class ProductDAO extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
+                String image = rs.getString("image");
+                String[] images = image.split(",");
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
                 Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
                         rs.getString("ProductName"),
-                        rs.getString("image1"),
-                        rs.getString("image2"),
+                        images,
                         rs.getString("describe"),
                         rs.getString("QuantityPerUnit"),
                         rs.getInt("ProductID"),
@@ -304,13 +311,14 @@ public class ProductDAO extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
+                String image = rs.getString("image");
+                String[] images = image.split(",");
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
                 Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
                         rs.getString("ProductName"),
-                        rs.getString("image1"),
-                        rs.getString("image2"),
+                        images,
                         rs.getString("describe"),
                         rs.getString("QuantityPerUnit"),
                         rs.getInt("ProductID"),
@@ -353,13 +361,14 @@ public class ProductDAO extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
+                String image = rs.getString("image");
+                String[] images = image.split(",");
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
                 Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
                         rs.getString("ProductName"),
-                        rs.getString("image1"),
-                        rs.getString("image2"),
+                        images,
                         rs.getString("describe"),
                         rs.getString("QuantityPerUnit"),
                         rs.getInt("ProductID"),
@@ -391,13 +400,14 @@ public class ProductDAO extends DBContext {
             st.setInt(1, amount);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
+                String image = rs.getString("image");
+                String[] images = image.split(",");
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
                 Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
                         rs.getString("ProductName"),
-                        rs.getString("image1"),
-                        rs.getString("image2"),
+                        images,
                         rs.getString("describe"),
                         rs.getString("QuantityPerUnit"),
                         rs.getInt("ProductID"),
@@ -426,13 +436,14 @@ public class ProductDAO extends DBContext {
             st.setString(1, "%" + text + "%");
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
+                String image = rs.getString("image");
+                String[] images = image.split(",");
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
                 Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
                         rs.getString("ProductName"),
-                        rs.getString("image1"),
-                        rs.getString("image2"),
+                        images,
                         rs.getString("describe"),
                         rs.getString("QuantityPerUnit"),
                         rs.getInt("ProductID"),
@@ -442,7 +453,8 @@ public class ProductDAO extends DBContext {
                         rs.getDouble("Discount"),
                         salePrice,
                         rs.getDate("releaseDate"),
-                        c, s);
+                        c, s
+                );
                 list.add(p);
             }
         } catch (Exception e) {
@@ -457,13 +469,14 @@ public class ProductDAO extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
+                String image = rs.getString("image");
+                String[] images = image.split(",");
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
                 Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
                         rs.getString("ProductName"),
-                        rs.getString("image1"),
-                        rs.getString("image2"),
+                        images,
                         rs.getString("describe"),
                         rs.getString("QuantityPerUnit"),
                         rs.getInt("ProductID"),
@@ -508,13 +521,14 @@ public class ProductDAO extends DBContext {
             st.setInt(1, amount);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
+                String image = rs.getString("image");
+                String[] images = image.split(",");
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
                 Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
                         rs.getString("ProductName"),
-                        rs.getString("image1"),
-                        rs.getString("image2"),
+                        images,
                         rs.getString("describe"),
                         rs.getString("QuantityPerUnit"),
                         rs.getInt("ProductID"),
@@ -545,17 +559,6 @@ public class ProductDAO extends DBContext {
         return 0;
     }
 
-    public static void main(String[] args) {
-        ProductDAO p = new ProductDAO();
-        int[] a = {0};
-        int aa = p.countAllProduct();
-        List<Product> list = p.getProductsByCategoryid(1);
-        System.out.println(aa);
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).getName());
-        }
-    }
-
     public List<Product> getTop10SellerProduct() {
         List<Product> list = new ArrayList<>();
         String sql = "select top(10) *\r\n"
@@ -565,13 +568,14 @@ public class ProductDAO extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
+                String image = rs.getString("image");
+                String[] images = image.split(",");
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
                 Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
                         rs.getString("ProductName"),
-                        rs.getString("image1"),
-                        rs.getString("image2"),
+                        images,
                         rs.getString("describe"),
                         rs.getString("QuantityPerUnit"),
                         rs.getInt("ProductID"),
@@ -596,13 +600,14 @@ public class ProductDAO extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
+                String image = rs.getString("image");
+                String[] images = image.split(",");
                 Category c = cd.getCategoryById(rs.getInt("CategoryID"));
                 Supplier s = sd.getSupplierById(rs.getInt("SupplierID"));
                 double salePrice = getSalePrice(rs.getDouble("UnitPrice"), rs.getDouble("Discount"));
                 Product p = new Product(
                         rs.getString("ProductName"),
-                        rs.getString("image1"),
-                        rs.getString("image2"),
+                        images,
                         rs.getString("describe"),
                         rs.getString("QuantityPerUnit"),
                         rs.getInt("ProductID"),
@@ -656,5 +661,41 @@ public class ProductDAO extends DBContext {
         } catch (Exception e) {
         }
         return 0;
+    }
+
+    public void insertProduct(String name, String image, double price, String describe, int quantity,
+            String quantityunit, String date, double discount, int supplierID, int categoryID) {
+        String sql = "INSERT INTO [dbo].[Products] (\n"
+                + "    [ProductName], \n"
+                + "    [SupplierID], \n"
+                + "    [CategoryID], \n"
+                + "    [QuantityPerUnit], \n"
+                + "    [UnitPrice], \n"
+                + "	[image],\n"
+                + "	[describe],\n"
+                + "	[releaseDate],\n"
+                + "	[Discount],\n"
+                + "	[status]\n"
+                + "	)\n"
+                + "VALUES (N'" + name + "','" + supplierID + "','" + categoryID + "','" + quantityunit + "','" + price + "','" + image + "',N'" + describe + "','" + date
+                + "','" + discount + "','1')";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.executeUpdate();
+
+        } catch (Exception e) {
+
+        }
+    }
+
+    public static void main(String[] args) {
+        ProductDAO p = new ProductDAO();
+        int[] a = {0};
+        int aa = p.countAllProduct();
+        List<Product> list = p.getAll();
+        System.out.println(aa);
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i).getImage()[1]);
+        }
     }
 }

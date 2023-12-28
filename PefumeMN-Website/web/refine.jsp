@@ -274,15 +274,15 @@
                                                 <figure>
                                                     <div class="product_thumb">
                                                         <a href="#" class="primary_img">
-                                                            <img src="${i.image1}" alt="">
+                                                            <img src="${i.image[0]}" alt="">
                                                         </a>
                                                         <a href="#" class="secondary_img">
-                                                            <img src="${i.image2}" alt="">
+                                                            <img src="${i.image[1]}" alt="">
                                                         </a>
                                                         <div class="action_links">
                                                             <ul>
                                                                 <li class="add_to_cart" 
-                                                                    onclick="openModal('modal_box',${i.id}, '${i.image1}', '${i.image2}',
+                                                                    onclick="openModal('modal_box',${i.id}, '${i.image[0]}', '${i.image[1]}',
                                                                                     '${i.name}',${i.salePrice},${i.price}, '${i.describe}', '${i.classifyStr}',
                                                                                     '${i.supplier.getCompanyName()}')" >
                                                                     <a href="#" data-toggle="modal" data-target="#modal_box" title="Add to Cart">
@@ -295,7 +295,7 @@
                                                                     </a>
                                                                 </li>
                                                                 <li style="border-color: orange" class="quick_button"
-                                                                    onclick="openModal('modal_box',${i.id}, '${i.image1}', '${i.image2}',
+                                                                    onclick="openModal('modal_box',${i.id}, '${i.image[0]}', '${i.image[1]}',
                                                                                     '${i.name}',${i.salePrice},${i.price}, '${i.describe}', '${i.classifyStr}',
                                                                                     '${i.supplier.getCompanyName()}')" 
                                                                     >

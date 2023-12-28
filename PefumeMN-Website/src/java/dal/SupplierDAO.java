@@ -100,9 +100,11 @@ public class SupplierDAO extends DBContext {
     public static void main(String[] args) {
         SupplierDAO p = new SupplierDAO();
         int[] a = {0};
-        Supplier list = p.getSupplierById(3);
+        List<Supplier> list = p.getAll();
 
-        System.out.println(list.getContactName());
+        for (Supplier supplier : list) {
+            System.out.println(supplier.getCompanyName());
+        }
     }
 
 }

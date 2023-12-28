@@ -50,7 +50,7 @@
                         <div class="col-4">
                             <div class="row">
                                 <div class="book col-7" style="margin-right: 30px; flex: 1">
-                                    <img src="${item.product.image1}" style="width: 170px; height: 150px" class="book-img">
+                                    <img src="${item.product.image[0]}" style="width: 170px; height: 150px" class="book-img">
                                 </div>
                                 <div class="my-auto flex-column d-flex pad-left col-5">
                                     <h6 class="mob-text">${item.product.name}</h6>

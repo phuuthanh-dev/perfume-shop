@@ -6,6 +6,7 @@
 package model;
 
 import java.sql.Date;
+import java.util.List;
 
 /**
  *
@@ -13,17 +14,17 @@ import java.sql.Date;
  */
 public class Product {
 
-    private String name, image1, image2, describe,classifyStr;
+    private String name, describe,classifyStr;
+    private String[] image;
     private int id, quantity, starRating;
     private double price, discount, salePrice;
     private Date date;
     private Category category;
     private Supplier supplier;
 
-    public Product(String name, String image1, String image2, String describe, String classifyStr, int id, int quantity, int starRating, double price, double discount, double salePrice, Date date, Category category, Supplier supplier) {
+    public Product(String name, String[] image, String describe, String classifyStr, int id, int quantity, int starRating, double price, double discount, double salePrice, Date date, Category category, Supplier supplier) {
         this.name = name;
-        this.image1 = image1;
-        this.image2 = image2;
+        this.image = image;
         this.describe = describe;
         this.classifyStr = classifyStr;
         this.id = id;
@@ -53,20 +54,12 @@ public class Product {
         this.name = name;
     }
 
-    public String getImage1() {
-        return image1;
+    public String[] getImage() {
+        return image;
     }
 
-    public void setImage1(String image1) {
-        this.image1 = image1;
-    }
-
-    public String getImage2() {
-        return image2;
-    }
-
-    public void setImage2(String image2) {
-        this.image2 = image2;
+    public void setImage(String[] image1) {
+        this.image = image1;
     }
 
     public String getDescribe() {
@@ -159,7 +152,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" + "name=" + name + ", image1=" + image1 + ", image2=" + image2 + ", describe=" + describe + ", classifyStr=" + classifyStr + ", id=" + id + ", quantity=" + quantity + ", starRating=" + starRating + ", price=" + price + ", discount=" + discount + ", salePrice=" + salePrice + ", date=" + date + ", category=" + category + ", supplier=" + supplier + '}';
+        return "Product{" + "name=" + name + ", image=" + image + ", describe=" + describe + ", classifyStr=" + classifyStr + ", id=" + id + ", quantity=" + quantity + ", starRating=" + starRating + ", price=" + price + ", discount=" + discount + ", salePrice=" + salePrice + ", date=" + date + ", category=" + category + ", supplier=" + supplier + '}';
     }
 
     

@@ -7,6 +7,7 @@ package controller;
 
 import dal.CategoryDAO;
 import dal.ProductDAO;
+import dal.SupplierDAO;
 import model.Category;
 import model.Product;
 import java.io.IOException;
@@ -16,6 +17,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.Supplier;
 
 @WebServlet(name = "ManagerControl", urlPatterns = {"/manager"})
 public class ManagerProductServlet extends HttpServlet {
@@ -35,6 +37,7 @@ public class ManagerProductServlet extends HttpServlet {
 
         ProductDAO daoP = new ProductDAO();
         CategoryDAO daoC = new CategoryDAO();
+        SupplierDAO daoS = new SupplierDAO();
         List<Product> list = daoP.getAll();
         List<Category> listC = daoC.getAll();
 
@@ -52,12 +55,14 @@ public class ManagerProductServlet extends HttpServlet {
         end = Math.min(page * numPerPage, size);
 
         List<Product> listByPage = daoP.getListByPage(list, start, end);
+        List<Supplier> listSup = daoS.getAll();
         request.setAttribute("page", page);
         request.setAttribute("start", start);
         request.setAttribute("end", end);
         request.setAttribute("numberpage", numberpage);
         request.setAttribute("listCC", listC);
         request.setAttribute("listByPage", listByPage);
+        request.setAttribute("list", listSup);
 
         request.getRequestDispatcher("dashboard/mnproduct.jsp").forward(request, response);
     }

@@ -139,7 +139,7 @@
                                                 <td class="text_page">${t.id}</td>
                                                 <td class="text_page">${t.name}</td>
                                                 <td class="text_page" style="text-align: center">
-                                                    <img style="width: 170px; height:180px" src="${t.image1}">
+                                                    <img style="width: 170px; height:180px" src="${t.image[0]}">
                                                 </td>
                                                 <td class="text_page">${t.price} $</td>
                                                 <td class="text_page">${t.quantity}</td>

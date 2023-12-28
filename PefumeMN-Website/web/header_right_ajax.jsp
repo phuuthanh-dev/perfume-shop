@@ -100,7 +100,7 @@
                                         <c:forEach items="${sessionScope.listItemsInCart}" var="p">
                                             <div class="cart_item">
                                                 <div class="cart_img">
-                                                    <a href="#"><img src="${p.product.image1}"
+                                                    <a href="#"><img src="${p.product.image[0]}"
                                                                      alt="Perfume"></a>
                                                 </div>
 
@@ -161,12 +161,6 @@
                         </ul>
                     </li>
                     <c:if test="${sessionScope.account!=null}">
-                        <!--                        <li>
-                        
-                                                    <a href="${sessionScope.account.roleID==1?"admin":"profile"}" style="color: white">Hello, ${sessionScope.account==null ? "": sessionScope.name}!</a>
-                                                    <a href="${sessionScope.account.roleID==1?"admin":"profile"}"><img src="${sessionScope.account.image}" width="40px" style="color: white; border-radius: 50% ;border: 2px solid white;"></a>
-                        
-                                                </li>-->
                         <li onclick="change()" style="position: relative; cursor: pointer;">
                             <img src="${sessionScope.account.image}" width="40px" style="color: white; border-radius: 50% ;border: 2px solid white;">
                             <ul id="avt" class="header_avt" style="margin-top:25px;

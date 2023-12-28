@@ -150,7 +150,7 @@
                                                 <td class="text_page">${o.id}</td>
                                                 <td style="max-width: 280px;" class="text_page">${o.name}</td>
                                                 <td style="text-align: center">
-                                                    <img style="width: 170px; height:180px" src="${o.image1}">
+                                                    <img style="width: 170px; height:180px" src="${o.image[0]}">
                                                 </td>
                                                 <td class="text_page">${o.price}$</td>
                                                 <td class="text_page">
@@ -191,59 +191,55 @@
         <div id="addEmployeeModal" class="modal fade">
             <div class="modal-dialog" style="margin: 28px 500px">
                 <div class="modal-content" style="width: 1000px; max-height: 900px; overflow: scroll">
-                    <form action="add" method="post" >
+                    <form action="addproduct" method="get" enctype="multipart/form-data">
                         <div class="modal-header">						
                             <h4 class="modal-title">Add Product</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">					
                             <div class="form-group">
-                                <label>Name</label>
+                                <label>Product Name</label>
                                 <input name="name" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Image</label>
-                                <input name="image" type="text" class="form-control" >
-                            </div>
-                            <div class="form-group">
-                                <label>Image 2</label>
-                                <input name="image2" type="text" class="form-control" >
-                            </div>
-                            <div class="form-group">
-                                <label>Image 3</label>
-                                <input name="image3" type="text" class="form-control" >
-                            </div>
-                            <div class="form-group">
-                                <label>Image 4</label>
-                                <input name="image4" type="text" class="form-control" >
+                                <input multiple name="image" type="file">
                             </div>
                             <div class="form-group">
                                 <label>Price</label>
                                 <input name="price" type="text" class="form-control" >
                             </div>
                             <div class="form-group">
-                                <label>Title</label>
-                                <textarea name="title" class="form-control" required></textarea>
+                                <label>Describe</label>
+                                <textarea name="describe" class="form-control" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Model</label>
-                                <input name="model" type="text" class="form-control" >
+                                <label>Quantity</label>
+                                <input name="quantity" type="text" class="form-control" >
                             </div>
                             <div class="form-group">
-                                <label>Color</label>
-                                <input name="color" type="text" class="form-control" >
+                                <label>Quantity Per Unit</label>
+                                <input name="quantityunit" type="text" class="form-control" >
                             </div>
                             <div class="form-group">
-                                <label>Delivery</label>
-                                <input name="delivery" type="text" class="form-control" >
+                                <label>Release Date</label>
+                                <input name="date" type="text" class="form-control" >
                             </div>
                             <div class="form-group">
-                                <label>Description</label>
-                                <textarea name="description" class="form-control" ></textarea>
+                                <label>Discount</label>
+                                <input name="discount" type="text" class="form-control" >
+                            </div>
+                            <div class="form-group">
+                                <label>Supplier</label>
+                                <select style="padding: 5px 0" name="supplier" class="form-select" aria-label="Default select example">
+                                    <c:forEach items="${list}" var="sup">
+                                        <option value="${sup.id}">${sup.companyName}</option>
+                                    </c:forEach>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Category</label>
-                                <select name="category" class="form-select" aria-label="Default select example">
+                                <select style="padding: 5px 0" name="category" class="form-select" aria-label="Default select example">
                                     <c:forEach items="${listCC}" var="o">
                                         <option value="${o.id}">${o.name}</option>
                                     </c:forEach>
