@@ -667,9 +667,9 @@
                                         <h2>Newsletter</h2>
                                     </div>
                                     <div class="subscribe_form">
-                                        <form>
-                                            <input type="email" autocomplete="off" placeholder="example@gmail.com">
-                                            <button>
+                                        <form action="email">
+                                            <input name="email" type="email" autocomplete="off" placeholder="example@gmail.com">
+                                            <button type="submit">
                                                 <i class="fa fa-envelope-o"></i>
                                             </button>
                                         </form>
