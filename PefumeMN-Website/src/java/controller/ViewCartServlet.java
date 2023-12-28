@@ -15,9 +15,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.time.LocalDateTime;
 import java.util.List;
 import model.Cart;
+import model.Email;
 import model.Item;
+import model.Order;
 import model.User;
 import model.Wallet;
 
@@ -127,12 +130,18 @@ public class ViewCartServlet extends HttpServlet {
 
             // add Order
             od.addOrder(user, cart);
-
+            LocalDateTime currentDateTime = LocalDateTime.now();
             // So luong order tiep theo
             int after = od.getNumberOrders();
 
             if (pre < after) {
+
                 msg1 = "Order Success";
+                Email handleEmail = new Email();
+                String sub = handleEmail.subjectOrder(user.getFullName());
+                String msg = handleEmail.messageOrder(currentDateTime, totalCart, user.getAddress());
+                handleEmail.sendEmail(sub, msg, user.getEmail());
+
                 wd.decuctionMoney(user.getUserName(), totalCart);
                 wallet = wd.getWalletByUserName(user.getUserName());
                 session.removeAttribute("cart");

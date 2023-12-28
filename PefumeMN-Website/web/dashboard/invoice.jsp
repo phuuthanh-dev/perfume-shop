@@ -143,10 +143,10 @@
                                                 </c:forEach>
                                                 <td class="text_page">${String.format("%.02f",i.total)}</td>
                                                 <td class="text_page">${i.date}</td> 
-                                                <td class="text_page">
+                                                <td id="status" class="text_page">
                                                     ${i.status?"Delivered":"Not delivery"}
                                                     <c:if test="${!i.status}">
-                                                        <button style="margin-left: 20px" onclick="changeStatus(i.orderId)">
+                                                        <button style="margin-left: 20px" onclick="changeStatus(this, ${i.orderId})">
                                                             <i style="color: green" class="fa-solid fa-check"></i>
                                                         </button>
                                                     </c:if>
@@ -160,12 +160,9 @@
                     </div>
                 </section>
                 <!--Section: Sales Performance KPIs-->
-
-
-
             </div>
         </main>
-<div class="modal fade" id="modal_box" role="dialog"></div>
+        <div class="modal fade" id="modal_box" role="dialog"></div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>   
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -175,20 +172,37 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
         <script src="js/main.js"></script>
         <script>
-            function searchByDate(param) {
-                var txtSearchDate = param.value;
-                $.ajax({
-                    url: "/WebsiteBanGiay/searchAjaxHoaDon",
-                    type: "get", //send it through get method
-                    data: {
-                        ngayXuat: txtSearchDate
-                    },
-                    success: function (responseData) {
-                        document.getElementById("content").innerHTML = responseData;
-                    }
+                                                            function searchByDate(param) {
+                                                                var txtSearchDate = param.value;
+                                                                $.ajax({
+                                                                    url: "/WebsiteBanGiay/searchAjaxHoaDon",
+                                                                    type: "get", //send it through get method
+                                                                    data: {
+                                                                        ngayXuat: txtSearchDate
+                                                                    },
+                                                                    success: function (responseData) {
+                                                                        document.getElementById("content").innerHTML = responseData;
+                                                                    }
 
-                });
-            }
+                                                                });
+                                                            }
+
+                                                            function changeStatus(obj1, obj2) {
+                                                                var id = obj2;
+                                                                $.ajax({
+                                                                    url: "/PefumeMN-Website/orderstatus",
+                                                                    type: "post",
+                                                                    data: {
+                                                                        id: id
+                                                                    },
+                                                                    success: function () {
+                                                                        var row = obj1.parentElement;
+                                                                        row.innerHTML = 'Delivered';
+                                                                    },
+                                                                    error: function (xhr) {
+                                                                    }
+                                                                });
+                                                            }
         </script>
     </body>
 </html>

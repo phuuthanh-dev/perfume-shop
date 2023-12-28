@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import java.util.Properties;
@@ -59,9 +61,9 @@ public class Email {
             msg.setFrom(new InternetAddress(eFrom));
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to, false));
             // tieu de
-            msg.setSubject(subject);
+            msg.setSubject(subject, "UTF-8");
             // Noi dung
-            msg.setContent(messgage, "text/html");
+            msg.setContent(messgage, "text/html; charset=UTF-8");
             // Gui email
             Transport.send(msg);
         } catch (Exception e) {
@@ -69,11 +71,16 @@ public class Email {
             e.printStackTrace();
         }
     }
-    
+
     // Select subject to send email
     public String subjectDiscount() {
         return "PerfumeMN - Heyyy, Unlock Your Exclusive Discount Inside!";
     }
+
+    public String subjectOrder(String fullName) {
+        return "Hi, " + fullName + ", thanks for your order from Perfume Shop!";
+    }
+
     // Select content to send email
     public String messageDiscount(int discount) {
         return "<!DOCTYPE html>\n"
@@ -136,7 +143,7 @@ public class Email {
                 + "      <p>Hi there,</p>\n"
                 + "      <p>We're excited to share an exclusive discount with you! You're the first to know about this special offer.</p>\n"
                 + "      <div class=\"discount-code\">\n"
-                + "        <p>Discount Code: <strong>DISCOUNT"+discount+"</strong></p>\n"
+                + "        <p>Discount Code: <strong>DISCOUNT" + discount + "</strong></p>\n"
                 + "      </div>\n"
                 + "      <p>Don't miss out on this fantastic opportunity. Place your order today!</p>\n"
                 + "    </div>\n"
@@ -147,6 +154,80 @@ public class Email {
                 + "</body>\n"
                 + "</html>";
     }
-    
+
     // 
+    public String messageOrder(LocalDateTime date, double totalMoney, String address) {
+        return "<!DOCTYPE html>\n"
+                + "<html lang=\"en\">\n"
+                + "<head>\n"
+                + "  <meta charset=\"utf-8\">\n"
+                + "  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>\n"
+                + "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+                + "  <style>\n"
+                + "    body {\n"
+                + "      font-family: Arial, sans-serif;\n"
+                + "      background-color: #f4f4f4;\n"
+                + "      margin: 0;\n"
+                + "      padding: 0;\n"
+                + "    }\n"
+                + "\n"
+                + "    .email-container {\n"
+                + "      max-width: 600px;\n"
+                + "      margin: 20px auto;\n"
+                + "      background-color: #fff;\n"
+                + "      border-radius: 8px;\n"
+                + "      overflow: hidden;\n"
+                + "      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n"
+                + "    }\n"
+                + "\n"
+                + "    .header {\n"
+                + "      background-color: #3498db;\n"
+                + "      color: #fff;\n"
+                + "      padding: 20px;\n"
+                + "      text-align: center;\n"
+                + "    }\n"
+                + "\n"
+                + "    .content {\n"
+                + "      padding: 20px;\n"
+                + "    }\n"
+                + "\n"
+                + "    .discount-code {\n"
+                + "      background-color: #e74c3c;\n"
+                + "      color: #fff;\n"
+                + "      padding: 10px;\n"
+                + "      text-align: center;\n"
+                + "      margin-bottom: 20px;\n"
+                + "      font-size: 20px;\n"
+                + "      border-radius: 4px;\n"
+                + "    }\n"
+                + "\n"
+                + "    .footer {\n"
+                + "      background-color: #3498db;\n"
+                + "      color: #fff;\n"
+                + "      padding: 10px;\n"
+                + "      text-align: center;\n"
+                + "    }\n"
+                + "  </style>\n"
+                + "</head>\n"
+                + "<body>\n"
+                + "  <div class=\"email-container\">\n"
+                + "    <div class=\"header\">\n"
+                + "     <h1>Perfume Shop</h1>\n"
+                + "      <h2>Your order is on its way!</h2>\n"
+                + "    </div>\n"
+                + "    <div class=\"content\">\n"
+                + "      <h3>Order summary:</h3>\n"
+                + "      <p>Order Date: " + date + "</p>\n"
+                + "      <p>Order Total: " + totalMoney + "$</p>\n"
+                + "      <p>Shipping address: " + address + "</p>\n"
+                + "      <p>If you have any questions, contact us here or call us on 0707064154.</p>\n"
+                + "      <p>We are here to help!</p>\n"
+                + "    </div>\n"
+                + "    <div class=\"footer\">\n"
+                + "      <p>Thank you for placing your order!</p>\n"
+                + "    </div>\n"
+                + "  </div>\n"
+                + "</body>\n"
+                + "</html>";
+    }
 }

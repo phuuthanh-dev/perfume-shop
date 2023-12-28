@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import model.Cart;
 import model.Item;
@@ -56,7 +57,7 @@ public class OrderDAO extends DBContext {
             st1.executeUpdate();
 
             // Lay ra orderID cua Order vua tao
-            String sql2 = "SELECT Top 1 [OrderID] FROM [dbo].[Orders] ORDER BY  [OrderID] DESC";
+            String sql2 = "SELECT Top 1 [OrderID] FROM [dbo].[Orders] ORDER BY [OrderID] DESC";
             PreparedStatement st2 = connection.prepareStatement(sql2);
             ResultSet rs = st2.executeQuery();
 
@@ -160,6 +161,17 @@ public class OrderDAO extends DBContext {
         List<Order> list = dao.getAll();
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i));
+        }
+    }
+    
+    public void updateStatus(int id) {
+        List<Order> list = new ArrayList<>();
+        String sql = "UPDATE [dbo].[Orders] SET [status] = 1 WHERE [OrderID] = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            st.executeUpdate();
+        } catch (Exception e) {
         }
     }
 }
