@@ -154,7 +154,7 @@
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="contentt">
                                         <c:forEach items="${listAllSupplier}" var="o">
 
                                             <tr>
@@ -248,5 +248,23 @@
         <script type="text/javascript" src="js/mdb.min.js"></script>
         <!-- Custom scripts -->
         <script type="text/javascript" src="js/script.js"></script>
+                <script type="text/javascript">
+                                function searchByName() {
+                                    var text = document.querySelector("#searchId").value;
+                                    $.ajax({
+                                        url: "/PefumeMN-Website/searchSupplier",
+                                        type: "get",
+                                        data: {
+                                            txt: text
+                                        },
+                                        success: function (data) {
+                                            var row = document.getElementById("contentt");
+                                            row.innerHTML = data;
+                                        },
+                                        error: function (xhr) {
+                                        }
+                                    });
+                                }
+        </script>
     </body>
 </html>

@@ -154,7 +154,7 @@
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="contentt">
                                         <c:forEach items="${requestScope.listUser}" var="u">
                                             <tr>
                                                 <td class="text_page" style="font-weight: 500">${u.fullName}</td>
@@ -289,6 +289,22 @@
 
                                     here.value = dobFull;
                                     form.submit();
+                                }
+                                function searchByName() {
+                                    var text = document.querySelector("#searchId").value;
+                                    $.ajax({
+                                        url: "/PefumeMN-Website/searchAccount",
+                                        type: "get",
+                                        data: {
+                                            txt: text
+                                        },
+                                        success: function (data) {
+                                            var row = document.getElementById("contentt");
+                                            row.innerHTML = data;
+                                        },
+                                        error: function (xhr) {
+                                        }
+                                    });
                                 }
         </script>
     </body>

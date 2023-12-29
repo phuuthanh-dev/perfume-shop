@@ -155,7 +155,7 @@
                                             <th class="text_page_head" scope="col">Actions</th>
                                         </tr>
                                     </thead>
-                                    <tbody  id="contentt">
+                                    <tbody >
                                         <c:forEach items="${listByPage}" var="o">
                                             <tr class="product_items">
                                                 <td class="text_page">${o.id}</td>
@@ -286,6 +286,22 @@
 
         <script src="../js/countdown.js"></script>
         <script type="text/javascript">
+            function searchByName() {
+                var text = document.querySelector("#searchId").value;
+                $.ajax({
+                    url: "/PefumeMN-Website/searchProduct",
+                    type: "get",
+                    data: {
+                        txt: text
+                    },
+                    success: function (data) {
+                        var row = document.getElementById("contentt");
+                        row.innerHTML = data;
+                    },
+                    error: function (xhr) {
+                    }
+                });
+            }
         </script>
     </body>
 
