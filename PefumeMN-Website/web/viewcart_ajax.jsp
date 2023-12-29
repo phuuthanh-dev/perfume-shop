@@ -9,7 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>View cart</title>
+        <link rel="icon" href="images/logo1.png"/>
+
     </head>
     <body>
         <div class="container px-4 py-5 mx-auto text-center">

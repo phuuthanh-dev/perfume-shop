@@ -3,9 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/AddProductControl.java</file>
             <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/WEB-INF/web.xml</file>
             <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/META-INF/context.xml</file>
+=======
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/web/contact.jsp</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/ContactServlet.java</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/AboutUsServlet.java</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/web/css/style.css</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/web/about_us.jsp</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/web/home.jsp</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/model/Email.java</file>
+>>>>>>> 3127ac0afdd5d2b93b0dc8f92403c25151d46d87
         </group>
     </open-files>
 </project-private>

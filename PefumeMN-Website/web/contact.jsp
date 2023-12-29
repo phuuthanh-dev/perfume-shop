@@ -18,115 +18,6 @@
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="description" content="Trang nội dung">
         <title>Contact </title>
-        <script>
-            var Bizweb = Bizweb || {};
-            Bizweb.store = 'template-glasses.mysapo.net';
-            Bizweb.id = 332764;
-            Bizweb.theme = {"id": 894770, "name": "Glasses 13-02-2023", "role": "main"};
-            Bizweb.template = 'page.contact';
-            if (!Bizweb.fbEventId)
-                Bizweb.fbEventId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-                    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-                    return v.toString(16);
-                });
-        </script>
-        <script>
-            (function () {
-                function asyncLoad() {
-                    var urls = [];
-                    for (var i = 0; i < urls.length; i++) {
-                        var s = document.createElement('script');
-                        s.type = 'text/javascript';
-                        s.async = true;
-                        s.src = urls[i];
-                        var x = document.getElementsByTagName('script')[0];
-                        x.parentNode.insertBefore(s, x);
-                    }
-                }
-                ;
-                window.attachEvent ? window.attachEvent('onload', asyncLoad) : window.addEventListener('load', asyncLoad, false);
-            })();
-        </script>
-
-
-        <script>
-            window.BizwebAnalytics = window.BizwebAnalytics || {};
-            window.BizwebAnalytics.meta = window.BizwebAnalytics.meta || {};
-            window.BizwebAnalytics.meta.currency = 'VND';
-            window.BizwebAnalytics.tracking_url = '/s';
-
-            var meta = {};
-
-
-            for (var attr in meta) {
-                window.BizwebAnalytics.meta[attr] = meta[attr];
-            }
-        </script>
-
-
-        <script src="/dist/js/stats.min.js?v=8177d93"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <meta name="keywords" content="Liên hệ, Glasses, template-glasses.mysapo.net" />
-
-
-        <meta property="og:type" content="website">
-        <meta property="og:title" content="Liên hệ">
-        <meta property="og:image"
-              content="https://bizweb.dktcdn.net/100/332/764/themes/894770/assets/logo.png?1676259868191">
-        <meta property="og:image:secure_url"
-              content="https://bizweb.dktcdn.net/100/332/764/themes/894770/assets/logo.png?1676259868191">
-
-        <meta property="og:description" content="Trang nội dung">
-        <meta property="og:url" content="https://template-glasses.mysapo.net/lien-he">
-        <meta property="og:site_name" content="Glasses">
-
-        <script type="application/ld+json">
-            {
-            "@context": "http://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": 
-            [
-            {
-            "@type": "ListItem",
-            "position": 1,
-            "item": 
-            {
-            "@id": "https://template-glasses.mysapo.net",
-            "name": "Trang chủ"
-            }
-            },
-
-
-
-
-
-            {
-            "@type": "ListItem",
-            "position": 2,
-            "item": 
-            {
-            "@id": "https://template-glasses.mysapo.net/lien-he",
-            "name": "Liên hệ"
-            }
-            }
-
-
-
-            ]
-            }
-        </script>
 
         <link rel="icon" href="images/logo1.png"
               type="image/x-icon" />
@@ -162,10 +53,7 @@
               rel="stylesheet" type="text/css" media="all" />
         <link href="//bizweb.dktcdn.net/100/332/764/themes/894770/assets/main.scss.css?1676259868191" rel="stylesheet"
               type="text/css" media="all" />
-        <link href="//bizweb.dktcdn.net/100/332/764/themes/894770/assets/quickviews_popup_cart.scss.css?1676259868191"
-              rel="stylesheet" type="text/css" media="all" />
-        <link href="//bizweb.dktcdn.net/100/332/764/themes/894770/assets/responsive.scss.css?1676259868191" rel="stylesheet"
-              type="text/css" media="all" />
+
 
 
 
@@ -187,7 +75,7 @@
         type="text/javascript"></script>
     </head>
 
-    <body>
+    <body style="height: auto">
         <div class="page-body">
             <header>
                 <div class="main_header header_transparent header-mobile-m">
@@ -303,12 +191,12 @@
                                                               class="form-control content-area form-control-lg" rows="5"
                                                               Required></textarea>
                                                 </fieldset>
-                                                <c:if test="${requestScope.check != null} && ${requestScope.check == 'success'}">
+                                                <c:if test="${requestScope.check == 'success'}">
                                                     <div>
                                                         <span class="des_contact" style='color: green;'>${requestScope.message}</span>
                                                     </div>
                                                 </c:if>
-                                                <c:if test="${requestScope.check != null} && ${requestScope.check == 'fail'}">
+                                                <c:if test="${requestScope.check == 'fail'}">
                                                     <div>
                                                         <span class="des_contact" style='color: red;'>${requestScope.message}</span>
                                                     </div>
