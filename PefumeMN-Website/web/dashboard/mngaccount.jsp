@@ -136,8 +136,8 @@
                                     <thead>
                                         <tr>
                                             <th class="text_page_head">Full name</th>
+                                            <th class="text_page_head">Avatar</th>
                                             <th class="text_page_head">Username</th>
-                                            <th class="text_page_head">Password</th>
                                             <th class="text_page_head">Role</th>
                                             <th class="text_page_head">Phone</th>
                                             <th>
@@ -151,8 +151,10 @@
                                         <c:forEach items="${requestScope.listUser}" var="u">
                                             <tr>
                                                 <td class="text_page" style="font-weight: 500">${u.fullName}</td>
+                                                <td class="text_page"  style="font-weight: 500">
+                                                    <img style="width: 70px; height: auto" src="${u.image}">
+                                                </td>
                                                 <td class="text_page"  style="font-weight: 500">${u.userName}</td>
-                                                <td class="text_page"  style="font-weight: 500">${u.password}</td>
                                                 <td class="text_page"  style="font-weight: 500">${u.roleID==1?"Admin":"Customer"}</td>
                                                 <td class="text_page"  style="font-weight: 500">${u.phone}</td>
                                                 <td class="text_page"  style="padding: 0 12px 16px">

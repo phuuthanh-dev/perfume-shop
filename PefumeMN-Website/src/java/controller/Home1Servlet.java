@@ -71,7 +71,7 @@ public class Home1Servlet extends HttpServlet {
         Boolean[] chid = new Boolean[categories.size() + 1];
         List<Product> productsTop5Sellers = p.getTopBestSellers("5");
         List<Product> giftSets = p.getGiflSets();
-        List<Product> listAll = null;
+        List<Product> listAll = p.getAll();
         String cidYear_raw = request.getParameter("cidYear");
 
         //phần product 2023
@@ -84,7 +84,7 @@ public class Home1Servlet extends HttpServlet {
         
         //phan trang
         int page = 1, numPerPage = 9;
-        int size = productsYear.size();
+        int size = listAll.size();
         int numberpage = ((size % numPerPage == 0) ? (size / 9) : (size / 9) + 1);
         String xpage = request.getParameter("page");
         if (xpage == null) {
@@ -105,7 +105,7 @@ public class Home1Servlet extends HttpServlet {
             chid[0] = false;
         }
 
-        List<Product> listByPage = p.getListByPage(productsYear, start, end);
+        List<Product> listByPage = p.getListByPage(listAll, start, end);
         
         request.setAttribute("cidYear", cidYear_raw);
         request.setAttribute("category", categories);

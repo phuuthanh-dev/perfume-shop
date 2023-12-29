@@ -54,7 +54,7 @@ public class UserDAO extends DBContext {
 
     public List<User> getAllUsers() {
         List<User> list = new ArrayList<>();
-        String sql = "select * from Users";
+        String sql = "select * from Users order by roleId asc";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
