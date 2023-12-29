@@ -4,18 +4,13 @@
  */
 package controller;
 
-import dal.CategoryDAO;
 import dal.SupplierDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
-import model.Category;
-import model.Supplier;
 
 /**
  *
@@ -43,7 +38,7 @@ public class DeleteSupplierControl extends HttpServlet {
         try {
             idSup = Integer.parseInt(idSupplier_raw);
             dao.deleteSupplier(idSup);
-            msg = "Supplier " + idSup + "deleted successfully";
+            msg = "Supplier " + idSup + " deleted successfully";
             request.setAttribute("mess", msg);
             request.getRequestDispatcher("managersupplier").forward(request, response);
         } catch (NumberFormatException e) {

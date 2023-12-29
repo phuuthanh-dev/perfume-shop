@@ -157,7 +157,8 @@
                                                 <td class="text_page">${o.contactName}</td>
                                                 <td class="text_page">${o.country}</td> 
                                                 <td class="text_page" style="padding: 0 12px 16px">
-                                                    <a href="deletesupplier?sid=${o.id}"><button type="button" class="btn btn-danger">
+                                                    <a href="deletesupplier?sid=${o.id}">
+                                                        <button type="button" class="btn btn-danger">
                                                             <i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i>
                                                         </button>
                                                     </a>
@@ -182,7 +183,7 @@
                 <div class="modal-content">
                     <form action="addsupplier" method="post">
                         <div class="modal-header">						
-                            <h4 class="modal-title">Thêm nhà cung cấp</h4>
+                            <h4 class="modal-title">Add Supplier</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">					

@@ -88,7 +88,7 @@ public class SupplierDAO extends DBContext {
     }
 
     public void deleteSupplier(int sid) {
-        String sql = "delete from Suppliers where SupplierID= ?";
+        String sql = "delete from Suppliers where SupplierID = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, sid);
@@ -99,7 +99,7 @@ public class SupplierDAO extends DBContext {
 
     public static void main(String[] args) {
         SupplierDAO p = new SupplierDAO();
-        int[] a = {0};
+        p.deleteSupplier(1);
         List<Supplier> list = p.getAll();
 
         for (Supplier supplier : list) {
