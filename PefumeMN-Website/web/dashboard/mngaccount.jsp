@@ -118,7 +118,14 @@
                                         <strong>Manage Account</strong>
                                     </h3>
                                 </div>
+                                <div class="col-lg-2"></div>
+                                <div class="col-lg-6" style="text-align: center; margin-top: 20px; margin-bottom: 20px;padding-top: 20px"F>
+                                    <form action="managerAccount" method="post" style="display: flex; justify-content: center">
+                                        <input name="valueSearch" value="${requestScope.searchValue != null ? requestScope.searchValue : ""}" id="searchId" type="text" oninput="searchByName()" placeholder="Search user name" style="width: 60%; padding: 4px 10px; border-radius: 15px">
+                                    <button type="submit" style="border-radius: 50%; width: 40px; font-size: 18px; margin-left: 10px"><i class="fa fa-search"></i></button>
+                                </form>
                             </div>
+                        </div>
 
                         <c:if test="${error!=null }">
                             <div style="margin-top: 20px" class="alert alert-danger" role="alert">
@@ -147,7 +154,7 @@
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="contentt">
                                         <c:forEach items="${requestScope.listUser}" var="u">
                                             <tr>
                                                 <td class="text_page" style="font-weight: 500">${u.fullName}</td>
@@ -282,6 +289,22 @@
 
                                     here.value = dobFull;
                                     form.submit();
+                                }
+                                function searchByName() {
+                                    var text = document.querySelector("#searchId").value;
+                                    $.ajax({
+                                        url: "/PefumeMN-Website/searchAccount",
+                                        type: "get",
+                                        data: {
+                                            txt: text
+                                        },
+                                        success: function (data) {
+                                            var row = document.getElementById("contentt");
+                                            row.innerHTML = data;
+                                        },
+                                        error: function (xhr) {
+                                        }
+                                    });
                                 }
         </script>
     </body>

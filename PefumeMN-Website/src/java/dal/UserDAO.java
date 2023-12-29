@@ -238,7 +238,7 @@ public class UserDAO extends DBContext {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 User user = new User(rs.getString("userName"), rs.getString("fullName"), rs.getString("password"),
-                        rs.getString("address"), rs.getString("phone"), rs.getString("email"), rs.getString("Image"), 
+                        rs.getString("address"), rs.getString("phone"), rs.getString("email"), rs.getString("Image"),
                         rs.getString("BirthDay"), rs.getInt("roleID"));
                 list.add(new Spending(user, rs.getDouble("TotalMoney")));
             }
@@ -246,4 +246,22 @@ public class UserDAO extends DBContext {
         }
         return list;
     }
+
+   public List<User> getUsersBySearchName(String txtSearch) {
+        List<User> list = new ArrayList<>();
+        String sql = "SELECT * FROM [dbo].[Users] where UserName LIKE ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            //set ?
+            st.setString(1, "%"+txtSearch+"%");
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                list.add(new User(rs.getString("userName"), rs.getString("fullName"), rs.getString("password"),
+                        rs.getString("address"), rs.getString("phone"), rs.getString("email"), rs.getString("Image"), rs.getString("BirthDay"), rs.getInt("roleID")));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
 }
