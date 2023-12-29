@@ -119,9 +119,18 @@
                                         <strong>Manage Products</strong>
                                     </h3>
                                 </div>
+                                <div class="col-lg-6" style="text-align: center; margin-top: 20px; margin-bottom: 20px;padding-top: 20px"F>
+                                    <form action="manager" method="post" style="display: flex; justify-content: center">
+                                        <input name="valueSearch" value="${requestScope.searchValue != null ? requestScope.searchValue : ""}" id="searchId" type="text" oninput="searchByName()" placeholder="Search product name" style="width: 60%; padding: 4px 10px; border-radius: 15px">
+                                    <button type="submit" style="border-radius: 50%; width: 40px; font-size: 18px; margin-left: 10px"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div>
+                            <div class="col-lg-2">
                                 <a href="#addEmployeeModal" style="height: 40px" class="buttonadd btn btn-success" data-toggle="modal"><i class="fa-solid fa-plus"></i></a>
 
                             </div>
+
+                        </div>
 
                         <c:if test="${error!=null }">
                             <div class="alert alert-danger" role="alert">

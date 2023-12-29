@@ -93,7 +93,39 @@ public class ManagerProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        String txtSearch = request.getParameter("valueSearch");
+        ProductDAO daoP = new ProductDAO();
+        CategoryDAO daoC = new CategoryDAO();
+        SupplierDAO daoS = new SupplierDAO();
+        List<Product> list = daoP.searchByName(txtSearch);
+        List<Category> listC = daoC.getAll();
+
+        int page = 1, numPerPage = 6;
+        int size = list.size();
+        int numberpage = ((size % numPerPage == 0) ? (size / 6) : (size / 6) + 1);
+        String xpage = request.getParameter("page");
+        if (xpage == null) {
+            page = 1;
+        } else {
+            page = Integer.parseInt(xpage);
+        }
+        int start, end;
+        start = (page - 1) * 6;
+        end = Math.min(page * numPerPage, size);
+
+        List<Product> listByPage = daoP.getListByPage(list, start, end);
+        List<Supplier> listSup = daoS.getAll();
+        request.setAttribute("page", page);
+        request.setAttribute("start", start);
+        request.setAttribute("end", end);
+        request.setAttribute("numberpage", numberpage);
+        request.setAttribute("listCC", listC);
+        request.setAttribute("listByPage", listByPage);
+        request.setAttribute("list", listSup);
+        request.setAttribute("searchValue", txtSearch);
+        request.getRequestDispatcher("dashboard/mnproduct.jsp").forward(request, response);
     }
 
     /**

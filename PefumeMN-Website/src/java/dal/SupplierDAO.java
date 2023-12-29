@@ -39,6 +39,30 @@ public class SupplierDAO extends DBContext {
 
         return list;
     }
+    
+    public List<Supplier> getSuppliersBySearch(String txtSearch) {
+        List<Supplier> list = new ArrayList<>();
+        String sql = "SELECT * FROM Suppliers WHERE CompanyName LIKE ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, "%" + txtSearch + "%");
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Supplier s = new Supplier();
+                s.setId(rs.getInt("SupplierID"));
+                s.setCompanyName(rs.getString("CompanyName"));
+                s.setConTactName(rs.getString("ContactName"));
+                s.setCountry(rs.getString("Country"));
+                s.setPhone(rs.getString("Phone"));
+                s.setHomepage(rs.getString("HomePage"));
+                list.add(s);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return list;
+    }
 
     public Supplier getSupplierById(int id) {
         String sql = "SELECT * FROM Suppliers WHERE SupplierID = ?";
