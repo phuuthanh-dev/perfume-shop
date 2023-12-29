@@ -5,6 +5,8 @@
     <head>
         <meta charset="ISO-8859-1">
         <title>Statistic</title>
+        <link rel="icon" href="images/logo1.png"/>
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -50,7 +52,7 @@
                     padding-left: 240px;
                 }
             }
-            
+
             .text_page_head{
                 font-size: 18px;
                 font-weight: 600;
@@ -102,7 +104,7 @@
 
 
             </header>
-            <jsp:include page="header_right.jsp"></jsp:include>
+        <jsp:include page="header_right.jsp"></jsp:include>
             <!--Main Navigation-->
 
             <!--Main layout-->

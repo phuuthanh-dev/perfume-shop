@@ -10,7 +10,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Perfume Paradise Store</title>
+        <link rel="icon" href="images/logo1.png"/>
     </head>
     <body>
         <c:forEach items="${requestScope.productPage}" var="i">

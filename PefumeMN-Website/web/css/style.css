@@ -1117,12 +1117,10 @@ h6 {
 
 .main_menu nav > ul > li .mega_menu {
     position: absolute;
-/*    padding: 0 30px 0 30px;*/
     background: #fff;
     box-shadow: 0 3px 11px 0 rgba(0, 0, 0, 0.1);
     max-height: 0;
     transform-origin: 0 0 0;
-    left: 110px;
     right: auto;
     visibility: hidden;
     overflow: hidden;

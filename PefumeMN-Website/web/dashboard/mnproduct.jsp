@@ -5,6 +5,8 @@
     <head>
         <meta charset="ISO-8859-1">
         <title>Quản lý sản phẩm</title>
+        <link rel="icon" href="images/logo1.png"/>
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -191,7 +193,7 @@
         <div id="addEmployeeModal" class="modal fade">
             <div class="modal-dialog" style="margin: 28px 500px">
                 <div class="modal-content" style="width: 1000px; max-height: 900px; overflow: scroll">
-                    <form action="addproduct" method="post" enctype="multipart/form-data">
+                    <form action="addproduct" method="get" enctype="multipart/form-data">
                         <div class="modal-header">						
                             <h4 class="modal-title">Add Product</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

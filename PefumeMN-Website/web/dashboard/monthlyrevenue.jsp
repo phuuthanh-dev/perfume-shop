@@ -5,6 +5,8 @@
     <head>
         <meta charset="ISO-8859-1">
         <title>Statistic</title>
+        <link rel="icon" href="images/logo1.png"/>
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -80,21 +82,21 @@
         <header>
             <jsp:include page="leftadmin.jsp"></jsp:include>
             </header>
-            
-        <jsp:include page="header_right.jsp"></jsp:include>
-        <!--Main Navigation-->
 
-        <!--Main layout-->
-        <main>
-            <div class="container pt-4">
-                <!-- Section: Main chart 2 -->
-                <section class="mb-4" id="doanhThuThang">
-                    <div class="card">
-                        <div class="card-header py-3">
-                            <h3 class="mb-0 text-center">
-                                <strong>Revenue by month</strong>
-                                <form id="f1" method="get" action="mothlyrevenue">
-                                    <select name="year" class="form-control" id="dropdownYear" style="width: 120px;" onchange="getYear(this)">
+        <jsp:include page="header_right.jsp"></jsp:include>
+            <!--Main Navigation-->
+
+            <!--Main layout-->
+            <main>
+                <div class="container pt-4">
+                    <!-- Section: Main chart 2 -->
+                    <section class="mb-4" id="doanhThuThang">
+                        <div class="card">
+                            <div class="card-header py-3">
+                                <h3 class="mb-0 text-center">
+                                    <strong>Revenue by month</strong>
+                                    <form id="f1" method="get" action="mothlyrevenue">
+                                        <select name="year" class="form-control" id="dropdownYear" style="width: 120px;" onchange="getYear(this)">
                                         <c:set var="currentYear" value="2023"/>
                                         <c:set var="endYear" value="2018"/>
                                         <c:forEach var="year" begin="0" end="${currentYear - endYear}">

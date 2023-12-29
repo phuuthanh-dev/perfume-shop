@@ -17,7 +17,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-12 col-md-12">
                         <div class="copyright_area">
-                            <p>Copyright &copy; 2021 <a href="#">Perfume Store </a>All right Reserved.</p>
+                            <p>Copyright &copy; 2021 <a href="#">Perfume Paradise Store </a>All right Reserved.</p>
                         </div>
                     </div>
                 </div>
