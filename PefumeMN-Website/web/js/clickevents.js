@@ -289,7 +289,7 @@ function toggleWishlist(id) {
         }
     });
 }
-function loadMore(obj) {
+function  loadMore(obj) {
     var amount = document.getElementsByClassName("product_items").length;
     var numPage = ((parseInt(obj.textContent) - 1) * 9);
     $(".linkLoad").removeClass("active");

@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class Product {
 
-    private String name, describe,classifyStr;
+    private String name, describe, classifyStr;
     private String[] image;
     private int id, quantity, starRating;
     private double price, discount, salePrice;

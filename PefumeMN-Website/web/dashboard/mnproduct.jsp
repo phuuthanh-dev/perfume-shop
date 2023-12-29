@@ -134,7 +134,7 @@
 
                         <div class="card-body">
                             <div class="table-responsive"  id="contentt">
-                                <table class="table table-hover text-nowrap">
+                                <table  class="table table-hover text-nowrap">
                                     <thead>
                                         <tr>
                                             <th class="text_page_head" scope="col">ID</th>
@@ -144,7 +144,7 @@
                                             <th class="text_page_head" scope="col">Actions</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody  id="contentt">
                                         <c:forEach items="${listByPage}" var="o">
                                             <tr class="product_items">
                                                 <td class="text_page">${o.id}</td>
@@ -154,7 +154,7 @@
                                                 </td>
                                                 <td class="text_page">${o.price}$</td>
                                                 <td class="text_page">
-                                                    <a href="loadProduct?pid=${o.id}"><button type="button" class="btn btn-warning"><i class="fa-solid fa-pen"></i></button></a>
+                                                    <a href="updateproduct?pid=${o.id}"><button type="button" class="btn btn-warning"><i class="fa-solid fa-pen"></i></button></a>
                                                     <a href="deleteproduct?pid=${o.id}"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button></a>
                                                 </td>
                                             </tr>
@@ -162,14 +162,14 @@
                                     </tbody>
                                 </table>
 
-
                                 <div class="clearfix" style="text-align: center">
                                     <ul class="pagination">
                                         <c:if test="${page != 1}">
                                             <a class="page-item" href="manager?page=${page-1}">Previous</a>
                                         </c:if> 	
                                         <c:forEach begin="1" end="${numberpage}" var="i">
-                                            <a class="${page==i?"page-item activee":""}" style="${page==i?"background-color:black; color: white; font-size: 22px; float: left; padding: 8px 16px; text-decoration: none;":""}" href="manager?page=${i}" onclick="loadMore(this)" class="page-link">${i}</a>  
+                                            <a class="${page==i?"page-item activee":""}" style="${page==i?"background-color:black; color: white; font-size: 22px; float: left; padding: 8px 16px; text-decoration: none;":""}" 
+                                               href="manager?page=${i}" class="page-link">${i}</a>  
                                         </c:forEach>
                                         <c:if test="${page < numberpage}">
                                             <a class="page-item" href="manager?page=${page+1 }" class="page-link">Next</a>
@@ -191,7 +191,7 @@
         <div id="addEmployeeModal" class="modal fade">
             <div class="modal-dialog" style="margin: 28px 500px">
                 <div class="modal-content" style="width: 1000px; max-height: 900px; overflow: scroll">
-                    <form action="addproduct" method="post" enctype="multipart/form-data">
+                    <form action="addproduct" method="get" enctype="multipart/form-data">
                         <div class="modal-header">						
                             <h4 class="modal-title">Add Product</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -207,7 +207,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Price</label>
-                                <input name="price" type="text" class="form-control" >
+                                <input name="price" type="number" step="0.01" min="0" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Describe</label>
@@ -257,28 +257,26 @@
         </div>
 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>   
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
-        <script src="js/countdown.js"></script>
-        <script src="js/clickevents.js"></script>
+        <script src="../js/calender.js"></script>
+        <script src="../js/main.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
-        <script src="js/main.js"></script>
-        <!-- Bootstrap tooltips -->
+        <script src="../js/clickevents.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://mdbootstrap.com/previews/ecommerce-demo/js/jquery-3.4.1.min.js"></script>
         <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/popper.min.js"></script>
-        <!-- Bootstrap core JavaScript -->
         <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/bootstrap.js"></script>
-        <!-- MDB core JavaScript -->
         <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/mdb.min.js"></script>
-        <!-- MDB Ecommerce JavaScript -->
-        <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/mdb.ecommerce.min.js"></script>js/script.js"></script>
+        <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/mdb.ecommerce.min.js"></script>
+        <script type="text/javascript" src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/js/plugins/mdb-plugins-gathered.min.js"></script>
 
-    <script type="text/javascript" src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/js/plugins/mdb-plugins-gathered.min.js"></script>
-    <script type="text/javascript">
-    </script>
-</body>
+        <script src="../js/countdown.js"></script>
+        <script type="text/javascript">
+        </script>
+    </body>
 
 
 </html>

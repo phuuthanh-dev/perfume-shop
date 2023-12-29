@@ -671,13 +671,14 @@ public class ProductDAO extends DBContext {
                 + "    [CategoryID], \n"
                 + "    [QuantityPerUnit], \n"
                 + "    [UnitPrice], \n"
+                + "     [UnitsInStock],\n"
                 + "	[image],\n"
                 + "	[describe],\n"
                 + "	[releaseDate],\n"
                 + "	[Discount],\n"
                 + "	[status]\n"
                 + "	)\n"
-                + "VALUES (N'" + name + "','" + supplierID + "','" + categoryID + "','" + quantityunit + "','" + price + "','" + image + "',N'" + describe + "','" + date
+                + "VALUES (N'" + name + "','" + supplierID + "','" + categoryID + "','" + quantityunit + "','" + price + "','" + quantity + "','" + image + "',N'" + describe + "','" + date
                 + "','" + discount + "','1')";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -688,14 +689,64 @@ public class ProductDAO extends DBContext {
         }
     }
 
+    public void editProduct(String name, String image, double price, String describe, int quantity,
+            String quantityunit, String date, double discount, int supplierID, int categoryID, int productID) {
+        String sql = "UPDATE [dbo].[Products]\n"
+                + "   SET [ProductName] = ?\n"
+                + "   ,[SupplierID] = ?\n"
+                + "      ,[CategoryID] = ?\n"
+                + "      ,[QuantityPerUnit]=? \n"
+                + "      ,[UnitPrice] =? \n"
+                + "      ,[UnitsInStock] =? \n";
+
+        if (!(image.equals(""))) {
+            sql += "      ,[image] =? \n";
+        }
+        sql += "      ,[describe] =? \n"
+                + "      ,[releaseDate] =? \n"
+                + "      ,[Discount] =? \n"
+                + " WHERE [ProductID]=?";
+        System.out.println(sql);
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, name);
+            st.setInt(2, supplierID);
+            st.setInt(3, categoryID);
+            st.setString(4, quantityunit);
+            st.setDouble(5, price);
+            st.setInt(6, quantity);
+            if (!image.equals("")) {
+                st.setString(7, image);
+                st.setString(8, describe);
+                st.setString(9, date);
+                st.setDouble(10, discount);
+                st.setInt(11, productID);
+                System.out.println(2);
+                st.executeUpdate();
+                return;
+            } else {
+                st.setString(7, describe);
+                st.setString(8, date);
+                st.setDouble(9, discount);
+                st.setInt(10, productID);
+                st.executeUpdate();
+                System.out.println(1);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
     public static void main(String[] args) {
         ProductDAO p = new ProductDAO();
         int[] a = {0};
-        int aa = p.countAllProduct();
+        p.editProduct("tat", "", 1, "", 1, "10ml", "2019-10-10", 0, 1, 1, 1);
         List<Product> list = p.getAll();
-        System.out.println(aa);
         for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).getImage()[1]);
+            System.out.println(list.get(i).getName());
+            System.out.println(list.get(i).getImage()[0]);
         }
     }
 }
