@@ -12,15 +12,17 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import javax.mail.internet.InternetAddress;
 import java.util.List;
 import model.Category;
+import model.Email;
 
 /**
  *
  * @author lvhho
  */
-@WebServlet(name = "AboutUsServlet", urlPatterns = {"/aboutus"})
-public class AboutUsServlet extends HttpServlet {
+@WebServlet(name = "ContactServlet", urlPatterns = {"/contact"})
+public class ContactServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +41,10 @@ public class AboutUsServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AboutUsServlet</title>");
+            out.println("<title>Servlet ContactServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AboutUsServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ContactServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,7 +65,7 @@ public class AboutUsServlet extends HttpServlet {
         CategoryDAO d = new CategoryDAO();
         List<Category> categories = d.getAll();
         request.setAttribute("category", categories);
-        request.getRequestDispatcher("about_us.jsp").forward(request, response);
+        request.getRequestDispatcher("contact.jsp").forward(request, response);
     }
 
     /**
@@ -77,7 +79,26 @@ public class AboutUsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String name = request.getParameter("contactName");
+        String email = request.getParameter("contactEmail");
+        Email handleEmail = new Email();
+        String message = "";
+        String check = "";
+
+        if (handleEmail.isValidEmail(email)) {
+            message = "Cảm ơn bạn là liên hệ với chúng tôi, chúng tôi sẽ kết nối với bạn trong thời gian sớm nhất";
+            check = "success";
+            String subject = handleEmail.subjectContact(name);
+            String msg = handleEmail.messageContact(name);
+            handleEmail.sendEmail(subject, msg, email);
+        } else {
+            message = "Có vẻ như một số thông tin cung cấp của bạn không hợp lệ, vui lòng cung cấp lại thông tin";
+            check = "fail";
+        }
+
+        request.setAttribute("message", message);
+        request.setAttribute("check", check);
+        request.getRequestDispatcher("contact.jsp").forward(request, response);
     }
 
     /**

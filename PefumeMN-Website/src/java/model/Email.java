@@ -5,10 +5,11 @@
 package model;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
@@ -25,6 +26,21 @@ public class Email {
     private final String ePass = "ojlx ohfr qxwd llxx";
 
     // 
+    // check email
+    public boolean isValidEmail(String email) {
+        // Biểu thức chính quy cho định dạng email
+        String emailRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}$";
+
+        // Tạo đối tượng Pattern
+        Pattern pattern = Pattern.compile(emailRegex);
+
+        // Tạo đối tượng Matcher
+        Matcher matcher = pattern.matcher(email);
+
+        // Kiểm tra chuỗi với biểu thức chính quy
+        return matcher.matches();
+    }
+    
     public void sendEmail(String subject, String messgage, String to) {
         try {
 
@@ -76,9 +92,13 @@ public class Email {
     public String subjectDiscount() {
         return "PerfumeMN - Heyyy, Unlock Your Exclusive Discount Inside!";
     }
+    
+    public String subjectContact(String name) {
+        return "Hey " + name + " you have an appointment with us - Perfume Paradise";
+    }
 
     public String subjectOrder(String fullName) {
-        return "Hi, " + fullName + ", thanks for your order from Perfume Shop!";
+        return "Hi, " + fullName + ", thanks for your order from Perfume Paradise Store!";
     }
 
     // Select content to send email
@@ -152,6 +172,92 @@ public class Email {
                 + "    </div>\n"
                 + "  </div>\n"
                 + "</body>\n"
+                + "</html>";
+    }
+
+    public String messageContact(String name) {
+        return "<!DOCTYPE html>\n"
+                + "<html lang=\"en\">\n"
+                + "\n"
+                + "<head>\n"
+                + "    <meta charset=\"UTF-8\">\n"
+                + "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n"
+                + "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+                + "    <title>Chăm sóc khách hàng - Perfume Paradise</title>\n"
+                + "    <style>\n"
+                + "        body {\n"
+                + "            font-family: 'Arial', sans-serif;\n"
+                + "            margin: 0;\n"
+                + "            padding: 0;\n"
+                + "            background-color: #f4f4f4;\n"
+                + "        }\n"
+                + "\n"
+                + "        .container {\n"
+                + "            max-width: 600px;\n"
+                + "            margin: 0 auto;\n"
+                + "            background-color: #fff;\n"
+                + "            padding: 20px;\n"
+                + "            border-radius: 10px;\n"
+                + "            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n"
+                + "            margin-top: 20px;\n"
+                + "        }\n"
+                + "\n"
+                + "        h1,\n"
+                + "        p {\n"
+                + "            text-align: center;\n"
+                + "        }\n"
+                + "\n"
+                + "        .logo {\n"
+                + "            text-align: center;\n"
+                + "            margin-bottom: 20px;\n"
+                + "        }\n"
+                + "\n"
+                + "        img {\n"
+                + "            max-width: 100%;\n"
+                + "            height: auto;\n"
+                + "        }\n"
+                + "\n"
+                + "        .message {\n"
+                + "            margin-top: 20px;\n"
+                + "        }\n"
+                + "\n"
+                + "        .btn {\n"
+                + "            display: inline-block;\n"
+                + "            padding: 10px 20px;\n"
+                + "            background-color: #3498db;\n"
+                + "            color: #fff;\n"
+                + "            text-decoration: none;\n"
+                + "            border-radius: 5px;\n"
+                + "        }\n"
+                + "\n"
+                + "        .footer {\n"
+                + "            margin-top: 20px;\n"
+                + "            text-align: center;\n"
+                + "            color: #888;\n"
+                + "        }\n"
+                + "    </style>\n"
+                + "</head>\n"
+                + "\n"
+                + "<body>\n"
+                + "    <div class=\"container\">\n"
+                + "        <div class=\"logo\">\n"
+                + "            <img src=\"images/logo.png\" alt=\"Perfume Paradise Logo\">\n"
+                + "        </div>\n"
+                + "        <h1>Chào mừng bạn đến với Perfume Paradise!</h1>\n"
+                + "        <div class=\"message\">\n"
+                + "            <p>Xin chân thành cảm ơn khách hàng " + name + " đã lựa chọn Perfume Paradise cho nhu cầu mua sắm của mình.</p>\n"
+                + "            <p>Chúng tôi luôn cam kết mang đến cho bạn những sản phẩm chất lượng nhất và dịch vụ tận tâm nhất.</p>\n"
+                + "            <p>Nếu bạn có bất kỳ câu hỏi hoặc đề xuất nào, đừng ngần ngại liên hệ với chúng tôi qua địa chỉ email:\n"
+                + "                <a href=\"perfumeparadisevn@gmail.com\" class=\"btn\">customer_support@perfumeparadise.com</a>\n"
+                + "            </p>\n"
+                + "            <p>Cảm ơn bạn và chúc bạn có một trải nghiệm mua sắm tuyệt vời!</p>\n"
+                + "        </div>\n"
+                + "        <div class=\"footer\">\n"
+                + "            <p>Perfume Paradise - 61/2 Quang Trung, Ward 10 Go Vap District, Ho Chi Minh city - Số điện thoại: 1900 9090</p>\n"
+                + "        </div>\n"
+                + "    </div>\n"
+                + "</body>\n"
+                + "\n"
                 + "</html>";
     }
 
