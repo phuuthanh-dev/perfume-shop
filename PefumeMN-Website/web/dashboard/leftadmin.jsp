@@ -26,6 +26,10 @@
                 <i style="margin-right: 10px; font-size: 18px" class="fas fa-user-circle fa-fw me-3"></i>
                 <span style="font-size: 16px; font-weight: 600">Accounts</span>
             </a>
+            <a href="walletmanager" class="list-group-item list-group-item-action" style="margin-top: 10px">
+                <i style="margin-right: 10px; font-size: 18px" class="fa-solid fa-wallet"></i>
+                <span style="font-size: 16px; font-weight: 600">Wallets</span>
+            </a>
             <a href="manager" class="list-group-item list-group-item-action" style="margin-top: 10px">
                 <i style="margin-right: 10px; font-size: 18px" <i class="fa-solid fa-cart-shopping"></i>
                 <span style="font-size: 16px; font-weight: 600">Products</span>

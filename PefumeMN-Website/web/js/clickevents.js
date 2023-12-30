@@ -180,6 +180,38 @@ function confirmLogout(modalID) {
     return result;
 }
 
+function modalEditWallet(modalID, username) {
+    let modalElement = document.getElementById(modalID);
+    let modal = `
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form id="form" action="addbalance" method="post">
+                        <div class="modal-header">						
+                            <h4 class="modal-title">Add Wallet</h4>
+                        </div>
+                        <div class="modal-body">	
+                            <div class="form-group">
+                                <label>User Name</label>
+                                <input name="userName" type="text" class="form-control" value="${username}" readonly>
+                            </div>
+                        </div>
+                        <div class="modal-body">	
+                            <div class="form-group">
+                                <label>Balance</label>
+                                <input name="balance" type="number" class="form-control" min="0" step="0.001">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                            <input type="submit" onclick="submitForm()" class="btn btn-success" value="Add">
+                        </div>
+                    </form>
+                </div>
+            </div>`;
+    let result = modalElement.innerHTML = modal;
+    return result;
+}
+
 //
 function acceptRead() {
     var elements = document.querySelectorAll(".acceptEdit");

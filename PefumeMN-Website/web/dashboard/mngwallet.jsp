@@ -115,7 +115,7 @@
                             <div class="row" style="">
                                 <div class="col-sm-4" style="text-align: center; margin-top: 20px; margin-bottom: 20px;padding-top: 20px">
                                     <h3 class="mb-0" id="">
-                                        <strong>Manage Account</strong>
+                                        <strong>Manage Wallet</strong>
                                     </h3>
                                 </div>
                                 <div class="col-lg-2"></div>
@@ -141,36 +141,20 @@
                             <div class="table-responsive">
                                 <table class="table table-hover text-nowrap">
                                     <thead>
-                                        <tr>
-                                            <th class="text_page_head">Full name</th>
-                                            <th class="text_page_head">Avatar</th>
-                                            <th class="text_page_head">Username</th>
-                                            <th class="text_page_head">Address</th>
-                                            <th class="text_page_head">Role</th>
-                                            <th class="text_page_head">Phone</th>
-                                            <th>
-                                                <a style="margin-left: 5px" href="#addEmployeeModal" class="btn btn-success" data-toggle="modal">
-                                                    <i class="fa-solid fa-plus"></i>
-                                                </a>
-                                            </th>
+                                        <tr >
+                                            <th style="padding-left: 40px" class="text_page_head">Username</th>
+                                            <th class="text_page_head">Balance</th>
+                                            <th class="text_page_head">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody id="contentt">
-                                        <c:forEach items="${requestScope.listUser}" var="u">
+                                        <c:forEach items="${requestScope.listWallet}" var="w">
                                             <tr>
-                                                <td class="text_page" style="font-weight: 500">${u.fullName}</td>
-                                                <td class="text_page"  style="font-weight: 500">
-                                                    <img style="width: 70px; height: auto" src="${u.image}">
-                                                </td>
-                                                <td class="text_page"  style="font-weight: 500">${u.userName}</td>
-                                                <td class="text_page"  style="font-weight: 500">${u.address}</td>
-                                                <td class="text_page"  style="font-weight: 500">${u.roleID==1?"Admin":"Customer"}</td>
-                                                <td class="text_page"  style="font-weight: 500">${u.phone}</td>
-                                                <td class="text_page"  style="padding: 0 12px 16px">
-                                                    <a href="deleteaccount?username=${u.userName}">
-                                                        <button type="button" class="btn btn-danger">
-                                                            <i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i>
-                                                        </button>
+                                                <td style="padding-left: 40px" class="text_page" style="font-weight: 500">${w.userName}</td>
+                                                <td class="text_page" style="font-weight: 500">${w.balance}</td>
+                                                <td class="text_page">
+                                                    <a data-toggle="modal" data-target="#modal_box" onclick="modalEditWallet('modal_box', `${w.userName}`)" href="#">
+                                                        <button type="button" class="btn btn-warning"><i class="fa-solid fa-plus"></i></button>
                                                     </a>
                                                 </td>
                                             </tr>
@@ -184,60 +168,8 @@
                 <!--Section: Quan Ly tai Khoan-->
             </div>
         </main>
-
+        <div class="modal fade" id="modal_box" role="dialog"></div>
         <!-- Edit Modal HTML -->
-        <div id="addEmployeeModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form id="form" action="addaccount" method="post">
-                        <div class="modal-header">						
-                            <h4 class="modal-title">Add account</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">	
-                            <div class="form-group">
-                                <label>Full name</label>
-                                <input name="name" type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Username</label>
-                                <input name="user" type="text" class="form-control" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input name="pass" type="password" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Phone</label>
-                                <input name="phone" value="" type="text" class="form-control" id="phone">
-                            </div>
-
-                            <div class="form-group">
-                                <input name="roleId" value="1" type="checkbox" class="form-check-input" id="isAdmin">
-                                <label class="form-check-label" for="isAdmin">Admin</label>
-                            </div>
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input name="email" type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <div style="margin-bottom: 10px">Date of birth</div>
-                                <input type="hidden" name="birthdate" value="" id="here"/>
-                                <select class="bear-dates" id="dobDay" ></select>
-                                <select class="bear-months" id="dobMonth"></select>
-                                <select class="bear-years" id="dobYear"></select>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input type="submit" onclick="submitForm()" class="btn btn-success" value="Add">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>   
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -256,58 +188,22 @@
 
         <script src="js/calender.js"></script>
         <script type="text/javascript">
-                                dates('option');
-                                months('option', 11, 12);
-                                years('option', 1980, 2023);
-
-                                function monthNameToNumber(monthName) {
-                                    var months = [
-                                        'January', 'February', 'March', 'April', 'May', 'June',
-                                        'July', 'August', 'September', 'October', 'November', 'December'
-                                    ];
-                                    var lowerMonthName = monthName.toLowerCase();
-                                    var monthIndex = months.findIndex(function (month) {
-                                        return month.toLowerCase() === lowerMonthName;
-                                    });
-                                    return monthIndex !== -1 ? monthIndex + 1 : -1;
-                                }
-
-                                function submitForm() {
-                                    var here = document.querySelector('#here');
-                                    var form = document.getElementById('form');
-                                    var dobDay = document.getElementById('dobDay').value;
-                                    var dobMonthText = document.getElementById('dobMonth').value;
-                                    var dobMonth = monthNameToNumber(dobMonthText);
-                                    var dobYear = document.getElementById('dobYear').value;
-                                    if (dobMonth < 10 && dobDay < 10) {
-                                        dobFull = dobYear + '-0' + dobMonth + '-0' + dobDay;
-                                    } else if (dobMonth < 10 && !(dobDay < 10)) {
-                                        dobFull = dobYear + '-0' + dobMonth + '-' + dobDay;
-                                    } else if (dobDay < 10 && !(dobMonth < 10)) {
-                                        dobFull = dobYear + '-' + dobMonth + '-0' + dobDay;
-                                    } else {
-                                        dobFull = dobYear + '-' + dobMonth + '-' + dobDay;
-                                    }
-
-                                    here.value = dobFull;
-                                    form.submit();
-                                }
-                                function searchByName() {
-                                    var text = document.querySelector("#searchId").value;
-                                    $.ajax({
-                                        url: "/PefumeMN-Website/searchAccount",
-                                        type: "get",
-                                        data: {
-                                            txt: text
-                                        },
-                                        success: function (data) {
-                                            var row = document.getElementById("contentt");
-                                            row.innerHTML = data;
-                                        },
-                                        error: function (xhr) {
-                                        }
-                                    });
-                                }
+                                                        function searchByName() {
+                                                            var text = document.querySelector("#searchId").value;
+                                                            $.ajax({
+                                                                url: "/PefumeMN-Website/searchWallet",
+                                                                type: "get",
+                                                                data: {
+                                                                    txt: text
+                                                                },
+                                                                success: function (data) {
+                                                                    var row = document.getElementById("contentt");
+                                                                    row.innerHTML = data;
+                                                                },
+                                                                error: function (xhr) {
+                                                                }
+                                                            });
+                                                        }
         </script>
     </body>
 </html>

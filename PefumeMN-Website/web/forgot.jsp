@@ -30,6 +30,7 @@
                         <div class="fxt-content">
                             <div class="fxt-header">
                                 <a href="home" class="fxt-logo"><img src="images/logo.png" alt="Logo"></a>
+
                                 <div class="fxt-page-switcher">
                                     <a href="login" class="switcher-text1">Log In</a>
                                     <a href="register" class="switcher-text1">Register</a>
@@ -63,6 +64,7 @@
                                         </div>
                                     </c:if>
                                 </form>
+
                                 <c:if test="${requestScope.check != null && requestScope.check == 'true'}">
                                     <form action="confirmresetcode" method="get">
                                         <div class="form-group">
@@ -94,3 +96,4 @@
         <script src="js/main_1.js"></script>
     </body>
 </html>
+

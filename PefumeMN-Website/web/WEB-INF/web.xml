@@ -22,6 +22,7 @@
         <url-pattern>/mothlyrevenue</url-pattern>
         <url-pattern>/managerAccount</url-pattern>
         <url-pattern>/managersupplier</url-pattern>
+        <url-pattern>/walletmanager</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>HomeFilter</filter-name>

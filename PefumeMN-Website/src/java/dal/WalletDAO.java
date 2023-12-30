@@ -6,6 +6,8 @@ package dal;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import model.User;
 import model.Wallet;
 
@@ -29,6 +31,22 @@ public class WalletDAO extends DBContext {
         }
     }
 
+    public List<Wallet> getWalletBySearchName(String txtSearch) {
+        List<Wallet> list = new ArrayList<>();
+        String sql = "SELECT * FROM [dbo].[Wallets] where UserName LIKE ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            //set ?
+            st.setString(1, "%" + txtSearch + "%");
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                list.add(new Wallet(rs.getString("UserName"), rs.getDouble("Balance")));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    
     // 
     public Wallet getWalletByUserName(String name) {
         try {
@@ -70,5 +88,19 @@ public class WalletDAO extends DBContext {
             st.executeUpdate();
         } catch (Exception e) {
         }
+    }
+    
+    public List<Wallet> getAll() {
+        List<Wallet> list = new ArrayList<>();
+        String sql = "select * from Wallets order by Balance desc";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                list.add(new Wallet(rs.getString("UserName"), rs.getDouble("Balance")));
+            }
+        } catch (Exception e) {
+        }
+        return list;
     }
 }

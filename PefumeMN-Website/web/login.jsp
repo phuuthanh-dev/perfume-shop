@@ -60,6 +60,7 @@
                                     <div class="fxt-transformY-50 fxt-transition-delay-3">
                                         <div class="fxt-content-between">
                                             <button type="submit" class="fxt-btn-fill">Log in</button>
+                                            <a style="color: black" href="#" class="switcher-text2">Forgot Password</a>
                                         </div>
                                     </div>
                                 </div>
