@@ -5,19 +5,20 @@
  */
 package controller;
 
-import dal.ProductDAO;
-import dal.OrderDAO;
+import dal.CategoryDAO;
 import dal.SupplierDAO;
-import dal.UserDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
+import model.Category;
+import model.Supplier;
 
-@WebServlet(name = "DashBoardServlet", urlPatterns = {"/admin"})
-public class DashBoardServlet extends HttpServlet {
+@WebServlet(name = "EditSupplierControl", urlPatterns = {"/editsupplier"})
+public class EditSupplierControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,7 +33,23 @@ public class DashBoardServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-
+        String sid_raw = request.getParameter("id");
+        String companyName = request.getParameter("companyName");
+        String contactName = request.getParameter("contactName");
+        String country = request.getParameter("country");
+        String phone = request.getParameter("phone");
+        String homepage = request.getParameter("homepage");
+        
+        SupplierDAO daoS = new SupplierDAO();
+        CategoryDAO daoC = new CategoryDAO();
+        int id = Integer.parseInt(sid_raw);
+        daoS.editSupplier(id, companyName, contactName, country, phone, homepage);
+        List<Supplier> listAllSupplier = daoS.getAll();
+        List<Category> listAllCategory = daoC.getAll();
+        request.setAttribute("mess", "Edit successfully!");
+        request.setAttribute("listAllSupplier", listAllSupplier);
+        request.setAttribute("listAllCategory", listAllCategory);
+        request.getRequestDispatcher("dashboard/supplier.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -46,24 +63,8 @@ public class DashBoardServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {        
-        ProductDAO dao = new ProductDAO();
-        UserDAO udao = new UserDAO();
-        OrderDAO odao = new OrderDAO();
-       SupplierDAO sdao = new SupplierDAO();
-        int count = dao.countAllProduct();
-        int countS = dao.countAllTypeProduct();
-        int countu = udao.countAllUser();
-        int countSupplier = sdao.countAllSupplier();
-        int sumquantitySold = dao.getSumQuantitySold();
-        double totalmoneyAll = odao.sumAllMoneyOrder();
-        request.setAttribute("countProduct", count);
-        request.setAttribute("countSupplier", countSupplier);
-        request.setAttribute("countTypeProduct", countS);
-        request.setAttribute("sumquantitySold", sumquantitySold);
-        request.setAttribute("countUser", countu);
-        request.setAttribute("totalmoneyAll", totalmoneyAll);
-        request.getRequestDispatcher("dashboard/dashboard.jsp").forward(request, response);
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**

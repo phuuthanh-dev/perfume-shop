@@ -18,9 +18,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Product;
 
-@WebServlet(name = "ManagerSupplierControl", urlPatterns = {"/managersupplier"})
+@WebServlet(name = "ManagerSupplierServlet", urlPatterns = {"/managersupplier"})
 public class ManagerSupplierServlet extends HttpServlet {
 
     /**
@@ -36,16 +35,7 @@ public class ManagerSupplierServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        SupplierDAO daoS = new SupplierDAO();
-        CategoryDAO daoC = new CategoryDAO();
-
-        List<Supplier> listAllSupplier = daoS.getAll();
-        List<Category> listAllCategory = daoC.getAll();
-
-        request.setAttribute("listAllSupplier", listAllSupplier);
-        request.setAttribute("listAllCategory", listAllCategory);
-
-        request.getRequestDispatcher("dashboard/supplier.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -60,7 +50,14 @@ public class ManagerSupplierServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        SupplierDAO daoS = new SupplierDAO();
+        CategoryDAO daoC = new CategoryDAO();
+
+        List<Supplier> listAllSupplier = daoS.getAll();
+
+        request.setAttribute("listAllSupplier", listAllSupplier);
+
+        request.getRequestDispatcher("dashboard/supplier.jsp").forward(request, response);
     }
 
     /**

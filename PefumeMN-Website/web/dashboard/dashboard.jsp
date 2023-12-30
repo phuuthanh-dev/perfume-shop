@@ -96,7 +96,7 @@
                                         <div class="d-flex justify-content-between p-md-1">
                                             <div class="d-flex flex-row">
                                                 <div class="align-self-center">
-                                                    <i style="color: #1B813A; font-size: 50px" <i class="fa-solid fa-box"></i>
+                                                    <i style="color: #1B813A; font-size: 50px" class="fa-solid fa-boxes-stacked"></i>
                                                 </div>
                                             </div>
                                             <div style="text-align: end">
@@ -134,7 +134,7 @@
                                     <div class="d-flex justify-content-between p-md-1">
                                         <div class="d-flex flex-row">
                                             <div class="align-self-center">
-                                                <i style="color: #E94644; font-size: 50px" <i class="fa-solid fa-money-bill"></i>
+                                                <i style="color: #E94644; font-size: 50px"  class="fa-solid fa-money-bill"></i>
                                             </div>
                                         </div>
                                         <div style="text-align: end">
@@ -159,6 +159,44 @@
                                             <h4 style="color: #06439F;">Total Users</h4>
                                             <p class="mb-0"></p>
                                             <h2 class="h1 mb-0">${requestScope.countUser}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-md-12 mb-4">
+                            <div class="card">
+                                <div style="padding: 10px 15px">
+                                    <div class="d-flex justify-content-between p-md-1">
+                                        <div class="d-flex flex-row">
+                                            <div class="align-self-center">
+                                                <i style="color: black; font-size: 50px" class="fa-solid fa-box"></i>
+                                            </div>
+                                        </div>
+                                        <div style="text-align: end">
+                                            <h4 style="color: black;">Total Product Type</h4>
+                                            <p class="mb-0"></p>
+                                            <h2 class="h1 mb-0">${requestScope.countTypeProduct}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-12 mb-4">
+                            <div class="card">
+                                <div style="padding: 10px 15px">
+                                    <div class="d-flex justify-content-between p-md-1">
+                                        <div class="d-flex flex-row">
+                                            <div class="align-self-center">
+                                                <i style="color: #1B813A; font-size: 50px" class="fa-solid fa-parachute-box"></i>
+                                            </div>
+                                        </div>
+                                        <div style="text-align: end">
+                                            <h4 style="color: #1B813A;">Total Supplier</h4>
+                                            <p class="mb-0"></p>
+                                            <h2 class="h1 mb-0">${requestScope.countSupplier}</h2>
                                         </div>
                                     </div>
                                 </div>

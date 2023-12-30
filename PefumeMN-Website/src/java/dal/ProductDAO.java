@@ -547,6 +547,19 @@ public class ProductDAO extends DBContext {
     }
 
     public int countAllProduct() {
+        String sql = "select sum([UnitsInStock]) from Products";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+    
+    public int countAllTypeProduct() {
         String sql = "select count(*) from Products";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -721,7 +734,6 @@ public class ProductDAO extends DBContext {
                 st.setString(9, date);
                 st.setDouble(10, discount);
                 st.setInt(11, productID);
-                System.out.println(2);
                 st.executeUpdate();
                 return;
             } else {
@@ -730,7 +742,6 @@ public class ProductDAO extends DBContext {
                 st.setDouble(9, discount);
                 st.setInt(10, productID);
                 st.executeUpdate();
-                System.out.println(1);
             }
 
         } catch (Exception e) {

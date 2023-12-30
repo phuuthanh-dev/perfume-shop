@@ -109,36 +109,34 @@
 
                                                     <div class="cart_info">
                                                         <a href="#">${p.product.name}</a>
-                                                        <p><span>Rs.${p.price}</span> X ${p.quantity}</p>
+                                                        <p style="color: black"><span style="color: black">Rs.${p.price}</span> X ${p.quantity}</p>
                                                     </div>
 
                                                     <div class="cart_remove">
                                                         <button style="padding: 0 5px; border: #fff" value="${p.product.id}" onclick="removeProductCart(this)">
-                                                            <i class="fa fa-times"></i>
+                                                            <i style="color: black" class="fa fa-times"></i>
                                                         </button>
                                                     </div>
 
                                                 </div>
                                             </c:forEach>
                                         </c:if>
-
                                     </div>
-
                                     <c:if test="${sessionScope.cart == null || sessionScope.cartSize == 0}">
-                                        <span class="header__cart-list--no-cart-msg">Nothing now!</span>
+                                        <span style="color: black" class="header__cart-list--no-cart-msg">Nothing now!</span>
                                         <img src="images/emptycart.png" alt="Emptycart" style=" width: 60%;">
                                     </c:if>
                                 </div>
                                 <div class="mini_cart_table">
                                     <div class="cart_table_border">
                                         <div class="cart_total">
-                                            <span>Sub Total :</span>
+                                            <span style="color: black">Sub Total :</span>
                                             <span class="price" style="color:grey">Rs.${sessionScope.cart.getTotalPriceWithOutDiscount()}</span>
                                         </div>
 
                                         <div class="cart_total mt-10">
-                                            <span>Total :</span>
-                                            <span class="price">Rs. ${sessionScope.cart.getTotalMoney()}</span>
+                                            <span style="color: black">Total :</span>
+                                            <span class="price" style="color: black">Rs. ${sessionScope.cart.getTotalMoney()}</span>
                                         </div>
 
                                     </div>

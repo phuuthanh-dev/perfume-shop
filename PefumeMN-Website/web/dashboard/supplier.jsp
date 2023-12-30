@@ -150,13 +150,12 @@
                                             <th class="text_page_head" scope="col">Contact name</th> 
                                             <th class="text_page_head" scope="col">Country</th> 
                                             <th class="text_page_head" scope="col">
-                                                <a  style="margin-left: 5px" href="#addEmployeeModal"  class="btn btn-success" data-toggle="modal"><i class="fa-solid fa-plus"></i></a>
+                                                <a  style="margin-left: 30px" href="#addEmployeeModal"  class="btn btn-success" data-toggle="modal"><i class="fa-solid fa-plus"></i></a>
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody id="contentt">
                                         <c:forEach items="${listAllSupplier}" var="o">
-
                                             <tr>
                                                 <td class="text_page">${o.id}</td>
                                                 <td class="text_page">${o.companyName}</td>
@@ -164,6 +163,7 @@
                                                 <td class="text_page">${o.contactName}</td>
                                                 <td class="text_page">${o.country}</td> 
                                                 <td class="text_page" style="padding: 0 12px 16px">
+                                                    <a href="updatesupplier?sid=${o.id}"><button type="button" class="btn btn-warning"><i class="fa-solid fa-pen"></i></button></a>
                                                     <a href="deletesupplier?sid=${o.id}">
                                                         <button type="button" class="btn btn-danger">
                                                             <i class="fa-solid fa-trash" data-toggle="tooltip" title="Delete"></i>
@@ -183,7 +183,6 @@
 
 
         </main>
-
         <!-- Edit Modal HTML -->
         <div id="addEmployeeModal" class="modal fade">
             <div class="modal-dialog">
@@ -249,23 +248,23 @@
         <script type="text/javascript" src="js/mdb.min.js"></script>
         <!-- Custom scripts -->
         <script type="text/javascript" src="js/script.js"></script>
-                <script type="text/javascript">
-                                function searchByName() {
-                                    var text = document.querySelector("#searchId").value;
-                                    $.ajax({
-                                        url: "/PefumeMN-Website/searchSupplier",
-                                        type: "get",
-                                        data: {
-                                            txt: text
-                                        },
-                                        success: function (data) {
-                                            var row = document.getElementById("contentt");
-                                            row.innerHTML = data;
-                                        },
-                                        error: function (xhr) {
-                                        }
-                                    });
-                                }
+        <script type="text/javascript">
+            function searchByName() {
+                var text = document.querySelector("#searchId").value;
+                $.ajax({
+                    url: "/PefumeMN-Website/searchSupplier",
+                    type: "get",
+                    data: {
+                        txt: text
+                    },
+                    success: function (data) {
+                        var row = document.getElementById("contentt");
+                        row.innerHTML = data;
+                    },
+                    error: function (xhr) {
+                    }
+                });
+            }
         </script>
     </body>
 </html>

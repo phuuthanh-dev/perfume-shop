@@ -13,8 +13,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
-import model.Category;
 import model.Supplier;
 
 /**
@@ -48,7 +46,7 @@ public class AddSupplierControl extends HttpServlet {
         sd.insert(supplier);
         msg = "Supplier " + supplier.getCompanyName() + " add successfully!";
         request.setAttribute("mess", msg);
-        request.getRequestDispatcher("managersupplier").forward(request, response);
+        response.sendRedirect("managersupplier");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

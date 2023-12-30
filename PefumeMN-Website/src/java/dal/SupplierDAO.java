@@ -39,7 +39,7 @@ public class SupplierDAO extends DBContext {
 
         return list;
     }
-    
+
     public List<Supplier> getSuppliersBySearch(String txtSearch) {
         List<Supplier> list = new ArrayList<>();
         String sql = "SELECT * FROM Suppliers WHERE CompanyName LIKE ?";
@@ -131,4 +131,39 @@ public class SupplierDAO extends DBContext {
         }
     }
 
+    public void editSupplier(int id, String companyName, String contactName, String country, String phone, String homepage) {
+        String sql = "UPDATE [dbo].[Suppliers]\n"
+                + "   SET [CompanyName] = ?\n"
+                + "      ,[ContactName] = ?\n"
+                + "      ,[Country] = ?\n"
+                + "      ,[Phone] = ?\n"
+                + "      ,[HomePage] = ?\n"
+                + " WHERE [SupplierID] = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, companyName);
+            st.setString(2, contactName);
+            st.setString(3, country);
+            st.setString(4, phone);
+            st.setString(5, homepage);
+            st.setInt(6, id);
+            st.executeUpdate();
+
+        } catch (Exception e) {
+
+        }
+    }
+    
+    public int countAllSupplier() {
+        String sql = "select count(*) from Suppliers";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
 }
