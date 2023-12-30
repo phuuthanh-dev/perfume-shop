@@ -107,6 +107,10 @@
                 right: 13px;
                 top: 40px;
             }
+            
+            label {
+                font-size: 14px;
+            }
         </style>
         <link rel="stylesheet" href="css/style.css">
     </head>
@@ -157,19 +161,21 @@
                             <h4 style="color: green">${mess}</h4>
                             <form action="changepass" method="post">
                                 <div class="mb-3" style="position: relative">
-                                    <label class="small mb-1" for="currentPassword">Current Password</label>
+                                    <label class="mb-1" for="currentPassword">Current Password</label>
                                     <input name="oldpass" class="form-control" id="pass" required type="password" placeholder="Enter current password">
                                     <i id="iconsee" style="cursor: pointer" onclick="changeIcon(this)" class="fa-solid fa-eye-slash"></i>
                                 </div>
                                 <div class="mb-3" style="position: relative">
-                                    <label class="small mb-1" for="newPassword">New Password</label>
-                                    <input name="newpass" class="form-control" id="pass1" required type="password" placeholder="Enter new password">
+                                    <label class="mb-1" for="newPassword">New Password</label>
+                                    <input oninput="checkNumberCharacter(this)" name="newpass" value="" class="form-control" id="pass1" required type="password" placeholder="Enter new password">
                                     <i id="iconsee" style="cursor: pointer" onclick="changeIcon(this)" class="fa-solid fa-eye-slash"></i>
+                                    <label style="color: red; display:none" class="mb-1" id="text1"></label>
                                 </div>
                                 <div class="mb-3" style="position: relative">
-                                    <label class="small mb-1" for="confirmPassword">Confirm Password</label>
-                                    <input name="cfnewpass" class="form-control" id="pass2" required type="password" placeholder="Confirm new password">
+                                    <label class="mb-1" for="confirmPassword">Confirm Password</label>
+                                    <input oninput="checkSame(this)" name="cfnewpass" class="form-control" id="pass2" required type="password" placeholder="Confirm new password">
                                     <i id="iconsee" style="cursor: pointer" onclick="changeIcon(this)" class="fa-solid fa-eye-slash"></i>
+                                    <label style="color: red; display:none" class="mb-1" id="text"></label>
                                 </div>
                                 <input name="username" value="${user.userName}" id="confirmPassword" type="hidden">
                                 <button style="margin-top: 10px" class="btn btn-primary" type="submit">Save</button>
@@ -207,6 +213,35 @@
                                                 inputP.type = 'password';
                                             }
                                         }
+
+                                        function checkSame(obj) {
+                                            var text = document.getElementById("text1");
+                                            if (text.style.display == 'none') {
+                                                var a = document.getElementById("pass1");
+                                                if (obj.value !== a.value) {
+                                                    var text = document.getElementById("text");
+                                                    text.style.display = "block";
+                                                    text.textContent = "New password does not match. Please re-enter your new password here.";
+                                                } else {
+                                                    var text = document.getElementById("text");
+                                                    text.style.display = "none";
+                                                }
+                                            }
+                                        }
+
+                                        function checkNumberCharacter(obj) {
+                                            var a = document.getElementById("pass1");
+                                            if (obj.value.length <= 5) {
+                                                var text = document.getElementById("text1");
+                                                text.style.display = "block";
+                                                text.textContent = "This password should have more than 6 characters and be difficult for others to guess.";
+                                            } else {
+                                                var text = document.getElementById("text1");
+                                                text.style.display = "none";
+                                            }
+                                        }
+
+
         </script>
     </body>
 </html>
