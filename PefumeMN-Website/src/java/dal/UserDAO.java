@@ -280,4 +280,48 @@ public class UserDAO extends DBContext {
         }
     }
 
+    public String checkEmailExist(String email) {
+        try {
+            String sql = "SELECT * FROM Users WHERE Email = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, email);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                return email;
+            }
+        } catch (SQLException e) {
+        }
+        return null;
+    }
+
+    // 
+    public String getUserNameByEmail(String email) {
+        String sql = "SELECT Top 1 UserName FROM [dbo].[Users] WHERE Email = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            //set ?
+            st.setString(1, email);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                String name = rs.getString(1);
+                return name;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    //
+    public void updatePassByUserName(String pass, String username) {
+        String sql = "update Users set Password = ? where UserName= ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, pass);
+            st.setString(2, username);
+            st.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
 }

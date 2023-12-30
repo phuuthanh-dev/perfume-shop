@@ -1,99 +1,96 @@
+<%-- 
+    Document   : forgot
+    Created on : Dec 30, 2023, 9:21:53 PM
+    Author     : lvhho
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html class="no-js" lang="">
-
-
-    <!-- Mirrored from affixtheme.com/html/xmee/demo/forgot-password-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Dec 2023 15:39:35 GMT -->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Forot</title>
+        <title>Forgot</title>
         <link rel="icon" href="images/logo1.png"/>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <!-- Fontawesome CSS -->
-        <link rel="stylesheet" href="css/fontawesome-all.min.css">
-        <!-- Flaticon CSS -->
-        <link rel="stylesheet" href="font/flaticon.css">
-        <!-- Google Web Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="style.css">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="css/style_1.css">
     </head>
 
     <body>
-        <!--[if lt IE 8]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-        <div id="preloader" class="preloader">
-            <div class='inner'>
-                <div class='line1'></div>
-                <div class='line2'></div>
-                <div class='line3'></div>
-            </div>
-        </div>
         <section class="fxt-template-animation fxt-template-layout1">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6 col-12 fxt-bg-color">
                         <div class="fxt-content">
                             <div class="fxt-header">
-                                <a href="login-1.html" class="fxt-logo"><img src="img/logo-1.png" alt="Logo"></a>
+                                <a href="home" class="fxt-logo"><img src="images/logo.png" alt="Logo"></a>
                                 <div class="fxt-page-switcher">
-                                    <a href="login-1.html" class="switcher-text1">Log In</a>
-                                    <a href="register-1.html" class="switcher-text1">Register</a>
+                                    <a href="login" class="switcher-text1">Log In</a>
+                                    <a href="register" class="switcher-text1">Register</a>
                                 </div>
                             </div>
                             <div class="fxt-form">
                                 <h2>Forgot Password</h2>
-                                <p>For recover your password</p>
-                                <form method="POST">
+                                <c:if test="${requestScope.check == null}">
+                                    <p>For recover your password</p>
+                                </c:if>
+                                <c:if test="${requestScope.check != null}">
+                                    <c:if test="${requestScope.check == 'true'}">
+                                        <p style="color: green;">${requestScope.message}</p>
+                                    </c:if>
+                                    <c:if test="${requestScope.check == 'false'}">
+                                        <p style="color: red;">${requestScope.message}</p>
+                                    </c:if>
+                                </c:if>
+                                <form action="forgot" method="post">
                                     <div class="form-group">
                                         <div class="fxt-transformY-50 fxt-transition-delay-1">
-                                            <input type="email" class="form-control" name="email" placeholder="Email Address" required="required">
+                                            <input type="email" class="form-control" name="email" placeholder="Email Address" required="required" value="${requestScope.email}">
                                             <i class="flaticon-envelope"></i>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <div class="fxt-transformY-50 fxt-transition-delay-2">
-                                            <button type="submit" class="fxt-btn-fill">Send Me Email</button>
+                                    <c:if test="${requestScope.check == null}">
+                                        <div class="form-group">
+                                            <div class="fxt-transformY-50 fxt-transition-delay-2">
+                                                <button type="submit" class="fxt-btn-fill">Send Me Email</button>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </c:if>
                                 </form>
-                            </div>
-                            <div class="fxt-footer">
-                                <ul class="fxt-socials">
-                                    <li class="fxt-facebook fxt-transformY-50 fxt-transition-delay-3"><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li class="fxt-twitter fxt-transformY-50 fxt-transition-delay-4"><a href="#" title="twitter"><i class="fab fa-twitter"></i></a></li>
-                                    <li class="fxt-google fxt-transformY-50 fxt-transition-delay-5"><a href="#" title="google"><i class="fab fa-google-plus-g"></i></a></li>
-                                    <li class="fxt-linkedin fxt-transformY-50 fxt-transition-delay-6"><a href="#" title="linkedin"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li class="fxt-pinterest fxt-transformY-50 fxt-transition-delay-8">
-                                        <a href="#" title="pinterest"><i class="fab fa-pinterest-p"></i></a>
-                                    </li>
-                                </ul>
+                                <c:if test="${requestScope.check != null && requestScope.check == 'true'}">
+                                    <form action="confirmresetcode" method="get">
+                                        <div class="form-group">
+                                            <div class="fxt-transformY-50 fxt-transition-delay-1">
+                                                <input type="number" class="form-control" name="resetcode" placeholder="xxxxxx" required="required" value="${requestScope.code}">
+                                                <i class="flaticon-envelope"></i>
+                                            </div>
+                                        </div>
+                                        <c:if test="${requestScope.check != null && requestScope.check == 'true'}">
+                                            <div class="form-group">
+                                                <div class="fxt-transformY-50 fxt-transition-delay-2">
+                                                    <button type="submit" class="fxt-btn-fill">Confirm Reset Code</button>
+                                                </div>
+                                            </div>
+                                        </c:if>
+                                    </form>
+                                </c:if>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-12 fxt-none-767 fxt-bg-img" data-bg-image="img/figure/bg1-l.jpg"></div>
+                    <div class="col-md-6 col-12 fxt-none-767 fxt-bg-img" data-bg-image="images/figure/aa.jpg"></div>
                 </div>
             </div>
         </section>
-        <!-- jquery-->
         <script src="js/jquery.min.js"></script>
-        <!-- Bootstrap js -->
         <script src="js/bootstrap.min.js"></script>
-        <!-- Imagesloaded js -->
         <script src="js/imagesloaded.pkgd.min.js"></script>
-        <!-- Validator js -->
         <script src="js/validator.min.js"></script>
-        <!-- Custom Js -->
-        <script src="js/main.js"></script>
-
+        <script src="js/main_1.js"></script>
     </body>
-
-
-    <!-- Mirrored from affixtheme.com/html/xmee/demo/forgot-password-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Dec 2023 15:39:35 GMT -->
 </html>

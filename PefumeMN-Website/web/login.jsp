@@ -37,19 +37,24 @@
                             <form action="login" method="post">
                                 <div class="form-group">
                                     <div class="fxt-transformY-50 fxt-transition-delay-1">
-                                        <input type="text" class="form-control" name="username" placeholder="UserName" required value="${uName}">
+                                        <input type="text" class="form-control" name="username" placeholder="UserName" required value="${requestScope.uName}">
                                         <i class="fa-solid fa-user"></i>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="fxt-transformY-50 fxt-transition-delay-2">
-                                        <input id="pass" type="password" class="form-control" name="password" placeholder="Password" required value="${uPass}">
+                                        <input id="pass" type="${requestScope.check == null ? 'password' : 'text'}" class="form-control" name="password" placeholder="${requestScope.check == null ? 'Password' : 'Enter new pass word'}" required value="${uPass}">
                                         <i id="iconsee" style="cursor: pointer" onclick="changeIcon(this)" class="fa-solid fa-eye-slash"></i>
                                     </div>
                                 </div>
-                                <div class="fxt-transformY-50 fxt-transition-delay-2">
-                                    <input ${reMem==null?"":"checked"} id="remember" type="checkbox" name="remember" style=";margin-right: 6px; width: 15px; height: 15px">
-                                    <label style="font-size: 15px" for="remember">Remember me</label>
+                                <div class="fxt-transformY-50 fxt-transition-delay-2" style="display: flex;justify-content: space-between">
+                                    <div>
+                                        <input ${reMem==null?"":"checked"} id="remember" type="checkbox" name="remember" style=";margin-right: 6px; width: 15px; height: 15px">
+                                        <label style="font-size: 15px" for="remember">Remember me</label>
+                                    </div>
+                                    <div>
+                                        <a><a href="forgot" >Forgot Password</a>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="fxt-transformY-50 fxt-transition-delay-3">

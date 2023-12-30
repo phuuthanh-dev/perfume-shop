@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/dashboard/supplier.jsp</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/dal/SupplierDAO.java</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/DeleteSupplierControl.java</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/web/forgot.jsp</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/ForgotPassServlet.java</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/LoginServlet.java</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/RegisterServlet.java</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/ConfirmResetCodeServlet.java</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/model/Email.java</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/web/login.jsp</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/dal/UserDAO.java</file>
+            <file>file:/D:/Workspace/PRJ301_Prepare/Projects/Project_team/Perfume_web/QLDA_WebBanNuocHoa/PefumeMN-Website/web/register.jsp</file>
         </group>
     </open-files>
 </project-private>

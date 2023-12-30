@@ -104,6 +104,8 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("error", "Username or password invalid!");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
+            // update lai pass
+            ud.updatePassByUserName(uPass, uName);
             Wallet wallet = wd.getWalletByUserName(uName);
             session.setAttribute("wallet", wallet);
             session.setAttribute("account", user);

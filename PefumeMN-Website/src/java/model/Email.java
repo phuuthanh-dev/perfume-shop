@@ -40,7 +40,7 @@ public class Email {
         // Kiểm tra chuỗi với biểu thức chính quy
         return matcher.matches();
     }
-    
+
     public void sendEmail(String subject, String messgage, String to) {
         try {
 
@@ -92,13 +92,17 @@ public class Email {
     public String subjectDiscount() {
         return "Perfume Paradise - Heyyy, Unlock Your Exclusive Discount Inside!";
     }
-    
+
     public String subjectContact(String name) {
         return "Hey " + name + " you have an appointment with us - Perfume Paradise";
     }
 
     public String subjectOrder(String fullName) {
         return "Hi, " + fullName + ", thanks for your order from Perfume Paradise Store!";
+    }
+
+    public String subjectForgotPass() {
+        return "Support forgot password";
     }
 
     // Select content to send email
@@ -330,6 +334,42 @@ public class Email {
                 + "      <p>Thank you for placing your order!</p>\n"
                 + "    </div>\n"
                 + "  </div>\n"
+                + "</body>\n"
+                + "</html>";
+    }
+
+    public String messageForgotPass(String name,int code) {
+        return "<!DOCTYPE html>\n"
+                + "<html lang=\"en\">\n"
+                + "<head>\n"
+                + "    <meta charset=\"UTF-8\">\n"
+                + "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+                + "    <title>Password Reset Code</title>\n"
+                + "</head>\n"
+                + "<body style=\"font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;\">\n"
+                + "\n"
+                + "    <table style=\"width: 100%; max-width: 600px; margin: 20px auto; background-color: #ffffff; border-collapse: collapse;\">\n"
+                + "        <tr>\n"
+                + "            <td style=\"padding: 20px; text-align: center; background-color: #4CAF50; color: #ffffff; font-size: 24px;\">\n"
+                + "                Password Reset Code\n"
+                + "            </td>\n"
+                + "        </tr>\n"
+                + "        <tr>\n"
+                + "            <td style=\"padding: 20px;\">\n"
+                + "                <p>Hello "+name+",</p>\n"
+                + "                <p>You have requested to reset your password. Please use the following code to reset your password:</p>\n"
+                + "                <p style=\"font-size: 28px; font-weight: bold; color: #4CAF50;\">" + code + "</p>\n"
+                + "                <p>If you didn't request this, you can safely ignore this email.</p>\n"
+                + "                <p>Thank you!</p>\n"
+                + "            </td>\n"
+                + "        </tr>\n"
+                + "        <tr>\n"
+                + "            <td style=\"padding: 20px; text-align: center; background-color: #4CAF50; color: #ffffff;\">\n"
+                + "                &copy; 2023 Perfume Paradise\n"
+                + "            </td>\n"
+                + "        </tr>\n"
+                + "    </table>\n"
+                + "\n"
                 + "</body>\n"
                 + "</html>";
     }
