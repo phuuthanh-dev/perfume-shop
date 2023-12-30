@@ -108,7 +108,6 @@ public class ForgotPassServlet extends HttpServlet {
             request.setAttribute("check", check);
             request.getRequestDispatcher("forgot.jsp").forward(request, response);
         }
-
     }
 
     /**

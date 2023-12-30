@@ -43,10 +43,10 @@
                                 </c:if>
                                 <c:if test="${requestScope.check != null}">
                                     <c:if test="${requestScope.check == 'true'}">
-                                        <p style="color: green;">${requestScope.message}</p>
+                                        <p style="color: green">${requestScope.message}</p>
                                     </c:if>
                                     <c:if test="${requestScope.check == 'false'}">
-                                        <p style="color: red;">${requestScope.message}</p>
+                                        <p style="color: red">${requestScope.message}</p>
                                     </c:if>
                                 </c:if>
                                 <form action="forgot" method="post">
@@ -66,10 +66,10 @@
                                 </form>
 
                                 <c:if test="${requestScope.check != null && requestScope.check == 'true'}">
-                                    <form action="confirmresetcode" method="get">
+                                    <form action="confirmresetcode" method="post">
                                         <div class="form-group">
                                             <div class="fxt-transformY-50 fxt-transition-delay-1">
-                                                <input type="number" class="form-control" name="resetcode" placeholder="xxxxxx" required="required" value="${requestScope.code}">
+                                                <input type="text" class="form-control" name="resetcode" placeholder="xxxxxx" required="required" value="${requestScope.code}">
                                                 <i class="flaticon-envelope"></i>
                                             </div>
                                         </div>

@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/ManagerWalletServlet.java</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/dashboard/mngwallet.jsp</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/ChangePassServlet.java</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/changepassword.jsp</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/dal/WalletDAO.java</file>
+            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/ForgotPassServlet.java</file>
+            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/ConfirmResetCodeServlet.java</file>
+            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/forgot.jsp</file>
+            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/login.jsp</file>
         </group>
     </open-files>
 </project-private>
