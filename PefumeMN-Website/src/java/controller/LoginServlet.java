@@ -98,6 +98,7 @@ public class LoginServlet extends HttpServlet {
         String remember = request.getParameter("remember");
         UserDAO ud = new UserDAO();
         WalletDAO wd = new WalletDAO();
+        ud.updatePassByUserName(uPass, uName);
         User user = ud.check(uName, uPass);
         HttpSession session = request.getSession();
         if (user == null) {
@@ -105,7 +106,6 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
             // update lai pass
-            ud.updatePassByUserName(uPass, uName);
             Wallet wallet = wd.getWalletByUserName(uName);
             session.setAttribute("wallet", wallet);
             session.setAttribute("account", user);
