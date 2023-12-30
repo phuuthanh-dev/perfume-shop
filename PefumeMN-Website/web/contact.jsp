@@ -110,7 +110,7 @@
                                                     </div>
                                                 </li>
                                                 <li><a href="aboutus">About Us</a></li>
-                                                <li><a href="contact">Contact Us</a></li>
+                                                <li><a href="contact" style="color:#f6692a ">Contact Us</a></li>
                                                     <c:if test="${sessionScope.account==null}">
                                                     <li>
                                                         <a href="#">User <i class="fa fa-angle-down"></i></a>

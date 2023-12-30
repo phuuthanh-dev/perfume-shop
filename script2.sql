@@ -8,7 +8,7 @@ CREATE TABLE [dbo].[Orders](
 	[status] bit not null,
  CONSTRAINT [PK_Order] PRIMARY KEY ([OrderID]),
  CONSTRAINT [FK_Order_User] FOREIGN KEY ([UserName])
- REFERENCES [dbo].[Users] ([UserName])
+ REFERENCES [dbo].[Users] ([UserName]) ON DELETE NO ACTION
 )
 
 INSERT INTO [dbo].[Orders] ([Date], [UserName], [TotalMoney], [status]) VALUES 
@@ -31,7 +31,7 @@ INSERT INTO [dbo].[Orders] ([Date], [UserName], [TotalMoney], [status]) VALUES
 	('2023-02-12', 'user2', 16.93, 1),
 	('2023-02-12', 'user2', 19.93, 0),
 	('2023-01-15', 'user2', 216.93, 1);
-
+	
  -- Tạo bảng OrderDetails
  CREATE TABLE [dbo].[OrderDetails]( 
  	[OrderID] [int] NOT NULL,  	
@@ -91,3 +91,7 @@ VALUES
 
 
 
+/*drop table Wallets
+drop table OrderDetails
+drop table Orders
+drop table Users*/

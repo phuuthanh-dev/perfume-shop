@@ -20,7 +20,7 @@ import model.User;
 public class UserDAO extends DBContext {
 
     public User check(String username, String password) {
-        String sql = "SELECT * FROM Users WHERE userName = ? and password = ?";
+        String sql = "SELECT * FROM Users WHERE userName = ? and password = ? and [status] = 1";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, username);
@@ -38,7 +38,7 @@ public class UserDAO extends DBContext {
     }
 
     public int checkAccountAdmin(String userName) {
-        String sql = "select  from Users where [userName]=?";
+        String sql = "select  from Users where [userName]=? and [status] = 1";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, userName);
@@ -54,7 +54,7 @@ public class UserDAO extends DBContext {
 
     public List<User> getAllUsers() {
         List<User> list = new ArrayList<>();
-        String sql = "select * from Users order by roleId asc";
+        String sql = "select * from Users WHERE [status] = 1 order by roleId asc";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
@@ -68,7 +68,7 @@ public class UserDAO extends DBContext {
     }
 
     public boolean checkUserNameDuplicate(String username) {
-        String sql = "SELECT * FROM Users WHERE userName = ?";
+        String sql = "SELECT * FROM Users WHERE userName = ? and [status] = 1";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, username);
@@ -88,7 +88,7 @@ public class UserDAO extends DBContext {
         String sql = "UPDATE [dbo].[Users]\n"
                 + "   SET \n"
                 + "      [Image] = ?\n"
-                + " WHERE userName = ?";
+                + " WHERE userName = ? and [status] = 1";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, image);
@@ -128,7 +128,7 @@ public class UserDAO extends DBContext {
     }
 
     public User getUserByUserName(String userName) {
-        String sql = "SELECT * FROM [dbo].[Users] where UserName=?";
+        String sql = "SELECT * FROM [dbo].[Users] where UserName=? and [status] = 1";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             //set ?
@@ -154,8 +154,9 @@ public class UserDAO extends DBContext {
                 + "           ,[RoleID]\n"
                 + "           ,[BirthDay]\n"
                 + "           ,[Phone])\n"
+                + "           ,[status])\n"
                 + "     VALUES\n"
-                + "           (?,?,?,?,?,?)\n";
+                + "           (?,?,?,?,?,?,?)\n";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
 
@@ -165,6 +166,7 @@ public class UserDAO extends DBContext {
             st.setInt(4, c.getRoleID());
             st.setString(5, c.getBirthdate());
             st.setString(6, c.getPhone());
+            st.setInt(7, 1);
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -172,7 +174,7 @@ public class UserDAO extends DBContext {
     }
 
     public int countAllUser() {
-        String sql = "select count(*) from Users";
+        String sql = "select count(*) from Users where [status] = 1";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
@@ -194,8 +196,9 @@ public class UserDAO extends DBContext {
                 + "           ,[Email]\n"
                 + "           ,[BirthDay]\n"
                 + "           ,[Phone])\n"
+                + "           ,[status])\n"
                 + "     VALUES\n"
-                + "           (?,?,?,?,?,?,?)";
+                + "           (?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, UserName);
@@ -205,13 +208,14 @@ public class UserDAO extends DBContext {
             st.setString(5, Email);
             st.setString(6, BirthDay);
             st.setString(7, Phone);
+            st.setInt(8, 1);
             st.executeUpdate();
         } catch (Exception e) {
         }
     }
 
     public void deleteUser(String username) {
-        String sql = "delete from Users where UserName= ?";
+        String sql = "update Users set status = 0 where UserName= ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, username);
@@ -231,8 +235,8 @@ public class UserDAO extends DBContext {
 
     public List<Spending> getTop5Customers() {
         List<Spending> list = new ArrayList<>();
-        String sql = "select top(5) u.*, sum(TotalMoney) as TotalMoney from Orders o inner join Users u on o.UserName = u.UserName group by u.Address, "
-                + "u.BirthDay, u.Email, u.FullName, u.UserName, u.Password, u.Image, u.RoleID, u.UserID, u.Phone\n" + " order by TotalMoney desc";
+        String sql = "select top(5) u.*, sum(TotalMoney) as TotalMoney from Orders o inner join Users u on o.UserName = u.UserName and u.status = 1 group by u.Address, "
+                + "u.BirthDay, u.Email, u.FullName, u.UserName, u.Password, u.Image, u.RoleID, u.UserID, u.Phone, u.status\n" + " order by TotalMoney desc";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
@@ -247,13 +251,13 @@ public class UserDAO extends DBContext {
         return list;
     }
 
-   public List<User> getUsersBySearchName(String txtSearch) {
+    public List<User> getUsersBySearchName(String txtSearch) {
         List<User> list = new ArrayList<>();
-        String sql = "SELECT * FROM [dbo].[Users] where UserName LIKE ?";
+        String sql = "SELECT * FROM [dbo].[Users] where UserName LIKE ? and [status] = 1";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             //set ?
-            st.setString(1, "%"+txtSearch+"%");
+            st.setString(1, "%" + txtSearch + "%");
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 list.add(new User(rs.getString("userName"), rs.getString("fullName"), rs.getString("password"),
@@ -262,6 +266,18 @@ public class UserDAO extends DBContext {
         } catch (Exception e) {
         }
         return list;
+    }
+
+    public void changePassword(User s) {
+        String sql = "Update Users set password = ? where username = ? and [status] = 1";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, s.getPassword());
+            st.setString(2, s.getUserName());
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 
 }

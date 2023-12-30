@@ -15,13 +15,26 @@
         <title>
             About us
         </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://cdn.tailwindcss.com/3.3.2"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"/>
+        <style type="text/css">
+            .a {
+                color: black;
+            }
+        </style>
     </head>
 
     <body class="stretched no-transition">
-        <!-- Header
-============================================= -->
         <header>
-            <div class="main_header header_transparent header-mobile-m">
+            <div class="main_header header_transparent header-mobile-m" style="margin: 0">
                 <div class="header_container sticky-header">
                     <div class="container-fluid">
                         <div class="row align-items-center">
@@ -39,21 +52,21 @@
                                             <li class="mega_items">
                                                 <a href="#">Collections <i class="fa fa-angle-down"></i></a>
                                                 <div class="mega_menu">
-                                                    <ul class="mega_menu_inner">
+                                                    <ul  class="mega_menu_inner">
                                                         <li style="color: black; font-size: 16px">
 
-                                                            <a href="refine?cid_refine=${0}">ALL</a>
+                                                            <a class="a" href="refine?cid_refine=${0}">ALL</a>
                                                         </li>
                                                         <c:forEach items="${requestScope.category}" var="c">
-                                                            <li style="color: black; font-size: 16px">
-                                                                <a href="refine?cid_refine=${c.id}">${c.name}</a>
+                                                            <li style=" font-size: 16px">
+                                                                <a class="a" href="refine?cid_refine=${c.id}">${c.name}</a>
                                                             </li>
                                                         </c:forEach>
                                                     </ul>
                                                 </div>
                                             </li>
-                                            <li><a href="aboutus">About Us</a></li>
-                                            <li><a href="contact">Contact Us</a></li>
+                                            <li><a href="aboutus" style="color:#f6692a ">About Us</a></li>
+                                            <li><a href="contact" >Contact Us</a></li>
                                                 <c:if test="${sessionScope.account==null}">
                                                 <li>
                                                     <a href="#">User <i class="fa fa-angle-down"></i></a>
@@ -95,7 +108,7 @@
                 <!-- group 1 -->
                 <section id="section_about" class="corner clearfix" style=" background-image: url('images/banner/banner15.png');">
                     <div class="container">
-                        <h2 style="font-family: Roboto;font-size: 48px">Store
+                        <h2 style="font-family: Roboto;font-size: 48px; margin-top: 50px">Store
                             <span style="font-family: Roboto;color: #ff5722;">
                                 PERFUME PARADISE
                             </span>
@@ -406,18 +419,26 @@
         <jsp:include page="footer.jsp"/>
     </div><!-- #wrapper end -->
 
-</script>
-<link href="//bizweb.dktcdn.net/100/048/087/themes/776353/assets/bootstrap.min.scss.css?1671122359380"
-      rel="stylesheet" type="text/css" media="all" />
-<link href="//bizweb.dktcdn.net/100/048/087/themes/776353/assets/style.css?1671122359380" rel="stylesheet"
-      type="text/css" media="all" />
-<link rel="stylesheet" type="text/css"
-      href="//hstatic.net/0/global/design/member/fonts/svn-gotham-book,sans-serif.css">
 
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="//bizweb.dktcdn.net/100/048/087/themes/776353/assets/scripts.js?1671122359380"
-type="text/javascript"></script>
+    <link href="//bizweb.dktcdn.net/100/048/087/themes/776353/assets/bootstrap.min.scss.css?1671122359380"
+          rel="stylesheet" type="text/css" media="all" />
+    <link href="//bizweb.dktcdn.net/100/048/087/themes/776353/assets/style.css?1671122359380" rel="stylesheet"
+          type="text/css" media="all" />
+    <link rel="stylesheet" type="text/css"
+          href="//hstatic.net/0/global/design/member/fonts/svn-gotham-book,sans-serif.css">
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//bizweb.dktcdn.net/100/048/087/themes/776353/assets/scripts.js?1671122359380"
+    type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>   
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/clickevents.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

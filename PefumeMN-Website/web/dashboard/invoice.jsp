@@ -137,11 +137,7 @@
                                             <tr>
                                                 <th scope="row"></th>
                                                 <td  class="text_page">${i.orderId}</td>
-                                                <c:forEach items="${listAllAccount}" var="a">
-                                                    <c:if test="${i.userName==a.userName}">
-                                                        <td class="text_page">${a.userName}</td>
-                                                    </c:if>
-                                                </c:forEach>
+                                                <td class="text_page">${i.userName}</td>
                                                 <td class="text_page">${String.format("%.02f",i.total)}</td>
                                                 <td class="text_page">${i.date}</td> 
                                                 <td id="status" class="text_page">

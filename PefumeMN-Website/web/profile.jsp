@@ -134,9 +134,6 @@
             .btn-secondary:focus{
                 box-shadow: none;
             }
-
-
-
         </style>
         <link rel="stylesheet" href="css/style.css">
     </head>
@@ -157,13 +154,13 @@
                                 <li>
                                     <a href="home">Home</a>
                                 </li>
+                                <li><a href="aboutus">About Us</a></li>
+                                <li><a href="contact">Contact Us</a></li>
                                 <li>
-                                    <a href="home" class="active">Profile</a>
+                                    <a href="profile" class="active">Profile</a>
                                 </li>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Contact Us</a></li>
                                 <li>
-                                    <a href="https://www.bootdey.com/snippets/view/bs5-profile-security-page" target="__blank">Security</a>
+                                    <a href="changepass">Security</a>
                                 </li>
                             </ul>
                         </nav>
@@ -171,88 +168,6 @@
                 </div>
                 <div class="col-lg-6" style="padding: 0px; display: flex; justify-content: flex-end; align-items: center">
                     <%@ include file="header_right.jsp"%>
-                    <!--                    <div class="header_right_info" style="margin-right: 50px">
-                                            <ul style="text-align: center; height: 100%; width: 100%">
-                                                <li class="header_wishlist" style="margin-right: 20px">
-                                                    <a href="#">
-                                                        <i class="fa fa-heart-o" style="color: white"></i>
-                                                        <span class="item_count">4</span>
-                                                    </a>
-                                                </li>
-                    
-                                                <li class="mini_cart_wrapper">
-                                                    <a href="javascript:void(0)">
-                                                        <i class="fa fa-shopping-cart" style="color: white"></i>
-                                                        <span class="item_count">2</span>
-                                                    </a>
-                                                    <div class="mini_cart mini_cart2">
-                                                        <div class="cart_gallery">
-                                                            <div class="cart_item">
-                                                                <div class="cart_img">
-                                                                    <a href="#"><img src="images/small-product/mini1.png"
-                                                                                     alt="Perfume"></a>
-                                                                </div>
-                                                                <div class="cart_info">
-                                                                    <a href="#">Hugo Boss</a>
-                                                                    <p><span>Rs. 3640</span> X 1</p>
-                                                                </div>
-                                                                <div class="cart_remove">
-                                                                    <a href="#"><i class="fa fa-times"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="cart_item">
-                                                                <div class="cart_img">
-                                                                    <a href="#"><img src="images/small-product/mini2.png"
-                                                                                     alt="Perfume"></a>
-                                                                </div>
-                                                                <div class="cart_info">
-                                                                    <a href="#">Bvlgari</a>
-                                                                    <p><span>Rs. 8350</span> X 1</p>
-                                                                </div>
-                                                                <div class="cart_remove">
-                                                                    <a href="#"><i class="fa fa-times"></i></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="mini_cart_table">
-                                                            <div class="cart_table_border">
-                                                                <div class="cart_total">
-                                                                    <span>Sub Total :</span>
-                                                                    <span class="price">Rs. 11990</span>
-                                                                </div>
-                    
-                                                                <div class="cart_total mt-10">
-                                                                    <span>Total :</span>
-                                                                    <span class="price">Rs. 11990</span>
-                                                                </div>
-                    
-                                                            </div>
-                                                        </div>
-                                                        <div class="mini_cart_footer" style="margin-left: 100px">
-                                                            <div class="cart_button">
-                                                                <a href="#">View Cart</a>
-                                                            </div>
-                                                            <div class="cart_button">
-                                                                <a href="#">Checkout</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>-->
-                    <!--                    <div class="header_account">
-                                            <ul>
-                    <c:if test="${user!=null}">
-                        <li>
-                            <h4 href="profile" style="color: white">Hello, ${user==null ? "": sessionScope.name}!</h4>
-                        </li>
-                        <li >
-                            <a id="logout" href="#" onclick="checkLogout()" style="color: white; font-size: 13px; font-weight: 800; text-decoration: underline">
-                        ${user==null ? "": "LOGOUT"}</a>
-                </li>
-                    </c:if>
-                </ul>
-            </div>-->
                 </div>
             </div>
         </header>
