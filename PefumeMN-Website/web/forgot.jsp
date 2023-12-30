@@ -56,7 +56,7 @@
                                             <i class="flaticon-envelope"></i>
                                         </div>
                                     </div>
-                                    <c:if test="${requestScope.check == null}">
+                                    <c:if test="${requestScope.check == null || requestScope.check == 'false'}">
                                         <div class="form-group">
                                             <div class="fxt-transformY-50 fxt-transition-delay-2">
                                                 <button type="submit" class="fxt-btn-fill">Send Me Email</button>
