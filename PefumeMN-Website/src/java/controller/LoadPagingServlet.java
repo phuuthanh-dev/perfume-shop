@@ -56,7 +56,7 @@ public class LoadPagingServlet extends HttpServlet {
         List<Product> list = p.getNext9Product(iamount);
         request.setAttribute("productPage", list);
         request.setAttribute("col", 4);
-        request.getRequestDispatcher("load.jsp").forward(request, response);
+        request.getRequestDispatcher("ajax/search_ajax.jsp").forward(request, response);
     }
 
     /**

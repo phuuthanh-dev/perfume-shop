@@ -94,7 +94,7 @@ public class ManageSearchProductServlet extends HttpServlet {
         request.setAttribute("listByPage", listByPage);
         request.setAttribute("list", listSup);
         request.setAttribute("searchValue", txtSearch);
-        request.getRequestDispatcher("dashboard/search_product_ajax.jsp").forward(request, response);
+        request.getRequestDispatcher("ajax/search_product_ajax.jsp").forward(request, response);
     } 
 
     /** 

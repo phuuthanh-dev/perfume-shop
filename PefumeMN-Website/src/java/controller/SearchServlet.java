@@ -49,7 +49,7 @@ public class SearchServlet extends HttpServlet {
         request.setAttribute("txtS", txtSearch);
         request.setAttribute("col", 3);
         request.setAttribute("home", home);
-        request.getRequestDispatcher("load.jsp").forward(request, response);
+        request.getRequestDispatcher("ajax/search_ajax.jsp").forward(request, response);
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

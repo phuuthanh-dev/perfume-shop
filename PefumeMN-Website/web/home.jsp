@@ -495,15 +495,15 @@
 
                             <!-- Newsletter section starts -->
 
-                            <div class="newsletter_style2">
+                            <div class="newsletter_style2" id="newsletter">
                                 <div class="newsletter_container">
                                     <div class="section_title section_title_style2">
                                         <h2>Newsletter</h2>
                                     </div>
                                     <div class="subscribe_form">
-                                        <form action="email">
-                                            <input name="email" type="email" autocomplete="off" placeholder="example@gmail.com">
-                                            <button type="submit">
+                                        <form action="">
+                                            <input id="emailDiscount" type="email" autocomplete="off" placeholder="example@gmail.com">
+                                            <button type="button" onclick="submitEmail()">
                                                 <i class="fa fa-envelope-o"></i>
                                             </button>
                                         </form>
@@ -962,6 +962,24 @@
         <script src="js/clickevents.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
         <script src="js/main.js"></script>
+        <script type="text/javascript">
+                                                                        function submitEmail() {
+                                                                            var text = document.querySelector("#emailDiscount").value;
+                                                                            $.ajax({
+                                                                                url: "/PefumeMN-Website/email",
+                                                                                type: "get",
+                                                                                data: {
+                                                                                    txt: text
+                                                                                },
+                                                                                success: function (data) {
+                                                                                    var row = document.getElementById("newsletter");
+                                                                                    row.innerHTML = data;
+                                                                                },
+                                                                                error: function (xhr) {
+                                                                                }
+                                                                            });
+                                                                        }
+        </script>
     </body>
 
 </html>

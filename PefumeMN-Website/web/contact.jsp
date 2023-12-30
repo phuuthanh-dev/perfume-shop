@@ -156,38 +156,38 @@
                             <div class="left_contact">
                                 <span class="des_contact">Bạn hãy điền nội dung tin nhắn vào form dưới đây và gửi cho chúng
                                     tôi</span>
-                                <div id="pagelogin">
-                                    <form method="post" action="contact" id="contact" accept-charset="UTF-8"><input
+                                <div id="pagelogin" >
+                                    <form   accept-charset="UTF-8"><input
                                             name="FormType" type="hidden" value="contact" /><input name="utf8" type="hidden"
                                             value="true" /><input type="hidden" id="Token-a800b26a361b41a1ae87368c7335bdbe"
                                             name="Token" />
                                         <script
                                         src="https://www.google.com/recaptcha/api.js?render=6Ldtu4IUAAAAAMQzG1gCw3wFlx_GytlZyLrXcsuK"></script>
                                         <script>grecaptcha.ready(function () {
-                grecaptcha.execute("6Ldtu4IUAAAAAMQzG1gCw3wFlx_GytlZyLrXcsuK", {action: "contact"}).then(function (token) {
-                    document.getElementById("Token-a800b26a361b41a1ae87368c7335bdbe").value = token
-                });
-            });</script>
+                                                grecaptcha.execute("6Ldtu4IUAAAAAMQzG1gCw3wFlx_GytlZyLrXcsuK", {action: "contact"}).then(function (token) {
+                                                    document.getElementById("Token-a800b26a361b41a1ae87368c7335bdbe").value = token
+                                                });
+                                            });</script>
 
 
-                                        <div class="form-signup clearfix">
+                                        <div class="form-signup clearfix" id="contact"F>
                                             <div class="row group_contact">
                                                 <fieldset class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <label>Họ và tên </label>
                                                     <input placeholder="Họ và tên*" type="text"
                                                            class="form-control  form-control-lg" required value=""
-                                                           name="contactName">
+                                                           id="fullNameContact">
                                                 </fieldset>
                                                 <fieldset class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <label>Email </label>
                                                     <input placeholder="Email*" type="email"
                                                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required
-                                                           id="email1" class="form-control form-control-lg" value=""
-                                                           name="contactEmail">
+                                                           id="emailContact" class="form-control form-control-lg" value=""
+                                                           >
                                                 </fieldset>
                                                 <fieldset class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <label>Nội dung </label>
-                                                    <textarea placeholder="Nội dung*" name="contact[body]" id="comment"
+                                                    <textarea placeholder="Nội dung*"  id="commentContact"
                                                               class="form-control content-area form-control-lg" rows="5"
                                                               Required></textarea>
                                                 </fieldset>
@@ -202,7 +202,7 @@
                                                     </div>
                                                 </c:if>
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <button type="submit" class="btn btn-primary btn-lienhe">Gửi tin nhắn
+                                                    <button type="button" onclick="submitForm()" class="btn btn-primary btn-lienhe">Gửi tin nhắn
                                                         cho chúng tôi</button>
                                                 </div>
                                             </div>
@@ -254,6 +254,28 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+            function submitForm() {
+                var fullName = document.getElementById('fullNameContact').value;
+                var email = document.getElementById('emailContact').value;
+                var cmt = document.getElementById('commentContact').value;
+                $.ajax({
+                    url: "/PefumeMN-Website/contact",
+                    type: "post",
+                    data: {
+                        name: fullName,
+                        email: email,
+                        cmt: cmt
+                    },
+                    success: function (data) {
+                        var row = document.getElementById("contact");
+                        row.innerHTML = data;
+                    },
+                    error: function (xhr) {
+                    }
+                });
+            }
+        </script>
     </body>
     <jsp:include page="footer.jsp"/>
 </html>

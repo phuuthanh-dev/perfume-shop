@@ -73,6 +73,8 @@ public class Home1Servlet extends HttpServlet {
         List<Product> giftSets = p.getGiflSets();
         List<Product> listAll = p.getAll();
         String cidYear_raw = request.getParameter("cidYear");
+        List<Product> productFooter1 = p.getFeaturedProducts();
+        List<Product> productFooter2 = p.getFeaturedProducts();
 
         //phần product 2023
         int cidYear;
@@ -81,7 +83,7 @@ public class Home1Servlet extends HttpServlet {
             Category category = d.getCategoryById(cidYear);
             productsYear = p.getProductsBrandByInYear(2023, category);
         }
-        
+
         //phan trang
         int page = 1, numPerPage = 9;
         int size = listAll.size();
@@ -98,15 +100,15 @@ public class Home1Servlet extends HttpServlet {
 
         //Hot product
         Product spHot = p.getHotDeal();
-        
-         if (cidYear_raw == null) {
+
+        if (cidYear_raw == null) {
             chid[0] = true;
         } else {
             chid[0] = false;
         }
 
         List<Product> listByPage = p.getListByPage(listAll, start, end);
-        
+
         request.setAttribute("cidYear", cidYear_raw);
         request.setAttribute("category", categories);
         request.setAttribute("productsYear", productsYear);
@@ -117,9 +119,10 @@ public class Home1Servlet extends HttpServlet {
         request.setAttribute("numberpage", numberpage);
         request.setAttribute("productsTopSellers", productsTop5Sellers);
         request.setAttribute("giftSets", giftSets);
+        request.setAttribute("productFooter1", productFooter1);
+        request.setAttribute("productFooter2", productFooter2);
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
-    
 
     /**
      * Handles the HTTP <code>POST</code> method.

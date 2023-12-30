@@ -67,7 +67,7 @@ public class ManageSearchAccountServlet extends HttpServlet {
 
         request.setAttribute("listUser", list);
         request.setAttribute("searchValue", txtSearch);
-        request.getRequestDispatcher("dashboard/search_account_ajax.jsp").forward(request, response);
+        request.getRequestDispatcher("ajax/search_account_ajax.jsp").forward(request, response);
     } 
 
     /** 

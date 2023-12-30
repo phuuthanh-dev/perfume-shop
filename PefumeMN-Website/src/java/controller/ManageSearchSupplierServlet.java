@@ -72,7 +72,7 @@ public class ManageSearchSupplierServlet extends HttpServlet {
         request.setAttribute("listAllSupplier", listAllSupplier);
         request.setAttribute("listAllCategory", listAllCategory);
         request.setAttribute("searchValue", txtSearch);
-        request.getRequestDispatcher("dashboard/search_supplier_ajax.jsp").forward(request, response);
+        request.getRequestDispatcher("ajax/search_supplier_ajax.jsp").forward(request, response);
     } 
 
     /** 

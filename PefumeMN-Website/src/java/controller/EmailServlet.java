@@ -57,12 +57,12 @@ public class EmailServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         Email handleEmail = new Email();
-        String cusEmail = request.getParameter("email");
+        String cusEmail = request.getParameter("txt");
         String sub = handleEmail.subjectDiscount();
-        String msg = handleEmail.messageDiscount(30);
+        String msg = handleEmail.messageDiscount(25);
         handleEmail.sendEmail(sub, msg, cusEmail);
-        
-        request.getRequestDispatcher("home").forward(request, response);
+        request.setAttribute("emailUser",cusEmail);
+        request.getRequestDispatcher("ajax/newsletter_ajax.jsp").forward(request, response);
         
     } 
 

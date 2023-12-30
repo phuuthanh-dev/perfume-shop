@@ -94,7 +94,7 @@ public class WishListServlet extends HttpServlet {
         session.setAttribute("listItemsInWishList", listItemsInWishList);
         session.setAttribute("wishListSize", listItemsInWishList.size());
 
-        request.getRequestDispatcher("header_right_ajax.jsp").forward(request, response);
+        request.getRequestDispatcher("ajax/header_right_ajax.jsp").forward(request, response);
     } 
 
     /** 

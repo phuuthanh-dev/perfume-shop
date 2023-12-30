@@ -78,8 +78,9 @@ public class ContactServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String name = request.getParameter("contactName");
-        String email = request.getParameter("contactEmail");
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String cmt = request.getParameter("cmt");
         Email handleEmail = new Email();
         String message = "";
         String check = "";
@@ -97,7 +98,10 @@ public class ContactServlet extends HttpServlet {
 
         request.setAttribute("message", message);
         request.setAttribute("check", check);
-        request.getRequestDispatcher("contact.jsp").forward(request, response);
+        request.setAttribute("fullName", name);
+        request.setAttribute("email", email);
+        request.setAttribute("comment", cmt);
+        request.getRequestDispatcher("ajax/contact_ajax.jsp").forward(request, response);
     }
 
     /**

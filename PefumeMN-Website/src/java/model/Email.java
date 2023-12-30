@@ -90,7 +90,7 @@ public class Email {
 
     // Select subject to send email
     public String subjectDiscount() {
-        return "PerfumeMN - Heyyy, Unlock Your Exclusive Discount Inside!";
+        return "Perfume Paradise - Heyyy, Unlock Your Exclusive Discount Inside!";
     }
     
     public String subjectContact(String name) {
