@@ -98,7 +98,21 @@
                 padding-top: 0.5rem;
                 overflow-x: hidden;
                 overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-            }</style>
+            }
+            select {
+                width: 32.3%;
+                margin: 0;
+                font-size: 100%;
+                padding: 5px 10px 5px 10px;
+                font-family: Segoe UI, Helvetica, sans-serif;
+                border: 1px solid #D0D0D0;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                border-radius: 20px;
+                outline: none;
+            }
+        </style>
     </head>
     <body>
 
@@ -232,8 +246,12 @@
                                 <input name="quantityunit" type="text" class="form-control" >
                             </div>
                             <div class="form-group">
-                                <label>Release Date</label>
-                                <input name="date" type="text" class="form-control" >
+                                <input type="hidden" id="stringdateolb" value="${detail.date}">
+                                <div style="margin-bottom: 10px">Release Date</div>
+                                <input type="hidden" name="date" value="" id="here"/>
+                                <select class="bear-dates" id="dobDay" ></select>
+                                <select class="bear-months" id="dobMonth"></select>
+                                <select class="bear-years" id="dobYear"></select>
                             </div>
                             <div class="form-group">
                                 <label>Discount</label>
@@ -259,7 +277,7 @@
                         </div>
                         <div class="modal-footer">  
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input type="submit" class="btn btn-success" value="Add">
+                            <input type="submit" onclick="submitForm()" class="btn btn-success" value="Add">
                         </div>
                     </form>
                 </div>
@@ -271,10 +289,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>   
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
-        <script src="../js/calender.js"></script>
-        <script src="../js/main.js"></script>
+        <script src="js/calender.js"></script>
+        <script src="js/main.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
-        <script src="../js/clickevents.js"></script>
+        <script src="js/clickevents.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://mdbootstrap.com/previews/ecommerce-demo/js/jquery-3.4.1.min.js"></script>
         <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/popper.min.js"></script>
@@ -283,24 +301,43 @@
         <script type="text/javascript" src="https://mdbootstrap.com/previews/ecommerce-demo/js/mdb.ecommerce.min.js"></script>
         <script type="text/javascript" src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/js/plugins/mdb-plugins-gathered.min.js"></script>
 
-        <script src="../js/countdown.js"></script>
+        <script src="js/countdown.js"></script>
         <script type="text/javascript">
-            function searchByName() {
-                var text = document.querySelector("#searchId").value;
-                $.ajax({
-                    url: "/PefumeMN-Website/searchProduct",
-                    type: "get",
-                    data: {
-                        txt: text
-                    },
-                    success: function (data) {
-                        var row = document.getElementById("contentt");
-                        row.innerHTML = data;
-                    },
-                    error: function (xhr) {
-                    }
-                });
-            }
+                                function addOption(selectElement, value, text) {
+                                    var option = document.createElement("option");
+                                    option.value = value;
+                                    option.text = text;
+                                    selectElement.add(option);
+                                }
+
+                                var defaultReleaseDate = document.getElementById("stringdateolb").value;
+                                var defaultDateArray = defaultReleaseDate.split('-');
+                                var defaultDay = parseInt(defaultDateArray[2]);
+                                var defaultMonth = parseInt(defaultDateArray[1]);
+                                var defaultYear = parseInt(defaultDateArray[0]);
+
+                                var daysSelect = document.getElementById('dobDay');
+                                var monthsSelect = document.getElementById('dobMonth');
+                                var yearsSelect = document.getElementById('dobYear');
+
+                                for (var day = 1; day <= 31; day++) {
+                                    addOption(daysSelect, day, day);
+                                }
+
+                                for (var month = 1; month <= 12; month++) {
+                                    addOption(monthsSelect, month, month);
+                                }
+
+                                var currentYear = new Date().getFullYear();
+                                for (var year = currentYear; year >= 1900; year--) {
+                                    addOption(yearsSelect, year, year);
+                                }
+
+                                daysSelect.value = defaultDay;
+                                monthsSelect.value = defaultMonth;
+                                yearsSelect.value = defaultYear;
+
+
         </script>
     </body>
 

@@ -81,6 +81,7 @@ public class RegisterServlet extends HttpServlet {
         String uName = request.getParameter("username");
         String uPass = request.getParameter("password");
         String uPho = request.getParameter("phone");
+        String uEmail = request.getParameter("email");
         String birthDate = request.getParameter("dob");
         UserDAO ud = new UserDAO();
         WalletDAO wd = new WalletDAO();
@@ -92,7 +93,7 @@ public class RegisterServlet extends HttpServlet {
             request.getRequestDispatcher("register.jsp").forward(request, response);
         } else {
             System.out.println(birthDate.toString());
-            user = new User(uName, fName, uPass, "", uPho, "", "", birthDate, 2);
+            user = new User(uName, fName, uPass, "", uPho, uEmail, "", birthDate, 2);
             wallet = new Wallet(uName, 0);
             ud.insert(user);
             wd.addWallet(wallet);

@@ -57,6 +57,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <div class="fxt-transformY-50 fxt-transition-delay-3">
+                                        <input type="text" class="form-control" name="email" placeholder="Your Email" required="required"> 
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <div style="margin-bottom: 10px">Date of birth</div>
                                     <input type="hidden" name="dob" value="" id="here"/>
                                     <select class="bear-dates" id="dobDay" ></select>

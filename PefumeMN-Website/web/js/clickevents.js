@@ -350,3 +350,22 @@ function change() {
         a.style.display = 'none';
     }
 }
+
+function submitForm() {
+    var here = document.querySelector('#here');
+    var form = document.getElementById('form');
+    var dobDay = document.getElementById('dobDay').value;
+    var dobMonthText = document.getElementById('dobMonth').value;
+    var dobYear = document.getElementById('dobYear').value;
+    if (dobMonthText < 10 && dobDay < 10) {
+        dobFull = dobYear + '-0' + dobMonthText + '-0' + dobDay;
+    } else if (dobMonthText < 10 && !(dobDay < 10)) {
+        dobFull = dobYear + '-0' + dobMonthText + '-' + dobDay;
+    } else if (dobDay < 10 && !(dobMonthText < 10)) {
+        dobFull = dobYear + '-' + dobMonthText + '-0' + dobDay;
+    } else {
+        dobFull = dobYear + '-' + dobMonthText + '-' + dobDay;
+    }
+    here.value = dobFull;
+    form.submit();
+}

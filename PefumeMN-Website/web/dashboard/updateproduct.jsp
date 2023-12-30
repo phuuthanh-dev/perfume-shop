@@ -21,6 +21,20 @@
                 width: 200px;
                 height: 120px;
             }
+
+            select {
+                width: 32.3%;
+                margin: 0;
+                font-size: 100%;
+                padding: 5px 10px 5px 10px;
+                font-family: Segoe UI, Helvetica, sans-serif;
+                border: 1px solid #D0D0D0;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                border-radius: 20px;
+                outline: none;
+            }
         </style>
     <body>
 
@@ -39,7 +53,7 @@
             <div id="editEmployeeModal">
                 <div class="modal-dialog" style="width: 100%">
                     <div class="modal-content">
-                        <form action="editproduct" method="get">
+                        <form id="form" action="editproduct" method="get">
                             <div class="modal-header">						
                                 <h4 class="modal-title">Edit Product</h4>
                                 <a href="manager">
@@ -79,8 +93,12 @@
                                     <textarea name="quantity" class="form-control" required>${detail.quantity}</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Release date</label>
-                                    <textarea name="date" class="form-control" required>${detail.date}</textarea>
+                                    <input type="hidden" id="stringdateolb" value="${detail.date}">
+                                    <label style="margin-bottom: 10px; width: 100%">Release Date</label>
+                                    <input type="hidden" name="date" value="" id="here"/>
+                                    <select class="bear-dates" id="dobDay"></select>
+                                    <select class="bear-months" id="dobMonth"></select>
+                                    <select class="bear-years" id="dobYear"></select>
                                 </div>
                                 <div class="form-group">
                                     <label>Discount</label>
@@ -108,15 +126,51 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <input onclick="getImageString()" type="submit" class="btn btn-success" value="Edit">
+                                <input onclick="submitForm()" type="button" class="btn btn-success" value="Edit">
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        
+
+        <script src="js/main.js"></script>
+        <script src="js/clickevents.js"></script>
+        <script src="js/calender.js"></script>
         <script  type="text/javascript">
+                                    function addOption(selectElement, value, text) {
+                                        var option = document.createElement("option");
+                                        option.value = value;
+                                        option.text = text;
+                                        selectElement.add(option);
+                                    }
+
+                                    var defaultReleaseDate = document.getElementById("stringdateolb").value;
+                                    var defaultDateArray = defaultReleaseDate.split('-');
+                                    var defaultDay = parseInt(defaultDateArray[2]);
+                                    var defaultMonth = parseInt(defaultDateArray[1]);
+                                    var defaultYear = parseInt(defaultDateArray[0]);
+
+                                    var daysSelect = document.getElementById('dobDay');
+                                    var monthsSelect = document.getElementById('dobMonth');
+                                    var yearsSelect = document.getElementById('dobYear');
+
+                                    for (var day = 1; day <= 31; day++) {
+                                        addOption(daysSelect, day, day);
+                                    }
+
+                                    for (var month = 1; month <= 12; month++) {
+                                        addOption(monthsSelect, month, month);
+                                    }
+
+                                    var currentYear = new Date().getFullYear();
+                                    for (var year = currentYear; year >= 1900; year--) {
+                                        addOption(yearsSelect, year, year);
+                                    }
+
+                                    daysSelect.value = defaultDay;
+                                    monthsSelect.value = defaultMonth;
+                                    yearsSelect.value = defaultYear;
         </script>
     </body>
 </html>

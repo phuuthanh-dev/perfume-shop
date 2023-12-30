@@ -37,7 +37,7 @@
                                 </div>
                             </div>
                             <div class="fxt-form">
-                                <h2>Forgot Password</h2>
+                                <h2 style="color: red">Forgot Password</h2>
                                 <c:if test="${requestScope.check == null}">
                                     <p>For recover your password</p>
                                 </c:if>

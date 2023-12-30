@@ -421,3 +421,32 @@ function pageRefine(x) {
     document.getElementById("f3").submit();
     console.log(form);
 }
+
+function searchByName() {
+    var text = document.querySelector("#searchId").value;
+    $.ajax({
+        url: "/PefumeMN-Website/searchProduct",
+        type: "get",
+        data: {
+            txt: text
+        },
+        success: function (data) {
+            var row = document.getElementById("contentt");
+            row.innerHTML = data;
+        },
+        error: function (xhr) {
+        }
+    });
+}
+
+function monthNameToNumber(monthName) {
+    var months = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    var lowerMonthName = monthName.toLowerCase();
+    var monthIndex = months.findIndex(function (month) {
+        return month.toLowerCase() === lowerMonthName;
+    });
+    return monthIndex !== -1 ? monthIndex + 1 : -1;
+}
