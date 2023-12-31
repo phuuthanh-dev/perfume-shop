@@ -158,7 +158,7 @@
                             </a>
                             <ul class="dropdown_links">
                                 <li><a href="profile">My Account</a></li>
-                                <li><a href="profile">Shopping cart</a></li>
+                                <li><a href="refine?cid_refine=0">Shopping</a></li>
                             </ul>
                         </li>
                         <c:if test="${sessionScope.account!=null}">

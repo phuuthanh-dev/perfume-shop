@@ -13,13 +13,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.User;
 
 /**
  *
- * @author lvhho
+ * @author Admin
  */
-@WebServlet(name = "ConfirmResetCodeServlet", urlPatterns = {"/confirmresetcode"})
-public class ConfirmResetCodeServlet extends HttpServlet {
+@WebServlet(name = "ConfirmPassServlet", urlPatterns = {"/confirmpass"})
+public class ConfirmPassServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +39,10 @@ public class ConfirmResetCodeServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ConfirmResetCodeServlet</title>");
+            out.println("<title>Servlet ConfirmPassServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ConfirmResetCodeServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ConfirmPassServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,7 +60,7 @@ public class ConfirmResetCodeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        request.getRequestDispatcher("newpassword.jsp").forward(request, response);
     }
 
     /**
@@ -73,29 +74,17 @@ public class ConfirmResetCodeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        UserDAO ud = new UserDAO();
-        String resetCode = request.getParameter("resetcode");
-        String code = (String) session.getAttribute("code");
-        String email = request.getParameter("email");
-        String message = (String) request.getAttribute("message");
-        String check = (String) request.getAttribute("check");
-        if (code.equalsIgnoreCase(resetCode)) {
-            check = "true";
-            String userName = ud.getUserNameByEmail(email);
-
-            request.removeAttribute("code");
-            request.setAttribute("uName", userName);
-            request.setAttribute("check", check);
-            request.getRequestDispatcher("newpassword.jsp").forward(request, response);
-        } else {
-            check = "true";
-            message = "Sorry, reset code incorrect";
-            session.setAttribute("code", code);
-            request.setAttribute("email", email);
-            request.setAttribute("check", check);
-            request.setAttribute("message", message);
-            request.getRequestDispatcher("forgot.jsp").forward(request, response);
+        String newpass = request.getParameter("password");
+        String cfnewpass = request.getParameter("cfpassword");
+        String username = request.getParameter("userName");
+        String msg = "";
+        UserDAO dao = new UserDAO();
+        User a = dao.getUserByUserName(username);
+        if (cfnewpass.equals(newpass)) {
+            dao.updatePassByUserName(newpass, username);
+            msg = "Change password successfully!";
+            request.setAttribute("successfully", msg);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
 

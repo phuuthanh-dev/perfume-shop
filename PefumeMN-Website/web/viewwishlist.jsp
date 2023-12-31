@@ -181,6 +181,15 @@
                     padding-left: 20px;
                 }
             }
+
+            .text_page_head{
+                font-size: 18px;
+                font-weight: 600;
+            }
+            .text_page {
+                font-size: 14px;
+                font-weight: 600;
+            }
         </style>
     </head>
     <body>
@@ -203,14 +212,14 @@
                     </div>
                     <div class="col-8">
                         <div class="row text-right">
-                            <div class="col-4">
-                                <h6 class="mt-2">Supplier</h6>
+                            <div class="col-4 mt-2 text_page_head">
+                                Supplier
                             </div>
-                            <div class="col-4">
-                                <h6 class="mt-2">Price</h6>
+                            <div class="col-4 mt-2 text_page_head">
+                                Price
                             </div>
-                            <div class="col-4" style="padding-right: 30px">
-                                <h6 class="mt-2">Options</h6>
+                            <div class="col-4 mt-2 text_page_head" style="padding-right: 30px">
+                                Options
                             </div>
                         </div>
                     </div>
@@ -230,14 +239,14 @@
                         </div>
                         <div class="my-auto col-8 ">
                             <div class="row text-right">
-                                <div class="col-4">
+                                <div class="col-4 text_page">
                                     <p class="mob-text">${item.product.supplier.companyName}</p>
                                 </div>
-                                <div class="col-2">
-                                    <h6 class="mob-text">${item.price}</h6>
+                                <div class="col-2 text_page">
+                                    ${item.price}
                                 </div>
                                 <div class="col-6" style="margin-top: -15px;display: flex; justify-content: space-between; align-items: center;" >
-                                    <div>
+                                    <div class="col-9">
                                         <form action="viewwishlist" method="post" style="display:flex">
                                             <input name="quantity" type="number" min="1" max="100" step="1" value="1" style="width:100px">
                                             <input name="id" type="hidden" value="${p.id}">
@@ -247,10 +256,10 @@
                                             </button>
                                         </form>
                                     </div>
-                                    <div>
+                                    <div class="col-3" style="text-align: center">
                                         <a  href="viewwishlist?rid=${item.product.id}"
-                                            style="padding: 7px 15px; border: none; border-radius: 5px; background-color: #1763c7; color: white">
-                                            Delete
+                                            style="color: orange; font-size: 30px">
+                                            <i class="fa-regular fa-heart"></i>
                                         </a>
                                     </div>
                                 </div>

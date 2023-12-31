@@ -106,17 +106,33 @@ public class OrderDAO extends DBContext {
     }
 
     public double totalMoneyWeek(int day, int from, int to, int year, int month) {
-        String sql = "select \n"
-                + "               	SUM(TotalMoney)\n"
-                + "                  from Orders\n"
-                + "               where day([Date]) between ? and ? and month([Date]) = ? and year([Date])= ?  and DATEPART(dw,[Date]) = ?";
+        String sql = "";
+        if (from > to) {
+            sql = " SELECT SUM(TotalMoney)\n"
+                    + "				FROM Orders\n"
+                    + "				WHERE ((DAY([Date]) >= ? AND MONTH([Date]) = ?) OR (DAY([Date]) <= ? AND MONTH([Date]) = ?)) AND YEAR([Date]) = ? and DATEPART(dw,[Date]) = ?";
+        } else {
+            sql = "select \n"
+                    + "               	SUM(TotalMoney)\n"
+                    + "                  from Orders\n"
+                    + "               where day([Date]) between ? and ? and month([Date]) = ? and year([Date])= ?  and DATEPART(dw,[Date]) = ?";
+        }
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, from);
-            st.setInt(2, to);
-            st.setInt(3, month);
-            st.setInt(4, year);
-            st.setInt(5, day);
+            if (from > to) {
+                st.setInt(1, from);
+                st.setInt(2, month);
+                st.setInt(3, to);
+                st.setInt(4, (month + 1));
+                st.setInt(5, year);
+                st.setInt(6, day);
+            } else {
+                st.setInt(1, from);
+                st.setInt(2, to);
+                st.setInt(3, month);
+                st.setInt(4, year);
+                st.setInt(5, day);
+            }
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 return rs.getDouble(1);
@@ -160,7 +176,7 @@ public class OrderDAO extends DBContext {
 
     public static void main(String[] args) {
         OrderDAO dao = new OrderDAO();
-        double a = dao.totalMoneyWeek(1, 24, 30, 2023, 11);
+        double a = dao.totalMoneyWeek(6, 27, 3, 2023, 11);
         System.out.println(a);
     }
 

@@ -98,8 +98,7 @@ public class LoginServlet extends HttpServlet {
         String remember = request.getParameter("remember");
         UserDAO ud = new UserDAO();
         WalletDAO wd = new WalletDAO();
-        // update lai pass
-        ud.updatePassByUserName(uPass, uName);
+        
         User user = ud.check(uName, uPass);
         HttpSession session = request.getSession();
         if (user == null) {

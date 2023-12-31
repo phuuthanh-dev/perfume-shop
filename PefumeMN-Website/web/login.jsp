@@ -47,7 +47,7 @@
                                         <i id="iconsee" style="cursor: pointer" onclick="changeIcon(this)" class="fa-solid fa-eye-slash"></i>
                                     </div>
                                 </div>
-                                <div class="fxt-transformY-50 fxt-transition-delay-2" style="display: flex;justify-content: space-between">
+                                <div class="fxt-transformY-50 fxt-transition-delay-2" style="display: flex; justify-content: space-between">
                                     <div>
                                         <input ${reMem==null?"":"checked"} id="remember" type="checkbox" name="remember" style=";margin-right: 6px; width: 15px; height: 15px">
                                         <label style="font-size: 15px" for="remember">Remember me</label>

@@ -122,7 +122,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="section_title">
-                            <h2 style="font-size: 20px;">New Products 2023</h2>
+                            <h2 class=text-shadow" style="font-size: 20px;"><span class="ani-fire">New Products 2023</span></h2>
                             <div class="product_tab_btn">
                                 <ul class="nav" role="tablist">
                                     <li>
@@ -160,7 +160,7 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart" 
-                                                                onclick="openModal('modal_box',${p.id}, '${p.image[0]}', '${p.image[1]}', 
+                                                                onclick="openModal('modal_box',${p.id}, '${p.image[0]}', '${p.image[1]}',
                                                                                 '${p.name}',${p.salePrice},${p.price}, '${p.describe}', '${p.classifyStr}',
                                                                                 '${p.supplier.getCompanyName()}')"">
                                                                 <a href="#" data-toggle="modal" data-target="#modal_box" title="Add to Cart">
@@ -169,11 +169,11 @@
                                                             </li>
                                                             <li class="wishlist">
                                                                 <a href="#" onclick="toggleWishlist(${p.id})" title="Add to Wishlist">
-                                                                    <i class="fa fa-heart-o"></i>
+                                                                    <i style="color: #f6692a" class="fa-solid fa-heart"></i>
                                                                 </a>
                                                             </li>
                                                             <li class="quick_button" 
-                                                                onclick="openModal('modal_box',${p.id}, '${p.image[0]}', '${p.image[1]}', 
+                                                                onclick="openModal('modal_box',${p.id}, '${p.image[0]}', '${p.image[1]}',
                                                                                 '${p.name}',${p.salePrice},${p.price}, '${p.describe}', '${p.classifyStr}',
                                                                                 '${p.supplier.getCompanyName()}')" >
                                                                 <a href="#" data-toggle="modal" data-target="#modal_box" 
@@ -185,7 +185,7 @@
                                                     </div>
                                                 </div>
                                                 <figcaption class="product_content">
-                                                    <h4 class="product_name">
+                                                    <h4 class="product_name ani-fire" style="">
                                                         <a href="#">${p.name}</a>
                                                     </h4>
 
@@ -193,7 +193,7 @@
                                                         <c:if test="${p.price != p.salePrice}">
                                                             <span class="old_price" id="oldprice">Rs. ${p.price}</span>
                                                         </c:if>
-                                                        <span class="current_price">Rs. ${p.salePrice}
+                                                        <span class="current_price ani-fire">Rs. ${p.salePrice}
                                                         </span>
                                                     </div>
                                                     <div class="product_rating">
@@ -295,7 +295,7 @@
 
                             <div class="deals_product_area mb-68">
                                 <div class="section_title section_title_style2">
-                                    <h2>Hot Deals</h2>
+                                    <h2><span class="ani-fire">Hot Deals</span></h2>
                                     <i style="color: orangered; font-size: 22px; margin-left:5px" class="fa-solid fa-fire"></i>
                                 </div>
                                 <div class="row">
@@ -314,7 +314,7 @@
                                                         <div class="action_links">
                                                             <ul>
                                                                 <li class="add_to_cart"
-                                                                    onclick="openModal('modal_box', ${hotDeal.id}, '${hotDeal.image[0]}', '${hotDeal.image[1]}', 
+                                                                    onclick="openModal('modal_box', ${hotDeal.id}, '${hotDeal.image[0]}', '${hotDeal.image[1]}',
                                                                                     '${hotDeal.name}',${hotDeal.salePrice},${hotDeal.price}, '${hotDeal.describe}', '${hotDeal.classifyStr}',
                                                                                     '${hotDeal.supplier.getCompanyName()}')"
                                                                     >
@@ -324,7 +324,7 @@
                                                                 </li>
                                                                 <li class="wishlist">
                                                                     <a href="#" onclick="toggleWishlist(${hotDeal.id})" title="Add to Wishlist">
-                                                                        <i class="fa fa-heart-o"></i>
+                                                                        <i style="color: #f6692a" class="fa-solid fa-heart"></i>
                                                                     </a>
                                                                 </li>
                                                                 <li class="quick_button" >
@@ -345,33 +345,33 @@
                                                         <div class="product_timing">
                                                             <div id="" data-countdown="2021/1/15">
                                                                 <div class="countdown_area">
-                                                                    <div class="single_countdown">
+                                                                    <div class="single_countdown ani-fire">
                                                                         <div id="day" class="countdown_number"></div>
                                                                         <div class="countdown_title">days</div>
                                                                     </div>
-                                                                    <div class="single_countdown">
+                                                                    <div class="single_countdown ani-fire">
                                                                         <div id="hour" class="countdown_number"></div>
                                                                         <div class="countdown_title">Hours</div>
                                                                     </div>
-                                                                    <div class="single_countdown">
+                                                                    <div class="single_countdown ani-fire">
                                                                         <div id="minutes" class="countdown_number"></div>
                                                                         <div class="countdown_title">mins</div>
                                                                     </div>
-                                                                    <div class="single_countdown">
+                                                                    <div class="single_countdown ani-fire">
                                                                         <div id="sec" class="countdown_number"></div>
                                                                         <div class="countdown_title">secs</div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <h4 class="product_name">
+                                                        <h4 class="product_name ani-fire">
                                                             <a href="#">${hotDeal.name}</a>
                                                         </h4>
 
                                                         <div class="price_box">
                                                             <span class="old_price">Rs.${hotDeal.price}
                                                             </span>
-                                                            <span class="current_price">Rs.${hotDeal.salePrice}</span>
+                                                            <span class="current_price ani-fire">Rs.${hotDeal.salePrice}</span>
                                                         </div>
 
                                                     </figcaption>
@@ -403,7 +403,7 @@
                                                     <c:if test="${count == status.index}">
                                                         <article class="single_product" data-toggle="modal" data-target="#modal_box">
                                                             <figure 
-                                                                onclick="openModal('modal_box', ${giftSet.id}, '${giftSet.image[0]}', '${giftSet.image[1]}', 
+                                                                onclick="openModal('modal_box', ${giftSet.id}, '${giftSet.image[0]}', '${giftSet.image[1]}',
                                                                                 '${giftSet.name}',${giftSet.salePrice},${giftSet.price}, '${giftSet.describe}', '${giftSet.classifyStr}',
                                                                                 '${giftSet.supplier.getCompanyName()}')">
                                                                 <div class="product_thumb">
@@ -551,11 +551,11 @@
                                                                     </li>
                                                                     <li class="wishlist">
                                                                         <a href="#" onclick="toggleWishlist(${t.id})" title="Add to Wishlist">
-                                                                            <i class="fa fa-heart-o"></i>
+                                                                            <i style="color: #f6692a" class="fa-solid fa-heart"></i>
                                                                         </a>
                                                                     </li>
                                                                     <li class="quick_button" 
-                                                                        onclick="openModal('modal_box',${t.id}, '${t.image[0]}', '${t.image[1]}', 
+                                                                        onclick="openModal('modal_box',${t.id}, '${t.image[0]}', '${t.image[1]}',
                                                                                         '${t.name}',${t.salePrice},${t.price}, '${t.describe}', '${t.classifyStr}',
                                                                                         '${t.supplier.getCompanyName()}')" >
                                                                         <a href="#" data-toggle="modal" data-target="#modal_box"
@@ -663,7 +663,7 @@
                                                                 </li>
                                                                 <li class="wishlist">
                                                                     <a href="#" onclick="toggleWishlist(${i.id})" title="Add to Wishlist">
-                                                                        <i class="fa fa-heart-o"></i>
+                                                                        <i style="color: #f6692a" class="fa-solid fa-heart"></i>
                                                                     </a>
                                                                 </li>
                                                                 <li class="quick_button" 
@@ -761,16 +761,14 @@
                                 <h3>Information</h3>
                                 <div class="footer_menu">
                                     <ul>
-                                        <li><a href="#">About Us</a></li>
-                                        <li><a href="#">Prices Drop</a></li>
-                                        <li><a href="#">New Products</a></li>
-                                        <li><a href="#">Best Sales</a></li>
-                                        <li><a href="#">Terms & Conditions</a></li>
-                                        <li><a href="#">Gift Certificate</a></li>
-                                        <li><a href="#">My Account</a></li>
-                                        <li><a href="#">Order History</a></li>
-                                        <li><a href="#">Wish List</a></li>
-                                        <li><a href="#">Specials</a></li>
+                                        <li><a href="home">Home</a></li>
+                                        <li><a href="aboutus">About Us</a></li>
+                                        <li><a href="refine?cid_refine=0">Shopping</a></li>
+                                        <li><a href="refine?cid_refine=5">Gift set</a></li>
+                                        <li><a href="profile">My Account</a></li>
+                                        <li><a href="viewcart">Order</a></li>
+                                        <li><a href="viewwishlist">Wish List</a></li>
+                                        <li><a href="contact">Contact Us</a></li>
                                     </ul>
                                 </div>
                             </div>

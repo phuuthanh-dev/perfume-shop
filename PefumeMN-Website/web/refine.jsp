@@ -292,7 +292,7 @@
                                                                 </li>
                                                                 <li class="wishlist">
                                                                     <a href="#" onclick="toggleWishlist(${i.id})" title="Add to Wishlist">
-                                                                        <i class="fa fa-heart-o"></i>
+                                                                        <i style="color: #f6692a" class="fa-solid fa-heart"></i>
                                                                     </a>
                                                                 </li>
                                                                 <li style="border-color: orange" class="quick_button"

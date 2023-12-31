@@ -105,7 +105,7 @@
                                             </option>
                                         </c:forEach>
                                     </select>
-                                    <input style="width: 200px;" value="" type="week" class="form-control" id="weekInput">
+                                    <input style="width: 200px;" value="" type="week" class="form-control" id="weekInput" onclick="setDefaultWeek()">
                                     <input value="" type="hidden" class="form-control" name="from" id="from">
                                     <input value="" type="hidden" class="form-control" name="to" id="to">
                                     <input value="" type="hidden" class="form-control" name="month" id="month">

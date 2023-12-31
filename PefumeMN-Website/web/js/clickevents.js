@@ -36,14 +36,14 @@ function openModal(
                             </div>
                             <div class="modal_tab_button">
                                         <ul class="nav product_navactive" role="tablist">
-                                            <li style="width: 33%">
-                                                <a href="#tab1" class="nav-link active" data-toggle="tab" role="tab"
+                                            <li>
+                                                <a style="width:100px" href="#tab1" class="nav-link active" data-toggle="tab" role="tab"
                                                     aria-controls="tab1" aria-selected="false">
                                                     <img src="${image1}" alt="">
                                                 </a>
                                             </li>
-                                            <li style="width: 33%">
-                                                <a href="#tab2" class="nav-link" data-toggle="tab" role="tab"
+                                            <li >
+                                                <a style="width:100px" href="#tab2" class="nav-link" data-toggle="tab" role="tab"
                                                     aria-controls="tab2" aria-selected="false">
                                                     <img src="${image2}" alt="">
                                                 </a>
@@ -69,7 +69,7 @@ function openModal(
                             </div>
                             <div class="variants_selects">
                                 <div class="variants_size">
-                                    <h2>Sub: ${companyName}</h2><br/>
+                                    <h2>Supplier: ${companyName}</h2><br/>
                                 </div>
                                 <div class="variants_fragrance">
                                     <h2>Size</h2>

@@ -12,6 +12,8 @@ CREATE TABLE [dbo].[Orders](
 )
 
 INSERT INTO [dbo].[Orders] ([Date], [UserName], [TotalMoney], [status]) VALUES 
+	('2023-11-27', 'user9', 155.93, 1),
+	('2023-12-1', 'user10', 155.93, 1),
     ('2023-11-25', 'user1', 155.93, 1),
     ('2023-05-24', 'user3', 195.96, 1),
     ('2023-12-15', 'user2', 92.95, 1),
@@ -127,4 +129,6 @@ VALUES
 drop table OrderDetails
 drop table Orders
 drop table Users
-drop table products*/
+drop table products
+drop table [Categories]
+drop table [Suppliers]*/

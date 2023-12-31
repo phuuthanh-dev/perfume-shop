@@ -42,20 +42,25 @@
                                     <p>For recover your password</p>
                                 </c:if>
                                 <c:if test="${requestScope.check != null}">
-                                    <c:if test="${requestScope.check == 'true'}">
+                                    <c:if test="${requestScope.check == 'true' && !(requestScope.message == 'Sorry, reset code incorrect')}">
                                         <p style="color: green">${requestScope.message}</p>
                                     </c:if>
                                     <c:if test="${requestScope.check == 'false'}">
                                         <p style="color: red">${requestScope.message}</p>
                                     </c:if>
+                                    <c:if test="${requestScope.check == 'true' && requestScope.message == 'Sorry, reset code incorrect'}">
+                                        <p style="color: red">${requestScope.message}</p>
+                                    </c:if>
                                 </c:if>
                                 <form action="forgot" method="post">
-                                    <div class="form-group">
-                                        <div class="fxt-transformY-50 fxt-transition-delay-1">
-                                            <input type="email" class="form-control" name="email" placeholder="Email Address" required="required" value="${requestScope.email}">
-                                            <i class="flaticon-envelope"></i>
+                                    <c:if test="${requestScope.check == null || requestScope.check == 'false'}">
+                                        <div class="form-group">
+                                            <div class="fxt-transformY-50 fxt-transition-delay-1">
+                                                <input type="email" class="form-control" name="email" placeholder="Email Address" required="required" value="${requestScope.email}">
+                                                <i class="flaticon-envelope"></i>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </c:if>
                                     <c:if test="${requestScope.check == null || requestScope.check == 'false'}">
                                         <div class="form-group">
                                             <div class="fxt-transformY-50 fxt-transition-delay-2">
@@ -67,6 +72,7 @@
 
                                 <c:if test="${requestScope.check != null && requestScope.check == 'true'}">
                                     <form action="confirmresetcode" method="post">
+                                        <input name="email" value="${requestScope.email}" type="hidden">
                                         <div class="form-group">
                                             <div class="fxt-transformY-50 fxt-transition-delay-1">
                                                 <input type="text" class="form-control" name="resetcode" placeholder="xxxxxx" required="required" value="${requestScope.code}">

@@ -245,7 +245,8 @@ public class UserDAO extends DBContext {
 
     public static void main(String[] args) {
         UserDAO p = new UserDAO();
-        p.insertUser("adminafa", "Phùng Hữu Thành", "123", 1, "phuuthanh2003@gmai.com", "2003-08-10", "0707064154");
+        String a = p.getUserNameByEmail("phuuthanh2003@gmail.com");
+        System.out.println(a);
         List<Spending> list = p.getTop5Customers();
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).getTotalSpending());

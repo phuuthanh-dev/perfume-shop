@@ -1048,7 +1048,7 @@ h6 {
 .main_menu nav > ul > li:hover ul.sub_menu {
     visibility: visible;
     max-height: 300px;
-/*    padding: 24px 30px;*/
+    /*    padding: 24px 30px;*/
 }
 .main_menu nav > ul > li:hover .mega_menu {
     visibility: visible;
@@ -3271,5 +3271,30 @@ a:hover{
     position: absolute;
     top: -32px;
     right: 4px;
+}
+
+
+/*new product23*/
+.ani-fire {
+    background-image: url("https://dl.dropbox.com/s/r2s8s2r17wi0xm6/flame.png?dl=0");
+    background-position: 0 -1000px;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fire 4s linear infinite;
+}
+
+h1 {
+    color: #fff;
+    font-size: 80px;
+    text-align: center;
+}
+
+@keyframes fire {
+    0% {
+        background-position: 50% -32%;
+    }
+    100% {
+        background-position: 25% -25%;
+    }
 }
 
