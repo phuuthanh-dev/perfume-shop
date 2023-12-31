@@ -17,6 +17,21 @@ import model.Wallet;
  */
 public class WalletDAO extends DBContext {
 
+    //
+    public int getNumberWallets() {
+        try {
+            String sql = "SELECT COUNT(*) FROM Wallets";
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                int number = rs.getInt(1);
+                return number;
+            }
+        } catch (Exception e) {
+        }
+        return 1;
+    }
+    //
     public void addWallet(Wallet wallet) {
         try {
             String sql = "INSERT INTO [dbo].[Wallets]\n"
@@ -50,7 +65,7 @@ public class WalletDAO extends DBContext {
     // 
     public Wallet getWalletByUserName(String name) {
         try {
-            String sql = "SELECT * FROM [dbo].[Wallets] WHERE UserName = ?";
+            String sql = "SELECT * FROM Wallets WHERE UserName = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, name);
             ResultSet rs = st.executeQuery();

@@ -90,6 +90,7 @@ public class ConfirmResetCodeServlet extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
             check = "false";
+            message = "Sorry, reset code incorrect ";
             session.setAttribute("code", code);
             request.setAttribute("email", email);
             request.setAttribute("check", check);

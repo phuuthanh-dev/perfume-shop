@@ -98,6 +98,7 @@ public class LoginServlet extends HttpServlet {
         String remember = request.getParameter("remember");
         UserDAO ud = new UserDAO();
         WalletDAO wd = new WalletDAO();
+        // update lai pass
         ud.updatePassByUserName(uPass, uName);
         User user = ud.check(uName, uPass);
         HttpSession session = request.getSession();
@@ -105,17 +106,16 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("error", "Username or password invalid!");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
-            // update lai pass
             Wallet wallet = wd.getWalletByUserName(uName);
             session.setAttribute("wallet", wallet);
             session.setAttribute("account", user);
             Cookie u = new Cookie("cUName", uName);
             Cookie p = new Cookie("pUName", uPass);
             Cookie r = new Cookie("reMem", remember);
-            u.setMaxAge(60*60*24*30*3);
+            u.setMaxAge(60 * 60 * 24 * 30 * 3);
             if (remember != null) {
-                p.setMaxAge(60*60*24*30*3);
-                r.setMaxAge(60*60*24*30*3);
+                p.setMaxAge(60 * 60 * 24 * 30 * 3);
+                r.setMaxAge(60 * 60 * 24 * 30 * 3);
             } else {
                 p.setMaxAge(0);
                 r.setMaxAge(0);

@@ -145,18 +145,34 @@ public class UserDAO extends DBContext {
         }
         return null;
     }
+    // 
+   public int getNumberUsers() {
+        try {
+            String sql = "SELECT COUNT(*) FROM Users";
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                int number = rs.getInt(1);
+                return number;
+            }
+        } catch (Exception e) {
+        }
+        return 1;
+    }
 
     public void insert(User c) {
-        String sql = "INSERT INTO [dbo].[Users]\n"
-                + "           ([UserName]\n"
-                + "           ,[FullName]\n"
-                + "           ,[Password]\n"
-                + "           ,[RoleID]\n"
-                + "           ,[BirthDay]\n"
-                + "           ,[Phone])\n"
-                + "           ,[status])\n"
-                + "     VALUES\n"
-                + "           (?,?,?,?,?,?,?)\n";
+        String sql = "INSERT INTO [dbo].[Users]\n" +
+"           ([UserName]\n" +
+"           ,[FullName]\n" +
+"           ,[Password]\n" +
+"           ,[RoleID]\n" +
+"           ,[Image]\n" +
+"           ,[Email]\n" +
+"           ,[BirthDay]\n" +
+"           ,[Address]\n" +
+"           ,[Phone]\n" +
+"           ,[status])\n" +
+"     VALUES (?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
 
@@ -164,9 +180,12 @@ public class UserDAO extends DBContext {
             st.setString(2, c.getFullName());
             st.setString(3, c.getPassword());
             st.setInt(4, c.getRoleID());
-            st.setString(5, c.getBirthdate());
-            st.setString(6, c.getPhone());
-            st.setInt(7, 1);
+            st.setString(5, "images/users/user.png");
+            st.setString(6, c.getEmail());
+            st.setString(7, c.getBirthdate());
+            st.setString(8, "no information");
+            st.setString(9, c.getPhone());
+            st.setInt(10, 1);
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);

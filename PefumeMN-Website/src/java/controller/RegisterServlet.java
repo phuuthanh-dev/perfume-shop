@@ -87,17 +87,27 @@ public class RegisterServlet extends HttpServlet {
         WalletDAO wd = new WalletDAO();
         User user;
         Wallet wallet;
+        String message = "Something wrong";
+        int slUPrev = ud.getNumberUsers();
+        int slWPrev = wd.getNumberWallets();
         boolean isDup = ud.checkUserNameDuplicate(uName);
         if (isDup == true) {
-            request.setAttribute("error", "Username already exist!");
+            message = "Username already exist!";
+            request.setAttribute("error", message);
             request.getRequestDispatcher("register.jsp").forward(request, response);
         } else {
             System.out.println(birthDate.toString());
             user = new User(uName, fName, uPass, "", uPho, uEmail, "", birthDate, 2);
-            wallet = new Wallet(uName, 0);
             ud.insert(user);
+            wallet = new Wallet(uName, 0);
             wd.addWallet(wallet);
-            request.setAttribute("successfully", "Register successfully. Please Login!");
+            int slUAfter = ud.getNumberUsers();
+            int slWAfter = wd.getNumberWallets();
+
+            if (slUAfter > slUPrev && slWAfter > slWPrev ){
+                message = "Register successfully. Please Login!";
+            }
+            request.setAttribute("successfully", message);
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
