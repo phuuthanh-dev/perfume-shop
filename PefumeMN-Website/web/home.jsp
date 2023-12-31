@@ -160,7 +160,7 @@
                                                     <div class="action_links">
                                                         <ul>
                                                             <li class="add_to_cart" 
-                                                                onclick="openModal('modal_box',${p.id}, '${p.image[0]}', '${p.image[1]}',
+                                                                onclick="openModal('modal_box',${p.id}, '${p.image[0]}', '${p.image[1]}', 
                                                                                 '${p.name}',${p.salePrice},${p.price}, '${p.describe}', '${p.classifyStr}',
                                                                                 '${p.supplier.getCompanyName()}')"">
                                                                 <a href="#" data-toggle="modal" data-target="#modal_box" title="Add to Cart">
@@ -173,12 +173,11 @@
                                                                 </a>
                                                             </li>
                                                             <li class="quick_button" 
-                                                                onclick="openModal('modal_box',${p.id}, '${p.image[0]}', '${p.image[1]}',
+                                                                onclick="openModal('modal_box',${p.id}, '${p.image[0]}', '${p.image[1]}', 
                                                                                 '${p.name}',${p.salePrice},${p.price}, '${p.describe}', '${p.classifyStr}',
                                                                                 '${p.supplier.getCompanyName()}')" >
                                                                 <a href="#" data-toggle="modal" data-target="#modal_box" 
                                                                    title="Quick View">
-
                                                                     <i class="fa fa-eye"></i>
                                                                 </a>
                                                             </li>
@@ -315,7 +314,7 @@
                                                         <div class="action_links">
                                                             <ul>
                                                                 <li class="add_to_cart"
-                                                                    onclick="openModal('modal_box', ${hotDeal.id}, '${hotDeal.image[0]}', '${hotDeal.image[1]}',
+                                                                    onclick="openModal('modal_box', ${hotDeal.id}, '${hotDeal.image[0]}', '${hotDeal.image[1]}', 
                                                                                     '${hotDeal.name}',${hotDeal.salePrice},${hotDeal.price}, '${hotDeal.describe}', '${hotDeal.classifyStr}',
                                                                                     '${hotDeal.supplier.getCompanyName()}')"
                                                                     >
@@ -404,7 +403,7 @@
                                                     <c:if test="${count == status.index}">
                                                         <article class="single_product" data-toggle="modal" data-target="#modal_box">
                                                             <figure 
-                                                                onclick="openModal('modal_box', ${giftSet.id}, '${giftSet.image[0]}', '${giftSet.image[1]}',
+                                                                onclick="openModal('modal_box', ${giftSet.id}, '${giftSet.image[0]}', '${giftSet.image[1]}', 
                                                                                 '${giftSet.name}',${giftSet.salePrice},${giftSet.price}, '${giftSet.describe}', '${giftSet.classifyStr}',
                                                                                 '${giftSet.supplier.getCompanyName()}')">
                                                                 <div class="product_thumb">
@@ -556,7 +555,7 @@
                                                                         </a>
                                                                     </li>
                                                                     <li class="quick_button" 
-                                                                        onclick="openModal('modal_box',${t.id}, '${t.image[0]}', '${t.image[1]}',
+                                                                        onclick="openModal('modal_box',${t.id}, '${t.image[0]}', '${t.image[1]}', 
                                                                                         '${t.name}',${t.salePrice},${t.price}, '${t.describe}', '${t.classifyStr}',
                                                                                         '${t.supplier.getCompanyName()}')" >
                                                                         <a href="#" data-toggle="modal" data-target="#modal_box"
@@ -668,8 +667,8 @@
                                                                     </a>
                                                                 </li>
                                                                 <li class="quick_button" 
-                                                                    onclick="openModal('modal_box',${i.id}, '${i.image[0]}', '${i.image[1]}',
-                                                                                    '${i.name}',${i.salePrice},${i.price}, '${i.describe}', '${i.classifyStr}',
+                                                                    onclick="openModal('modal_box', ${i.id}, '${i.image[0]}', '${i.image[1]}',
+                                                                                    '${i.name}', ${i.salePrice}, ${i.price}, '${i.describe}', '${i.classifyStr}',
                                                                                     '${i.supplier.getCompanyName()}')" >
                                                                     <a href="#" data-toggle="modal"
                                                                        data-target="#modal_box" title="Quick View">

@@ -30,46 +30,24 @@ function openModal(
                                 </div>
                                 <div class="tab-pane fade" id="tab2" role="tabpanel">
                                     <div class="modal_tab_img">
-                                        <a href="#"><img src="images/new-product/N2-1.png" alt=""></a>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="tab3" role="tabpanel">
-                                    <div class="modal_tab_img">
-                                        <a href="#"><img src="images/new-product/N3.png" alt=""></a>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="tab4" role="tabpanel">
-                                    <div class="modal_tab_img">
-                                        <a href="#"><img src="images/new-product/N4-1.png" alt=""></a>
+                                        <a href="#"><img src="${image2}" alt=""></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal_tab_button">
-                                <ul class="nav product_navactive owl-carousel" role="tablist">
-                                    <li>
-                                        <a href="#tab1" class="nav-link active" data-toggle="tab" role="tab"
-                                           aria-controls="tab1" aria-selected="false">
-                                            <img src="${image1}" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#tab2" class="nav-link" data-toggle="tab" role="tab"
-                                           aria-controls="tab2" aria-selected="false">
-                                            <img src="${image2}" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#tab3" class="nav-link" data-toggle="tab" role="tab"
-                                           aria-controls="tab3" aria-selected="false">
-                                            <img src="images/new-product/N3.png" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#tab4" class="nav-link" data-toggle="tab" role="tab"
-                                           aria-controls="tab4" aria-selected="false">
-                                            <img src="images/new-product/N4-1.png" alt="">
-                                        </a>
-                                    </li>
+                                        <ul class="nav product_navactive" role="tablist">
+                                            <li style="width: 33%">
+                                                <a href="#tab1" class="nav-link active" data-toggle="tab" role="tab"
+                                                    aria-controls="tab1" aria-selected="false">
+                                                    <img src="${image1}" alt="">
+                                                </a>
+                                            </li>
+                                            <li style="width: 33%">
+                                                <a href="#tab2" class="nav-link" data-toggle="tab" role="tab"
+                                                    aria-controls="tab2" aria-selected="false">
+                                                    <img src="${image2}" alt="">
+                                                </a>
+                                            </li>
                                 </ul>
                             </div>
                         </div>
@@ -81,9 +59,9 @@ function openModal(
                                 <h2>${name}</h2>
                             </div>
                             <div class="modal_price mb-10">
-                                <span class="new_price">Rs. ${salePrice}</span>
+                                <span class="new_price">Rs. ${salePrice}$</span>
                                 <c:if test="${price != salePrice}">
-                                    <span class="old_price">Rs. ${price}</span>
+                                    <span class="old_price">Rs. ${price}$</span>
                                 </c:if>
                             </div>
                             <div class="modal_description mb-15">

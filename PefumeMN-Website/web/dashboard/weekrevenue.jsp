@@ -97,7 +97,7 @@
                                 <h3 class="mb-0 text-center">
                                     <strong>Revenue by week</strong>
                                     <form id="f1" method="get" action="weekrevenue">
-                                        <select name="year" class="form-control" id="dropdownYear" style="width: 120px;" onchange="getYear(this)">
+                                        <select name="year" class="form-control" id="dropdownYear" style="width: 120px;">
                                         <c:set var="currentYear" value="2023"/>
                                         <c:set var="endYear" value="2018"/>
                                         <c:forEach var="year" begin="0" end="${currentYear - endYear}">
@@ -105,6 +105,11 @@
                                             </option>
                                         </c:forEach>
                                     </select>
+                                    <input style="width: 200px;" value="" type="week" class="form-control" id="weekInput">
+                                    <input value="" type="hidden" class="form-control" name="from" id="from">
+                                    <input value="" type="hidden" class="form-control" name="to" id="to">
+                                    <input value="" type="hidden" class="form-control" name="month" id="month">
+                                    <button style="width: 100px; padding: 0" class="form-control" type="button" onclick="submitForm()">Submit</button>
                                 </form>
                             </h3>
                         </div>
@@ -136,27 +141,71 @@
         <script type="text/javascript" src="js/script.js"></script>
         <script src="https://mdbootstrap.com/api/snippets/static/download/MDB5-Free_3.8.1/js/mdb.min.js"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
         <script type="text/javascript">// Graph
-                                            var ctxP = document.getElementById("pieChart").getContext('2d');
+                                        var ctxP = document.getElementById("pieChart").getContext('2d');
 
-                                            var myPieChart = new Chart(ctxP, {
-                                                type: 'pie',
-                                                data: {
-                                                    labels: ["Sunday", "Saturday", "Friday", "Thursday", "Wednesday", "Tuesday", "Monday"],
-                                                    datasets: [{
-                                                            data: [${totalMoney1}, ${totalMoney7}, ${totalMoney6}, ${totalMoney5}, ${totalMoney4}, ${totalMoney3}, ${totalMoney2}],
-                                                            backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360", "#1874CD", "#CDB5CD"],
-                                                            hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774", "#1E90FF", "#FFE1FF"]
-                                                        }]
-                                                },
-                                                options: {
-                                                    responsive: true
-                                                }
-                                            });
-
-                                            function getYear(obj) {
-                                                var year = obj.value;
-                                                document.getElementById("f1").submit();
+                                        var myPieChart = new Chart(ctxP, {
+                                            type: 'pie',
+                                            data: {
+                                                labels: ["Sunday", "Saturday", "Friday", "Thursday", "Wednesday", "Tuesday", "Monday"],
+                                                datasets: [{
+                                                        data: [${totalMoney1}, ${totalMoney7}, ${totalMoney6}, ${totalMoney5}, ${totalMoney4}, ${totalMoney3}, ${totalMoney2}],
+                                                        backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360", "#1874CD", "#CDB5CD"],
+                                                        hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774", "#1E90FF", "#FFE1FF"]
+                                                    }]
+                                            },
+                                            options: {
+                                                responsive: true
                                             }
+                                        });
+
+                                        function submitForm(obj) {
+                                            var year = document.getElementById("dropdownYear").value;
+                                            const weekInput = document.getElementById('weekInput');
+                                            const selectedWeek = weekInput.value;
+                                            const [, week] = selectedWeek.split('-W');
+
+                                            const startDate = getDateFromWeek(year, parseInt(week));
+
+                                            const endDate = new Date(startDate);
+                                            endDate.setDate(startDate.getDate() + 6);
+
+                                            const month = startDate.toLocaleString('en-US', {month: 'long'});
+                                            const monthNumber = getMonthNumber(month);
+
+                                            const startDay = startDate.getDate();
+                                            const endDay = endDate.getDate();
+
+                                            document.getElementById("from").value = startDay;
+                                            document.getElementById("to").value = endDay;
+                                            document.getElementById("month").value = monthNumber;
+                                            document.getElementById("f1").submit();
+                                        }
+
+                                        function getDateFromWeek(year, week) {
+                                            const januaryFourth = new Date(year, 0, 4);
+                                            const daysToAdd = (week - 1) * 7;
+                                            januaryFourth.setDate(januaryFourth.getDate() + daysToAdd - januaryFourth.getDay() + 1);
+                                            return januaryFourth;
+                                        }
+
+                                        function getMonthNumber(monthName) {
+                                            const monthsMap = {
+                                                'January': 1,
+                                                'February': 2,
+                                                'March': 3,
+                                                'April': 4,
+                                                'May': 5,
+                                                'June': 6,
+                                                'July': 7,
+                                                'August': 8,
+                                                'September': 9,
+                                                'October': 10,
+                                                'November': 11,
+                                                'December': 12
+                                            };
+
+                                            return monthsMap[monthName];
+                                        }
 
         </script>
 

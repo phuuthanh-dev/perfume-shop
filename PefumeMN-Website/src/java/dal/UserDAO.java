@@ -183,7 +183,7 @@ public class UserDAO extends DBContext {
             st.setString(5, "images/users/user.png");
             st.setString(6, c.getEmail());
             st.setString(7, c.getBirthdate());
-            st.setString(8, "no information");
+            st.setString(8, "No information");
             st.setString(9, c.getPhone());
             st.setInt(10, 1);
             st.executeUpdate();
