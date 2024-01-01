@@ -93,6 +93,7 @@ public class HomeServlet extends HttpServlet {
         List<Product> listByPage = p.getListByPage(listAll, start, end);
 
         request.setAttribute("chid", chid);
+        request.setAttribute("listAll", listAll);
         request.setAttribute("category", categories);
         request.setAttribute("productsYear", productsYear);
         request.setAttribute("hotDeal", spHot);

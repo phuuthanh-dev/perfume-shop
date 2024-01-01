@@ -211,23 +211,25 @@ public class UserDAO extends DBContext {
                 + "           ([UserName]\n"
                 + "           ,[FullName]\n"
                 + "           ,[Password]\n"
+                + "           ,[Image]\n"
                 + "           ,[RoleID]\n"
                 + "           ,[Email]\n"
                 + "           ,[BirthDay]\n"
-                + "           ,[Phone])\n"
+                + "           ,[Phone]\n"
                 + "           ,[status])\n"
                 + "     VALUES\n"
-                + "           (?,?,?,?,?,?,?,?)";
+                + "           (?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, UserName);
             st.setString(2, FullName);
             st.setString(3, Password);
-            st.setInt(4, RoleID);
-            st.setString(5, Email);
-            st.setString(6, BirthDay);
-            st.setString(7, Phone);
-            st.setInt(8, 1);
+            st.setString(4, "images/users/user.png");
+            st.setInt(5, RoleID);
+            st.setString(6, Email);
+            st.setString(7, BirthDay);
+            st.setString(8, Phone);
+            st.setInt(9, 1);
             st.executeUpdate();
         } catch (Exception e) {
         }
@@ -245,11 +247,11 @@ public class UserDAO extends DBContext {
 
     public static void main(String[] args) {
         UserDAO p = new UserDAO();
-        String a = p.getUserNameByEmail("phuuthanh2003@gmail.com");
-        System.out.println(a);
-        List<Spending> list = p.getTop5Customers();
+        p.insertUser("duc", "thanh", "123",
+             2, "thanh@gmail.com", "2003-09-08", "4012412341");
+        List<User> list = p.getAllUsers();
         for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).getTotalSpending());
+            System.out.println(list.get(i).getFullName());
         }
     }
 

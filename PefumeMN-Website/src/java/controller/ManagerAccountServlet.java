@@ -65,7 +65,6 @@ public class ManagerAccountServlet extends HttpServlet {
         List<User> list = dao.getAllUsers();
 
         request.setAttribute("listUser", list);
-
         request.getRequestDispatcher("dashboard/mngaccount.jsp").forward(request, response);
     }
 

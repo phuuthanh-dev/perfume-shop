@@ -199,7 +199,8 @@
                             <form id="fima">
                                 <label for="form_file" class="edit" value="aa">
                                     <div style="color: #0D6EFD;font-size: 16px">JPG or PNG no larger than 5 MB
-                                        <i class="fa-solid fa-pen-to-square" style="font-size: 20px; padding: 0 0 0 10px"></i></div>
+                                        <i class="fa-solid fa-pen-to-square" style="font-size: 20px; padding: 0 0 0 10px"></i>
+                                    </div>
                                 </label>
                                 <input type="hidden" id="sub" name="imagelink" value=""/>
                                 <input type="hidden" id="userid" name="uid" value="${user.userName}"/>
@@ -305,5 +306,29 @@
         <script src="js/clickevents.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
         <script src="js/main.js"></script>
+        <script type="text/javascript">
+                                    const $ = document.querySelector.bind(document);
+
+                                    function getImg() {
+                                        const input = $('.box_info .avatar input[type="file"]');
+                                        const img = $('.box_info .avatar img');
+
+                                        input.addEventListener('change', function (event) {
+                                            if (this.files && this.files[0]) {
+                                                const newImageLink = 'images_users_' + event.target.files[0].name;
+                                                const newImageLink1 = 'images/users/' + event.target.files[0].name;
+                                                img.src = newImageLink1;
+                                                console.log(newImageLink1);
+
+                                                var form = document.querySelector("#fima");
+
+                                                document.getElementById("sub").value = newImageLink;
+                                                form.submit();
+                                                console.log(form);
+                                            }
+                                        });
+                                    }
+                                    getImg();
+        </script>
     </body>
 </html>

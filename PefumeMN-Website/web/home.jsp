@@ -474,7 +474,7 @@
                                             <fieldset class="responsiveFacets_sectionContent " aria-hidden="false">
                                                 <div href="#" class="responsiveFacets_sectionItemLabel" onclick="pageRefine(0)">
                                                     <label class="responsiveFacets_sectionItem" for="brand">
-                                                        ALL (${productsYear.size()})
+                                                        ALL (${listAll.size()})
                                                     </label>
                                                 </div>
                                                 <c:forEach begin="0" end="${cat.size()-1}" var="i">

@@ -109,6 +109,7 @@ public class Home1Servlet extends HttpServlet {
 
         List<Product> listByPage = p.getListByPage(listAll, start, end);
 
+        request.setAttribute("listAll", listAll);
         request.setAttribute("cidYear", cidYear_raw);
         request.setAttribute("category", categories);
         request.setAttribute("productsYear", productsYear);

@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/ForgotPassServlet.java</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/src/java/controller/ConfirmResetCodeServlet.java</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/forgot.jsp</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/login.jsp</file>
+            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/home.jsp</file>
+            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/ajax/search_product_ajax.jsp</file>
+            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/ajax/viewcart_ajax.jsp</file>
+            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/ajax/search_ajax.jsp</file>
         </group>
     </open-files>
 </project-private>

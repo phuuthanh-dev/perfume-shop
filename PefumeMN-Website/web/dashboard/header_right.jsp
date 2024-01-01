@@ -76,7 +76,7 @@
                         </a>
                     </li>
                     <li onclick="change()" style="position: relative">
-                        <img src="${sessionScope.account.image}" width="45px" style="color: white;
+                        <img src="${sessionScope.imageUser}" width="45px" style="color: white;
                              border-radius: 50%; cursor: pointer">
                         <ul id="avt" class="header_avt" style="margin-top:25px;
                             position: absolute;

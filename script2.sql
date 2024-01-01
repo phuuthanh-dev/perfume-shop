@@ -104,9 +104,9 @@ INSERT INTO Wallets (UserName, Balance)
 VALUES
 ('john_doe', 300),
 ('john_doeee', 0),
-('phuuthanh2003', 0),
-('user1', 0),
-('user10', 0),
+('phuuthanh2003', 500),
+('user1', 200),
+('user10', 150),
 ('user2', 0),
 ('user3', 0),
 ('user4', 0),
@@ -121,7 +121,7 @@ VALUES
 ('14day', 0),
 ('15do', 0),
 ('user8', 0),
-('16roi', 0);
+('16roi', 20);
 
 
 

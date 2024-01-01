@@ -163,7 +163,7 @@
                         </li>
                         <c:if test="${sessionScope.account!=null}">
                             <li onclick="change()" style="position: relative; cursor: pointer;">
-                                <img src="${sessionScope.account.image}" width="40px" style="color: white; border-radius: 50% ;border: 2px solid white;">
+                                <img src="${sessionScope.imageUser}" width="40px" style="color: white; border-radius: 50% ;border: 2px solid white;">
                                 <ul id="avt" class="header_avt" style="margin-top:25px;
                                     position: absolute;
                                     left: -96px ;
