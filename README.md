@@ -39,29 +39,13 @@ Live Demo: :point_right: [here]()
 ## Description
 
 - This web application is my assignment under the requirement of teacher in class
-- This is a website for guest and user for buying flowers, reading blogs about flowers
+- This is a website for guest and user for buying perfumes, reading blogs about perfumes
 - This website also contains a function for admin for managing
-- This web works well on desktop, I also added responsive for it, maybe it can work on tablet, mobile
+- This web works well on desktop.
 
 ## Preview Screenshot
 
-<div  align="center">
 
-<img  src="https://github.com/khoahd7621/FlowerShop/blob/main/images/HomePage.png"  alt="Home Page"  width="45%"></img> &nbsp;&nbsp; <img  src="https://github.com/khoahd7621/FlowerShop/blob/main/images/LoginBar.png"  alt="Login Bar"  width="45%"></img>
-
-<img  src="https://github.com/khoahd7621/FlowerShop/blob/main/images/CartBar.png"  alt="Cart Bar"  width="45%"></img> &nbsp;&nbsp; <img  src="https://github.com/khoahd7621/FlowerShop/blob/main/images/SearchModel.png"  alt="Search Model"  width="45%"></img>
-
-<img  src="https://github.com/khoahd7621/FlowerShop/blob/main/images/LoginForm.png"  alt="Login Page"  width="45%"></img> &nbsp;&nbsp; <img  src="https://github.com/khoahd7621/FlowerShop/blob/main/images/RegistrationForm.png"  alt="Registration Page"  width="45%"></img>
-
-<img  src="https://github.com/khoahd7621/FlowerShop/blob/main/images/ShopPage.png"  alt="Shop Page"  width="45%"></img> &nbsp;&nbsp; <img  src="https://github.com/khoahd7621/FlowerShop/blob/main/images/ViewCartPage.png"  alt="View Cart Page"  width="45%"></img>
-
-<img  src="https://github.com/khoahd7621/FlowerShop/blob/main/images/UserPage.png"  alt="User Page"  width="45%"></img> &nbsp;&nbsp; <img  src="https://github.com/khoahd7621/FlowerShop/blob/main/images/CheckOutPage.png"  alt="Checkout Page"  width="45%"></img>
-
-<img  src="https://github.com/khoahd7621/FlowerShop/blob/main/images/OrderPage.png"  alt="Order Page"  width="45%"></img> &nbsp;&nbsp; <img  src="https://github.com/khoahd7621/FlowerShop/blob/main/images/OrderDetailPage.png"  alt="Order Detail Page"  width="45%"></img>
-
-<img  src="https://github.com/khoahd7621/FlowerShop/blob/main/images/AdminPage.png"  alt="Admin Page"  width="45%"></img> &nbsp;&nbsp; <img  src="https://github.com/khoahd7621/FlowerShop/blob/main/images/ManagePage.png"  alt="Manage Page"  width="45%"></img>
-
-</div>
 
 ## Technology
 
@@ -70,8 +54,7 @@ Live Demo: :point_right: [here]()
 - HTML, CSS, JS, Bootstrap, jQuery
 - JSP - JavaServer Pages
 - JSTL - JSP Standard Tag Library
-- Axios - Promise based HTTP client for the browser and node.js
-- Wow js plugin for animation
+- Ajax - Asynchronous JavaScript And XML
 - ...
 
 **2. Backend**
@@ -92,80 +75,70 @@ Live Demo: :point_right: [here]()
 
 - Netbeans 8.2
 - Java JDK 8
-- Apache Tomcat 8.5.29
+- Apache Tomcat 8.2
 - Visual Studio Code
-- Microsoft SQL Server Management Studio 18
+- Microsoft SQL Server Management Studio 19
 
 **6.Libraries**
 
-- Lombok
 - JSTL
 - sqljdbc4
 - javax.mail
-- javax.activation-1.2.0
-- gson-2.9.0
-- commons-logging-1.2
-- fluent-hc-4.5.5
-- httpclient-4.5.5
-- httpcore-4.4.9
  
 ## Functional requirements
 
 **1. Guest:**
-- [x] Login by google account
 - [x] Login by account
 - [x] Register an account
-- [x] Search, view plants
+- [x] Search, view perfumes
 - [x] Add, update, remove cart
-- [x] View ratings of plant
+- [x] View ratings of perfumes
 - [x] View blogs
-- [x] View blog's comment
-- [x] Subscribe received new daily information
-- [ ] Password retrieval
+- [x] Password retrieval
+- [ ] Login by google account
+- [ ] View blog's comment
+- [ ] Subscribe received new daily information
 
 **2. User**
-- [x] Search, view plants
+- [x] Search, view perfumes
 - [x] Add, update, remove cart
-- [x] View ratings of plant
+- [x] View ratings of perfumes
 - [x] Subscribe received new daily information
 - [x] View blogs
-- [x] View blog's comment
 - [x] Logout
 - [x] Update account information
 - [x] View, manage orders
 - [x] Checkout
-- [x] Rating plants
-- [x] Comment blogs
 - [ ] Rating plants
 - [ ] Comment blogs
+- [ ] View blog's comment
 
 **4. Admin:**
-- [x] Managing plants
+- [x] Managing perfumes
 - [x] Managing accounts
 - [x] Managing categories
 - [x] Managing orders
 - [x] Send email
 - [x] Update admin account information
+- [x] Statistic revenue
 - [ ] Manage blogs
-- [ ] Statistic revenue
 
 ## Useful Resources
 
 #| Name | Description
 -| ---- | -----------
-1| [web folder](https://github.com/khoahd7621/FlowerShop/tree/main/web) | -----------
-2| [src folder](https://github.com/khoahd7621/FlowerShop/tree/main/src) | -----------
-3| [Database file](https://github.com/khoahd7621/FlowerShop/blob/main/Database-Plant-Shop.sql) | -----------
-4| [META-INF folder](https://github.com/khoahd7621/FlowerShop/tree/main/web/META-INF) | -----------
-5| [WEB-INF folder](https://github.com/khoahd7621/FlowerShop/tree/main/web/WEB-INF) | -----------
-6| [libs folder](https://github.com/khoahd7621/FlowerShop/tree/main/web/WEB-INF/libs) | -----------
+1| [web folder](https://github.com/phuuthanh2003/PerfumeShop/tree/main/PefumeMN-Website/web) | -----------
+2| [src folder](https://github.com/phuuthanh2003/PerfumeShop/tree/main/PefumeMN-Website/src) | -----------
+3| [Database file](https://github.com/phuuthanh2003/PerfumeShop/edit/main/script.sql) | -----------
+5| [WEB-INF folder](https://github.com/phuuthanh2003/PerfumeShop/blob/main/PefumeMN-Website/web/WEB-INF) | -----------
+6| [libs folder](https://github.com/phuuthanh2003/PerfumeShop/tree/main/PefumeMN-Website/lib) | -----------
 
 ## Learn More
 
 ## Reference
 
 ## License & Copyright
-
-&copy; 2022 Khoa Dang Hoang khoahd7621 Licensed under the [GPL-3.0 LICENSE](https://github.com/khoahd7621/FlowerShop/blob/main/LICENSE).
+https://github.com/phuuthanh2003/PerfumeShop/tree/main
+&copy; 2024 Phung Huu Thanh Licensed under the [GPL-3.0 LICENSE](https://github.com/phuuthanh2003/PerfumeShop/tree/main).
 
 > :love_you_gesture: Feel free to use my repository and star it if you find something interesting :love_you_gesture:
