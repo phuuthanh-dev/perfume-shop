@@ -1,4 +1,4 @@
-# :sunglasses: Flower Shop - Assigment PRJ301 - JAVA WEB APPLICATION DEVELOPMENT
+# :sunglasses: Perfume Shop - Assigment PRJ301 - JAVA WEB APPLICATION DEVELOPMENT
 
 The main project folder that for learning, practicing and taking assignment score in class
 
