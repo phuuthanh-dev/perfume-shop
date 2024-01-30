@@ -7,7 +7,6 @@ Live Demo: :point_right: [here]()
 ## You will find in this repo the following stuff:
 * The Java web source used to develop flower e-commerce shopping
 * Register an account with your username and password
-* Sign up with a google account
 * Login with registered account or quickly with google account
 * Automatically send email after checkout cart
 * Automatically send email Subscribe receive news letters
@@ -109,7 +108,7 @@ Live Demo: :point_right: [here]()
 - [x] Update account information
 - [x] View, manage orders
 - [x] Checkout
-- [ ] Rating plants
+- [ ] Rating perfumes
 - [ ] Comment blogs
 - [ ] View blog's comment
 
@@ -133,7 +132,11 @@ Live Demo: :point_right: [here]()
 5| [WEB-INF folder](https://github.com/phuuthanh2003/PerfumeShop/blob/main/PefumeMN-Website/web/WEB-INF) | -----------
 6| [libs folder](https://github.com/phuuthanh2003/PerfumeShop/tree/main/PefumeMN-Website/lib) | -----------
 
-## Learn More
+## Contributors:
+
+<a href="https://github.com/phuuthanh2003/PerfumeShop/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=phuuthanh2003/PerfumeShop"/>
+</a>
 
 ## Reference
 
