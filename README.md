@@ -72,7 +72,7 @@ Live Demo: :point_right: [here]()
 
 **5. Tool**
 
-- Netbeans 8.2
+- Netbeans 13
 - Java JDK 8
 - Apache Tomcat 8.2
 - Visual Studio Code
