@@ -141,6 +141,6 @@ Live Demo: :point_right: [here]()
 ## Reference
 
 ## License & Copyright
-&copy; 2024 Phung Huu Thanh Licensed under the [GPL-3.0 LICENSE](https://github.com/phuuthanh2003/PerfumeShop/tree/main).
+&copy; 2024 Phung Huu Thanh Licensed under the [Apache License 2.0](https://github.com/phuuthanh2003/PerfumeShop/blob/main/LICENSE).
 
 > :love_you_gesture: Feel free to use my repository and star it if you find something interesting :love_you_gesture:
