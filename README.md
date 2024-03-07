@@ -29,8 +29,6 @@ Live Demo: :point_right: [here]()
 
 - [Useful Resources](#useful-resources)
 
-- [Learn More](#learn-more)
-
 - [Reference](#reference)
 
 - [License & Copyright](#license--copyright)
@@ -71,12 +69,12 @@ Live Demo: :point_right: [here]()
 - Oauth2
 
 **5. Tool**
-
 - Netbeans 13
 - Java JDK 8
-- Apache Tomcat 8.2
+- Apache Tomcat 10
 - Visual Studio Code
 - Microsoft SQL Server Management Studio 19
+- [Link download](https://drive.google.com/drive/u/1/folders/1xH8AMUc5waALMXnp4kCS1wwzGmm7YPW6)
 
 **6.Libraries**
 
