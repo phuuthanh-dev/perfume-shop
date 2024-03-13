@@ -2,15 +2,15 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <filter>
         <filter-name>HomeFilter</filter-name>
-        <filter-class>filter.HomeFilter</filter-class>
+        <filter-class>perfumeshop.filter.HomeFilter</filter-class>
     </filter>
     <filter>
         <filter-name>LoginFilter</filter-name>
-        <filter-class>filter.LoginFilter</filter-class>
+        <filter-class>perfumeshop.filter.LoginFilter</filter-class>
     </filter>
     <filter>
         <filter-name>AdminFilter</filter-name>
-        <filter-class>filter.AdminFilter</filter-class>
+        <filter-class>perfumeshop.filter.AdminFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>AdminFilter</filter-name>
@@ -36,12 +36,11 @@
     </filter-mapping>
     <servlet>
         <servlet-name>HomeServlet</servlet-name>
-        <servlet-class>controller.HomeServlet</servlet-class>
+        <servlet-class>perfumeshop.controller.web.shop.HomeServlet</servlet-class>
     </servlet>
-    
     <servlet>
         <servlet-name>DashBoardServlet</servlet-name>
-        <servlet-class>controller.DashBoardServlet</servlet-class>
+        <servlet-class>perfumeshop.controller.admin.statistic.DashBoardServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DashBoardServlet</servlet-name>

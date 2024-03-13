@@ -3,10 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/home.jsp</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/ajax/search_product_ajax.jsp</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/ajax/viewcart_ajax.jsp</file>
-            <file>file:/D:/Project/QLDA_WebBanNuocHoa/PefumeMN-Website/web/ajax/search_ajax.jsp</file>
+            <file>file:/D:/Project/PerfumeShop/PefumeMN-Website/src/java/perfumeshop/controller/web/cart_wishlist/PriceViewCartServlet.java</file>
+            <file>file:/D:/Project/PerfumeShop/PefumeMN-Website/src/java/perfumeshop/controller/web/shop/SearchServlet.java</file>
         </group>
     </open-files>
 </project-private>
