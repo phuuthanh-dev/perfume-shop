@@ -64,24 +64,25 @@ public class Cart {
         }
     }
     // lay gia san pham ban dau - gia chua sale
-    public Double getTotalPriceWithOutDiscount() {
+    public double getTotalPriceWithOutDiscount() {
         double total = 0;
         for (Item item : listItems) {
-            total += (item.getQuantity() * item.getProduct().getPrice());
+            total += Math.round(item.getQuantity() * item.getProduct().getPrice() * 100) / 100.0;
         }
-        DecimalFormat df = new DecimalFormat("#.##");
-        return Double.parseDouble(df.format(total));
+        total = Math.round(total * 100.0) / 100.0;
+        return total;
     }
 
     // lay gia ban - gia san pham da sale
-    public Double getTotalMoney() {
+    public double getTotalMoney() {
         double total = 0;
         for (Item item : listItems) {
-            total += (item.getQuantity() * item.getPrice());
+            total += Math.round(item.getQuantity() * item.getPrice() * 100) / 100.0;
         }
-        DecimalFormat df = new DecimalFormat("#.##");
-        return Double.parseDouble(df.format(total));
+        total = Math.round(total * 100.0) / 100.0;
+        return total;
     }
+
 
     // 
     public List<Product> getlistProducts() {

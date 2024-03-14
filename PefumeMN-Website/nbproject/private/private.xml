@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Project/PerfumeShop/PefumeMN-Website/src/java/perfumeshop/controller/web/cart_wishlist/PriceViewCartServlet.java</file>
-            <file>file:/D:/Project/PerfumeShop/PefumeMN-Website/src/java/perfumeshop/controller/web/shop/SearchServlet.java</file>
+            <file>file:/D:/Project/PerfumeShop/PefumeMN-Website/src/java/perfumeshop/controller/web/cart_wishlist/CartServlet.java</file>
+            <file>file:/D:/Project/PerfumeShop/PefumeMN-Website/web/js/clickevents.js</file>
+            <file>file:/D:/Project/PerfumeShop/PefumeMN-Website/src/java/perfumeshop/model/Order.java</file>
+            <file>file:/D:/Project/PerfumeShop/PefumeMN-Website/src/java/perfumeshop/model/Cart.java</file>
+            <file>file:/D:/Project/PerfumeShop/PefumeMN-Website/web/WEB-INF/web.xml</file>
+            <file>file:/D:/Project/PerfumeShop/PefumeMN-Website/src/java/perfumeshop/dal/OrderDAO.java</file>
         </group>
     </open-files>
 </project-private>

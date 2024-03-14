@@ -53,7 +53,7 @@ public class OrderDAO extends DBContext {
             PreparedStatement st1 = connection.prepareStatement(sql1);
             st1.setString(1, date);
             st1.setString(2, cus.getUserName());
-            st1.setString(3, cart.getTotalMoney().toString());
+            st1.setDouble(3, cart.getTotalMoney());
             st1.setInt(4, 0);
             st1.executeUpdate();
 
