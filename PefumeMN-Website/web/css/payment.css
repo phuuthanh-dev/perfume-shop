@@ -1,0 +1,73 @@
+/* Payment Method Selection Styles */
+.payment-methods {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.form-check {
+    padding: 10px 15px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.form-check:hover {
+    background: #e9ecef;
+    border-color: #dee2e6;
+}
+
+.form-check-input:checked + .form-check-label {
+    color: #1a73e8;
+    font-weight: 600;
+}
+
+.form-check-input:checked {
+    background-color: #1a73e8;
+    border-color: #1a73e8;
+}
+
+.form-check-label {
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 8px;
+}
+
+.form-check-label i {
+    margin-right: 8px;
+    width: 16px;
+}
+
+/* VNPay specific styles */
+.vnpay-option {
+    background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
+    color: white;
+    border-radius: 8px;
+    padding: 8px 12px;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Payment button enhancements */
+.btn-block:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .payment-methods {
+        padding: 10px;
+    }
+    
+    .form-check {
+        padding: 8px 10px;
+    }
+    
+    .form-check-label {
+        font-size: 13px;
+    }
+}
