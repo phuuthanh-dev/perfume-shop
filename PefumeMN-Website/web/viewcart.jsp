@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="css/payment.css"/>
         <style>
             body {
                 color: #000;
@@ -284,11 +285,32 @@
                                             $${sessionScope.cart == null || sessionScope.cartSize == 0 ? '0' : sessionScope.cart.getTotalMoney() + 3}
                                         </h6>
                                     </div>
+                                    <!-- Payment Method Selection -->
+                                    <div class="row px-4 mt-3">
+                                        <div class="col-12">
+                                            <h6 class="mb-3">Select Payment Method:</h6>
+                                            <div class="payment-methods">
+                                                <div class="form-check mb-2">
+                                                    <input class="form-check-input" type="radio" name="paymentMethod" id="walletPayment" value="wallet" checked>
+                                                    <label class="form-check-label" for="walletPayment">
+                                                        <i class="fa fa-wallet"></i> Pay with Wallet (Current Balance: $${sessionScope.wallet.balance})
+                                                    </label>
+                                                </div>
+                                                <div class="form-check mb-3">
+                                                    <input class="form-check-input" type="radio" name="paymentMethod" id="vnpayPayment" value="vnpay">
+                                                    <label class="form-check-label" for="vnpayPayment">
+                                                        <i class="fa fa-credit-card"></i> Pay with VNPay (Credit/Debit Card)
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
                                     <span>
-                                        <form action="viewcart" method="post">
-                                            <input class="btn-block btn-blue" type="submit" value="CHECKOUT" id="checkout"
-                                                   style="color: white; font-weight: bold; background-color: orange"/>
-                                        </form>
+                                        <button class="btn-block btn-blue" onclick="processCheckout()" id="checkout"
+                                               style="color: white; font-weight: bold; background-color: orange; border: none; padding: 8px 15px; margin: 20px 0px; cursor: pointer; border-radius: 10px;">
+                                            CHECKOUT
+                                        </button>
                                     </span>
                                 </div>
                             </div>
@@ -301,5 +323,24 @@
         <div class="modal fade" id="modal_box" role="dialog"></div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type="text/javascript" src="js/clickevents.js"></script>
+        
+        <!-- Payment Method Selection Script -->
+        <script>
+            function processCheckout() {
+                const selectedPayment = document.querySelector('input[name="paymentMethod"]:checked').value;
+                
+                if (selectedPayment === 'vnpay') {
+                    // Redirect to VNPay
+                    window.location.href = 'vnpay';
+                } else {
+                    // Use original wallet payment
+                    const form = document.createElement('form');
+                    form.method = 'POST';
+                    form.action = 'viewcart';
+                    document.body.appendChild(form);
+                    form.submit();
+                }
+            }
+        </script>
     </body>
 </html>
